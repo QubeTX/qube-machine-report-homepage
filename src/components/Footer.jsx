@@ -51,10 +51,10 @@ export default function Footer() {
           color: 'var(--fg-bone)',
           fontWeight: '500'
         }}>
-          SHAUGHNESSY V DEVELOPMENT INC.
+          QUBETX
         </span>
         <span>TR-300 MACHINE REPORT</span>
-        <span>FRISCO, TEXAS</span>
+        <span>QUBETX.COM</span>
       </div>
 
       <div style={{

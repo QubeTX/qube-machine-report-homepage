@@ -81,7 +81,7 @@ export default function Hero() {
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>
           HIGH PERFORMANCE SYSTEM<br />
           OPERATING SYSTEM<br />
-          SHAUGHNESSY V DEV INC.
+          QUBETX
         </div>
       </div>
 

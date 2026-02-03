@@ -61,4 +61,4 @@ BSD-3-Clause
 
 ---
 
-Shaughnessy V Development Inc. | Frisco, Texas
+QubeTX | https://qubetx.com
