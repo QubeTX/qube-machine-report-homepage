@@ -195,7 +195,7 @@ export default function Install() {
         color: '#555',
         textAlign: 'center'
       }}>
-        BSD-3-Clause License • Self-installing shell integration
+        PolyForm Noncommercial License • Self-installing shell integration
       </p>
     </section>
   )

@@ -85,7 +85,7 @@ export default function Features() {
       <GridCell
         label="02 // FOR TEAMS"
         title="Scalable<br />Integration"
-        description="Self-installing shell integration. Add to dotfiles, run on login, pipe to monitoring. BSD-3-Clause licensed."
+        description="Self-installing shell integration. Add to dotfiles, run on login, pipe to monitoring. PolyForm Noncommercial licensed."
         linkText="> VIEW ON GITHUB"
         noBorder
       />

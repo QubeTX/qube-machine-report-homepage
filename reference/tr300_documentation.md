@@ -1,7 +1,7 @@
 # TR-300
 
 [![Build Status](https://github.com/QubeTX/qube-machine-report/actions/workflows/release.yml/badge.svg)](https://github.com/QubeTX/qube-machine-report/actions)
-[![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-PolyForm--NC--1.0.0-blue.svg)](LICENSE)
 
 Cross-platform system information report with Unicode box-drawing tables.
 
@@ -181,7 +181,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the PolyForm Noncommercial 1.0.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## Legacy
 

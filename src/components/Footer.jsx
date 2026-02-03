@@ -75,7 +75,7 @@ export default function Footer() {
         textAlign: 'right',
         minWidth: '200px'
       }}>
-        <span>BSD-3-CLAUSE LICENSE</span>
+        <span>POLYFORM NC LICENSE</span>
         <span>GITHUB / DOCUMENTATION</span>
         <span style={{ color: 'var(--accent-signal)' }}>
           STATUS: OPERATIONAL
