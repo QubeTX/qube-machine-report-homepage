@@ -533,7 +533,7 @@ const App = () => {
           TECHNICAL PRODUCT<br />
           DEVELOPMENT CO.<br />
           TR-300 SERIES<br />
-          SAN FRANCISCO / TOKYO
+          FRISCO, TEXAS
         </div>
 
         <div style={{ display: 'flex', gap: '4px' }}>

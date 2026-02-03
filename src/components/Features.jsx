@@ -1,0 +1,94 @@
+import { useState } from 'react'
+
+const GridCell = ({ label, title, description, linkText, noBorder }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <div
+      style={{
+        padding: 'clamp(2rem, 5vw, 4rem)',
+        borderRight: noBorder ? 'none' : '1px solid #222',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '50vh',
+        transition: 'background 0.3s ease',
+        background: isHovered ? '#0f0f0f' : 'transparent'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div>
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.8rem',
+          color: 'var(--fg-dim)',
+          marginBottom: '2rem',
+          border: '1px solid var(--fg-dim)',
+          display: 'inline-block',
+          padding: '2px 8px',
+          borderRadius: '4px'
+        }}>
+          {label}
+        </span>
+      </div>
+
+      <div>
+        <h2
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+            transform: 'scaleX(1.1)',
+            marginBottom: '1.5rem',
+            textTransform: 'uppercase',
+            lineHeight: '1.1'
+          }}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
+        <p style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+          lineHeight: '1.3',
+          color: '#aaa'
+        }}>
+          {description}
+        </p>
+      </div>
+
+      <div style={{
+        fontFamily: 'var(--font-mono)',
+        letterSpacing: '-0.5px',
+        fontSize: '0.7rem',
+        marginTop: '2rem',
+        color: 'var(--accent-signal)',
+        cursor: 'pointer'
+      }}>
+        {linkText}
+      </div>
+    </div>
+  )
+}
+
+export default function Features() {
+  return (
+    <section style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+      borderBottom: '1px solid #222'
+    }}>
+      <GridCell
+        label="01 // FOR DEVELOPERS"
+        title="Zero-Config<br />Reports"
+        description="Run tr300 and get instant visibility into CPU load, memory, disk, and network. Beautiful Unicode tables or JSON for scripting."
+        linkText="> READ DOCUMENTATION"
+      />
+      <GridCell
+        label="02 // FOR TEAMS"
+        title="Scalable<br />Integration"
+        description="Self-installing shell integration. Add to dotfiles, run on login, pipe to monitoring. BSD-3-Clause licensed."
+        linkText="> VIEW ON GITHUB"
+        noBorder
+      />
+    </section>
+  )
+}

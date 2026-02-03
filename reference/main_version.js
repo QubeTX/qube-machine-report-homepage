@@ -375,9 +375,9 @@ const HomePage = () => {
           </div>
           
           <div style={{ ...metaBlockStyle, textAlign: 'right' }}>
-            高性能システム<br />
-            SISTEMA OPERATIVO<br />
-            ©UNLEARN STUDIO
+            HIGH PERFORMANCE SYSTEM<br />
+            OPERATING SYSTEM<br />
+            SHAUGHNESSY V DEV INC.
           </div>
         </div>
 
@@ -465,7 +465,7 @@ const HomePage = () => {
       <footer style={footerStyle}>
         <div style={footerColStyle}>
           <span style={{ textTransform: 'uppercase', color: 'var(--fg-bone)' }}>TR-300 SYSTEMS</span>
-          <span>SAN FRANCISCO / TOKYO</span>
+          <span>FRISCO, TEXAS</span>
         </div>
         <div style={{ ...footerColStyle, textAlign: 'right' }}>
           <span>PRIVACY PROTOCOL</span>
