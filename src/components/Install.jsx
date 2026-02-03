@@ -98,8 +98,8 @@ export default function Install() {
     windows: {
       label: 'Windows',
       comment: '# Install via PowerShell',
-      command: 'irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex',
-      fullCommand: 'irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex'
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex"',
+      fullCommand: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex"'
     },
     cargo: {
       label: 'Cargo',

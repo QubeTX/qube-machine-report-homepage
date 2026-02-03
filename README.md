@@ -34,7 +34,6 @@ src/
 └── components/
     ├── Hero.jsx         # Logo, title, tagline
     ├── Features.jsx     # 2-column feature grid
-    ├── DemoCanvas.jsx   # Animated bar visualization
     ├── Demos.jsx        # Capability showcase
     ├── Install.jsx      # Platform-tabbed install commands
     ├── Quote.jsx        # Kernighan quote section

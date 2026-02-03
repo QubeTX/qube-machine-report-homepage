@@ -1,6 +1,5 @@
 import Hero from './components/Hero'
 import Features from './components/Features'
-import DemoCanvas from './components/DemoCanvas'
 import Demos from './components/Demos'
 import Install from './components/Install'
 import Quote from './components/Quote'
@@ -11,7 +10,6 @@ function App() {
     <>
       <Hero />
       <Features />
-      <DemoCanvas />
       <Demos />
       <Install />
       <Quote />
