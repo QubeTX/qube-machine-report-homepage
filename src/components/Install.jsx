@@ -92,14 +92,14 @@ export default function Install() {
     unix: {
       label: 'macOS/Linux',
       comment: '# Install via shell script',
-      command: 'curl --proto \'=https\' --tlsv1.2 -LsSf https://github.com/RealEmmettS/qube-machine-report/releases/download/v3.0.1/tr-300-installer.sh | sh',
-      fullCommand: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/RealEmmettS/qube-machine-report/releases/download/v3.0.1/tr-300-installer.sh | sh"
+      command: 'curl --proto \'=https\' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.sh | sh',
+      fullCommand: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.sh | sh"
     },
     windows: {
       label: 'Windows',
       comment: '# Install via PowerShell',
-      command: 'powershell -ExecutionPolicy Bypass -c "irm https://github.com/RealEmmettS/qube-machine-report/releases/download/v3.0.1/tr-300-installer.ps1 | iex"',
-      fullCommand: 'powershell -ExecutionPolicy Bypass -c "irm https://github.com/RealEmmettS/qube-machine-report/releases/download/v3.0.1/tr-300-installer.ps1 | iex"'
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex"',
+      fullCommand: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr-300-installer.ps1 | iex"'
     },
     cargo: {
       label: 'Cargo',
