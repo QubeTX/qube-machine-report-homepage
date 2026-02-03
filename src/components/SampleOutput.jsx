@@ -1,8 +1,8 @@
 export default function SampleOutput() {
-  const sampleOutput = `┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐
-├┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤
-│                    QUBETX                         │
-│             TR-300 MACHINE REPORT                 │
+  const sampleOutput = `┌──────────────────────────────────────────────────┐
+│                                                  │
+│            QUBETX DEVELOPER TOOLS                │
+│             TR-300 MACHINE REPORT                │
 ├──────────────┬────────────────────────────────────┤
 │ OS           │ Windows 11 24H2                    │
 │ KERNEL       │ Windows 10.0.26200                 │
