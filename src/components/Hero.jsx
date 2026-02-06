@@ -75,7 +75,7 @@ export default function Hero() {
         <div style={{ maxWidth: '200px' }}>
           SYSTEM ARCHITECTURE<br />
           TR-300 SERIES<br />
-          BUILD: 2024.09.A
+          BUILD: 2026.02.A
         </div>
 
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>

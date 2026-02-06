@@ -75,8 +75,12 @@ export default function Footer() {
         textAlign: 'right',
         minWidth: '200px'
       }}>
-        <span>POLYFORM NC LICENSE</span>
-        <span>GITHUB / DOCUMENTATION</span>
+        <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
+        <span>
+          <a href="https://github.com/QubeTX/qube-machine-report" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
+          {' / '}
+          <a href="https://github.com/QubeTX/qube-machine-report/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCUMENTATION</a>
+        </span>
         <span style={{ color: 'var(--accent-signal)' }}>
           STATUS: OPERATIONAL
         </span>

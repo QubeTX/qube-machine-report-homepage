@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const DemoRow = ({ title, description }) => {
+const DemoRow = ({ index, title, description }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -8,18 +8,29 @@ const DemoRow = ({ title, description }) => {
       style={{
         display: 'flex',
         width: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         borderBottom: '1px solid #222',
         padding: '2rem 0',
         transition: 'background 0.2s ease',
         background: isHovered ? 'rgba(255, 255, 255, 0.02)' : 'transparent',
-        cursor: 'default'
+        cursor: 'default',
+        gap: '1.5rem'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div>
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.75rem',
+        color: isHovered ? 'var(--accent-signal)' : 'var(--fg-dim)',
+        transition: 'color 0.2s ease',
+        flexShrink: 0,
+        width: '2rem'
+      }}>
+        {index}
+      </span>
+
+      <div style={{ flex: 1 }}>
         <h4 style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(1.5rem, 3vw, 2rem)',
@@ -41,6 +52,17 @@ const DemoRow = ({ title, description }) => {
           {description}
         </div>
       </div>
+
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '1rem',
+        color: 'var(--accent-signal)',
+        opacity: isHovered ? 1 : 0,
+        transition: 'opacity 0.2s ease',
+        flexShrink: 0
+      }}>
+        +
+      </span>
     </div>
   )
 }
@@ -58,6 +80,18 @@ export default function Demos() {
     {
       title: 'Scriptable Output',
       description: 'JSON export for automation, CI pipelines, and monitoring integrations'
+    },
+    {
+      title: 'Shell Integration',
+      description: 'Self-installing hooks, dotfile embedding, run on login or pipe to monitoring'
+    },
+    {
+      title: 'Zero Dependencies',
+      description: 'Single static binary, no runtime needed — just download and run'
+    },
+    {
+      title: 'Beautiful Output',
+      description: 'Unicode box-drawing with automatic ASCII fallback for legacy terminals'
     }
   ]
 
@@ -82,9 +116,10 @@ export default function Demos() {
       <div style={{
         borderTop: '1px solid #222'
       }}>
-        {demos.map((demo, index) => (
+        {demos.map((demo, i) => (
           <DemoRow
-            key={index}
+            key={i}
+            index={String(i + 1).padStart(2, '0')}
             title={demo.title}
             description={demo.description}
           />

@@ -17,7 +17,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: clip;
 }
 
@@ -80,6 +79,11 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
+}
+
+/* Footer link hover */
+footer a:hover {
+  color: var(--accent-signal) !important;
 }
 
 /* Responsive utilities */

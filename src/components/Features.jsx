@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const GridCell = ({ label, title, description, linkText, noBorder }) => {
+const GridCell = ({ label, title, description, linkText, linkUrl, noBorder }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -55,16 +55,22 @@ const GridCell = ({ label, title, description, linkText, noBorder }) => {
         </p>
       </div>
 
-      <div style={{
-        fontFamily: 'var(--font-mono)',
-        letterSpacing: '-0.5px',
-        fontSize: '0.7rem',
-        marginTop: '2rem',
-        color: 'var(--accent-signal)',
-        cursor: 'pointer'
-      }}>
+      <a
+        href={linkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontFamily: 'var(--font-mono)',
+          letterSpacing: '-0.5px',
+          fontSize: '0.7rem',
+          marginTop: '2rem',
+          color: 'var(--accent-signal)',
+          cursor: 'pointer',
+          textDecoration: 'none'
+        }}
+      >
         {linkText}
-      </div>
+      </a>
     </div>
   )
 }
@@ -81,12 +87,14 @@ export default function Features() {
         title="Zero-Config<br />Reports"
         description="Run tr300 and get instant visibility into CPU load, memory, disk, and network. Beautiful Unicode tables or JSON for scripting."
         linkText="> READ DOCUMENTATION"
+        linkUrl="https://github.com/QubeTX/qube-machine-report/blob/master/README.md"
       />
       <GridCell
         label="02 // FOR TEAMS"
         title="Scalable<br />Integration"
         description="Self-installing shell integration. Add to dotfiles, run on login, pipe to monitoring. PolyForm Noncommercial licensed."
         linkText="> VIEW ON GITHUB"
+        linkUrl="https://github.com/QubeTX/qube-machine-report"
         noBorder
       />
     </section>
