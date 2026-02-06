@@ -1,28 +1,46 @@
 export default function SampleOutput() {
-  const sampleOutput = `┌──────────────────────────────────────────────────┐
-│                                                  │
-│            QUBETX DEVELOPER TOOLS                │
-│             TR-300 MACHINE REPORT                │
-├──────────────┬───────────────────────────────────┤
-│ OS           │ Windows 11 24H2                   │
-│ KERNEL       │ Windows 10.0.26200                │
-│ UPTIME       │ 3 days, 14 hours, 22 min         │
-│ SHELL        │ PowerShell 7.5.0                  │
-├──────────────┼───────────────────────────────────┤
-│ CPU          │ AMD Ryzen 9 7950X (32) @ 4.5 GHz │
-│ GPU          │ NVIDIA GeForce RTX 5070           │
-│ MEMORY       │ 47.82 GiB / 62.70 GiB (76%)      │
-├──────────────┼───────────────────────────────────┤
-│ DISK (C:)    │ 847.2 GB / 1.8 TB (45%)          │
-│ DISK (D:)    │ 3.2 TB / 7.3 TB (44%)            │
-├──────────────┼───────────────────────────────────┤
-│ NET (eth0)   │ ↓ 142.5 MB/s  ↑ 23.1 MB/s       │
-│ PACKETS      │ ↓ 847,291     ↑ 412,847          │
-├──────────────┴───────────────────────────────────┤
-│ █████████████████████░░░░░░░ CPU 71%             │
-│ ██████████████████████████░░ MEM 76%             │
-│ █████████████░░░░░░░░░░░░░░ DSK 45%             │
-└──────────────────────────────────────────────────┘`
+  const W = 52
+  const L = 14 // left column width (including borders)
+  const R = W - L - 1 // right column width (excluding final border)
+
+  const pad = (s, w) => s + ' '.repeat(Math.max(0, w - s.length))
+  const hr = (l, m, r) => l + '='.repeat(L - 2) + m + '='.repeat(R - 1) + r
+  const hrFull = (l, r) => l + '='.repeat(W - 2) + r
+  const row = (k, v) => '| ' + pad(k, L - 3) + '| ' + pad(v, R - 2) + '|'
+  const fullRow = (s) => '| ' + pad(s, W - 4) + ' |'
+  const bar = (pct, label) => {
+    const barW = 28
+    const filled = Math.round(barW * pct / 100)
+    const b = '#'.repeat(filled) + '.'.repeat(barW - filled)
+    return fullRow(b + ' ' + label)
+  }
+
+  const sampleOutput = [
+    hrFull('+', '+'),
+    fullRow(''),
+    fullRow('          QUBETX DEVELOPER TOOLS'),
+    fullRow('           TR-300 MACHINE REPORT'),
+    hr('+', '+', '+'),
+    row('OS',         'Windows 11 24H2'),
+    row('KERNEL',     'Windows 10.0.26200'),
+    row('UPTIME',     '3 days, 14 hours, 22 min'),
+    row('SHELL',      'PowerShell 7.5.0'),
+    hr('+', '+', '+'),
+    row('CPU',        'AMD Ryzen 9 7950X (32) @ 4.5 GHz'),
+    row('GPU',        'NVIDIA GeForce RTX 5070'),
+    row('MEMORY',     '47.82 GiB / 62.70 GiB (76%)'),
+    hr('+', '+', '+'),
+    row('DISK (C:)',  '847.2 GB / 1.8 TB (45%)'),
+    row('DISK (D:)',  '3.2 TB / 7.3 TB (44%)'),
+    hr('+', '+', '+'),
+    row('NET (eth0)', 'DN 142.5 MB/s  UP 23.1 MB/s'),
+    row('PACKETS',    'DN 847,291     UP 412,847'),
+    hrFull('+', '+'),
+    bar(71, 'CPU 71%'),
+    bar(76, 'MEM 76%'),
+    bar(45, 'DSK 45%'),
+    hrFull('+', '+'),
+  ].join('\n')
 
   return (
     <section style={{
@@ -93,7 +111,7 @@ export default function SampleOutput() {
           color: '#555',
           textAlign: 'center'
         }}>
-          Unicode box-drawing • Use --ascii for legacy terminals
+          ASCII table output • Use --json for machine-readable format
         </p>
       </div>
     </section>
