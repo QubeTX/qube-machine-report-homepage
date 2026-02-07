@@ -86,38 +86,26 @@ const CodeBlock = ({ comment, command }) => (
 )
 
 export default function SD300Install() {
-  const [selectedPlatform, setSelectedPlatform] = useState('shell')
+  const [selectedPlatform, setSelectedPlatform] = useState('unix')
 
   const platforms = {
-    shell: {
-      label: 'Shell',
-      comment: '# Install via shell script (macOS/Linux)',
+    unix: {
+      label: 'macOS/Linux',
+      comment: '# Install via shell script',
       command: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.sh | sh",
       fullCommand: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.sh | sh"
     },
-    powershell: {
-      label: 'PowerShell',
-      comment: '# Install via PowerShell (Windows)',
+    windows: {
+      label: 'Windows',
+      comment: '# Install via PowerShell',
       command: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.ps1 | iex"',
       fullCommand: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.ps1 | iex"'
-    },
-    msi: {
-      label: 'Windows MSI',
-      comment: '# Download Windows MSI installer',
-      command: 'curl -LO https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-x86_64-pc-windows-msvc.msi',
-      fullCommand: 'curl -LO https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-x86_64-pc-windows-msvc.msi'
     },
     cargo: {
       label: 'Cargo',
       comment: '# Install via Cargo',
       command: 'cargo install sd-300',
       fullCommand: 'cargo install sd-300'
-    },
-    source: {
-      label: 'From Source',
-      comment: '# Build from source',
-      command: 'git clone https://github.com/QubeTX/qube-system-diagnostics.git && cd qube-system-diagnostics && cargo build --release',
-      fullCommand: 'git clone https://github.com/QubeTX/qube-system-diagnostics.git && cd qube-system-diagnostics && cargo build --release'
     }
   }
 
@@ -148,15 +136,24 @@ export default function SD300Install() {
         flexWrap: 'wrap',
         justifyContent: 'center'
       }}>
-        {Object.entries(platforms).map(([key, p]) => (
-          <TabButton
-            key={key}
-            active={selectedPlatform === key}
-            onClick={() => setSelectedPlatform(key)}
-          >
-            {p.label}
-          </TabButton>
-        ))}
+        <TabButton
+          active={selectedPlatform === 'unix'}
+          onClick={() => setSelectedPlatform('unix')}
+        >
+          macOS/Linux
+        </TabButton>
+        <TabButton
+          active={selectedPlatform === 'windows'}
+          onClick={() => setSelectedPlatform('windows')}
+        >
+          Windows
+        </TabButton>
+        <TabButton
+          active={selectedPlatform === 'cargo'}
+          onClick={() => setSelectedPlatform('cargo')}
+        >
+          Cargo
+        </TabButton>
       </div>
 
       <div style={{
@@ -198,7 +195,7 @@ export default function SD300Install() {
         color: '#555',
         textAlign: 'center'
       }}>
-        PolyForm Noncommercial License • Real-time system diagnostics
+        PolyForm Noncommercial License • Real-time system diagnostics TUI
       </p>
     </section>
   )
