@@ -75,12 +75,16 @@ export default function Footer() {
         textAlign: 'right',
         minWidth: '200px'
       }}>
-        <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
         <span>
+          <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
+          {' / '}
+          <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
+          {' / '}
           <a href="https://github.com/QubeTX/qube-machine-report" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
           {' / '}
-          <a href="https://github.com/QubeTX/qube-machine-report/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCUMENTATION</a>
+          <a href="https://github.com/QubeTX/qube-machine-report/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
         </span>
+        <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
         <span style={{ color: 'var(--accent-signal)' }}>
           STATUS: OPERATIONAL
         </span>

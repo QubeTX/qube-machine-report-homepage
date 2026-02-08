@@ -53,9 +53,9 @@ const VersionBadge = ({ version, active }) => {
   )
 }
 
-export default function SD300Hero() {
+export default function ND300Hero() {
   useEffect(() => {
-    document.title = 'SD-300 System Diagnostic'
+    document.title = 'ND-300 Network Diagnostic'
   }, [])
 
   return (
@@ -78,8 +78,8 @@ export default function SD300Hero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          SYSTEM ARCHITECTURE<br />
-          SD-300 SERIES<br />
+          NETWORK ARCHITECTURE<br />
+          ND-300 SERIES<br />
           BUILD: 2026.02.A
         </div>
 
@@ -87,7 +87,7 @@ export default function SD300Hero() {
 
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>
           DIAGNOSTIC INTERFACE<br />
-          REAL-TIME TUI<br />
+          CLI OUTPUT<br />
           QUBETX
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function SD300Hero() {
           color: 'var(--fg-bone)',
           mixBlendMode: 'lighten'
         }}>
-          SD-300
+          ND-300
         </h1>
 
         <h2 style={{
@@ -126,8 +126,8 @@ export default function SD300Hero() {
           fontWeight: '400',
           maxWidth: '600px'
         }}>
-          Real-time interactive TUI for<br />
-          system diagnostics and monitoring.
+          Cross-platform network diagnostic tool for<br />
+          Windows, macOS, and Linux.
         </h2>
       </div>
 

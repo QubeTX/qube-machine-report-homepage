@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ProductNav from './ProductNav'
 
 const Logo = () => {
   const shapeStyle = {
@@ -77,6 +78,8 @@ export default function Hero() {
           TR-300 SERIES<br />
           BUILD: 2026.02.A
         </div>
+
+        <ProductNav />
 
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>
           HIGH PERFORMANCE SYSTEM<br />

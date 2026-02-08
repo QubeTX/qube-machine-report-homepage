@@ -26,7 +26,7 @@ const SizeBadge = ({ children, active }) => {
   )
 }
 
-export default function SD300Footer() {
+export default function ND300Footer() {
   return (
     <footer style={{
       padding: '4rem 2rem',
@@ -53,7 +53,7 @@ export default function SD300Footer() {
         }}>
           QUBETX
         </span>
-        <span>SD-300 SYSTEM DIAGNOSTIC</span>
+        <span>ND-300 NETWORK DIAGNOSTIC</span>
         <span>QUBETX.COM</span>
       </div>
 
@@ -75,11 +75,11 @@ export default function SD300Footer() {
         <span>
           <a href="/" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>TR-300</a>
           {' / '}
-          <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
+          <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
-          <a href="https://github.com/QubeTX/qube-system-diagnostics" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
+          <a href="https://github.com/QubeTX/qube-network-diagnostics" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
           {' / '}
-          <a href="https://github.com/QubeTX/qube-system-diagnostics/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
+          <a href="https://github.com/QubeTX/qube-network-diagnostics/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
         </span>
         <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
         <span style={{ color: 'var(--accent-signal)' }}>
