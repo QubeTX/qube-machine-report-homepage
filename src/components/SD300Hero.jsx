@@ -78,7 +78,7 @@ export default function SD300Hero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          SYSTEM ARCHITECTURE<br />
+          SYSTEM DIAGNOSTICS<br />
           SD-300 SERIES<br />
           BUILD: 2026.02.A
         </div>

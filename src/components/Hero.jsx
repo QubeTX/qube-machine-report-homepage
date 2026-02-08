@@ -74,7 +74,7 @@ export default function Hero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          SYSTEM ARCHITECTURE<br />
+          TECHNICAL REPORT<br />
           TR-300 SERIES<br />
           BUILD: 2026.02.A
         </div>

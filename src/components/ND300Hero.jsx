@@ -78,7 +78,7 @@ export default function ND300Hero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          NETWORK ARCHITECTURE<br />
+          NETWORK DIAGNOSTICS<br />
           ND-300 SERIES<br />
           BUILD: 2026.02.A
         </div>
