@@ -40,7 +40,7 @@ const CommandRow = ({ command, description, isEven }) => {
 
 export default function SD300Commands() {
   const commands = [
-    { command: 'sd300', description: 'Launch diagnostics (default: user mode)' },
+    { command: 'sd300', description: 'Interactive mode selection' },
     { command: 'sd300 --user', description: 'User mode — plain language health' },
     { command: 'sd300 --tech', description: 'Technician mode — raw data' },
     { command: 'sd300 --help', description: 'Show help' },

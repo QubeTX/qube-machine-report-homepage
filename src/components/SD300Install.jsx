@@ -176,7 +176,7 @@ export default function SD300Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.1.0
+          TERMINAL // V.1.2
         </span>
 
         <CopyButton text={current.fullCommand} />

@@ -1,6 +1,6 @@
-# TR-300 Homepage
+# QubeTX Product Homepage
 
-Marketing homepage for [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), a cross-platform system information CLI tool built in Rust.
+Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), and [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics).
 
 ## Tech Stack
 
@@ -28,16 +28,35 @@ npm run preview
 
 ```
 src/
-├── App.jsx              # Main layout
+├── App.jsx              # Router & layout
 ├── main.jsx             # Entry point
 ├── index.css            # Global styles & CSS variables
 └── components/
-    ├── Hero.jsx         # Logo, title, tagline
-    ├── Features.jsx     # 2-column feature grid
-    ├── Demos.jsx        # Capability showcase
-    ├── Install.jsx      # Platform-tabbed install commands
-    ├── Quote.jsx        # Kernighan quote section
-    └── Footer.jsx       # Company info & badges
+    ├── ProductNav.jsx   # Cross-product navigation bar
+    ├── Hero.jsx         # TR-300 hero section
+    ├── Features.jsx     # TR-300 feature grid
+    ├── Demos.jsx        # TR-300 capability showcase
+    ├── Commands.jsx     # TR-300 commands table
+    ├── SampleOutput.jsx # TR-300 sample output
+    ├── Install.jsx      # TR-300 install commands
+    ├── Quote.jsx        # TR-300 Kernighan quote
+    ├── Footer.jsx       # TR-300 footer & version badges
+    ├── SD300Hero.jsx    # SD-300 hero section
+    ├── SD300Commands.jsx
+    ├── SD300Keybindings.jsx
+    ├── SD300Modes.jsx
+    ├── SD300Sections.jsx
+    ├── SD300Platform.jsx
+    ├── SD300Install.jsx
+    ├── SD300Footer.jsx
+    ├── ND300Hero.jsx    # ND-300 hero section
+    ├── ND300Commands.jsx
+    ├── ND300Diagnostics.jsx
+    ├── ND300Features.jsx
+    ├── ND300Modes.jsx
+    ├── ND300SampleOutput.jsx
+    ├── ND300Install.jsx
+    └── ND300Footer.jsx
 ```
 
 ## Design

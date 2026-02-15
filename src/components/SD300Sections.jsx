@@ -138,7 +138,7 @@ export default function SD300Sections() {
           color: '#555',
           textAlign: 'center'
         }}>
-          Live Updates — Fast metrics refresh every 1s • Slow metrics every 5s • Drivers every 30s / on-demand
+          Live Updates — Fast metrics refresh every 1s • Slow metrics every 5s • Drivers on-demand (press r)
         </p>
       </div>
     </section>

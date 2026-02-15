@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-const SizeBadge = ({ children, active }) => {
+const SizeBadge = ({ children, active, href, title }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  return (
+  const badge = (
     <span
       style={{
         border: `1px solid ${active ? 'var(--accent-signal)' : 'var(--fg-dim)'}`,
@@ -20,10 +20,29 @@ const SizeBadge = ({ children, active }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      title={!href ? title : undefined}
     >
       {children}
     </span>
   )
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none' }}
+        title={title}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {badge}
+      </a>
+    )
+  }
+
+  return badge
 }
 
 export default function SD300Footer() {
@@ -62,7 +81,10 @@ export default function SD300Footer() {
         gap: '4px',
         alignItems: 'center'
       }}>
-        <SizeBadge active>V1</SizeBadge>
+        <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.0.0" title="Initial release">V1.0</SizeBadge>
+        <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.1.0" title="Ctrl+C, scroll indicators">V1.1</SizeBadge>
+        <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.0" title="UI overhaul, earth color palette">V1.2</SizeBadge>
+        <SizeBadge active href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.1" title="Setup API driver scanning">V1.2.1</SizeBadge>
       </div>
 
       <div style={{

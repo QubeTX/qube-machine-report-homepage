@@ -147,7 +147,7 @@ export default function SD300Hero() {
           transform: 'scale(0.9)',
           transformOrigin: 'bottom left'
         }}>
-          <VersionBadge version="V 1.0" active />
+          <VersionBadge version="V 1.2" active />
         </div>
 
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>

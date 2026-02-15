@@ -123,7 +123,7 @@ export default function SD300Platform() {
   ]
 
   const features = [
-    { title: 'Windows', description: 'WMI queries for hardware inventory, driver enumeration, and service status' },
+    { title: 'Windows', description: 'Setup API for driver enumeration, SCM for service status, battery via PowerShell' },
     { title: 'Linux', description: 'sysfs / procfs parsing for CPU topology, thermal zones, and block devices' },
     { title: 'macOS', description: 'IOKit framework for GPU stats, thermal sensors, and power management' }
   ]

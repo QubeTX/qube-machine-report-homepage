@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.0] - 2026-02-15
+
+### Changed
+
+- Updated SD-300 product page from v1.0 to v1.2.1
+  - Hero version badge updated to V 1.2
+  - `sd300` command description changed to "Interactive mode selection"
+  - Keybindings corrected: `f` (temperature unit), `m` (mode selection), `r` (driver refresh), `j/k` (scroll in Tech Mode)
+  - Added `Ctrl+C` keybinding (quit to shell)
+  - Drivers refresh note changed to "on-demand (press r)"
+  - Windows platform feature updated from WMI to Setup API / SCM / PowerShell
+  - Install terminal label updated to V.1.2
+  - Footer version badges now show full release timeline (V1.0, V1.1, V1.2, V1.2.1) with GitHub release links
+
 ## [1.3.0] - 2026-02-15
 
 ### Changed

@@ -42,12 +42,13 @@ export default function SD300Keybindings() {
   const keybindings = [
     { key: '1-9', action: 'Jump to diagnostic section' },
     { key: 'q / Esc', action: 'Quit' },
-    { key: 'm', action: 'Toggle user / technician mode' },
+    { key: 'Ctrl+C', action: 'Quit to shell' },
+    { key: 'm', action: 'Return to mode selection' },
     { key: '?', action: 'Show help overlay' },
-    { key: 'f', action: 'Toggle fullscreen' },
-    { key: 'j / k', action: 'Scroll down / up' },
+    { key: 'f', action: 'Toggle temperature unit (C/F)' },
+    { key: 'j / k', action: 'Scroll (processes, connections in Tech Mode)' },
     { key: 'c / n / p', action: 'Sort by CPU / Name / PID (process table)' },
-    { key: 'r', action: 'Force refresh all metrics' }
+    { key: 'r', action: 'Manual refresh (Section 9 — Drivers)' }
   ]
 
   return (
