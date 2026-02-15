@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-const SizeBadge = ({ children, active }) => {
+const SizeBadge = ({ children, active, href, heritage, title }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  return (
+  const badge = (
     <span
       style={{
-        border: `1px solid ${active ? 'var(--accent-signal)' : 'var(--fg-dim)'}`,
+        border: `1px ${heritage ? 'dashed' : 'solid'} ${active ? 'var(--accent-signal)' : 'var(--fg-dim)'}`,
         color: active ? 'var(--bg-void)' : isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
         fontSize: '0.6rem',
         padding: '2px 6px',
@@ -16,14 +16,34 @@ const SizeBadge = ({ children, active }) => {
         fontWeight: active ? 'bold' : 'normal',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
-        borderColor: isHovered && !active ? 'var(--fg-bone)' : undefined
+        borderColor: isHovered && !active ? 'var(--fg-bone)' : undefined,
+        opacity: heritage && !isHovered ? 0.6 : 1
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      title={!href ? title : undefined}
     >
       {children}
     </span>
   )
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none' }}
+        title={title}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {badge}
+      </a>
+    )
+  }
+
+  return badge
 }
 
 export default function Footer() {
@@ -62,6 +82,15 @@ export default function Footer() {
         gap: '4px',
         alignItems: 'center'
       }}>
+        <SizeBadge heritage href="https://github.com/usgraphics/usgc-machine-report" title="U.S. Graphics Company">TR100</SizeBadge>
+        <SizeBadge heritage href="https://github.com/RealEmmettS/usgc-machine-report" title="Fork by Emmett S.">TR200</SizeBadge>
+        <span style={{
+          color: 'var(--fg-dim)',
+          opacity: 0.4,
+          fontSize: '0.7rem',
+          margin: '0 2px',
+          userSelect: 'none'
+        }}>›</span>
         <SizeBadge>V1</SizeBadge>
         <SizeBadge>V2</SizeBadge>
         <SizeBadge active>V3</SizeBadge>
