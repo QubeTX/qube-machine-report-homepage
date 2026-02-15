@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.3.0] - 2026-02-15
+
+### Changed
+
+- Updated ND-300 product page from v1.0 to v2.4 (new commands, diagnostics, sample output, features, and install sections)
+- Updated hero corner labels to match product abbreviations (TR, SD, ND)
+
+### Fixed
+
+- ND-300 hero subtitle text wrapping — widened max-width from 600px to 700px so "and repair" addition no longer causes awkward line break
+
+## [1.2.0] - 2026-02-08
+
+### Added
+
+- ND-300 product page with hero, commands, diagnostics, features, modes, sample output, install, and footer sections
+- Cross-product navigation bar (ProductNav) linking TR-300, SD-300, and ND-300 pages
+- React Router client-side routing across all product pages
+
+## [1.1.1] - 2026-02-07
+
+### Added
+
+- SD-300 System Diagnostic tool product page with hero, commands, keybindings, modes, platform support, install, and footer sections
+- Vercel SPA rewrite rule (`vercel.json`) to serve `index.html` for all routes
+
+### Changed
+
+- SD-300 install section simplified to 3-tab layout
+
 ## [1.1.0] - 2026-02-06
 
 ### Added

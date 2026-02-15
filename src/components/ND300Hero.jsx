@@ -124,7 +124,7 @@ export default function ND300Hero() {
           color: 'var(--fg-bone)',
           marginTop: '1rem',
           fontWeight: '400',
-          maxWidth: '600px'
+          maxWidth: '700px'
         }}>
           Cross-platform network diagnostic and repair tool for<br />
           Windows, macOS, and Linux.
