@@ -38,8 +38,31 @@ const CommandRow = ({ command, description, isEven }) => {
   )
 }
 
+const GroupSeparator = ({ label }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
+    gap: '1rem',
+    padding: '0.5rem 1.5rem',
+    background: '#111',
+    borderBottom: '1px solid #333',
+    borderTop: '1px solid #333'
+  }}>
+    <span style={{
+      fontFamily: 'var(--font-mono)',
+      fontSize: '0.65rem',
+      color: 'var(--fg-dim)',
+      textTransform: 'uppercase',
+      letterSpacing: '0.5px',
+      gridColumn: '1 / -1'
+    }}>
+      {label}
+    </span>
+  </div>
+)
+
 export default function ND300Commands() {
-  const commands = [
+  const diagnosticFlags = [
     { command: '-t, --tech', description: 'Run all 25 diagnostics (technician mode)' },
     { command: '-T, --title <TEXT>', description: 'Custom title for the report header' },
     { command: '--json', description: 'Output results as JSON' },
@@ -47,7 +70,17 @@ export default function ND300Commands() {
     { command: '--no-color', description: 'Disable colored output' },
     { command: '--fast', description: 'Skip speed test for faster results' },
     { command: '--speed-duration <SEC>', description: 'Speed test duration in seconds (default: 10)' },
-    { command: '--verbose', description: 'Show detailed progress during scan' },
+    { command: '--verbose', description: 'Show detailed progress during scan' }
+  ]
+
+  const actionCommands = [
+    { command: '-d, --dns', description: 'Interactive DNS provider selection with auto-revert' },
+    { command: '-f, --fix', description: 'Multi-stage graduated network recovery (3 stages)' },
+    { command: '-c, --clear-dns', description: 'Flush system DNS resolver cache' },
+    { command: '--uninstall', description: 'Complete removal (binary, registry, PATH cleanup)' }
+  ]
+
+  const utilityFlags = [
     { command: '-h, --help', description: 'Show help' },
     { command: '-V, --version', description: 'Show version' }
   ]
@@ -108,8 +141,30 @@ export default function ND300Commands() {
             </span>
           </div>
 
-          {/* Rows */}
-          {commands.map((cmd, index) => (
+          {/* Diagnostic Flags */}
+          {diagnosticFlags.map((cmd, index) => (
+            <CommandRow
+              key={cmd.command}
+              command={cmd.command}
+              description={cmd.description}
+              isEven={index % 2 === 0}
+            />
+          ))}
+
+          {/* Action Commands */}
+          <GroupSeparator label="ACTION COMMANDS" />
+          {actionCommands.map((cmd, index) => (
+            <CommandRow
+              key={cmd.command}
+              command={cmd.command}
+              description={cmd.description}
+              isEven={index % 2 === 0}
+            />
+          ))}
+
+          {/* Utility */}
+          <GroupSeparator label="UTILITY" />
+          {utilityFlags.map((cmd, index) => (
             <CommandRow
               key={cmd.command}
               command={cmd.command}

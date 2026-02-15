@@ -74,7 +74,10 @@ export default function ND300Features() {
     { title: 'JSON Output', description: 'Machine-readable output for scripting, automation, and CI pipelines' },
     { title: 'Unicode Tables', description: 'Box-drawing table output with automatic ASCII fallback for legacy terminals' },
     { title: 'Color-Coded Status', description: 'OK / Warn / Fail / Skip indicators with --no-color for plain text' },
-    { title: 'Cross-Platform', description: 'Native support for Windows, macOS, and Linux from a single binary' }
+    { title: 'Cross-Platform', description: 'Native support for Windows, macOS, and Linux from a single binary' },
+    { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare, Google, NextDNS, Hybrid, or DHCP reset. Platform-specific encrypted DNS with auto-revert on failure.' },
+    { title: 'Network Recovery', description: 'Graduated 3-stage repair — service restart, interface reset, stack recreation. VPN-aware with connectivity verification between stages.' },
+    { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' }
   ]
 
   return (

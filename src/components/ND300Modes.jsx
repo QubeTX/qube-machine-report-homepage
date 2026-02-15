@@ -76,6 +76,11 @@ export default function ND300Modes() {
         label="02 // TECHNICIAN MODE"
         title="Deep<br />Diagnostics"
         description="All 8 core plus 17 deep diagnostic modules including ARP tables, routing, active connections, firewall status, bufferbloat detection, and TLS inspection."
+      />
+      <GridCell
+        label="03 // ACTION COMMANDS"
+        title="Network<br />Recovery"
+        description="Standalone action commands for network repair and configuration. DNS provider selection with auto-revert, graduated 3-stage network fix, DNS cache flushing, and clean uninstall."
         noBorder
       />
     </section>

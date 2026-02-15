@@ -62,7 +62,7 @@ export default function ND300Footer() {
         gap: '4px',
         alignItems: 'center'
       }}>
-        <SizeBadge active>V1</SizeBadge>
+        <SizeBadge active>V2.4</SizeBadge>
       </div>
 
       <div style={{

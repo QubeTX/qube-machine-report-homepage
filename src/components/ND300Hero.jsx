@@ -80,7 +80,7 @@ export default function ND300Hero() {
         <div style={{ maxWidth: '200px' }}>
           NETWORK DIAGNOSTICS<br />
           ND-300 SERIES<br />
-          BUILD: 2026.02.A
+          BUILD: 2026.02.B
         </div>
 
         <ProductNav />
@@ -126,7 +126,7 @@ export default function ND300Hero() {
           fontWeight: '400',
           maxWidth: '600px'
         }}>
-          Cross-platform network diagnostic tool for<br />
+          Cross-platform network diagnostic and repair tool for<br />
           Windows, macOS, and Linux.
         </h2>
       </div>
@@ -147,7 +147,7 @@ export default function ND300Hero() {
           transform: 'scale(0.9)',
           transformOrigin: 'bottom left'
         }}>
-          <VersionBadge version="V 1.0" active />
+          <VersionBadge version="V 2.4" active />
         </div>
 
         <div style={{ maxWidth: '200px', textAlign: 'right' }}>
