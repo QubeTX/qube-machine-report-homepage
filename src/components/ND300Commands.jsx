@@ -82,7 +82,7 @@ export default function ND300Commands() {
 
   const utilityFlags = [
     { command: '-h, --help', description: 'Show help' },
-    { command: '-V, --version', description: 'Show version' }
+    { command: '-v, --version', description: 'Show version' }
   ]
 
   return (

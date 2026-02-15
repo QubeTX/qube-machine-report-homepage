@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - ND-300 hero subtitle text wrapping — widened max-width from 600px to 700px so "and repair" addition no longer causes awkward line break
+- ND-300 utility flags table: version short flag corrected from `-V` to `-v`
 
 ## [1.2.0] - 2026-02-08
 
