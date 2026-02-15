@@ -6,7 +6,9 @@ Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.
 
 - **React 18** - UI framework
 - **Vite** - Build tool and dev server
+- **Lenis** - Smooth scrolling
 - **CSS Variables** - Theming and design tokens
+- **Pathname-based routing** - Custom client-side routing in `main.jsx` (no React Router)
 
 ## Development
 
@@ -28,8 +30,10 @@ npm run preview
 
 ```
 src/
-├── App.jsx              # Router & layout
-├── main.jsx             # Entry point
+├── main.jsx             # Entry point & pathname-based router
+├── App.jsx              # TR-300 product page
+├── SD300App.jsx         # SD-300 product page
+├── ND300App.jsx         # ND-300 product page
 ├── index.css            # Global styles & CSS variables
 └── components/
     ├── ProductNav.jsx   # Cross-product navigation bar
@@ -59,6 +63,14 @@ src/
     └── ND300Footer.jsx
 ```
 
+## Pages
+
+| Route | Product | Description |
+|-------|---------|-------------|
+| `/` | TR-300 Machine Report | System hardware reporting tool |
+| `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
+| `/nd300` | ND-300 Network Diagnostic | Network diagnostics and repair tool |
+
 ## Design
 
 - **Background:** #0a0a0a
@@ -76,7 +88,7 @@ npm run build
 
 ## License
 
-BSD-3-Clause
+[PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
 
 ---
 

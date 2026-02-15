@@ -20,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [1.3.0] - 2026-02-15
 
+### Added
+
+- TR-300 Footer heritage lineage badges for TR-100 and TR-200 with links to source repos
+- `href`, `title`, and `heritage` props on TR-300 SizeBadge component
+
 ### Changed
 
 - Updated ND-300 product page from v1.0 to v2.4 (new commands, diagnostics, sample output, features, and install sections)
@@ -36,7 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - ND-300 product page with hero, commands, diagnostics, features, modes, sample output, install, and footer sections
 - Cross-product navigation bar (ProductNav) linking TR-300, SD-300, and ND-300 pages
-- React Router client-side routing across all product pages
+- Pathname-based client-side routing across all product pages
 
 ## [1.1.1] - 2026-02-07
 
@@ -74,6 +79,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - ASCII art table alignment — right-side borders now line up perfectly on all lines
 - Features section links were non-functional plain text, now proper `<a>` tags
 - Footer links were non-functional spans, now proper `<a>` tags
+
+## [1.0.1] - 2026-02-03
+
+### Added
+
+- Commands.jsx and SampleOutput.jsx components for TR-300 page
+- ASCII demo section with "QUBETX DEVELOPER TOOLS" title
+
+### Changed
+
+- Rebranded from "Shaughnessy V" to QubeTX throughout the site
+- Updated license references to PolyForm Noncommercial
+
+### Removed
+
+- DemoCanvas component (replaced by ASCII demo)
+
+### Fixed
+
+- Windows install command in documentation
+- Mobile horizontal scroll overflow on ASCII demo section
 
 ## [1.0.0] - 2026-02-03
 
