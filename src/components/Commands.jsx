@@ -49,11 +49,12 @@ export default function Commands() {
     { command: 'tr300 --ascii', description: 'ASCII mode (legacy terminals)' },
     { command: 'tr300 --json', description: 'JSON output for scripting' },
     { command: 'tr300 --no-color', description: 'Disable colored output' },
+    { command: 'tr300 --fast', description: 'Fast mode — skip slow collectors' },
     { command: 'tr300 -t, --title', description: 'Custom title' }
   ]
 
   return (
-    <section style={{
+    <section id="commands" style={{
       padding: '6rem 2rem',
       borderTop: '1px solid #222',
       borderBottom: '1px solid #222'

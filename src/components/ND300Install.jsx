@@ -176,7 +176,7 @@ export default function ND300Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.2.4
+          TERMINAL // V.2.6
         </span>
 
         <CopyButton text={current.fullCommand} />

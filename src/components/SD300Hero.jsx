@@ -53,6 +53,32 @@ const VersionBadge = ({ version, active }) => {
   )
 }
 
+const ScrollLink = ({ label, targetId }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })}
+      onKeyDown={(e) => { if (e.key === 'Enter') document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' }) }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        cursor: 'pointer',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.65rem',
+        textAlign: 'right',
+        color: isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
+        transition: 'all 0.2s ease',
+        transform: isHovered ? 'translateX(-2px)' : 'none',
+      }}
+    >
+      <span style={{ color: isHovered ? 'var(--accent-signal)' : 'var(--fg-dim)', transition: 'color 0.2s ease' }}>↓</span>
+      {'  '}{label}
+    </div>
+  )
+}
+
 export default function SD300Hero() {
   useEffect(() => {
     document.title = 'SD-300 System Diagnostic'
@@ -147,12 +173,12 @@ export default function SD300Hero() {
           transform: 'scale(0.9)',
           transformOrigin: 'bottom left'
         }}>
-          <VersionBadge version="V 1.2" active />
+          <VersionBadge version="V 1.2.1" active />
         </div>
 
-        <div style={{ maxWidth: '200px', textAlign: 'right' }}>
-          SCROLL TO INITIALIZE<br />
-          ↓
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
+          <ScrollLink label="INITIALIZE" targetId="install" />
+          <ScrollLink label="DOCUMENTATION" targetId="commands" />
         </div>
       </div>
     </header>

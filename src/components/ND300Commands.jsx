@@ -86,7 +86,7 @@ export default function ND300Commands() {
   ]
 
   return (
-    <section style={{
+    <section id="commands" style={{
       padding: '6rem 2rem',
       borderTop: '1px solid #222',
       borderBottom: '1px solid #222'

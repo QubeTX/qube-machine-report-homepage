@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.5.0] - 2026-02-22
+
+### Changed
+
+- Synced displayed versions across all product pages to match latest CLI releases
+  - TR-300: V 3.0 → V 3.6 (hero badges and install terminal label)
+  - SD-300: V 1.2 → V 1.2.1 (hero badge and install terminal label)
+  - ND-300: added V 2.6 badge and updated install terminal label
+- Replaced static "SCROLL TO INITIALIZE" text in all three hero sections with interactive scroll links
+  - Two stacked clickable links: "INITIALIZE" (scrolls to install section) and "DOCUMENTATION" (scrolls to commands/flags section)
+  - Keyboard accessible with hover states matching the industrial design language
+
+### Added
+
+- `tr300 --fast` flag to TR-300 commands table (fast mode — skip slow collectors)
+- `id="commands"` anchor on all three commands/flags sections for scroll targeting
+
 ## [1.4.0] - 2026-02-15
 
 ### Changed

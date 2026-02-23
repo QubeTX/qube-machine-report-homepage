@@ -176,7 +176,7 @@ export default function Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.3.0
+          TERMINAL // V.3.6
         </span>
 
         <CopyButton text={current.fullCommand} />
