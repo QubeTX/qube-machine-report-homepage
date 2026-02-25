@@ -163,6 +163,22 @@ export default function ExecutablesContent() {
           }}>
             Contains: TR-300, ND-300, SD-300<br />Platforms: macOS (arm64/x64), Linux (x64), Windows (x64)
           </span>
+
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.75rem',
+            lineHeight: '1.5',
+            color: 'var(--fg-dim)',
+            margin: '2rem 0 0 0'
+          }}>
+            New to this?{' '}
+            <a
+              href="/install-guide"
+              style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}
+            >
+              See the step-by-step install guide →
+            </a>
+          </p>
         </div>
       </section>
 
