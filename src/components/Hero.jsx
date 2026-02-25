@@ -108,7 +108,7 @@ export default function Hero() {
 
         <ProductNav />
 
-        <div style={{ maxWidth: '200px', textAlign: 'right' }}>
+        <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
           HIGH PERFORMANCE SYSTEM<br />
           OPERATING SYSTEM<br />
           QUBETX

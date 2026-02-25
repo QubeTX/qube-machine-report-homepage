@@ -145,6 +145,16 @@ export default function ExecutablesContent() {
             The archive contains pre-built binaries for all QubeTX CLI tools across macOS, Linux, and Windows — no internet, package manager, or build tools required. Extract and run.
           </p>
 
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.75rem',
+            lineHeight: '1.5',
+            color: 'var(--fg-dim)',
+            margin: '0 0 2rem 0'
+          }}>
+            Identical to the releases on GitHub — same binaries, same functionality, just downloaded directly.
+          </p>
+
           <span style={{
             fontFamily: 'var(--font-mono)',
             fontSize: '0.7rem',

@@ -111,7 +111,7 @@ export default function ND300Hero() {
 
         <ProductNav />
 
-        <div style={{ maxWidth: '200px', textAlign: 'right' }}>
+        <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
           DIAGNOSTIC INTERFACE<br />
           CLI OUTPUT<br />
           QUBETX

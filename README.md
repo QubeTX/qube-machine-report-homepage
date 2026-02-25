@@ -30,41 +30,41 @@ npm run preview
 
 ```
 src/
-├── main.jsx                  # Entry point & pathname-based router
+├── components/
+│   ├── Commands.jsx          # TR-300 commands table
+│   ├── Demos.jsx             # TR-300 capability showcase
+│   ├── ExecutablesContent.jsx # Explainer, 3-column tool grid, secondary download CTA
+│   ├── ExecutablesFooter.jsx  # Footer with tool badges and cross-links
+│   ├── ExecutablesHero.jsx   # Executables 90vh hero with download button & scroll link
+│   ├── Features.jsx          # TR-300 feature grid
+│   ├── Footer.jsx            # TR-300 footer & version badges
+│   ├── Hero.jsx              # TR-300 hero section
+│   ├── Install.jsx           # TR-300 install commands
+│   ├── ND300Commands.jsx
+│   ├── ND300Diagnostics.jsx
+│   ├── ND300Features.jsx
+│   ├── ND300Footer.jsx
+│   ├── ND300Hero.jsx         # ND-300 hero section
+│   ├── ND300Install.jsx
+│   ├── ND300Modes.jsx
+│   ├── ND300SampleOutput.jsx
+│   ├── ProductNav.jsx        # Cross-product navigation bar (OFFLINE label for /executables)
+│   ├── Quote.jsx             # TR-300 Kernighan quote
+│   ├── SampleOutput.jsx      # TR-300 sample output
+│   ├── SD300Commands.jsx
+│   ├── SD300Footer.jsx
+│   ├── SD300Hero.jsx         # SD-300 hero section
+│   ├── SD300Install.jsx
+│   ├── SD300Keybindings.jsx
+│   ├── SD300Modes.jsx
+│   ├── SD300Platform.jsx
+│   └── SD300Sections.jsx
 ├── App.jsx                   # TR-300 product page
-├── SD300App.jsx              # SD-300 product page
-├── ND300App.jsx              # ND-300 product page
 ├── ExecutablesApp.jsx        # Executables Download Hub page
-├── index.css                 # Global styles & CSS variables
-└── components/
-    ├── ProductNav.jsx        # Cross-product navigation bar
-    ├── Hero.jsx              # TR-300 hero section
-    ├── Features.jsx          # TR-300 feature grid
-    ├── Demos.jsx             # TR-300 capability showcase
-    ├── Commands.jsx          # TR-300 commands table
-    ├── SampleOutput.jsx      # TR-300 sample output
-    ├── Install.jsx           # TR-300 install commands
-    ├── Quote.jsx             # TR-300 Kernighan quote
-    ├── Footer.jsx            # TR-300 footer & version badges
-    ├── SD300Hero.jsx         # SD-300 hero section
-    ├── SD300Commands.jsx
-    ├── SD300Keybindings.jsx
-    ├── SD300Modes.jsx
-    ├── SD300Sections.jsx
-    ├── SD300Platform.jsx
-    ├── SD300Install.jsx
-    ├── SD300Footer.jsx
-    ├── ND300Hero.jsx         # ND-300 hero section
-    ├── ND300Commands.jsx
-    ├── ND300Diagnostics.jsx
-    ├── ND300Features.jsx
-    ├── ND300Modes.jsx
-    ├── ND300SampleOutput.jsx
-    ├── ND300Install.jsx
-    ├── ND300Footer.jsx
-    ├── ExecutablesHero.jsx   # Executables 90vh hero with download button & scroll link
-    ├── ExecutablesContent.jsx # Explainer, 3-column tool grid, secondary download CTA
-    └── ExecutablesFooter.jsx  # Footer with tool badges and cross-links
+├── index.css                 # Global styles, CSS variables & .hide-on-mobile utility
+├── main.jsx                  # Entry point & pathname-based router
+├── ND300App.jsx              # ND-300 product page
+└── SD300App.jsx              # SD-300 product page
 ```
 
 ## Pages

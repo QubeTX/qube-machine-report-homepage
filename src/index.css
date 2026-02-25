@@ -91,4 +91,7 @@ footer a:hover {
   :root {
     --gap-grid: 0.5px;
   }
+  .hide-on-mobile {
+    display: none !important;
+  }
 }

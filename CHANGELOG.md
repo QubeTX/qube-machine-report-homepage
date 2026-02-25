@@ -4,13 +4,30 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.6.2] - 2026-02-25
+
+### Changed
+
+- `ProductNav.jsx` nav label for the Executables page renamed from `EXECUTABLES` to `OFFLINE` — shorter, platform-neutral label; route path (`/executables`) is unchanged
+- `ExecutablesContent.jsx` About section now includes an additional paragraph between the description and the "Contains:" metadata: "Identical to the releases on GitHub — same binaries, same functionality, just downloaded directly."
+
+### Added
+
+- `.hide-on-mobile` CSS utility class added to `src/index.css` (inside the existing `@media (max-width: 640px)` block) and applied to the top-right corner `<div>` in all four hero components (`Hero.jsx`, `ND300Hero.jsx`, `SD300Hero.jsx`, `ExecutablesHero.jsx`) — hides the decorative corner text on small screens to reduce clutter
+
+## [1.6.1] - 2026-02-25
+
+### Changed
+
+- `ExecutablesHero.jsx` hero display title changed from `EXECUTABLES` to `.EXE` (cosmetic UI text update; no nav labels, metadata, or page routes affected)
+
 ## [1.6.0] - 2026-02-25
 
 ### Added
 
 - Executables Download Hub page at `/executables` — a dedicated landing page for pre-built offline installers of all QubeTX CLI tools (TR-300, ND-300, SD-300)
 - `ExecutablesApp.jsx` — top-level page component with Lenis smooth scrolling, wiring hero, content, and footer sections
-- `ExecutablesHero.jsx` — 90vh hero section with top metadata rows (OFFLINE EXECUTABLES / ALL PLATFORMS / BUILD: 2026.02.A), centered three-oval logo and "EXECUTABLES" display title, accent-colored download button (bottom-left), and keyboard-accessible scroll link to the tools section (bottom-right)
+- `ExecutablesHero.jsx` — 90vh hero section with top metadata rows (OFFLINE EXECUTABLES / ALL PLATFORMS / BUILD: 2026.02.A), centered three-oval logo and `.EXE` display title, accent-colored download button (bottom-left), and keyboard-accessible scroll link to the tools section (bottom-right)
 - `ExecutablesContent.jsx` — three-section content layout:
   - Centered explainer block (`id="tools"`) describing the offline archive (macOS arm64/x64, Linux x64, Windows x64)
   - 3-column tool summary grid (TR-300, ND-300, SD-300) with internal links to each product page

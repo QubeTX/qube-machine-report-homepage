@@ -117,7 +117,7 @@ export default function ExecutablesHero() {
 
         <ProductNav />
 
-        <div style={{ maxWidth: '200px', textAlign: 'right' }}>
+        <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
           DOWNLOAD HUB<br />
           PRE-BUILT BINARIES<br />
           QUBETX
@@ -146,7 +146,7 @@ export default function ExecutablesHero() {
           color: 'var(--fg-bone)',
           mixBlendMode: 'lighten'
         }}>
-          EXECUTABLES
+          .EXE
         </h1>
 
         <h2 style={{
