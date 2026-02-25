@@ -691,7 +691,7 @@ export default function InstallGuideContent() {
             <Bold>Run it:</Bold> Open Command Prompt in that folder (type <InlineCode>cmd</InlineCode> in the folder's address bar and press Enter), then type:
           </NumberedStep>
 
-          <CodeBlock copyText=".\tr300.exe">
+          <CodeBlock copyText=".\\tr300.exe">
             <span style={{ color: 'var(--accent-signal)' }}>&gt; </span>.\tr300.exe
           </CodeBlock>
 
