@@ -161,7 +161,7 @@ export default function ExecutablesContent() {
             color: 'var(--fg-dim)',
             lineHeight: '1.6'
           }}>
-            Contains: TR-300, ND-300, SD-300 · Platforms: macOS (arm64/x64), Linux (x64), Windows (x64)
+            Contains: TR-300, ND-300, SD-300<br />Platforms: macOS (arm64/x64), Linux (x64), Windows (x64)
           </span>
         </div>
       </section>

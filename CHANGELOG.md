@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `ProductNav.jsx` nav label for the Executables page renamed from `EXECUTABLES` to `OFFLINE` — shorter, platform-neutral label; route path (`/executables`) is unchanged
 - `ExecutablesContent.jsx` About section now includes an additional paragraph between the description and the "Contains:" metadata: "Identical to the releases on GitHub — same binaries, same functionality, just downloaded directly."
+- `ExecutablesContent.jsx` metadata line split into two lines with a `<br />` — "Contains: TR-300, ND-300, SD-300" on one line and "Platforms: ..." on the next — for improved readability on mobile
 
 ### Added
 
