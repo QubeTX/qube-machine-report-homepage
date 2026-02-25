@@ -101,7 +101,7 @@ export default function Hero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          TECHNICAL REPORT<br />
+          MACHINE REPORT<br />
           TR-300 SERIES<br />
           BUILD: 2026.02.A
         </div>
@@ -109,8 +109,8 @@ export default function Hero() {
         <ProductNav />
 
         <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
-          HIGH PERFORMANCE SYSTEM<br />
-          OPERATING SYSTEM<br />
+          SYSTEM HEALTH REPORT<br />
+          WORKS ON ANY OS<br />
           QUBETX
         </div>
       </div>
@@ -149,8 +149,8 @@ export default function Hero() {
           fontWeight: '400',
           maxWidth: '600px'
         }}>
-          Cross-platform system reports<br />
-          with beautiful Unicode tables.
+          Know your machine in seconds.<br />
+          Clean, readable system reports on any OS.
         </h2>
       </div>
 
@@ -177,8 +177,8 @@ export default function Hero() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-          <ScrollLink label="INITIALIZE" targetId="install" />
-          <ScrollLink label="DOCUMENTATION" targetId="commands" />
+          <ScrollLink label="GET STARTED" targetId="install" />
+          <ScrollLink label="FULL REFERENCE" targetId="commands" />
         </div>
       </div>
     </header>

@@ -69,18 +69,18 @@ export default function ND300Modes() {
     }}>
       <GridCell
         label="01 // USER MODE"
-        title="Clean<br />Summary"
-        description="Runs 8 core diagnostics with color-coded OK/Warn/Fail status indicators. A clean summary table that shows network health at a glance — no technical knowledge required."
+        title="Quick<br />Check"
+        description="See if your network is healthy in seconds. Color-coded results tell you exactly what is working, what needs attention, and what is broken — no expertise needed."
       />
       <GridCell
         label="02 // TECHNICIAN MODE"
         title="Deep<br />Diagnostics"
-        description="All 8 core plus 17 deep diagnostic modules including ARP tables, routing, active connections, firewall status, bufferbloat detection, and TLS inspection."
+        description="Everything in User Mode, plus 17 advanced checks — routing paths, active connections, firewall rules, connection quality, and security inspection for full network visibility."
       />
       <GridCell
-        label="03 // ACTION COMMANDS"
+        label="03 // REPAIR TOOLS"
         title="Network<br />Recovery"
-        description="Standalone action commands for network repair and configuration. DNS provider selection with auto-revert, graduated 3-stage network fix, DNS cache flushing, and clean uninstall."
+        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a step-by-step network repair, clear your DNS cache, and cleanly remove when done."
         noBorder
       />
     </section>

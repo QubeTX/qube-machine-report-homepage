@@ -110,7 +110,7 @@ export default function ExecutablesHero() {
         lineHeight: '1.4'
       }}>
         <div style={{ maxWidth: '200px' }}>
-          OFFLINE EXECUTABLES<br />
+          OFFLINE DOWNLOADS<br />
           ALL PLATFORMS<br />
           BUILD: 2026.02.A
         </div>
@@ -119,7 +119,7 @@ export default function ExecutablesHero() {
 
         <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
           DOWNLOAD HUB<br />
-          PRE-BUILT BINARIES<br />
+          READY-TO-RUN FILES<br />
           QUBETX
         </div>
       </div>
@@ -158,8 +158,8 @@ export default function ExecutablesHero() {
           fontWeight: '400',
           maxWidth: '700px'
         }}>
-          Pre-built offline installers for every QubeTX diagnostic tool.<br />
-          One download, every platform.
+          Every QubeTX tool in one download.<br />
+          Works offline, runs on any platform.
         </h2>
       </div>
 

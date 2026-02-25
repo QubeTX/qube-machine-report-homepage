@@ -83,16 +83,16 @@ export default function Features() {
       borderBottom: '1px solid #222'
     }}>
       <GridCell
-        label="01 // FOR DEVELOPERS"
-        title="Zero-Config<br />Reports"
-        description="Run tr300 and get instant visibility into CPU load, memory, disk, and network. Beautiful Unicode tables or JSON for scripting."
+        label="01 // FOR EVERYONE"
+        title="Instant<br />Insight"
+        description="Run one command and see exactly how your system is doing — processor, memory, storage, and network, all in a clean formatted report. Export as data for automation."
         linkText="> READ DOCUMENTATION"
         linkUrl="https://github.com/QubeTX/qube-machine-report/blob/master/README.md"
       />
       <GridCell
         label="02 // FOR TEAMS"
-        title="Scalable<br />Integration"
-        description="Self-installing shell integration. Add to dotfiles, run on login, pipe to monitoring. PolyForm Noncommercial licensed."
+        title="Built to<br />Automate"
+        description="Set it up once and it runs on every login. Feeds directly into your monitoring tools and automated workflows. Free for non-commercial use."
         linkText="> VIEW ON GITHUB"
         linkUrl="https://github.com/QubeTX/qube-machine-report"
         noBorder

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.6.3] - 2026-02-25
+
+### Changed
+
+- `Hero.jsx` — TR-300 hero top-right corner label changed from `TECHNICAL REPORT` to `MACHINE REPORT`; subtitle rewritten from technical phrasing to "Know your machine in seconds. / Clean, readable system reports on any OS."; scroll links renamed: `INITIALIZE` → `GET STARTED`, `DOCUMENTATION` → `FULL REFERENCE`
+- `Features.jsx` — TR-300 feature grid first cell label changed from `FOR DEVELOPERS` to `FOR EVERYONE`; titles and body descriptions rewritten with plain-English, benefit-oriented language; "Set it up once" automation copy replaces CI/dotfiles references
+- `Demos.jsx` — TR-300 capability rows retitled and redescribed: `Scriptable Output` → `Data Export` ("structured data" replaces JSON/binary phrasing), `Shell Integration` → `Automatic Reports` (removes shell hook/dotfile references), `Zero Dependencies` → `Nothing to Install` (removes "cargo"/"package manager" references); all six descriptions rewritten in layman-friendly language
+- `ND300Hero.jsx` — ND-300 hero subtitle rewritten from technical diagnostic phrasing to "Find and fix network problems / on Windows, macOS, and Linux."; scroll links renamed: `INITIALIZE` → `GET STARTED`, `DOCUMENTATION` → `FULL REFERENCE`
+- `ND300Modes.jsx` — ND-300 modes section redesigned: first cell label `CLEAN SUMMARY` → `USER MODE`, title `Clean Summary` → `Quick Check`, description rewritten for non-technical readers; third cell label `ACTION COMMANDS` → `REPAIR TOOLS`, title `Action Commands` → `Network Recovery`, description removes jargon (ARP, bufferbloat, TLS inspection) and replaces with plain-language equivalents; Technician Mode description updated to drop "ARP tables" and "bufferbloat/TLS inspection" in favor of "connection quality" and "security inspection"
+- `SD300Hero.jsx` — SD-300 hero top-right corner label changed from `REAL-TIME TUI` to `LIVE DASHBOARD (TUI)`; subtitle rewritten to "A live dashboard for your system's health. / Watch diagnostics update in real time."; scroll links renamed: `INITIALIZE` → `GET STARTED`, `DOCUMENTATION` → `FULL REFERENCE`
+- `SD300Modes.jsx` — SD-300 modes section redesigned: second cell label `RAW DATA EXPOSURE` → `TECHNICIAN MODE`, title `Raw Data Exposure` → `Full Detail`; first cell (User Mode) description rewritten to plain language with example status phrases ("Running quietly", "Memory is getting full", "Warm"); Technician Mode description rewritten removing "buffering"/"raw exposure" framing
+- `ExecutablesHero.jsx` — Executables hero top-right corner label changed from `PRE-BUILT BINARIES` to `READY-TO-RUN FILES`; subtitle rewritten from binary/installer phrasing to "Every QubeTX tool in one download. / Works offline, runs on any platform."
+- `ExecutablesContent.jsx` — Executables About badge text changed from `OFFLINE INSTALLER ARCHIVE` to `ABOUT THIS DOWNLOAD`; main explainer paragraph rewritten ("just extract and run" replaces binary/installer language); second paragraph added: "These are the exact same tools available on GitHub — same versions, same features, just bundled for convenience." (replaces the previous GitHub-parity note); three-column tool grid descriptions rewritten in layman-friendly language for TR-300, ND-300, and SD-300 cells
+
 ## [1.6.2] - 2026-02-25
 
 ### Changed

@@ -131,7 +131,7 @@ export default function ExecutablesContent() {
             display: 'inline-block',
             marginBottom: '2rem'
           }}>
-            ABOUT OFFLINE EXECUTABLES
+            ABOUT THIS DOWNLOAD
           </span>
 
           <p style={{
@@ -142,7 +142,7 @@ export default function ExecutablesContent() {
             fontStyle: 'italic',
             margin: '0 0 2rem 0'
           }}>
-            The archive contains pre-built binaries for all QubeTX CLI tools across macOS, Linux, and Windows — no internet, package manager, or build tools required. Extract and run.
+            One zip file with every QubeTX CLI tool for macOS, Linux, and Windows. No internet connection, no extra software, no setup — just extract and run.
           </p>
 
           <p style={{
@@ -152,7 +152,7 @@ export default function ExecutablesContent() {
             color: 'var(--fg-dim)',
             margin: '0 0 2rem 0'
           }}>
-            Identical to the releases on GitHub — same binaries, same functionality, just downloaded directly.
+            These are the exact same tools available on GitHub — same versions, same features, just bundled for convenience.
           </p>
 
           <span style={{
@@ -175,21 +175,21 @@ export default function ExecutablesContent() {
         <GridCell
           label="01 // MACHINE REPORT"
           title="TR-300<br/>Machine Report"
-          description="Instant visibility into CPU load, memory, disk, and network. Beautiful Unicode tables or JSON for scripting."
+          description="See your system's health at a glance — processor, memory, storage, and network in a clean formatted report."
           linkText="> VIEW TR-300"
           linkUrl="/"
         />
         <GridCell
           label="02 // NETWORK DIAGNOSTIC"
           title="ND-300<br/>Network Diagnostic"
-          description="Cross-platform network diagnostic and repair tool. Connectivity tests, DNS resolution, route tracing, and interface analysis."
+          description="Find and fix network problems. Tests your connection, checks DNS, traces routes, and analyzes your network setup."
           linkText="> VIEW ND-300"
           linkUrl="/nd300"
         />
         <GridCell
           label="03 // SYSTEM DIAGNOSTIC"
           title="SD-300<br/>System Diagnostic"
-          description="Deep system health analysis with driver scanning, service auditing, and hardware diagnostics across all major platforms."
+          description="Deep system health checks — scans drivers, audits services, and tests hardware on Windows, macOS, and Linux."
           linkText="> VIEW SD-300"
           linkUrl="/sd300"
           noBorder

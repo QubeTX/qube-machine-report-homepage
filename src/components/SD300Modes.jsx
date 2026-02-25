@@ -70,12 +70,12 @@ export default function SD300Modes() {
       <GridCell
         label="01 // USER MODE"
         title="Plain<br />Language"
-        description="Plain language system health with color-coded status indicators. No technical knowledge required — statuses like 'Running quietly', 'Memory is getting full', and 'Warm' replace raw numbers."
+        description="Your system's health explained in words anyone can understand. Instead of raw numbers, you see clear statuses like 'Running quietly,' 'Memory is getting full,' and 'Warm' — color-coded so problems stand out."
       />
       <GridCell
         label="02 // TECHNICIAN MODE"
-        title="Raw Data<br />Exposure"
-        description="Raw data exposure: per-core CPU utilization, exact memory addresses, driver versions and dates, network interface tables, and real-time sparkline graphs."
+        title="Full<br />Detail"
+        description="Every metric your system produces, exposed. Per-core processor load, exact memory usage, driver versions, network interface details, and live-updating graphs — nothing hidden."
         noBorder
       />
     </section>

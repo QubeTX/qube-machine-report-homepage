@@ -112,8 +112,8 @@ export default function SD300Hero() {
         <ProductNav />
 
         <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
-          DIAGNOSTIC INTERFACE<br />
-          REAL-TIME TUI<br />
+          DIAGNOSTIC TOOL<br />
+          LIVE DASHBOARD (TUI)<br />
           QUBETX
         </div>
       </div>
@@ -152,8 +152,8 @@ export default function SD300Hero() {
           fontWeight: '400',
           maxWidth: '600px'
         }}>
-          Real-time interactive TUI for<br />
-          system diagnostics and monitoring.
+          A live dashboard for your system's health.<br />
+          Watch diagnostics update in real time.
         </h2>
       </div>
 
@@ -177,8 +177,8 @@ export default function SD300Hero() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-          <ScrollLink label="INITIALIZE" targetId="install" />
-          <ScrollLink label="DOCUMENTATION" targetId="commands" />
+          <ScrollLink label="GET STARTED" targetId="install" />
+          <ScrollLink label="FULL REFERENCE" targetId="commands" />
         </div>
       </div>
     </header>

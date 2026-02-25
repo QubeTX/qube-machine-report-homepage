@@ -71,27 +71,27 @@ export default function Demos() {
   const demos = [
     {
       title: 'System Overview',
-      description: 'CPU, memory, disk, network — instant visibility into your machine\'s vital stats'
+      description: 'Processor, memory, storage, and network health — everything you need to know about your machine at a glance'
     },
     {
       title: 'Cross-Platform',
-      description: 'One binary for Windows, macOS, and Linux with native performance'
+      description: 'One tool for Windows, macOS, and Linux — no separate versions, no compatibility issues'
     },
     {
-      title: 'Scriptable Output',
-      description: 'JSON export for automation, CI pipelines, and monitoring integrations'
+      title: 'Data Export',
+      description: 'Export results as structured data for automated workflows, monitoring dashboards, and custom integrations'
     },
     {
-      title: 'Shell Integration',
-      description: 'Self-installing hooks, dotfile embedding, run on login or pipe to monitoring'
+      title: 'Automatic Reports',
+      description: 'Set it to run automatically when you log in, or feed results directly into your monitoring tools'
     },
     {
-      title: 'Zero Dependencies',
-      description: 'Single static binary, no runtime needed — just download and run'
+      title: 'Nothing to Install',
+      description: 'A single file with no extra software required — download it, run it, done'
     },
     {
       title: 'Beautiful Output',
-      description: 'Unicode box-drawing with automatic ASCII fallback for legacy terminals'
+      description: 'Clean, well-formatted reports that look great in any terminal, old or new'
     }
   ]
 

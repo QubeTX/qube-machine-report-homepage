@@ -112,7 +112,7 @@ export default function ND300Hero() {
         <ProductNav />
 
         <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
-          DIAGNOSTIC INTERFACE<br />
+          DIAGNOSTIC TOOL<br />
           CLI OUTPUT<br />
           QUBETX
         </div>
@@ -152,8 +152,8 @@ export default function ND300Hero() {
           fontWeight: '400',
           maxWidth: '700px'
         }}>
-          Cross-platform network diagnostic and repair tool for<br />
-          Windows, macOS, and Linux.
+          Find and fix network problems<br />
+          on Windows, macOS, and Linux.
         </h2>
       </div>
 
@@ -178,8 +178,8 @@ export default function ND300Hero() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-          <ScrollLink label="INITIALIZE" targetId="install" />
-          <ScrollLink label="DOCUMENTATION" targetId="commands" />
+          <ScrollLink label="GET STARTED" targetId="install" />
+          <ScrollLink label="FULL REFERENCE" targetId="commands" />
         </div>
       </div>
     </header>
