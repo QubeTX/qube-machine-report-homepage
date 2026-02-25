@@ -3,7 +3,8 @@ import { useState } from 'react'
 const products = [
   { label: 'TR-300', path: '/' },
   { label: 'ND-300', path: '/nd300' },
-  { label: 'SD-300', path: '/sd300' }
+  { label: 'SD-300', path: '/sd300' },
+  { label: 'EXECUTABLES', path: '/executables' }
 ]
 
 const NavLink = ({ label, path, active }) => {

@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.6.0] - 2026-02-25
+
+### Added
+
+- Executables Download Hub page at `/executables` — a dedicated landing page for pre-built offline installers of all QubeTX CLI tools (TR-300, ND-300, SD-300)
+- `ExecutablesApp.jsx` — top-level page component with Lenis smooth scrolling, wiring hero, content, and footer sections
+- `ExecutablesHero.jsx` — 90vh hero section with top metadata rows (OFFLINE EXECUTABLES / ALL PLATFORMS / BUILD: 2026.02.A), centered three-oval logo and "EXECUTABLES" display title, accent-colored download button (bottom-left), and keyboard-accessible scroll link to the tools section (bottom-right)
+- `ExecutablesContent.jsx` — three-section content layout:
+  - Centered explainer block (`id="tools"`) describing the offline archive (macOS arm64/x64, Linux x64, Windows x64)
+  - 3-column tool summary grid (TR-300, ND-300, SD-300) with internal links to each product page
+  - Secondary download CTA with a link to the GitHub source repository (`github.com/QubeTX/qube-reports-executables`)
+- `ExecutablesFooter.jsx` — footer with QubeTX branding, tool badges linking to sibling product pages, cross-links for TR-300 / ND-300 / SD-300 / GitHub repo, PolyForm NC License link, and STATUS: OPERATIONAL indicator
+- `{ label: 'EXECUTABLES', path: '/executables' }` entry added to `ProductNav.jsx` products array, making the new page reachable from the shared navigation bar on all product pages
+- Route for `/executables` and `/executables/` added to the pathname-based router in `main.jsx`
+
 ## [1.5.0] - 2026-02-22
 
 ### Changed

@@ -4,11 +4,13 @@ import './index.css'
 import App from './App.jsx'
 import SD300App from './SD300App.jsx'
 import ND300App from './ND300App.jsx'
+import ExecutablesApp from './ExecutablesApp.jsx'
 
 const path = window.location.pathname
 const Page =
   path === '/sd300' || path === '/sd300/' ? SD300App :
   path === '/nd300' || path === '/nd300/' ? ND300App :
+  path === '/executables' || path === '/executables/' ? ExecutablesApp :
   App
 
 createRoot(document.getElementById('root')).render(
