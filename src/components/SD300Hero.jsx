@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 
 export default function SD300Hero() {
   useEffect(() => {
-    document.title = 'SD-300 System Diagnostic'
+    document.title = 'QUBETX SD-300'
   }, [])
 
   return (

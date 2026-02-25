@@ -87,7 +87,7 @@ const ScrollLink = ({ label, targetId }) => {
 
 export default function ExecutablesHero() {
   useEffect(() => {
-    document.title = 'QubeTX Executables — Offline Installers'
+    document.title = 'QUBETX OFFLINE'
   }, [])
 
   return (

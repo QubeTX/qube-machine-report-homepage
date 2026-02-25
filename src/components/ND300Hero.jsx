@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 
 export default function ND300Hero() {
   useEffect(() => {
-    document.title = 'ND-300 Network Diagnostic'
+    document.title = 'QUBETX ND-300'
   }, [])
 
   return (
