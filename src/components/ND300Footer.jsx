@@ -54,7 +54,7 @@ export default function ND300Footer() {
           QUBETX
         </span>
         <span>ND-300 NETWORK DIAGNOSTIC</span>
-        <span>QUBETX.COM</span>
+        <a href="https://qubetx.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>QUBETX.COM</a>
       </div>
 
       <div style={{

@@ -74,7 +74,7 @@ export default function Footer() {
           QUBETX
         </span>
         <span>TR-300 MACHINE REPORT</span>
-        <span>QUBETX.COM</span>
+        <a href="https://qubetx.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>QUBETX.COM</a>
       </div>
 
       <div style={{
