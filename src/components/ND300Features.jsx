@@ -69,15 +69,16 @@ const FeatureRow = ({ index, title, description }) => {
 
 export default function ND300Features() {
   const features = [
-    { title: 'Speed Test', description: 'Cloudflare-backed download/upload measurement with configurable duration' },
+    { title: 'Speed Test', description: 'Dual-provider speed test — Cloudflare + M-Lab NDT7 averaged for accuracy. Measures download, upload, ping, jitter, and packet loss.' },
     { title: 'Bufferbloat Detection', description: 'Latency-under-load grading from A+ through F with idle/loaded comparison' },
     { title: 'JSON Output', description: 'Machine-readable output for scripting, automation, and CI pipelines' },
     { title: 'Unicode Tables', description: 'Box-drawing table output with automatic ASCII fallback for legacy terminals' },
     { title: 'Color-Coded Status', description: 'OK / Warn / Fail / Skip indicators with --no-color for plain text' },
     { title: 'Cross-Platform', description: 'Native support for Windows, macOS, and Linux from a single binary' },
-    { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare, Google, NextDNS, Hybrid, or DHCP reset. Platform-specific encrypted DNS with auto-revert on failure.' },
-    { title: 'Network Recovery', description: 'Graduated 3-stage repair — service restart, interface reset, stack recreation. VPN-aware with connectivity verification between stages.' },
-    { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' }
+    { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare (recommended), Google, NextDNS, DHCP reset, or Hybrid. Platform-specific encrypted DNS with auto-revert on failure.' },
+    { title: 'Network Recovery', description: 'Graduated 3-stage repair — service restart, interface reset, stack recreation. VPN-aware with connectivity verification. Generates detailed Markdown report with root cause analysis.' },
+    { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' },
+    { title: 'SpeedQX', description: 'Standalone dual-provider speed test binary — Cloudflare + M-Lab NDT7 with per-provider breakdown, configurable duration, and latency probes.' }
   ]
 
   return (

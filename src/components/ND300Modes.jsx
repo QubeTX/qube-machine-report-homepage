@@ -80,7 +80,7 @@ export default function ND300Modes() {
       <GridCell
         label="03 // REPAIR TOOLS"
         title="Network<br />Recovery"
-        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a step-by-step network repair, clear your DNS cache, and cleanly remove when done."
+        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a step-by-step network repair with diagnostic reports, clear your DNS cache, and cleanly remove when done."
         noBorder
       />
     </section>

@@ -32,7 +32,7 @@ export default function ND300SampleOutput() {
     row('DNS Resolution',    'OK',   '1.1.1.1 (12ms)'),
     row('Public IP',         'OK',   '203.0.113.47 (US)'),
     row('Latency',           'OK',   'Avg 14ms to 4 hosts'),
-    row('Speed Test',        'OK',   '↓ 487 Mbps ↑ 92 Mbps'),
+    row('Speed Test',        'OK',   '↓ 487 ↑ 92 Mbps (14ms)'),
     row('Port Connectivity', 'WARN', '443 OK, 8080 timeout'),
     botBorder,
     '',

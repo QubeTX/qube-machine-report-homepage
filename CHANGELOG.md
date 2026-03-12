@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.7.0] - 2026-03-12
+
+### Changed
+
+- Synced ND-300 product page to match ND-300 CLI v2.7.0 release
+  - Hero build label updated from `2026.02.B` to `2026.03.A`
+  - Hero version badges updated: `V 2.6` → `V 2.7` (active)
+  - Footer version badge updated from `V2.4` to `V2.7`
+  - Speed Test feature description updated to reflect dual-provider engine (Cloudflare + M-Lab NDT7) with ping, jitter, and packet loss metrics
+  - DNS Configuration feature updated: Cloudflare now marked as recommended, Hybrid moved to last position
+  - Network Recovery feature updated to mention Markdown report generation with root cause analysis
+  - Speed Test diagnostic description updated to "Dual-provider download/upload with ping"
+  - Sample output speed test line updated to include ping value
+  - `--uninstall` flag description updated to cover both nd300 and speedqx binaries
+  - Repair Tools mode description updated to mention diagnostic reports
+
+### Added
+
+- SpeedQX feature entry in ND-300 features section — standalone dual-provider speed test binary
+- SpeedQX flags section in ND-300 commands table with `speedqx`, `--cf-only`, `--ndt-only`, `--duration`, `--latency-probes`, and output formatting flags
+
 ## [1.6.3] - 2026-02-25
 
 ### Changed

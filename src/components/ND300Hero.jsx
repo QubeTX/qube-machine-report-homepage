@@ -106,7 +106,7 @@ export default function ND300Hero() {
         <div style={{ maxWidth: '200px' }}>
           NETWORK DIAGNOSTICS<br />
           ND-300 SERIES<br />
-          BUILD: 2026.02.B
+          BUILD: 2026.03.A
         </div>
 
         <ProductNav />
@@ -174,7 +174,7 @@ export default function ND300Hero() {
           transformOrigin: 'bottom left'
         }}>
           <VersionBadge version="V 2.4" />
-          <VersionBadge version="V 2.6" active />
+          <VersionBadge version="V 2.7" active />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>

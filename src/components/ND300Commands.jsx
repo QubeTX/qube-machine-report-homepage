@@ -77,12 +77,21 @@ export default function ND300Commands() {
     { command: '-d, --dns', description: 'Interactive DNS provider selection with auto-revert' },
     { command: '-f, --fix', description: 'Multi-stage graduated network recovery (3 stages)' },
     { command: '-c, --clear-dns', description: 'Flush system DNS resolver cache' },
-    { command: '--uninstall', description: 'Complete removal (binary, registry, PATH cleanup)' }
+    { command: '--uninstall', description: 'Complete removal (nd300 + speedqx binaries, registry, PATH cleanup)' }
   ]
 
   const utilityFlags = [
     { command: '-h, --help', description: 'Show help' },
     { command: '-v, --version', description: 'Show version' }
+  ]
+
+  const speedqxFlags = [
+    { command: 'speedqx', description: 'Full dual-provider speed test (Cloudflare + NDT7)' },
+    { command: '--cf-only', description: 'Use only Cloudflare (skip NDT7)' },
+    { command: '--ndt-only', description: 'Use only M-Lab NDT7 (skip Cloudflare)' },
+    { command: '--duration <SEC|auto>', description: 'Test duration per provider (default: 30, or "auto")' },
+    { command: '--latency-probes <N>', description: 'Number of latency probes (default: 20)' },
+    { command: '--json / --ascii / --no-color', description: 'Output formatting (same as nd300)' }
   ]
 
   return (
@@ -165,6 +174,17 @@ export default function ND300Commands() {
           {/* Utility */}
           <GroupSeparator label="UTILITY" />
           {utilityFlags.map((cmd, index) => (
+            <CommandRow
+              key={cmd.command}
+              command={cmd.command}
+              description={cmd.description}
+              isEven={index % 2 === 0}
+            />
+          ))}
+
+          {/* SpeedQX */}
+          <GroupSeparator label="SPEEDQX (STANDALONE SPEED TEST)" />
+          {speedqxFlags.map((cmd, index) => (
             <CommandRow
               key={cmd.command}
               command={cmd.command}

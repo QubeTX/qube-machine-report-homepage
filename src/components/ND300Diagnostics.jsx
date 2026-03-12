@@ -80,7 +80,7 @@ export default function ND300Diagnostics() {
     { num: '4', diagnostic: 'DNS Resolution', description: 'DNS server response and resolution test' },
     { num: '5', diagnostic: 'Public IP', description: 'External IP address and geolocation' },
     { num: '6', diagnostic: 'Latency', description: 'ICMP ping to multiple endpoints' },
-    { num: '7', diagnostic: 'Speed Test', description: 'Download and upload throughput' },
+    { num: '7', diagnostic: 'Speed Test', description: 'Dual-provider download/upload with ping' },
     { num: '8', diagnostic: 'Port Connectivity', description: 'Common port reachability check' }
   ]
 
