@@ -6,6 +6,7 @@ import SD300App from './SD300App.jsx'
 import ND300App from './ND300App.jsx'
 import ExecutablesApp from './ExecutablesApp.jsx'
 import InstallGuideApp from './InstallGuideApp.jsx'
+import ShaughvOSApp from './ShaughvOSApp.jsx'
 
 const path = window.location.pathname
 const Page =
@@ -13,6 +14,7 @@ const Page =
   path === '/nd300' || path === '/nd300/' ? ND300App :
   path === '/executables' || path === '/executables/' ? ExecutablesApp :
   path === '/install-guide' || path === '/install-guide/' ? InstallGuideApp :
+  path === '/shaughvos' || path === '/shaughvos/' ? ShaughvOSApp :
   App
 
 createRoot(document.getElementById('root')).render(

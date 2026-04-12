@@ -1,12 +1,13 @@
 # QubeTX Product Homepage
 
-Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), and a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers.
+Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers, and the [shaughvOS](https://github.com/RealEmmettS/shaughvOS) custom operating system.
 
 ## Tech Stack
 
 - **React 18** - UI framework
 - **Vite** - Build tool and dev server
 - **Lenis** - Smooth scrolling
+- **Framer Motion** - Entrance animations (hero)
 - **CSS Variables** - Theming and design tokens
 - **Pathname-based routing** - Custom client-side routing in `main.jsx` (no React Router)
 
@@ -58,13 +59,22 @@ src/
 │   ├── SD300Keybindings.jsx
 │   ├── SD300Modes.jsx
 │   ├── SD300Platform.jsx
-│   └── SD300Sections.jsx
+│   ├── SD300Sections.jsx
+│   ├── ShaughvOSCommands.jsx # shaughvOS quick commands table
+│   ├── ShaughvOSFeatures.jsx # shaughvOS feature rows
+│   ├── ShaughvOSFooter.jsx   # shaughvOS footer with DietPi attribution
+│   ├── ShaughvOSHardware.jsx # shaughvOS hardware compatibility table
+│   ├── ShaughvOSHero.jsx     # shaughvOS hero with SHAUGHV logo
+│   ├── ShaughvOSInstall.jsx  # shaughvOS tabbed install (images + Debian)
+│   ├── ShaughvOSOverview.jsx # shaughvOS 3-column overview grid
+│   └── ShaughvOSPitch.jsx    # shaughvOS marketing pitch section
 ├── App.jsx                   # TR-300 product page
 ├── ExecutablesApp.jsx        # Executables Download Hub page
 ├── index.css                 # Global styles, CSS variables & .hide-on-mobile utility
 ├── main.jsx                  # Entry point & pathname-based router
 ├── ND300App.jsx              # ND-300 product page
-└── SD300App.jsx              # SD-300 product page
+├── SD300App.jsx              # SD-300 product page
+└── ShaughvOSApp.jsx          # shaughvOS product page
 ```
 
 ## Pages
@@ -75,6 +85,7 @@ src/
 | `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/nd300` | ND-300 Network Diagnostic | Network diagnostics and repair tool |
 | `/executables` | Executables Download Hub | Pre-built offline installers for all QubeTX CLI tools |
+| `/shaughvos` | shaughvOS | Custom diagnostic operating system for any hardware |
 
 ## Design
 

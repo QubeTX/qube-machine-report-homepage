@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.0] - 2026-04-12
+
+### Added
+
+- shaughvOS product page at `/shaughvos` — marketing-focused landing page for the shaughvOS custom operating system
+- `ShaughvOSApp.jsx` — page shell with Lenis smooth scroll
+- `ShaughvOSHero.jsx` — hero section with SHAUGHV brand logo, mono-font title, version badge, WIP note ("Qube OS coming soon"), and scroll links
+- `ShaughvOSPitch.jsx` — cinematic marketing section with dual-audience positioning (end users and technicians)
+- `ShaughvOSOverview.jsx` — three-column grid (Desktop, Boot Experience, Built-in Diagnostics) with marketing copy and technical details
+- `ShaughvOSFeatures.jsx` — 10 numbered feature rows with marketing headlines and technical descriptions
+- `ShaughvOSCommands.jsx` — quick commands table grouped by Desktop, Diagnostics, and System
+- `ShaughvOSHardware.jsx` — hardware compatibility table (RPi 2/3/4/5, PCs, Intel Macs, Apple Silicon via VM, VMs)
+- `ShaughvOSInstall.jsx` — tabbed install section with pre-built image download table and Debian installer command
+- `ShaughvOSFooter.jsx` — footer with DietPi attribution, cross-links, GPLv2 license, and WIP note
+- SHAUGHV logo SVG added to `public/shaughv-logo.svg`
+- `SHAUGHVOS` entry in `ProductNav.jsx` navigation bar
+- Route for `/shaughvos` in `main.jsx` pathname router
+- `framer-motion` dependency for hero entrance animations
+
 ## [1.7.0] - 2026-03-12
 
 ### Changed

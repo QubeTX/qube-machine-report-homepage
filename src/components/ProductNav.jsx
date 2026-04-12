@@ -4,7 +4,8 @@ const products = [
   { label: 'TR-300', path: '/' },
   { label: 'ND-300', path: '/nd300' },
   { label: 'SD-300', path: '/sd300' },
-  { label: 'OFFLINE', path: '/executables' }
+  { label: 'OFFLINE', path: '/executables' },
+  { label: 'SHAUGHVOS', path: '/shaughvos' }
 ]
 
 const NavLink = ({ label, path, active }) => {
