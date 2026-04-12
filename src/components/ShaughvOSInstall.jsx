@@ -185,27 +185,27 @@ export default function ShaughvOSInstall() {
       image: 'Raspberry Pi 2/3/4',
       hardware: 'RPi 2, 3, 3B+, 4, 4B (ARM 64-bit)',
       flash: 'Balena Etcher or dd to microSD',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64_v1.2.0.img.xz'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64.img.xz'
     },
     {
       image: 'Raspberry Pi 5',
       hardware: 'RPi 5 (ARM 64-bit)',
       flash: 'Balena Etcher or dd to microSD',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi5-aarch64_v1.2.0.img.xz'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi5-aarch64.img.xz'
     },
     {
       image: 'Native PC',
       hardware: 'PCs, laptops, Intel Macs (x86_64)',
       flash: 'Etcher/Rufus to USB, or boot ISO',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_v1.2.0.img.xz',
-      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_Installer_v1.2.0.iso'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64.img.xz',
+      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_Installer.iso'
     },
     {
       image: 'Virtual Machine',
       hardware: 'VirtualBox, VMware, UTM, QEMU',
       flash: 'Raw disk image or boot ISO installer',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_v1.2.0.img.xz',
-      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_Installer_v1.2.0.iso'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64.img.xz',
+      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_Installer.iso'
     }
   ]
 
