@@ -186,7 +186,8 @@ export default function ExecutablesContent() {
       <section style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
-        borderBottom: '1px solid #222'
+        borderBottom: '1px solid #222',
+        overflow: 'hidden'
       }}>
         <GridCell
           label="01 // MACHINE REPORT"

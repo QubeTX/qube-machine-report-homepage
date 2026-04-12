@@ -36,7 +36,7 @@ export default function ProductNav() {
   const path = window.location.pathname
 
   return (
-    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', flexWrap: 'wrap', justifyContent: 'center' }}>
       {products.map(p => (
         <NavLink
           key={p.path}

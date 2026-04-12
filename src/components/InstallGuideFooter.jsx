@@ -61,7 +61,7 @@ export default function InstallGuideFooter() {
         display: 'flex',
         flexDirection: 'column',
         gap: '0.5rem',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span style={{
           textTransform: 'uppercase',
@@ -89,7 +89,7 @@ export default function InstallGuideFooter() {
         flexDirection: 'column',
         gap: '0.5rem',
         textAlign: 'right',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span>
           <a href="/executables" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOWNLOADS</a>

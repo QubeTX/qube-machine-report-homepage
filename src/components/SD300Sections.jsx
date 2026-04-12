@@ -1,7 +1,41 @@
 import { useState } from 'react'
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640)
+  useState(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 640)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  })
+  return isMobile
+}
+
 const SectionRow = ({ num, section, userMode, techMode, isEven }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const isMobile = useIsMobile()
+
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          padding: '1rem 1.5rem',
+          background: isEven ? '#0c0c0c' : 'transparent',
+          borderBottom: '1px solid #1a1a1a',
+        }}
+      >
+        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.25rem' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--fg-dim)' }}>{num}</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--fg-bone)' }}>{section}</span>
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#888', lineHeight: '1.5' }}>
+          <span style={{ color: '#666' }}>User:</span> {userMode}
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#888', lineHeight: '1.5' }}>
+          <span style={{ color: '#666' }}>Tech:</span> {techMode}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -56,6 +90,7 @@ const SectionRow = ({ num, section, userMode, techMode, isEven }) => {
 }
 
 export default function SD300Sections() {
+  const isMobile = useIsMobile()
   const sections = [
     { num: '1', section: 'Overview', userMode: 'System health dashboard', techMode: 'Identity, gauges, top processes' },
     { num: '2', section: 'CPU', userMode: 'Load status, sparkline', techMode: 'Per-core bars, frequency, process table' },
@@ -96,26 +131,44 @@ export default function SD300Sections() {
           overflow: 'hidden'
         }}>
           {/* Header */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr 1.5fr 1.5fr',
-            gap: '1rem',
-            padding: '0.75rem 1.5rem',
-            background: '#111',
-            borderBottom: '1px solid #333'
-          }}>
-            {['#', 'Section', 'User Mode', 'Technician Mode'].map((header) => (
-              <span key={header} style={{
+          {!isMobile ? (
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr 1.5fr 1.5fr',
+              gap: '1rem',
+              padding: '0.75rem 1.5rem',
+              background: '#111',
+              borderBottom: '1px solid #333'
+            }}>
+              {['#', 'Section', 'User Mode', 'Technician Mode'].map((header) => (
+                <span key={header} style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  color: 'var(--fg-dim)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>
+                  {header}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div style={{
+              padding: '0.5rem 1.5rem',
+              background: '#111',
+              borderBottom: '1px solid #333'
+            }}>
+              <span style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.7rem',
                 color: 'var(--fg-dim)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
               }}>
-                {header}
+                DIAGNOSTIC SECTIONS
               </span>
-            ))}
-          </div>
+            </div>
+          )}
 
           {/* Rows */}
           {sections.map((s, index) => (

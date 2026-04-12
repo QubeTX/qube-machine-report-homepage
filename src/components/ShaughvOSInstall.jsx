@@ -98,8 +98,44 @@ const DownloadLink = ({ children, href }) => {
   )
 }
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640)
+  useState(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 640)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  })
+  return isMobile
+}
+
 const ImageRow = ({ image, hardware, flash, downloadUrl, isEven }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const isMobile = useIsMobile()
+
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          padding: '1rem 1.5rem',
+          background: isEven ? '#0c0c0c' : 'transparent',
+          borderBottom: '1px solid #1a1a1a',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--fg-bone)', fontWeight: '700' }}>
+            {image}
+          </span>
+          <DownloadLink href={downloadUrl}>Download</DownloadLink>
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#888' }}>
+          {hardware}
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: '#666', marginTop: '0.25rem' }}>
+          {flash}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -133,6 +169,7 @@ const ImageRow = ({ image, hardware, flash, downloadUrl, isEven }) => {
 
 export default function ShaughvOSInstall() {
   const [selectedTab, setSelectedTab] = useState('images')
+  const isMobile = useIsMobile()
 
   const images = [
     {
@@ -234,26 +271,44 @@ export default function ShaughvOSInstall() {
                 overflow: 'hidden'
               }}>
                 {/* Header */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1.2fr 1.5fr 1.5fr 0.8fr',
-                  gap: '1rem',
-                  padding: '0.75rem 1.5rem',
-                  background: '#111',
-                  borderBottom: '1px solid #333'
-                }}>
-                  {['Image', 'Hardware', 'How to Flash', ''].map((header) => (
-                    <span key={header || 'dl'} style={{
+                {!isMobile ? (
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1.2fr 1.5fr 1.5fr 0.8fr',
+                    gap: '1rem',
+                    padding: '0.75rem 1.5rem',
+                    background: '#111',
+                    borderBottom: '1px solid #333'
+                  }}>
+                    {['Image', 'Hardware', 'How to Flash', ''].map((header) => (
+                      <span key={header || 'dl'} style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.7rem',
+                        color: 'var(--fg-dim)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px'
+                      }}>
+                        {header}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{
+                    padding: '0.5rem 1.5rem',
+                    background: '#111',
+                    borderBottom: '1px solid #333'
+                  }}>
+                    <span style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.7rem',
                       color: 'var(--fg-dim)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.5px'
                     }}>
-                      {header}
+                      PRE-BUILT IMAGES
                     </span>
-                  ))}
-                </div>
+                  </div>
+                )}
 
                 {images.map((img, index) => (
                   <ImageRow

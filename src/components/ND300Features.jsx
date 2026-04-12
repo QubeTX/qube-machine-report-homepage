@@ -85,7 +85,8 @@ export default function ND300Features() {
     <section style={{
       padding: '6rem 2rem',
       borderTop: '1px solid #222',
-      borderBottom: '1px solid #222'
+      borderBottom: '1px solid #222',
+      overflow: 'hidden'
     }}>
       <div style={{
         maxWidth: '900px',

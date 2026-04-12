@@ -64,7 +64,7 @@ export default function Footer() {
         display: 'flex',
         flexDirection: 'column',
         gap: '0.5rem',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span style={{
           textTransform: 'uppercase',
@@ -102,7 +102,7 @@ export default function Footer() {
         flexDirection: 'column',
         gap: '0.5rem',
         textAlign: 'right',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span>
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>

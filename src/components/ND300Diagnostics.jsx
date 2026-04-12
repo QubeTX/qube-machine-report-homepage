@@ -7,9 +7,6 @@ const DiagnosticRow = ({ num, diagnostic, description, isEven, isSeparator }) =>
     <>
       {isSeparator && (
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto 1fr 2fr',
-          gap: '1rem',
           padding: '0.5rem 1.5rem',
           background: '#111',
           borderBottom: '1px solid #333',
@@ -21,7 +18,6 @@ const DiagnosticRow = ({ num, diagnostic, description, isEven, isSeparator }) =>
             color: 'var(--fg-dim)',
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
-            gridColumn: '1 / -1'
           }}>
             DEEP DIAGNOSTICS (TECHNICIAN MODE)
           </span>
@@ -31,7 +27,7 @@ const DiagnosticRow = ({ num, diagnostic, description, isEven, isSeparator }) =>
         style={{
           display: 'grid',
           gridTemplateColumns: 'auto 1fr 2fr',
-          gap: '1rem',
+          gap: '0.5rem 1rem',
           padding: '1rem 1.5rem',
           background: isHovered ? '#151515' : isEven ? '#0c0c0c' : 'transparent',
           borderBottom: '1px solid #1a1a1a',
@@ -43,26 +39,25 @@ const DiagnosticRow = ({ num, diagnostic, description, isEven, isSeparator }) =>
       >
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.85rem',
+          fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
           color: isHovered ? 'var(--accent-signal)' : 'var(--fg-dim)',
           transition: 'color 0.2s ease',
           whiteSpace: 'nowrap',
-          minWidth: '2rem'
+          minWidth: '1.5rem'
         }}>
           {num}
         </span>
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.85rem',
+          fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
           color: isHovered ? 'var(--accent-signal)' : 'var(--fg-bone)',
           transition: 'color 0.2s ease',
-          whiteSpace: 'nowrap'
         }}>
           {diagnostic}
         </span>
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.85rem',
+          fontSize: 'clamp(0.65rem, 1.8vw, 0.85rem)',
           color: '#888'
         }}>
           {description}

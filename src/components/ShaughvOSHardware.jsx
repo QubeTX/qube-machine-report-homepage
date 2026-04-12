@@ -1,7 +1,40 @@
 import { useState } from 'react'
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640)
+  useState(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 640)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  })
+  return isMobile
+}
+
 const HardwareRow = ({ target, arch, image, notes, isEven, i }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const isMobile = useIsMobile()
+
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          padding: '1rem 1.5rem',
+          background: isEven ? '#0c0c0c' : 'transparent',
+          borderBottom: '1px solid #1a1a1a',
+        }}
+      >
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--fg-bone)', marginBottom: '0.25rem' }}>
+          {target}
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#888' }}>
+          {arch} &middot; {image}
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#666', marginTop: '0.25rem' }}>
+          {notes}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -40,6 +73,7 @@ const HardwareRow = ({ target, arch, image, notes, isEven, i }) => {
 }
 
 export default function ShaughvOSHardware() {
+  const isMobile = useIsMobile()
   const hardware = [
     { target: 'Raspberry Pi 2/3/4', arch: 'aarch64', image: 'RPi234', notes: '1–8 GB RAM. Shared boot firmware.' },
     { target: 'Raspberry Pi 5', arch: 'aarch64', image: 'RPi5', notes: '4–8 GB RAM. Separate bootloader.' },
@@ -91,26 +125,45 @@ export default function ShaughvOSHardware() {
           overflow: 'hidden'
         }}>
           {/* Header */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1.2fr 1fr 0.8fr 1.5fr',
-            gap: '1rem',
-            padding: '0.75rem 1.5rem',
-            background: '#111',
-            borderBottom: '1px solid #333'
-          }}>
-            {['Target', 'Architecture', 'Image', 'Notes'].map((header) => (
-              <span key={header} style={{
+          {!isMobile && (
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1.2fr 1fr 0.8fr 1.5fr',
+              gap: '1rem',
+              padding: '0.75rem 1.5rem',
+              background: '#111',
+              borderBottom: '1px solid #333'
+            }}>
+              {['Target', 'Architecture', 'Image', 'Notes'].map((header) => (
+                <span key={header} style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  color: 'var(--fg-dim)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>
+                  {header}
+                </span>
+              ))}
+            </div>
+          )}
+          {isMobile && (
+            <div style={{
+              padding: '0.5rem 1.5rem',
+              background: '#111',
+              borderBottom: '1px solid #333'
+            }}>
+              <span style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.7rem',
                 color: 'var(--fg-dim)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
               }}>
-                {header}
+                SUPPORTED HARDWARE
               </span>
-            ))}
-          </div>
+            </div>
+          )}
 
           {hardware.map((h, index) => (
             <HardwareRow

@@ -75,6 +75,7 @@ export default function ShaughvOSOverview() {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
       borderBottom: '1px solid #222',
+      overflow: 'hidden',
     }}>
       <GridCell
         index={0}

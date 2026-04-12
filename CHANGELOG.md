@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.1] - 2026-04-12
+
+### Fixed
+
+- Site-wide responsive design audit — all pages now render correctly from 320px to 1440px
+  - `ProductNav.jsx` — added `flexWrap: 'wrap'` and `justifyContent: 'center'` to prevent nav overflow on narrow screens
+  - `ShaughvOSHardware.jsx`, `ShaughvOSInstall.jsx`, `SD300Sections.jsx` — 4-column grid tables converted to stacked card layout on mobile (<640px)
+  - `Commands.jsx`, `SD300Commands.jsx`, `SD300Keybindings.jsx`, `ND300Commands.jsx`, `ShaughvOSCommands.jsx` — grid `minmax()` minimums changed to `min(140px, 40%)` to respect viewport bounds; `whiteSpace: 'nowrap'` replaced with `overflowWrap: 'break-word'`
+  - `Footer.jsx`, `ND300Footer.jsx`, `SD300Footer.jsx`, `ExecutablesFooter.jsx`, `ShaughvOSFooter.jsx`, `InstallGuideFooter.jsx` — `minWidth: '200px'` changed to `'0'` to prevent footer columns from overflowing
+  - `Features.jsx`, `ND300Modes.jsx`, `SD300Modes.jsx`, `ND300Features.jsx`, `ShaughvOSFeatures.jsx`, `ShaughvOSOverview.jsx`, `ExecutablesContent.jsx`, `Demos.jsx`, `SD300Platform.jsx` — added `overflow: 'hidden'` to sections with `scaleX()` transforms
+  - `ND300Diagnostics.jsx` — fluid font sizing with `clamp()`, reduced grid gap
+  - `SD300Platform.jsx` — added `wordBreak: 'break-all'` for long Rust target triples
+  - `InstallGuideContent.jsx` — reduced table `minWidth` from 500px to 400px
+
 ## [1.8.0] - 2026-04-12
 
 ### Added

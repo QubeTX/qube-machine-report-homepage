@@ -99,7 +99,8 @@ export default function Demos() {
     <section style={{
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '4rem 2rem'
+      padding: '4rem 2rem',
+      overflow: 'hidden'
     }}>
       <h3 style={{
         fontFamily: 'var(--font-mono)',

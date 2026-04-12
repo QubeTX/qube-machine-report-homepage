@@ -214,7 +214,7 @@ const StyledTable = ({ headers, rows }) => {
         borderCollapse: 'collapse',
         fontFamily: 'var(--font-mono)',
         fontSize: '0.75rem',
-        minWidth: '500px'
+        minWidth: '400px'
       }}>
         <thead>
           <tr style={{ background: '#111' }}>

@@ -7,7 +7,7 @@ const CommandRow = ({ command, description, isEven, i }) => {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'minmax(180px, 1fr) 2fr',
+        gridTemplateColumns: 'minmax(min(140px, 40%), 1fr) 2fr',
         gap: '1rem',
         padding: '1rem 1.5rem',
         background: isHovered ? '#151515' : isEven ? '#0c0c0c' : 'transparent',
@@ -23,7 +23,7 @@ const CommandRow = ({ command, description, isEven, i }) => {
         fontSize: '0.85rem',
         color: isHovered ? 'var(--accent-signal)' : 'var(--fg-bone)',
         transition: 'color 0.2s ease',
-        whiteSpace: 'nowrap'
+        overflowWrap: 'break-word'
       }}>
         {command}
       </code>
@@ -41,7 +41,7 @@ const CommandRow = ({ command, description, isEven, i }) => {
 const GroupSeparator = ({ label }) => (
   <div style={{
     display: 'grid',
-    gridTemplateColumns: 'minmax(180px, 1fr) 2fr',
+    gridTemplateColumns: 'minmax(min(140px, 40%), 1fr) 2fr',
     gap: '1rem',
     padding: '0.5rem 1.5rem',
     background: '#111',
@@ -115,7 +115,7 @@ export default function ShaughvOSCommands() {
           {/* Header */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(180px, 1fr) 2fr',
+            gridTemplateColumns: 'minmax(min(140px, 40%), 1fr) 2fr',
             gap: '1rem',
             padding: '0.75rem 1.5rem',
             background: '#111',

@@ -8,7 +8,7 @@ const PlatformRow = ({ platform, target, status, isEven }) => {
       style={{
         display: 'grid',
         gridTemplateColumns: '1fr 2fr 1fr',
-        gap: '1rem',
+        gap: '0.5rem 1rem',
         padding: '1rem 1.5rem',
         background: isHovered ? '#151515' : isEven ? '#0c0c0c' : 'transparent',
         borderBottom: '1px solid #1a1a1a',
@@ -20,23 +20,23 @@ const PlatformRow = ({ platform, target, status, isEven }) => {
     >
       <span style={{
         fontFamily: 'var(--font-mono)',
-        fontSize: '0.85rem',
+        fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
         color: isHovered ? 'var(--accent-signal)' : 'var(--fg-bone)',
         transition: 'color 0.2s ease',
-        whiteSpace: 'nowrap'
       }}>
         {platform}
       </span>
       <code style={{
         fontFamily: 'var(--font-mono)',
-        fontSize: '0.85rem',
-        color: '#888'
+        fontSize: 'clamp(0.6rem, 1.5vw, 0.85rem)',
+        color: '#888',
+        wordBreak: 'break-all'
       }}>
         {target}
       </code>
       <span style={{
         fontFamily: 'var(--font-mono)',
-        fontSize: '0.85rem',
+        fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
         color: status === 'Supported' ? 'var(--accent-signal)' : '#888'
       }}>
         {status}
@@ -132,7 +132,8 @@ export default function SD300Platform() {
     <section style={{
       padding: '6rem 2rem',
       borderTop: '1px solid #222',
-      borderBottom: '1px solid #222'
+      borderBottom: '1px solid #222',
+      overflow: 'hidden'
     }}>
       <div style={{
         maxWidth: '900px',

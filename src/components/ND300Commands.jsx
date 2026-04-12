@@ -7,7 +7,7 @@ const CommandRow = ({ command, description, isEven }) => {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
+        gridTemplateColumns: 'minmax(min(160px, 40%), 1fr) 2fr',
         gap: '1rem',
         padding: '1rem 1.5rem',
         background: isHovered ? '#151515' : isEven ? '#0c0c0c' : 'transparent',
@@ -23,7 +23,7 @@ const CommandRow = ({ command, description, isEven }) => {
         fontSize: '0.85rem',
         color: isHovered ? 'var(--accent-signal)' : 'var(--fg-bone)',
         transition: 'color 0.2s ease',
-        whiteSpace: 'nowrap'
+        overflowWrap: 'break-word'
       }}>
         {command}
       </code>
@@ -41,7 +41,7 @@ const CommandRow = ({ command, description, isEven }) => {
 const GroupSeparator = ({ label }) => (
   <div style={{
     display: 'grid',
-    gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
+    gridTemplateColumns: 'minmax(min(160px, 40%), 1fr) 2fr',
     gap: '1rem',
     padding: '0.5rem 1.5rem',
     background: '#111',
@@ -124,7 +124,7 @@ export default function ND300Commands() {
           {/* Header */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
+            gridTemplateColumns: 'minmax(min(160px, 40%), 1fr) 2fr',
             gap: '1rem',
             padding: '0.75rem 1.5rem',
             background: '#111',

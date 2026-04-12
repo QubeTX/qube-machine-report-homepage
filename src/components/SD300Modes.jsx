@@ -65,7 +65,8 @@ export default function SD300Modes() {
     <section style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
-      borderBottom: '1px solid #222'
+      borderBottom: '1px solid #222',
+      overflow: 'hidden'
     }}>
       <GridCell
         label="01 // USER MODE"

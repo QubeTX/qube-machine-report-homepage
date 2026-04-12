@@ -63,7 +63,7 @@ export default function SD300Footer() {
         display: 'flex',
         flexDirection: 'column',
         gap: '0.5rem',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span style={{
           textTransform: 'uppercase',
@@ -92,7 +92,7 @@ export default function SD300Footer() {
         flexDirection: 'column',
         gap: '0.5rem',
         textAlign: 'right',
-        minWidth: '200px'
+        minWidth: '0'
       }}>
         <span>
           <a href="/" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>TR-300</a>
