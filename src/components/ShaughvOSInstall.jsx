@@ -108,9 +108,18 @@ const useIsMobile = () => {
   return isMobile
 }
 
-const ImageRow = ({ image, hardware, flash, downloadUrl, isEven }) => {
+const ImageRow = ({ image, hardware, flash, downloadUrl, isoUrl, isEven }) => {
   const [isHovered, setIsHovered] = useState(false)
   const isMobile = useIsMobile()
+
+  const downloadLinks = isoUrl ? (
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+      <DownloadLink href={downloadUrl}>IMG.XZ</DownloadLink>
+      <DownloadLink href={isoUrl}>ISO</DownloadLink>
+    </div>
+  ) : (
+    <DownloadLink href={downloadUrl}>IMG.XZ</DownloadLink>
+  )
 
   if (isMobile) {
     return (
@@ -125,7 +134,7 @@ const ImageRow = ({ image, hardware, flash, downloadUrl, isEven }) => {
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--fg-bone)', fontWeight: '700' }}>
             {image}
           </span>
-          <DownloadLink href={downloadUrl}>Download</DownloadLink>
+          {downloadLinks}
         </div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#888' }}>
           {hardware}
@@ -162,7 +171,7 @@ const ImageRow = ({ image, hardware, flash, downloadUrl, isEven }) => {
       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#666' }}>
         {flash}
       </span>
-      <DownloadLink href={downloadUrl}>Download</DownloadLink>
+      {downloadLinks}
     </div>
   )
 }
@@ -176,25 +185,27 @@ export default function ShaughvOSInstall() {
       image: 'Raspberry Pi 2/3/4',
       hardware: 'RPi 2, 3, 3B+, 4, 4B (ARM 64-bit)',
       flash: 'Balena Etcher or dd to microSD',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64_v1.1.0.img.xz'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64_v1.2.0.img.xz'
     },
     {
       image: 'Raspberry Pi 5',
       hardware: 'RPi 5 (ARM 64-bit)',
       flash: 'Balena Etcher or dd to microSD',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi5-aarch64_v1.1.0.img.xz'
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi5-aarch64_v1.2.0.img.xz'
     },
     {
       image: 'Native PC',
       hardware: 'PCs, laptops, Intel Macs (x86_64)',
-      flash: 'Balena Etcher or Rufus to USB',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_v1.1.0.img.xz'
+      flash: 'Etcher/Rufus to USB, or boot ISO',
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_v1.2.0.img.xz',
+      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_Installer_v1.2.0.iso'
     },
     {
       image: 'Virtual Machine',
       hardware: 'VirtualBox, VMware, UTM, QEMU',
-      flash: 'Import as raw disk image',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_v1.1.0.img.xz'
+      flash: 'Raw disk image or boot ISO installer',
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_v1.2.0.img.xz',
+      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_VM-x86_64_Installer_v1.2.0.iso'
     }
   ]
 

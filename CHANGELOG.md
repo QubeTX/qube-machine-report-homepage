@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.2] - 2026-04-12
+
+### Changed
+
+- shaughvOS install section updated for v1.2.0 release
+  - All download links bumped from v1.1.0 to v1.2.0
+  - x86_64 targets (Native PC, Virtual Machine) now offer both `.img.xz` and `.iso` (Clonezilla installer) downloads side by side
+  - ARM targets (Raspberry Pi 2/3/4, Raspberry Pi 5) continue to offer `.img.xz` only
+  - Flash instructions updated for x86 targets to reflect dual-format availability
+  - Download link labels changed from generic "Download" to format-specific "IMG.XZ" and "ISO"
+
 ## [1.8.1] - 2026-04-12
 
 ### Fixed
