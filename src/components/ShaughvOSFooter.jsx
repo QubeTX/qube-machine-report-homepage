@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useLatestRelease from '../hooks/useLatestRelease'
 
 const SizeBadge = ({ children, active }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -27,6 +28,7 @@ const SizeBadge = ({ children, active }) => {
 }
 
 export default function ShaughvOSFooter() {
+  const version = useLatestRelease()
   return (
     <footer style={{
       padding: '4rem 2rem',
@@ -66,7 +68,7 @@ export default function ShaughvOSFooter() {
         gap: '0.5rem',
         alignItems: 'center'
       }}>
-        <SizeBadge active>V1.1.0</SizeBadge>
+        <SizeBadge active>{version}</SizeBadge>
         <span style={{
           fontSize: '0.55rem',
           color: '#444',
@@ -91,6 +93,8 @@ export default function ShaughvOSFooter() {
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
           {' / '}
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
+          {' / '}
+          <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
           {' / '}
           <a href="https://github.com/RealEmmettS/shaughvOS" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
         </span>

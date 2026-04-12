@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ProductNav from './ProductNav'
+import useLatestRelease from '../hooks/useLatestRelease'
 
 const VersionBadge = ({ version, active }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -54,6 +55,8 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function ShaughvOSHero() {
+  const version = useLatestRelease()
+
   useEffect(() => {
     document.title = 'shaughvOS'
   }, [])
@@ -218,7 +221,7 @@ export default function ShaughvOSHero() {
           transform: 'scale(0.9)',
           transformOrigin: 'bottom left'
         }}>
-          <VersionBadge version="V 1.1.0" active />
+          <VersionBadge version={version} active />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.3] - 2026-04-12
+
+### Added
+
+- `useLatestRelease` hook (`src/hooks/useLatestRelease.js`) — fetches the latest shaughvOS release tag from GitHub API; falls back to V1.2.0 on error
+- SHAUGHVOS link added to `ShaughvOSFooter.jsx` navigation row (TR-300 / ND-300 / SD-300 / SHAUGHVOS / GITHUB)
+
+### Changed
+
+- `ShaughvOSHero.jsx` and `ShaughvOSFooter.jsx` version badges now display the live latest release instead of a hardcoded version string
+- `.gitignore` — added `.vercel` directory
+
 ## [1.8.2] - 2026-04-12
 
 ### Changed
