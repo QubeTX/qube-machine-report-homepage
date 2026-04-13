@@ -109,10 +109,10 @@ export default function InstallGuideFooter() {
       </div>
 
       <div style={{
-        textAlign: 'center',
+        width: '100%',
         fontSize: '0.6rem',
         color: 'var(--fg-dim)',
-        marginTop: '2rem',
+        marginTop: '0.5rem',
         paddingTop: '1.5rem',
         borderTop: '1px solid #222'
       }}>
