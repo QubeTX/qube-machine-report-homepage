@@ -52,17 +52,6 @@ const FeatureRow = ({ index, title, description, i }) => {
           {description}
         </div>
       </div>
-
-      <span style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '1rem',
-        color: 'var(--accent-signal)',
-        opacity: isHovered ? 1 : 0,
-        transition: 'opacity 0.2s ease',
-        flexShrink: 0
-      }}>
-        +
-      </span>
     </div>
   )
 }

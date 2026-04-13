@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [1.8.5] - 2026-04-13
 
+### Removed
+
+- Decorative "+" hover indicator from all feature/capability rows (`Demos.jsx`, `ND300Features.jsx`, `ShaughvOSFeatures.jsx`, `SD300Platform.jsx`) — created a false interactive affordance with no click behavior; hover background highlight retained
+
 ### Changed
 
 - shaughvOS page synced to match shaughvOS v1.8.0 repo
