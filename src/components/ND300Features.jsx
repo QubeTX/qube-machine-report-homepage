@@ -78,7 +78,8 @@ export default function ND300Features() {
     { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare (recommended), Google, NextDNS, DHCP reset, or Hybrid. Platform-specific encrypted DNS with auto-revert on failure.' },
     { title: 'Network Recovery', description: 'Graduated 3-stage repair — service restart, interface reset, stack recreation. VPN-aware with connectivity verification. Generates detailed Markdown report with root cause analysis.' },
     { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' },
-    { title: 'SpeedQX', description: 'Standalone dual-provider speed test binary — Cloudflare + M-Lab NDT7 with per-provider breakdown, configurable duration, and latency probes.' }
+    { title: 'SpeedQX', description: 'Standalone quad-provider speed test binary — Cloudflare + M-Lab NDT7 + LibreSpeed + fast.com with per-provider breakdown, configurable duration, and latency probes.' },
+    { title: 'Pre-Installed on shaughvOS', description: <span>ND-300 and SpeedQX come pre-installed on <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> — a complete diagnostic OS you can boot from USB to troubleshoot any machine without touching the existing OS.</span> }
   ]
 
   return (

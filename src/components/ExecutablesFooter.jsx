@@ -98,6 +98,8 @@ export default function ExecutablesFooter() {
           {' / '}
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
+          <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
+          {' / '}
           <a href="https://github.com/QubeTX/qube-reports-executables" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
         </span>
         <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>

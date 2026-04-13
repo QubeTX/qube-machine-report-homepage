@@ -92,6 +92,10 @@ export default function Demos() {
     {
       title: 'Beautiful Output',
       description: 'Clean, well-formatted reports that look great in any terminal, old or new'
+    },
+    {
+      title: 'Pre-Installed on shaughvOS',
+      description: <span>TR-300 runs automatically on every login in <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> — a complete diagnostic OS you can boot from USB on any machine</span>
     }
   ]
 

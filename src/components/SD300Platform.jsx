@@ -125,7 +125,8 @@ export default function SD300Platform() {
   const features = [
     { title: 'Windows', description: 'Setup API for driver enumeration, SCM for service status, battery via PowerShell' },
     { title: 'Linux', description: 'sysfs / procfs parsing for CPU topology, thermal zones, and block devices' },
-    { title: 'macOS', description: 'IOKit framework for GPU stats, thermal sensors, and power management' }
+    { title: 'macOS', description: 'IOKit framework for GPU stats, thermal sensors, and power management' },
+    { title: 'shaughvOS', description: <span>Pre-installed on <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> — a complete diagnostic OS you can boot from USB. All 9 monitoring sections ready on any machine.</span> }
   ]
 
   return (

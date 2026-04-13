@@ -103,6 +103,8 @@ export default function SD300Footer() {
           {' / '}
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
           {' / '}
+          <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
+          {' / '}
           <a href="https://github.com/QubeTX/qube-system-diagnostics" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
           {' / '}
           <a href="https://github.com/QubeTX/qube-system-diagnostics/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
