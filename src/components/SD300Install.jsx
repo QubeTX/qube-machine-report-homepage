@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const TabButton = ({ children, active, onClick }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -87,6 +88,7 @@ const CodeBlock = ({ comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('unix')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.3.0')
 
   const platforms = {
     unix: {
@@ -176,7 +178,7 @@ export default function SD300Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.1.2.1
+          TERMINAL // V.{shortVersion(version)}
         </span>
 
         <CopyButton text={current.fullCommand} />

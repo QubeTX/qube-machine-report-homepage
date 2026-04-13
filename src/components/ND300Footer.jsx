@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const SizeBadge = ({ children, active }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -27,6 +28,8 @@ const SizeBadge = ({ children, active }) => {
 }
 
 export default function ND300Footer() {
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '2.9.0')
+
   return (
     <footer style={{
       padding: '4rem 2rem',
@@ -62,7 +65,7 @@ export default function ND300Footer() {
         gap: '4px',
         alignItems: 'center'
       }}>
-        <SizeBadge active>V2.7</SizeBadge>
+        <SizeBadge active>V{shortVersion(version)}</SizeBadge>
       </div>
 
       <div style={{
@@ -85,6 +88,17 @@ export default function ND300Footer() {
         <span style={{ color: 'var(--accent-signal)' }}>
           STATUS: OPERATIONAL
         </span>
+      </div>
+
+      <div style={{
+        textAlign: 'center',
+        fontSize: '0.6rem',
+        color: 'var(--fg-dim)',
+        marginTop: '2rem',
+        paddingTop: '1.5rem',
+        borderTop: '1px solid #222'
+      }}>
+        &copy; {new Date().getFullYear()} QUBETX
       </div>
     </footer>
   )

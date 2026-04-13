@@ -77,7 +77,8 @@ export default function ND300Commands() {
     { command: '-d, --dns', description: 'Interactive DNS provider selection with auto-revert' },
     { command: '-f, --fix', description: 'Multi-stage graduated network recovery (3 stages)' },
     { command: '-c, --clear-dns', description: 'Flush system DNS resolver cache' },
-    { command: '--uninstall', description: 'Complete removal (nd300 + speedqx binaries, registry, PATH cleanup)' }
+    { command: '--uninstall', description: 'Complete removal (nd300 + speedqx binaries, registry, PATH cleanup)' },
+    { command: '--update', description: 'Check for updates and install latest version' }
   ]
 
   const utilityFlags = [
@@ -86,11 +87,11 @@ export default function ND300Commands() {
   ]
 
   const speedqxFlags = [
-    { command: 'speedqx', description: 'Full dual-provider speed test (Cloudflare + NDT7)' },
-    { command: '--cf-only', description: 'Use only Cloudflare (skip NDT7)' },
-    { command: '--ndt-only', description: 'Use only M-Lab NDT7 (skip Cloudflare)' },
-    { command: '--duration <SEC|auto>', description: 'Test duration per provider (default: 30, or "auto")' },
+    { command: 'speedqx', description: 'Full quad-provider speed test (Cloudflare + NDT7 + LibreSpeed + fast.com)' },
+    { command: '--duration <SEC|auto>', description: 'Test duration per direction for CF/NDT7/LibreSpeed (default: 30)' },
+    { command: '--fastcom-duration <SEC|auto>', description: 'Test duration per direction for fast.com (default: auto)' },
     { command: '--latency-probes <N>', description: 'Number of latency probes (default: 20)' },
+    { command: '--update', description: 'Check for updates and install latest version' },
     { command: '--json / --ascii / --no-color', description: 'Output formatting (same as nd300)' }
   ]
 

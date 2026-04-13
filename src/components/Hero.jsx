@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ProductNav from './ProductNav'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const Logo = () => {
   const shapeStyle = {
@@ -81,6 +82,8 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function Hero() {
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.9.0')
+
   return (
     <header style={{
       minHeight: '90vh',
@@ -103,7 +106,7 @@ export default function Hero() {
         <div style={{ maxWidth: '200px' }}>
           MACHINE REPORT<br />
           TR-300 SERIES<br />
-          BUILD: 2026.02.A
+          BUILD: 2026.04.A
         </div>
 
         <ProductNav />
@@ -173,7 +176,8 @@ export default function Hero() {
           <VersionBadge version="V 1.0" />
           <VersionBadge version="V 2.0" />
           <VersionBadge version="V 3.0" />
-          <VersionBadge version="V 3.6" active />
+          <VersionBadge version="V 3.6" />
+          <VersionBadge version={`V ${shortVersion(version)}`} active />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>

@@ -118,6 +118,17 @@ export default function Footer() {
           STATUS: OPERATIONAL
         </span>
       </div>
+
+      <div style={{
+        textAlign: 'center',
+        fontSize: '0.6rem',
+        color: 'var(--fg-dim)',
+        marginTop: '2rem',
+        paddingTop: '1.5rem',
+        borderTop: '1px solid #222'
+      }}>
+        &copy; {new Date().getFullYear()} QUBETX
+      </div>
     </footer>
   )
 }

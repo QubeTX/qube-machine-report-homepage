@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const SizeBadge = ({ children, active, href, title }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -46,6 +47,8 @@ const SizeBadge = ({ children, active, href, title }) => {
 }
 
 export default function SD300Footer() {
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.3.0')
+
   return (
     <footer style={{
       padding: '4rem 2rem',
@@ -84,7 +87,8 @@ export default function SD300Footer() {
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.0.0" title="Initial release">V1.0</SizeBadge>
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.1.0" title="Ctrl+C, scroll indicators">V1.1</SizeBadge>
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.0" title="UI overhaul, earth color palette">V1.2</SizeBadge>
-        <SizeBadge active href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.1" title="Setup API driver scanning">V1.2.1</SizeBadge>
+        <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.1" title="Setup API driver scanning">V1.2.1</SizeBadge>
+        <SizeBadge active href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.3.0" title="Man pages, scroll support, enriched help">V{shortVersion(version)}</SizeBadge>
       </div>
 
       <div style={{
@@ -107,6 +111,17 @@ export default function SD300Footer() {
         <span style={{ color: 'var(--accent-signal)' }}>
           STATUS: OPERATIONAL
         </span>
+      </div>
+
+      <div style={{
+        textAlign: 'center',
+        fontSize: '0.6rem',
+        color: 'var(--fg-dim)',
+        marginTop: '2rem',
+        paddingTop: '1.5rem',
+        borderTop: '1px solid #222'
+      }}>
+        &copy; {new Date().getFullYear()} QUBETX
       </div>
     </footer>
   )

@@ -46,6 +46,7 @@ export default function Commands() {
     { command: 'tr300 --version', description: 'Show version' },
     { command: 'tr300 --install', description: 'Auto-run setup' },
     { command: 'tr300 --uninstall', description: 'Remove config' },
+    { command: 'tr300 --update', description: 'Self-update to latest version' },
     { command: 'tr300 --ascii', description: 'ASCII mode (legacy terminals)' },
     { command: 'tr300 --json', description: 'JSON output for scripting' },
     { command: 'tr300 --no-color', description: 'Disable colored output' },

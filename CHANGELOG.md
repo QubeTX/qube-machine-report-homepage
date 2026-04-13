@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.4] - 2026-04-13
+
+### Added
+
+- `tr300 --update` flag added to TR-300 commands table (`Commands.jsx`) — self-update to latest version
+- `--update` flag added to ND-300 Action Commands section (`ND300Commands.jsx`) — check for updates and install latest version
+- `--update` flag added to ND-300 SpeedQX flags section — self-update for the speedqx binary
+- `--fastcom-duration <SEC|auto>` flag added to ND-300 SpeedQX flags section — controls fast.com test duration independently
+
+### Changed
+
+- ND-300 SpeedQX flags section updated to match current quad-provider CLI (Cloudflare + NDT7 + LibreSpeed + fast.com)
+  - Removed stale `--cf-only` and `--ndt-only` flags (no longer in CLI)
+  - `speedqx` description changed from "dual-provider" to "quad-provider" with all four providers listed
+  - `--duration` description clarified to specify it applies to CF/NDT7/LibreSpeed (not fast.com)
+- Version badges synced across all product pages to match latest CLI releases
+  - TR-300: V 3.6 → V 3.9 (hero badges and install terminal label), build label 2026.02.A → 2026.04.A
+  - ND-300: V 2.7 → V 2.9 (hero badges, install terminal label, footer badge), build label 2026.03.A → 2026.04.A
+  - SD-300: V 1.2.1 → V 1.3 (hero badge, install terminal label, footer badge added), build label 2026.02.A → 2026.04.A
+- `useGitHubVersion` hook (`src/hooks/useGitHubVersion.js`) — general-purpose hook that fetches latest release version from any GitHub repo with fallback; includes `shortVersion()` helper for major.minor formatting
+- Live version badges on TR-300, ND-300, and SD-300 pages — hero badges, install terminal labels, and footer badges now fetch the latest release version from GitHub API (with hardcoded fallbacks)
+- Added dynamic `© {year} QUBETX` copyright notice to all 6 page footers (`Footer.jsx`, `ND300Footer.jsx`, `SD300Footer.jsx`, `ExecutablesFooter.jsx`, `ShaughvOSFooter.jsx`, `InstallGuideFooter.jsx`) — uses `new Date().getFullYear()` so it always displays the current year; centered text with top border separator
+
 ## [1.8.3] - 2026-04-12
 
 ### Added

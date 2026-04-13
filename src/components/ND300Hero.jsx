@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProductNav from './ProductNav'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const Logo = () => {
   const shapeStyle = {
@@ -80,6 +81,8 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function ND300Hero() {
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '2.9.0')
+
   useEffect(() => {
     document.title = 'QUBETX ND-300'
   }, [])
@@ -106,7 +109,7 @@ export default function ND300Hero() {
         <div style={{ maxWidth: '200px' }}>
           NETWORK DIAGNOSTICS<br />
           ND-300 SERIES<br />
-          BUILD: 2026.03.A
+          BUILD: 2026.04.A
         </div>
 
         <ProductNav />
@@ -174,7 +177,8 @@ export default function ND300Hero() {
           transformOrigin: 'bottom left'
         }}>
           <VersionBadge version="V 2.4" />
-          <VersionBadge version="V 2.7" active />
+          <VersionBadge version="V 2.7" />
+          <VersionBadge version={`V ${shortVersion(version)}`} active />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>

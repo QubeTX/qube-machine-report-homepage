@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const TabButton = ({ children, active, onClick }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -87,6 +88,7 @@ const CodeBlock = ({ comment, command, fullCommand }) => (
 
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('unix')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.9.0')
 
   const platforms = {
     unix: {
@@ -176,7 +178,7 @@ export default function Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.3.6
+          TERMINAL // V.{shortVersion(version)}
         </span>
 
         <CopyButton text={current.fullCommand} />

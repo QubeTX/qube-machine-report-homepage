@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProductNav from './ProductNav'
+import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
 const Logo = () => {
   const shapeStyle = {
@@ -80,6 +81,8 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function SD300Hero() {
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.3.0')
+
   useEffect(() => {
     document.title = 'QUBETX SD-300'
   }, [])
@@ -106,7 +109,7 @@ export default function SD300Hero() {
         <div style={{ maxWidth: '200px' }}>
           SYSTEM DIAGNOSTICS<br />
           SD-300 SERIES<br />
-          BUILD: 2026.02.A
+          BUILD: 2026.04.A
         </div>
 
         <ProductNav />
@@ -173,7 +176,8 @@ export default function SD300Hero() {
           transform: 'scale(0.9)',
           transformOrigin: 'bottom left'
         }}>
-          <VersionBadge version="V 1.2.1" active />
+          <VersionBadge version="V 1.2.1" />
+          <VersionBadge version={`V ${shortVersion(version)}`} active />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
