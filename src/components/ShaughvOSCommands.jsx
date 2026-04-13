@@ -69,10 +69,10 @@ export default function ShaughvOSCommands() {
   ]
 
   const diagnosticCmds = [
-    { command: 'tr300', description: 'Full machine report (CPU, memory, disk, network)' },
+    { command: 'tr300 / report', description: 'Machine report (CPU, memory, disk, network)' },
     { command: 'tr300 --fast', description: 'Quick machine report (skip speed test)' },
-    { command: 'nd300', description: 'Network diagnostics — 8 core checks' },
-    { command: 'nd300 -t', description: 'Technician mode — all 25 deep diagnostics' },
+    { command: 'nd300', description: 'Network diagnostics — user mode (8 core checks)' },
+    { command: 'nd300 -t', description: 'Network diagnostics — technician mode (all 25 checks)' },
     { command: 'speedqx', description: 'Quad-provider speed test with bufferbloat grading' },
     { command: 'sd300', description: 'Interactive real-time system monitoring TUI' }
   ]

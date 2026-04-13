@@ -29,7 +29,7 @@ export default function ShaughvOSPitch() {
           color: 'var(--fg-bone)',
           marginBottom: '3rem'
         }}>
-          A complete operating system that fits on a USB drive. Boot it on anything — a Raspberry Pi, an old laptop, a failing machine — and get a beautiful, ready-to-use desktop with professional diagnostic tools built in.
+          A custom, lightweight operating system built on a Debian foundation — pre-configured and ready to use out of the box. Boot it on a Raspberry Pi, an old laptop, a virtual machine, or run it live from a USB drive without installing.
         </h2>
 
         <div style={{
@@ -55,17 +55,26 @@ export default function ShaughvOSPitch() {
               display: 'block',
               marginBottom: '1.5rem'
             }}>
-              For Everyone
+              For Everyday Users
             </span>
-            <p style={{
+            <ul style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
               fontStyle: 'italic',
-              lineHeight: '1.5',
-              color: '#bbb'
+              lineHeight: '1.6',
+              color: '#bbb',
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem'
             }}>
-              Your computer isn't working. You don't know why. Plug in shaughvOS, boot up, and it tells you exactly what's wrong — in plain language. Check your internet speed. See what's using all your memory. Find out why everything is slow. No expertise needed.
-            </p>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>A beautiful, fast desktop</strong> — boots into a polished Xfce desktop with the Dracula dark theme, custom fonts, and a clean taskbar. No bloatware, no clutter.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Try before you install</strong> — boot the installer ISO to get a full live desktop you can explore. If you like it, click "Install" and it's on your disk in minutes.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Developer tools included</strong> — Node.js, npm, and Claude Code CLI come pre-installed, so you can start coding right away.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Easy mode switching</strong> — type <code style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85em', color: 'var(--fg-bone)' }}>desktop on</code> for the graphical desktop or <code style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85em', color: 'var(--fg-bone)' }}>desktop off</code> for a minimal console.</li>
+            </ul>
           </div>
 
           <div style={{ padding: '2rem 0' }}>
@@ -78,17 +87,26 @@ export default function ShaughvOSPitch() {
               display: 'block',
               marginBottom: '1.5rem'
             }}>
-              For Technicians
+              For Technicians & IT Professionals
             </span>
-            <p style={{
+            <ul style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
               fontStyle: 'italic',
-              lineHeight: '1.5',
-              color: '#bbb'
+              lineHeight: '1.6',
+              color: '#bbb',
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem'
             }}>
-              Need a full diagnostic workstation? shaughvOS ships with 25 network checks, real-time system monitoring, machine reports with CPU and memory graphs, bufferbloat grading, and TLS inspection. Boot from USB, diagnose, move on.
-            </p>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Instant system diagnostics</strong> — three professional-grade QubeTX tools run automatically on every login, giving you CPU, memory, disk, and network status at a glance.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Network troubleshooting</strong> — 17 deep diagnostic checks including DNS resolution, gateway reachability, packet loss, MTU testing, and quad-provider speed testing with bufferbloat grading.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Portable diagnostic toolkit</strong> — boot from a USB drive on any x86_64 machine to diagnose problems without touching the existing OS.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Headless server ready</strong> — switch to console mode for a minimal-footprint server. Perfect for Raspberry Pi home labs, media servers, or IoT projects.</li>
+            </ul>
           </div>
         </div>
       </div>

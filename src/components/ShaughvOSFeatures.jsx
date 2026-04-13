@@ -70,13 +70,15 @@ const FeatureRow = ({ index, title, description, i }) => {
 export default function ShaughvOSFeatures() {
   const features = [
     { title: 'Runs on Anything', description: 'Raspberry Pi 2 through 5, PCs, laptops, Intel Macs, virtual machines. Boot from a USB on a machine with a failing hard drive — it still works.' },
-    { title: 'Boot from USB', description: 'Plug in, power on, and you have a full diagnostic workstation. No installation required. No configuration. Just boot and go.' },
+    { title: 'Try Before You Install', description: 'The installer ISO boots a full shaughvOS live desktop in RAM. Explore everything — the Xfce desktop, diagnostic tools, terminal — before committing. Click "Install" when you\'re ready.' },
     { title: 'Built-in Diagnostics', description: 'The QubeTX 300 Series comes pre-installed: TR-300 machine reports, ND-300 network diagnostics, SD-300 system monitoring, and SpeedQX speed tests.' },
+    { title: 'Developer Tools Included', description: 'Node.js, npm, and Claude Code CLI come pre-installed. Start coding, automating, or building right out of the box — no setup required.' },
     { title: 'Beautiful Dark Theme', description: 'Dracula-themed Xfce desktop with Makira sans-serif for the UI, IBM Plex Mono for the terminal, custom wallpaper, and Papirus icons.' },
     { title: 'Instant System Report', description: 'TR-300 runs automatically every time you open a terminal. CPU, memory, disk, network — your machine\'s health at a glance, without lifting a finger.' },
     { title: 'Network Troubleshooting', description: '8 checks for everyday users — is my WiFi working? Is DNS resolving? How fast is my connection? 25 deep diagnostics for technicians — routing tables, TLS inspection, bufferbloat grading.' },
     { title: 'Real-Time Monitoring', description: 'SD-300 interactive TUI with 9 monitoring sections: CPU, memory, disk I/O, network throughput, processes, temperatures, and more. All in real time.' },
     { title: 'Desktop or Console', description: 'Switch between a full graphical desktop and a raw terminal with a single command. Desktop on. Desktop off. That simple.' },
+    { title: 'Calamares Installer', description: 'The industry-standard Linux installer used by Manjaro, KDE Neon, and 20+ distros. Handles partitioning, filesystem creation, and GRUB installation — dynamically configured for your hardware.' },
     { title: 'Lightweight Foundation', description: 'Built on DietPi and Debian. Minimal footprint, maximum capability. The entire OS runs comfortably on a Raspberry Pi with 1GB of RAM.' },
     { title: 'Always Up to Date', description: 'OTA updates pull from the master branch automatically. New features and fixes arrive without reinstalling — your diagnostic OS stays current.' }
   ]

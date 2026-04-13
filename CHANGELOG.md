@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.5] - 2026-04-13
+
+### Changed
+
+- shaughvOS page synced to match shaughvOS v1.8.0 repo
+  - `ShaughvOSPitch.jsx` — "What is shaughvOS?" description updated; dual-audience sections rewritten with detailed bullet-point lists (For Everyday Users / For Technicians & IT Professionals) matching the README
+  - `ShaughvOSFeatures.jsx` — added "Try Before You Install" (live boot), "Developer Tools Included" (Node.js, npm, Claude Code), and "Calamares Installer" features; renamed "Boot from USB" to reflect live boot capability; now 12 features (was 10)
+  - `ShaughvOSOverview.jsx` — boot experience cell updated to mention Node.js, npm, and Claude Code pre-installed
+  - `ShaughvOSCommands.jsx` — commands updated to match README: `tr300 / report` combined entry, `nd300` user/technician mode distinction clarified
+- Copyright notice in all footers changed from centered to left-aligned full-width row
+
 ## [1.8.4] - 2026-04-13
 
 ### Added
