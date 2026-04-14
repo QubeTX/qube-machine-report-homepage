@@ -182,10 +182,11 @@ export default function ShaughvOSInstall() {
 
   const images = [
     {
-      image: 'Raspberry Pi 2/3/4',
-      hardware: 'RPi 2, 3, 3B+, 4, 4B (ARM 64-bit)',
-      flash: 'Balena Etcher or dd to microSD',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64.img.xz'
+      image: 'Native PC / USB',
+      hardware: 'PCs, laptops, Intel Macs (x86_64)',
+      flash: 'Etcher/Rufus to USB, or boot ISO',
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64.img.xz',
+      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_Installer.iso'
     },
     {
       image: 'Raspberry Pi 5',
@@ -194,11 +195,10 @@ export default function ShaughvOSInstall() {
       downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi5-aarch64.img.xz'
     },
     {
-      image: 'Native PC',
-      hardware: 'PCs, laptops, Intel Macs (x86_64)',
-      flash: 'Etcher/Rufus to USB, or boot ISO',
-      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64.img.xz',
-      isoUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_NativePC-x86_64_Installer.iso'
+      image: 'Raspberry Pi 2/3/4',
+      hardware: 'RPi 2, 3, 3B+, 4, 4B (ARM 64-bit)',
+      flash: 'Balena Etcher or dd to microSD',
+      downloadUrl: 'https://github.com/RealEmmettS/shaughvOS/releases/latest/download/shaughvOS_RPi234-aarch64.img.xz'
     },
     {
       image: 'Virtual Machine',

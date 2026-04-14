@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.6] - 2026-04-14
+
+### Changed
+
+- shaughvOS download images reordered: Native PC / USB first, then RPi 5, RPi 2/3/4, Virtual Machine last
+- "Native PC" label renamed to "Native PC / USB" to clarify USB flash support
+
 ## [1.8.5] - 2026-04-13
 
 ### Removed
