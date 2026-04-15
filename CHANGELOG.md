@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.7] - 2026-04-15
+
+### Changed
+
+- shaughvOS footer status changed from "OPERATIONAL" to "W.I.P."
+
 ## [1.8.6] - 2026-04-14
 
 ### Changed

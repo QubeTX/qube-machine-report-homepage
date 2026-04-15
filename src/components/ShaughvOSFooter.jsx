@@ -100,7 +100,7 @@ export default function ShaughvOSFooter() {
         </span>
         <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GPLv2 LICENSE</a>
         <span style={{ color: 'var(--accent-signal)' }}>
-          STATUS: OPERATIONAL
+          STATUS: W.I.P.
         </span>
       </div>
 
