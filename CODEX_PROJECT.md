@@ -1,0 +1,96 @@
+# Qube Machine Report Homepage Project Summary
+
+## TL;DR
+
+This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools and shaughvOS. Product pages are routed by pathname in `src/main.jsx`, with each top-level page composed from inline-styled React components under `src/components/`.
+
+## Current Status
+
+- The active task updates TR-300, SD-300, and ND-300 product install sections to use Cargo-first, one-line, copy-paste platform commands.
+- Deployment is handled by Vercel Git integration: pushing `main` triggers production deployment automatically.
+- No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.
+- `AGENTS.md` exists in this checkout as local agent guidance and should be followed when working in the repository.
+
+## Project Goals
+
+- Present each QubeTX tool with clear product positioning, commands, feature summaries, platform support, and installation instructions.
+- Keep install and command content aligned with the corresponding source repositories when source state is relevant.
+- Preserve the existing industrial terminal-inspired visual language: dark background, mono-font copy, neon magenta accent, inline styles, and tabbed terminal install blocks.
+
+## Workspace File Tree
+
+```text
+.
+├── .gitignore
+├── AGENTS.md
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CODEX_PROJECT.md
+├── LICENSE
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   ├── shaughv-logo.svg
+│   └── vite.svg
+├── reference
+│   ├── alternate-version.js
+│   ├── main_version.js
+│   └── tr300_documentation.md
+├── src
+│   ├── App.jsx
+│   ├── ExecutablesApp.jsx
+│   ├── InstallGuideApp.jsx
+│   ├── ND300App.jsx
+│   ├── SD300App.jsx
+│   ├── ShaughvOSApp.jsx
+│   ├── components
+│   │   ├── Commands.jsx
+│   │   ├── Demos.jsx
+│   │   ├── ExecutablesContent.jsx
+│   │   ├── ExecutablesFooter.jsx
+│   │   ├── ExecutablesHero.jsx
+│   │   ├── Features.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Install.jsx
+│   │   ├── InstallGuideContent.jsx
+│   │   ├── InstallGuideFooter.jsx
+│   │   ├── InstallGuideHero.jsx
+│   │   ├── ND300Commands.jsx
+│   │   ├── ND300Diagnostics.jsx
+│   │   ├── ND300Features.jsx
+│   │   ├── ND300Footer.jsx
+│   │   ├── ND300Hero.jsx
+│   │   ├── ND300Install.jsx
+│   │   ├── ND300Modes.jsx
+│   │   ├── ND300SampleOutput.jsx
+│   │   ├── ProductNav.jsx
+│   │   ├── Quote.jsx
+│   │   ├── SD300Commands.jsx
+│   │   ├── SD300Footer.jsx
+│   │   ├── SD300Hero.jsx
+│   │   ├── SD300Install.jsx
+│   │   ├── SD300Keybindings.jsx
+│   │   ├── SD300Modes.jsx
+│   │   ├── SD300Platform.jsx
+│   │   ├── SD300Sections.jsx
+│   │   ├── SampleOutput.jsx
+│   │   ├── ShaughvOSCommands.jsx
+│   │   ├── ShaughvOSFeatures.jsx
+│   │   ├── ShaughvOSFooter.jsx
+│   │   ├── ShaughvOSHardware.jsx
+│   │   ├── ShaughvOSHero.jsx
+│   │   ├── ShaughvOSInstall.jsx
+│   │   ├── ShaughvOSOverview.jsx
+│   │   └── ShaughvOSPitch.jsx
+│   ├── hooks
+│   │   ├── useGitHubVersion.js
+│   │   └── useLatestRelease.js
+│   ├── index.css
+│   └── main.jsx
+├── vercel.json
+└── vite.config.js
+```

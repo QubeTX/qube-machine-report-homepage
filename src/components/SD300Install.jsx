@@ -72,42 +72,54 @@ const CopyButton = ({ text }) => {
   )
 }
 
-const CodeBlock = ({ comment, command }) => (
+const CodeBlock = ({ prompt, comment, command }) => (
   <div style={{ marginBottom: '0.75rem' }}>
     {comment && (
       <span style={{ display: 'block', color: '#666', marginBottom: '0.25rem' }}>
         {comment}
       </span>
     )}
-    <span style={{ display: 'block', color: 'var(--fg-bone)', wordBreak: 'break-all' }}>
-      <span style={{ color: 'var(--accent-signal)' }}>$ </span>
+    <span style={{
+      display: 'block',
+      color: 'var(--fg-bone)',
+      overflowWrap: 'anywhere',
+      wordBreak: 'break-word',
+      paddingRight: '3.5rem'
+    }}>
+      <span style={{ color: 'var(--accent-signal)' }}>{prompt} </span>
       {command}
     </span>
   </div>
 )
 
 export default function SD300Install() {
-  const [selectedPlatform, setSelectedPlatform] = useState('unix')
+  const [selectedPlatform, setSelectedPlatform] = useState('macos')
   const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.3.0')
 
   const platforms = {
-    unix: {
-      label: 'macOS/Linux',
-      comment: '# Install via shell script',
-      command: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.sh | sh",
-      fullCommand: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.sh | sh"
+    macos: {
+      label: 'macOS',
+      prompt: '$',
+      comment: '# Install Rust/Cargo, then SD-300',
+      command: "(command -v cargo >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; true; } && rustup update stable && cargo install sd-300",
+      explanation: "Installs Rust with rustup only if Cargo is missing, loads Cargo's PATH for this terminal, updates stable Rust, then installs SD-300 from Cargo.",
+      updateCommand: 'sd300 update'
+    },
+    linux: {
+      label: 'Linux',
+      prompt: '$',
+      comment: '# Install Rust/Cargo, then SD-300',
+      command: "(command -v cargo >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; true; } && rustup update stable && cargo install sd-300",
+      explanation: "Installs Rust with rustup only if Cargo is missing, loads Cargo's PATH for this terminal, updates stable Rust, then installs SD-300 from Cargo.",
+      updateCommand: 'sd300 update'
     },
     windows: {
       label: 'Windows',
-      comment: '# Install via PowerShell',
-      command: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.ps1 | iex"',
-      fullCommand: 'powershell -ExecutionPolicy ByPass -c "irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd-300-installer.ps1 | iex"'
-    },
-    cargo: {
-      label: 'Cargo',
-      comment: '# Install via Cargo',
-      command: 'cargo install sd-300',
-      fullCommand: 'cargo install sd-300'
+      prompt: 'PS>',
+      comment: '# Install Rust/Cargo, then SD-300',
+      command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" } elseif (Get-Command rustup -ErrorAction SilentlyContinue) { rustup update stable }; cargo install sd-300',
+      explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup only if Cargo is missing, updates stable Rust when rustup is present, then installs SD-300 from Cargo.",
+      updateCommand: 'sd300 update'
     }
   }
 
@@ -139,22 +151,22 @@ export default function SD300Install() {
         justifyContent: 'center'
       }}>
         <TabButton
-          active={selectedPlatform === 'unix'}
-          onClick={() => setSelectedPlatform('unix')}
+          active={selectedPlatform === 'macos'}
+          onClick={() => setSelectedPlatform('macos')}
         >
-          macOS/Linux
+          macOS
+        </TabButton>
+        <TabButton
+          active={selectedPlatform === 'linux'}
+          onClick={() => setSelectedPlatform('linux')}
+        >
+          Linux
         </TabButton>
         <TabButton
           active={selectedPlatform === 'windows'}
           onClick={() => setSelectedPlatform('windows')}
         >
           Windows
-        </TabButton>
-        <TabButton
-          active={selectedPlatform === 'cargo'}
-          onClick={() => setSelectedPlatform('cargo')}
-        >
-          Cargo
         </TabButton>
       </div>
 
@@ -181,12 +193,31 @@ export default function SD300Install() {
           TERMINAL // V.{shortVersion(version)}
         </span>
 
-        <CopyButton text={current.fullCommand} />
+        <CopyButton text={current.command} />
 
         <CodeBlock
+          prompt={current.prompt}
           comment={current.comment}
           command={current.command}
         />
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '1.5rem 0 0 0'
+        }}>
+          {current.explanation}
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
+          Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
+        </p>
       </div>
 
       <p style={{

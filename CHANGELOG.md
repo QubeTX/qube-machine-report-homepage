@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.8] - 2026-05-10
+
+### Changed
+
+- TR-300, SD-300, and ND-300 install sections now use Cargo-first one-line commands for macOS, Linux, and Windows.
+- Removed the separate Cargo install tab from product pages; each platform tab now installs Rust/Cargo when needed, sets the current terminal session path, and runs `cargo install`.
+- Added per-platform install explanations and same-format update notes: `tr300 update`, `sd300 update`, and `nd300 update`.
+
 ## [1.8.7] - 2026-04-15
 
 ### Changed
