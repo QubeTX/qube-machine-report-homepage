@@ -6,10 +6,10 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 ## Current Status
 
-- The active task updates TR-300, SD-300, and ND-300 product install sections to use Cargo-first, one-line, copy-paste platform commands.
-- Deployment is handled by Vercel Git integration: pushing `main` triggers production deployment automatically.
+- TR-300, SD-300, and ND-300 product install sections use Cargo-first, one-line, copy-paste platform commands for macOS, Linux, and Windows.
+- Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`; a `master` branch may also exist when explicitly requested for handoff or compatibility.
 - No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.
-- `AGENTS.md` exists in this checkout as local agent guidance and should be followed when working in the repository.
+- `AGENTS.md` and `CLAUDE.md` provide internal agent guidance and should be kept aligned when repository conventions change.
 
 ## Project Goals
 

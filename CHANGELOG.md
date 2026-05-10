@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.9] - 2026-05-10
+
+### Added
+
+- `AGENTS.md` added to the repository with project commands, architecture notes, styling conventions, source-repository references, and deployment guidance.
+
+### Changed
+
+- `CODEX_PROJECT.md` current status refreshed after the Cargo-first install command update.
+
 ## [1.8.8] - 2026-05-10
 
 ### Changed
