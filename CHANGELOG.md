@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - `CODEX_PROJECT.md` current status refreshed after the Cargo-first install command update.
+- Internal docs now clarify that user requests to push to `main` or `master` mean push to the repository default branch; for this repository, that is `main`.
 
 ## [1.8.8] - 2026-05-10
 

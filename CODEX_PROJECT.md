@@ -7,7 +7,8 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 ## Current Status
 
 - TR-300, SD-300, and ND-300 product install sections use Cargo-first, one-line, copy-paste platform commands for macOS, Linux, and Windows.
-- Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`; a `master` branch may also exist when explicitly requested for handoff or compatibility.
+- Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`.
+- User branch wording preference: when the user says "push to main" or "push to master", treat it as "push to the repository's default branch". In this repository, that means `main`; do not create a `master` branch unless explicitly asked for a separate branch named `master`.
 - No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.
 - `AGENTS.md` and `CLAUDE.md` provide internal agent guidance and should be kept aligned when repository conventions change.
 
