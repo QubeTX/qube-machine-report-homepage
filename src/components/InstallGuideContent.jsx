@@ -364,9 +364,9 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['Tool', 'What It Does', 'Version']}
             rows={[
-              [<Bold>TR300</Bold>, 'Machine reporting', 'v3.6.0'],
-              [<Bold>ND300</Bold>, 'Network diagnostics', 'v2.6.0'],
-              [<Bold>SD300</Bold>, 'System diagnostics', 'v1.2.1']
+              [<Bold>TR300</Bold>, 'Machine reporting', 'v3.14.3'],
+              [<Bold>ND300</Bold>, 'Network diagnostics', 'v3.0.7'],
+              [<Bold>SD300</Bold>, 'System diagnostics', 'v1.4.3']
             ]}
           />
 
@@ -535,7 +535,7 @@ export default function InstallGuideContent() {
           </div>
 
           {/* TR300 Table */}
-          <SubHeading>TR300 — Machine Report Tool (v3.6.0)</SubHeading>
+          <SubHeading>TR300 — Machine Report Tool (v3.14.3)</SubHeading>
           <MonoParagraph>
             All files are inside the <InlineCode>TR300-qube-machine-report/</InlineCode> folder.
           </MonoParagraph>
@@ -545,16 +545,16 @@ export default function InstallGuideContent() {
             rows={[
               [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>tr300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
               [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>tr300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>tr-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>tr-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>tr300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>tr300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
 
           {/* ND300 Table */}
-          <SubHeading>ND300 — Network Diagnostics Tool (v2.6.0)</SubHeading>
+          <SubHeading>ND300 — Network Diagnostics Tool (v3.0.7)</SubHeading>
           <MonoParagraph>
             All files are inside the <InlineCode>ND300-qube-network-diagnostics/</InlineCode> folder.
           </MonoParagraph>
@@ -564,30 +564,31 @@ export default function InstallGuideContent() {
             rows={[
               [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>nd300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
               [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>nd300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>nd-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>nd-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>nd-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>nd-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>nd-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>nd300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>nd300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>nd300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
 
           {/* SD300 Table */}
-          <SubHeading>SD300 — System Diagnostics Tool (v1.2.1)</SubHeading>
+          <SubHeading>SD300 — System Diagnostics Tool (v1.4.3)</SubHeading>
           <MonoParagraph>
             All files are inside the <InlineCode>SD300-qube-system-diagnostics/</InlineCode> folder.
+            Release files use the package name <InlineCode>tr300-tui</InlineCode>; the installed command is still <InlineCode>sd300</InlineCode>.
           </MonoParagraph>
 
           <StyledTable
             headers={['Your Computer', 'File to Download', 'Folder']}
             rows={[
-              [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>sd300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>sd300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>sd-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>sd-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>sd-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>sd-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>sd-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>tr300-tui-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
+              [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>tr300-tui-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
+              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>tr300-tui-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>tr300-tui-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr300-tui-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr300-tui-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr300-tui-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
         </div>
@@ -702,8 +703,8 @@ export default function InstallGuideContent() {
             <Bold>Extract the archive.</Bold> Open a terminal in the folder where you saved the file, then run:
           </NumberedStep>
 
-          <CodeBlock copyText="tar -xf tr-300-x86_64-unknown-linux-gnu.tar.xz">
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>tar -xf tr-300-x86_64-unknown-linux-gnu.tar.xz
+          <CodeBlock copyText="tar -xf tr300-x86_64-unknown-linux-gnu.tar.xz">
+            <span style={{ color: 'var(--accent-signal)' }}>$ </span>tar -xf tr300-x86_64-unknown-linux-gnu.tar.xz
           </CodeBlock>
 
           <MonoParagraph>

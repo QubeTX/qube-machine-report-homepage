@@ -17,6 +17,8 @@ No test framework is configured — there are no tests to run.
 
 Push to `main` triggers automatic production deployment via Vercel Git integration. No Vercel CLI needed.
 
+When the user says "push to main" or "push to master", interpret that as "push to the repository's default branch". For this repository, the default branch is `main`; do not create or push a new `master` branch unless the user explicitly asks for a separate branch named `master`.
+
 SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
 
 ## Architecture
@@ -39,6 +41,18 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 **Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared cross-product navigation bar.
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
+
+## Install Documentation Contract
+
+Product install sections must stay Cargo-first across macOS, Linux, and Windows. Each platform one-liner should install rustup/Rust when needed, load Cargo's bin directory into the current terminal `PATH`, run `rustup update stable`, then install the matching crates.io package.
+
+| Product | Cargo package | Installed command | Update command |
+|---------|---------------|-------------------|----------------|
+| TR-300 | `tr300` | `tr300` | `tr300 update` |
+| ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
+| SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
+
+SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`.
 
 ## Styling Conventions
 
@@ -66,11 +80,11 @@ Each product page on this site markets a separate CLI tool / project. When updat
 
 | Product | GitHub Repo | Local Path |
 |---------|------------|------------|
-| TR-300 Machine Report | `QubeTX/qube-machine-report` | `C:\Users\hey\Documents\GitHub\qube-machine-report` |
-| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `C:\Users\hey\Documents\GitHub\qube-system-diagnostics` |
-| ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `C:\Users\hey\Documents\GitHub\qube-network-diagnostics` |
+| TR-300 Machine Report | `QubeTX/qube-machine-report` | `/Users/realemmetts/Downloads/temp_git/qube-machine-report` |
+| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `/Users/realemmetts/Downloads/temp_git/qube-system-diagnostics` |
+| ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `/Users/realemmetts/Downloads/temp_git/qube-network-diagnostics` |
 | Executables Download Hub | `QubeTX/qube-reports-executables` | *(not cloned locally)* |
-| shaughvOS | `RealEmmettS/shaughvOS` | `C:\Users\hey\Documents\GitHub\shaughvOS` |
+| shaughvOS | `RealEmmettS/shaughvOS` | *(not cloned locally)* |
 
 **Workflow for feature/content updates:** Read the source repo's README, CHANGELOG, and relevant source files before updating the corresponding product page here. Use the local clone when available; fall back to `gh` CLI or GitHub API for the executables repo.
 

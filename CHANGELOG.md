@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.10] - 2026-05-11
+
+### Fixed
+
+- Product install one-liners now use the verified crates.io package names:
+  - TR-300: `cargo install tr300`
+  - ND-300: `cargo install nd300`
+  - SD-300: `cargo install tr300-tui` while keeping the installed command as `sd300`
+- macOS and Linux one-liners now explicitly load Cargo's bin directory into the current terminal `PATH` before installing so the newly installed commands are immediately reachable.
+- Existing-install notes were added to the TR-300, ND-300, and SD-300 install blocks with the correct update commands for users who installed with older instructions.
+- Install guide versions and archive names were refreshed for the current release/package naming scheme: TR300 v3.14.3, ND300 v3.0.7, and SD300 v1.4.3.
+- GitHub version fallbacks were bumped to current release versions so badges remain accurate when the GitHub API is unavailable.
+- `README.md`, `AGENTS.md`, `CLAUDE.md`, and `CODEX_PROJECT.md` now document the Cargo package contract, including SD-300's `tr300-tui` package name and `sd300` binary name.
+
 ## [1.8.9] - 2026-05-10
 
 ### Added

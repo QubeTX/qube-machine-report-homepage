@@ -6,7 +6,10 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 ## Current Status
 
-- TR-300, SD-300, and ND-300 product install sections use Cargo-first, one-line, copy-paste platform commands for macOS, Linux, and Windows.
+- TR-300, ND-300, and SD-300 product install sections use Cargo-first, one-line, copy-paste platform commands for macOS, Linux, and Windows.
+- Current crates.io packages are `tr300` for TR-300, `nd300` for ND-300, and `tr300-tui` for SD-300. SD-300 still installs and runs as the `sd300` command.
+- The Cargo-first one-liners install rustup/Rust when needed, load Cargo's bin directory into the current terminal `PATH`, update stable Rust, and then run the matching `cargo install` command.
+- The install guide has been refreshed to the current release/package naming scheme: TR300 v3.14.3, ND300 v3.0.7, and SD300 v1.4.3.
 - Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`.
 - User branch wording preference: when the user says "push to main" or "push to master", treat it as "push to the repository's default branch". In this repository, that means `main`; do not create a `master` branch unless explicitly asked for a separate branch named `master`.
 - No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.

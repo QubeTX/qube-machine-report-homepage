@@ -28,7 +28,7 @@ const SizeBadge = ({ children, active }) => {
 }
 
 export default function ND300Footer() {
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '2.9.0')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.0.7')
 
   return (
     <footer style={{

@@ -94,31 +94,34 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.9.0')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.14.3')
+  const unixCommand = "(command -v rustup >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; export PATH=\"${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin:$PATH\"; } && rustup update stable && cargo install tr300"
+  const pathNote = "The command adds Cargo's bin directory to PATH for this terminal so tr300 works immediately; when rustup installs Rust, it also configures future terminal sessions."
+  const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'
 
   const platforms = {
     macos: {
       label: 'macOS',
       prompt: '$',
       comment: '# Install Rust/Cargo, then TR-300',
-      command: "(command -v cargo >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; true; } && rustup update stable && cargo install tr-300",
-      explanation: "Installs Rust with rustup only if Cargo is missing, loads Cargo's PATH for this terminal, updates stable Rust, then installs TR-300 from Cargo.",
+      command: unixCommand,
+      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
       updateCommand: 'tr300 update'
     },
     linux: {
       label: 'Linux',
       prompt: '$',
       comment: '# Install Rust/Cargo, then TR-300',
-      command: "(command -v cargo >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; true; } && rustup update stable && cargo install tr-300",
-      explanation: "Installs Rust with rustup only if Cargo is missing, loads Cargo's PATH for this terminal, updates stable Rust, then installs TR-300 from Cargo.",
+      command: unixCommand,
+      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
       updateCommand: 'tr300 update'
     },
     windows: {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install Rust/Cargo, then TR-300',
-      command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" } elseif (Get-Command rustup -ErrorAction SilentlyContinue) { rustup update stable }; cargo install tr-300',
-      explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup only if Cargo is missing, updates stable Rust when rustup is present, then installs TR-300 from Cargo.",
+      command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install tr300 }',
+      explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
       updateCommand: 'tr300 update'
     }
   }
@@ -216,7 +219,25 @@ export default function Install() {
           lineHeight: '1.6',
           margin: '0.5rem 0 0 0'
         }}>
+          {pathNote}
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
           Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
+          {installNote}
         </p>
       </div>
 

@@ -47,7 +47,7 @@ const SizeBadge = ({ children, active, href, title }) => {
 }
 
 export default function SD300Footer() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.3.0')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
 
   return (
     <footer style={{
@@ -88,7 +88,7 @@ export default function SD300Footer() {
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.1.0" title="Ctrl+C, scroll indicators">V1.1</SizeBadge>
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.0" title="UI overhaul, earth color palette">V1.2</SizeBadge>
         <SizeBadge href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.2.1" title="Setup API driver scanning">V1.2.1</SizeBadge>
-        <SizeBadge active href="https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v1.3.0" title="Man pages, scroll support, enriched help">V{shortVersion(version)}</SizeBadge>
+        <SizeBadge active href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" title="Cargo package tr300-tui and self-update support">V{shortVersion(version)}</SizeBadge>
       </div>
 
       <div style={{

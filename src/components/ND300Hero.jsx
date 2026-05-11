@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function ND300Hero() {
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '2.9.0')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.0.7')
 
   useEffect(() => {
     document.title = 'QUBETX ND-300'

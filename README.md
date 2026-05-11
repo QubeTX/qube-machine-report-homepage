@@ -27,6 +27,18 @@ npm run build
 npm run preview
 ```
 
+## Install Content Contract
+
+The product install sections use Cargo-first one-liners for macOS, Linux, and Windows. Each line installs rustup/Rust when needed, loads Cargo's bin directory into the current terminal `PATH`, updates stable Rust, then installs the matching crates.io package.
+
+| Product | Cargo package | Installed command | Update command |
+|---------|---------------|-------------------|----------------|
+| TR-300 | `tr300` | `tr300` | `tr300 update` |
+| ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
+| SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
+
+SD-300 is the only package where the crates.io package name differs from the installed command. Do not document `cargo install sd300` or `cargo install sd-300`; the supported Cargo path is `cargo install tr300-tui`.
+
 ## Project Structure
 
 ```
@@ -41,6 +53,9 @@ src/
 │   ├── Footer.jsx            # TR-300 footer & version badges
 │   ├── Hero.jsx              # TR-300 hero section
 │   ├── Install.jsx           # TR-300 install commands
+│   ├── InstallGuideContent.jsx # Offline installer guide content
+│   ├── InstallGuideFooter.jsx
+│   ├── InstallGuideHero.jsx
 │   ├── ND300Commands.jsx
 │   ├── ND300Diagnostics.jsx
 │   ├── ND300Features.jsx
@@ -70,6 +85,7 @@ src/
 │   └── ShaughvOSPitch.jsx    # shaughvOS marketing pitch section
 ├── App.jsx                   # TR-300 product page
 ├── ExecutablesApp.jsx        # Executables Download Hub page
+├── InstallGuideApp.jsx       # User install guide page
 ├── index.css                 # Global styles, CSS variables & .hide-on-mobile utility
 ├── main.jsx                  # Entry point & pathname-based router
 ├── ND300App.jsx              # ND-300 product page
@@ -85,6 +101,7 @@ src/
 | `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/nd300` | ND-300 Network Diagnostic | Network diagnostics and repair tool |
 | `/executables` | Executables Download Hub | Pre-built offline installers for all QubeTX CLI tools |
+| `/install-guide` | Install Guide | Step-by-step offline installer guide |
 | `/shaughvos` | shaughvOS | Custom diagnostic operating system for any hardware |
 
 ## Design
@@ -96,7 +113,7 @@ src/
 
 ## Deployment
 
-Built for Vercel deployment. The `dist/` folder contains the production build.
+Built for Vercel deployment. Pushes to the repository default branch (`main`) trigger production deployment through Vercel Git integration. The `dist/` folder contains the production build.
 
 ```bash
 npm run build
