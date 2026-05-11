@@ -52,7 +52,7 @@ Product install sections must stay Cargo-first across macOS, Linux, and Windows.
 | ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
 | SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
 
-SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`.
+SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`. Each platform's one-liner must also be accompanied by a per-platform admin/sudo guidance note: Windows users must run an elevated PowerShell or CMD before pasting the command; macOS users without administrator rights should prefix the command with `sudo`. Linux requires no such note.
 
 ## Styling Conventions
 

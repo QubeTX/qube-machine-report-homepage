@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.11] - 2026-05-11
+
+### Added
+
+- Per-platform admin/sudo hint notes added to the install panels for TR-300 (`Install.jsx`), SD-300 (`SD300Install.jsx`), and ND-300 (`ND300Install.jsx`).
+  - **Windows:** a note advising users to launch PowerShell (or CMD) as Administrator before pasting the one-liner, because rustup-init.exe and cargo install need elevated permissions to write to the user profile and PATH on most Windows configurations.
+  - **macOS:** a note advising that non-administrator accounts should prefix the command with `sudo`; admin users can paste as-is.
+  - Linux receives no note (no elevation is required for the standard Cargo install path on Linux).
+- Notes render between the existing platform explanation paragraph and the existing path note, using the same dim-text styling as surrounding install notes.
+
 ## [1.8.10] - 2026-05-11
 
 ### Fixed

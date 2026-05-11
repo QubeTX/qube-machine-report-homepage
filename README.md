@@ -37,7 +37,7 @@ The product install sections use Cargo-first one-liners for macOS, Linux, and Wi
 | ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
 | SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
 
-SD-300 is the only package where the crates.io package name differs from the installed command. Do not document `cargo install sd300` or `cargo install sd-300`; the supported Cargo path is `cargo install tr300-tui`.
+SD-300 is the only package where the crates.io package name differs from the installed command. Do not document `cargo install sd300` or `cargo install sd-300`; the supported Cargo path is `cargo install tr300-tui`. Each platform tab also surfaces an admin/sudo hint: Windows users are advised to launch PowerShell or CMD as Administrator before pasting the one-liner; macOS users without administrator rights should prefix the command with `sudo`.
 
 ## Project Structure
 

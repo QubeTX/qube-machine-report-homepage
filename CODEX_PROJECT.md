@@ -9,6 +9,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 - TR-300, ND-300, and SD-300 product install sections use Cargo-first, one-line, copy-paste platform commands for macOS, Linux, and Windows.
 - Current crates.io packages are `tr300` for TR-300, `nd300` for ND-300, and `tr300-tui` for SD-300. SD-300 still installs and runs as the `sd300` command.
 - The Cargo-first one-liners install rustup/Rust when needed, load Cargo's bin directory into the current terminal `PATH`, update stable Rust, and then run the matching `cargo install` command.
+- Each platform tab in the install panels now includes a per-platform admin/sudo guidance note: Windows users are advised to open PowerShell or CMD as Administrator before running the one-liner; macOS users without admin rights should prefix the command with `sudo`. Linux tabs include no note.
 - The install guide has been refreshed to the current release/package naming scheme: TR300 v3.14.3, ND300 v3.0.7, and SD300 v1.4.3.
 - Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`.
 - User branch wording preference: when the user says "push to main" or "push to master", treat it as "push to the repository's default branch". In this repository, that means `main`; do not create a `master` branch unless explicitly asked for a separate branch named `master`.
@@ -73,6 +74,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── ND300SampleOutput.jsx
 │   │   ├── ProductNav.jsx
 │   │   ├── Quote.jsx
+│   │   ├── SampleOutput.jsx
 │   │   ├── SD300Commands.jsx
 │   │   ├── SD300Footer.jsx
 │   │   ├── SD300Hero.jsx
@@ -81,7 +83,6 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── SD300Modes.jsx
 │   │   ├── SD300Platform.jsx
 │   │   ├── SD300Sections.jsx
-│   │   ├── SampleOutput.jsx
 │   │   ├── ShaughvOSCommands.jsx
 │   │   ├── ShaughvOSFeatures.jsx
 │   │   ├── ShaughvOSFooter.jsx

@@ -106,7 +106,8 @@ export default function ND300Install() {
       comment: '# Install Rust/Cargo, then ND-300',
       command: unixCommand,
       explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs ND-300 from crates.io as the nd300 package.",
-      updateCommand: 'nd300 update'
+      updateCommand: 'nd300 update',
+      note: "If your macOS account isn't an administrator, prefix the command with sudo. Admin users can paste it as-is."
     },
     linux: {
       label: 'Linux',
@@ -122,7 +123,8 @@ export default function ND300Install() {
       comment: '# Install Rust/Cargo, then ND-300',
       command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install nd300 }',
       explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, then installs ND-300 from crates.io as the nd300 package.",
-      updateCommand: 'nd300 update'
+      updateCommand: 'nd300 update',
+      note: 'Launch PowerShell (or CMD) as Administrator before pasting this command — rustup-init.exe and cargo install need elevated permissions to write to your user profile and PATH on most Windows configurations.'
     }
   }
 
@@ -212,6 +214,17 @@ export default function ND300Install() {
         }}>
           {current.explanation}
         </p>
+
+        {current.note && (
+          <p style={{
+            color: 'var(--fg-dim)',
+            fontSize: '0.7rem',
+            lineHeight: '1.6',
+            margin: '0.5rem 0 0 0'
+          }}>
+            {current.note}
+          </p>
+        )}
 
         <p style={{
           color: 'var(--fg-dim)',
