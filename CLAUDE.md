@@ -54,6 +54,8 @@ Product install sections must stay Cargo-first across macOS, Linux, and Windows.
 
 SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`. Each platform's one-liner must also be accompanied by a per-platform admin/sudo guidance note: Windows users must run an elevated PowerShell or CMD before pasting the command; macOS users without administrator rights should prefix the command with `sudo`. Linux requires no such note.
 
+**TR-300 only — chained `tr300 install`:** The TR-300 one-liner appends `&& tr300 install` (Unix) or `; tr300 install` (Windows PowerShell) after `cargo install tr300`. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 stop at `cargo install` because their CLIs do not expose a self-install subcommand.
+
 ## Styling Conventions
 
 - **All component styles are inline** (`style={{}}` objects). No CSS modules, no styled-components.

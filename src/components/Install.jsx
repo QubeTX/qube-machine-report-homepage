@@ -95,7 +95,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
   const version = useGitHubVersion('QubeTX/qube-machine-report', '3.14.3')
-  const unixCommand = "(command -v rustup >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; export PATH=\"${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin:$PATH\"; } && rustup update stable && cargo install tr300"
+  const unixCommand = "(command -v rustup >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; export PATH=\"${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin:$PATH\"; } && rustup update stable && cargo install tr300 && tr300 install"
   const pathNote = "The command adds Cargo's bin directory to PATH for this terminal so tr300 works immediately; when rustup installs Rust, it also configures future terminal sessions."
   const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'
 
@@ -105,7 +105,7 @@ export default function Install() {
       prompt: '$',
       comment: '# Install Rust/Cargo, then TR-300',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
+      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your shell profile.",
       updateCommand: 'tr300 update',
       note: "If your macOS account isn't an administrator, prefix the command with sudo. Admin users can paste it as-is."
     },
@@ -114,15 +114,15 @@ export default function Install() {
       prompt: '$',
       comment: '# Install Rust/Cargo, then TR-300',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
+      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your shell profile.",
       updateCommand: 'tr300 update'
     },
     windows: {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install Rust/Cargo, then TR-300',
-      command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install tr300 }',
-      explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, then installs TR-300 from crates.io as the tr300 package.",
+      command: '$CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install tr300; if ($LASTEXITCODE -eq 0) { tr300 install } }',
+      explanation: "Adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your PowerShell profile.",
       updateCommand: 'tr300 update',
       note: 'Launch PowerShell (or CMD) as Administrator before pasting this command — rustup-init.exe and cargo install need elevated permissions to write to your user profile and PATH on most Windows configurations.'
     }

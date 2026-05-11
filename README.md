@@ -39,6 +39,8 @@ The product install sections use Cargo-first one-liners for macOS, Linux, and Wi
 
 SD-300 is the only package where the crates.io package name differs from the installed command. Do not document `cargo install sd300` or `cargo install sd-300`; the supported Cargo path is `cargo install tr300-tui`. Each platform tab also surfaces an admin/sudo hint: Windows users are advised to launch PowerShell or CMD as Administrator before pasting the one-liner; macOS users without administrator rights should prefix the command with `sudo`.
 
+**TR-300 extended one-liner:** After `cargo install tr300`, the TR-300 one-liner also runs `tr300 install` as a final step. This subcommand writes a marker block to the user's shell profile (`~/.zshrc`, `~/.bashrc`, or PowerShell `$PROFILE`) that adds a `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. The result is a true single-paste setup. `tr300 install` is idempotent — re-running the one-liner does not duplicate profile entries. SD-300 and ND-300 do not chain a self-install subcommand because their CLIs do not expose one.
+
 ## Project Structure
 
 ```

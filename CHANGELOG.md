@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.8.12] - 2026-05-11
+
+### Changed
+
+- The TR-300 install one-liner now chains `tr300 install` after `cargo install tr300` on all three platforms (macOS, Linux, Windows), so a single copy-paste also writes the shell-profile `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. SD-300 and ND-300 install panels are unchanged — their CLIs do not ship a self-install subcommand.
+- Explanation text in the TR-300 install panel updated to describe the new final step (`tr300 install`) and clarify that re-running the one-liner is safe because `tr300 install` is idempotent.
+
 ## [1.8.11] - 2026-05-11
 
 ### Added
