@@ -56,6 +56,14 @@ SD-300 intentionally uses `tr300-tui` as the crates.io package name while keepin
 
 **TR-300 only — chained `tr300 install`:** The TR-300 one-liner appends `&& tr300 install` (Unix) or `; tr300 install` (Windows PowerShell) after `cargo install tr300`. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 stop at `cargo install` because their CLIs do not expose a self-install subcommand.
 
+**Windows MSVC Build Tools preflight (all three products):** Every Windows one-liner must begin with an MSVC Build Tools preflight, because Rust's default `x86_64-pc-windows-msvc` toolchain requires the C++ linker (`link.exe`) and a Windows SDK — without them `cargo install` fails on fresh Windows machines with the error users mistake for "needing VS Code". The preflight:
+
+1. Detects existing component `Microsoft.VisualStudio.Component.VC.Tools.x86.x64` via `vswhere.exe` at `${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe`. The `-products *` flag is required to match the Build Tools SKU (the default search omits it).
+2. If missing, silently installs the `Microsoft.VisualStudio.Workload.VCTools` workload via `winget install --id Microsoft.VisualStudio.2022.BuildTools --override "--quiet --wait --norestart --nocache --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"`. The `--wait` and `--override` are both required — without `--override` winget installs only the VS core (no workload); without `--wait` winget exits before the inner VS installer completes.
+3. Falls back to downloading `vs_buildtools.exe` from `https://aka.ms/vs/17/release/vs_buildtools.exe` and running with the same silent flags via `Start-Process -Wait` for older Win10 builds where `winget` isn't present.
+
+Keep the preflight snippet **byte-identical** across `Install.jsx`, `SD300Install.jsx`, and `ND300Install.jsx` so future changes can be applied uniformly with `replace_all`. Reflect the ~2–5 GB / multi-minute first-run cost in the Windows `note`. Do not switch the default toolchain to `x86_64-pc-windows-gnu` to avoid this — many crates still need MSYS2/MinGW for C deps and Windows-native interop is worse.
+
 ## Styling Conventions
 
 - **All component styles are inline** (`style={{}}` objects). No CSS modules, no styled-components.
