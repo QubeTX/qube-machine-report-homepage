@@ -44,25 +44,50 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 
 ## Install Documentation Contract
 
-Product install sections must stay Cargo-first across macOS, Linux, and Windows. Each platform one-liner should install rustup/Rust when needed, load Cargo's bin directory into the current terminal `PATH`, run `rustup update stable`, then install the matching crates.io package.
+All three products use the same **wrapper-script** install pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}` since the root domain is the TR-300 page). Each wrapper calls the upstream cargo-dist installer script — published with every product's GitHub release — which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin. The wrapper fails loudly if the binary isn't present after install.
 
-| Product | Cargo package | Installed command | Update command |
-|---------|---------------|-------------------|----------------|
-| TR-300 | `tr300` | `tr300` | `tr300 update` |
-| ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
-| SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
+### Install one-liners
 
-SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`. Each platform's one-liner must also be accompanied by a per-platform admin/sudo guidance note: Windows users must run an elevated PowerShell or CMD before pasting the command; macOS users without administrator rights should prefix the command with `sudo`. Linux requires no such note.
+| Product | Mac/Linux | Windows (PowerShell) |
+|---------|-----------|----------------------|
+| TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `irm https://reports.qubetx.com/install.ps1 \| iex` |
+| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `irm https://reports.qubetx.com/install-sd300.ps1 \| iex` |
+| ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `irm https://reports.qubetx.com/install-nd300.ps1 \| iex` |
 
-**TR-300 only — chained `tr300 install`:** The TR-300 one-liner appends `&& tr300 install` (Unix) or `; tr300 install` (Windows PowerShell) after `cargo install tr300`. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 stop at `cargo install` because their CLIs do not expose a self-install subcommand.
+Each command corresponds to a wrapper file in `public/` that is served directly by Vercel (filesystem matches run before the SPA rewrite in `vercel.json` — confirmed by the fact that `assets/index-*.js` and the other static assets already work). On Windows the wrapper runs unwrapped (no `powershell -ExecutionPolicy ByPass -c "..."`) because the UI's terminal shows the `PS>` prompt and `iex` of an in-memory string isn't subject to execution policy under Restricted/RemoteSigned/Unrestricted.
 
-**Windows MSVC Build Tools preflight (all three products):** Every Windows one-liner must begin with an MSVC Build Tools preflight, because Rust's default `x86_64-pc-windows-msvc` toolchain requires the C++ linker (`link.exe`) and a Windows SDK — without them `cargo install` fails on fresh Windows machines with the error users mistake for "needing VS Code". The preflight:
+### Upstream cargo-dist asset names
 
-1. Detects existing component `Microsoft.VisualStudio.Component.VC.Tools.x86.x64` via `vswhere.exe` at `${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe`. The `-products *` flag is required to match the Build Tools SKU (the default search omits it).
-2. If missing, silently installs the `Microsoft.VisualStudio.Workload.VCTools` workload via `winget install --id Microsoft.VisualStudio.2022.BuildTools --override "--quiet --wait --norestart --nocache --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"`. The `--wait` and `--override` are both required — without `--override` winget installs only the VS core (no workload); without `--wait` winget exits before the inner VS installer completes.
-3. Falls back to downloading `vs_buildtools.exe` from `https://aka.ms/vs/17/release/vs_buildtools.exe` and running with the same silent flags via `Start-Process -Wait` for older Win10 builds where `winget` isn't present.
+| Product | GitHub repo | Asset names | Installed commands |
+|---------|------------|------------|--------------------|
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300` |
+| SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (note uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
+| ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (note hyphen) | `nd300`, `speedqx` |
 
-Keep the preflight snippet **byte-identical** across `Install.jsx`, `SD300Install.jsx`, and `ND300Install.jsx` so future changes can be applied uniformly with `replace_all`. Reflect the ~2–5 GB / multi-minute first-run cost in the Windows `note`. Do not switch the default toolchain to `x86_64-pc-windows-gnu` to avoid this — many crates still need MSYS2/MinGW for C deps and Windows-native interop is worse.
+All upstream URLs use `releases/latest/download/...` so wrappers auto-track new versions — no version pinning. SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary; do not "fix" this to `cargo install sd300`.
+
+### TR-300 only — chained `tr300 install`
+
+TR-300's wrapper appends a second step after the cargo-dist call: `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell). This subcommand writes a marker block to the user's shell profile that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 stop at the cargo-dist call because their CLIs do not expose a self-install subcommand.
+
+### TR-300 — first-class Windows installers (`.MSI` / `.EXE`)
+
+As of v3.15.0, TR-300 also publishes four first-class Windows installers on every GitHub release, surfaced as download buttons directly under the Windows install command in `Install.jsx`. They're an alternative to the wrapper for users who want a GUI install or a system-wide deployment:
+
+| Variant | Asset name | Mode |
+|---------|------------|------|
+| Global MSI | `tr300-x86_64-pc-windows-msvc.msi` | `perMachine` — `C:\Program Files\tr300\bin\`, admin required |
+| Global EXE | `tr300-x86_64-pc-windows-msvc-setup.exe` | `perMachine` — admin required |
+| Corporate MSI | `tr300-x86_64-pc-windows-msvc-corporate.msi` | `perUser` — `%LocalAppData%\Programs\tr300\bin\`, no admin |
+| Corporate EXE | `tr300-x86_64-pc-windows-msvc-corporate-setup.exe` | `perUser` — no admin |
+
+URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/download/<asset>` form. When SD-300 and ND-300 begin shipping MSI/EXE installers (same naming convention with `sd300` / `nd300` / `speedqx` substituted), they should gain the same four-button block (Global + Corporate, `.MSI` + `.EXE` each) under their terminal boxes. Reference implementation: the `DownloadButton` helper and installer-block layout in `src/components/Install.jsx`.
+
+### Maintenance notes
+
+- **Wrappers should stay tiny.** If a wrapper needs more than ~10 lines, you're probably reaching for the wrong tool — push the complexity upstream into the cargo-dist installer or into the product's own `<product> install` subcommand instead.
+- **Keep error handling consistent.** All wrappers verify the installed binary exists after the cargo-dist call and exit nonzero with a clear message if not. Don't silently swallow installer failures.
+- **Don't reintroduce the MSVC Build Tools preflight.** The whole point of the cargo-dist installer is that the binary is already compiled; preflighting MSVC was a workaround for `cargo install <crate>` building from source on Windows. With the prebuilt binary, MSVC is irrelevant.
 
 ## Styling Conventions
 

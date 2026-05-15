@@ -29,17 +29,27 @@ npm run preview
 
 ## Install Content Contract
 
-The product install sections use Cargo-first one-liners for macOS, Linux, and Windows. Each line installs rustup/Rust when needed, loads Cargo's bin directory into the current terminal `PATH`, updates stable Rust, then installs the matching crates.io package.
+All three product install sections use the same **wrapper-script** pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}`). Each wrapper invokes the upstream cargo-dist installer script published with every product release, which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin/sudo.
 
-| Product | Cargo package | Installed command | Update command |
-|---------|---------------|-------------------|----------------|
-| TR-300 | `tr300` | `tr300` | `tr300 update` |
-| ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
-| SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
+| Product | Mac/Linux one-liner | Windows one-liner |
+|---------|--------------------|--------------------|
+| TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `irm https://reports.qubetx.com/install.ps1 \| iex` |
+| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `irm https://reports.qubetx.com/install-sd300.ps1 \| iex` |
+| ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `irm https://reports.qubetx.com/install-nd300.ps1 \| iex` |
 
-SD-300 is the only package where the crates.io package name differs from the installed command. Do not document `cargo install sd300` or `cargo install sd-300`; the supported Cargo path is `cargo install tr300-tui`. Each platform tab also surfaces an admin/sudo hint: Windows users are advised to launch PowerShell or CMD as Administrator before pasting the one-liner; macOS users without administrator rights should prefix the command with `sudo`.
+Upstream cargo-dist asset names (used inside the wrappers):
 
-**TR-300 extended one-liner:** After `cargo install tr300`, the TR-300 one-liner also runs `tr300 install` as a final step. This subcommand writes a marker block to the user's shell profile (`~/.zshrc`, `~/.bashrc`, or PowerShell `$PROFILE`) that adds a `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. The result is a true single-paste setup. `tr300 install` is idempotent — re-running the one-liner does not duplicate profile entries. SD-300 and ND-300 do not chain a self-install subcommand because their CLIs do not expose one.
+| Product | GitHub repo | Asset names | Installed commands |
+|---------|------------|------------|--------------------|
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` | `tr300` |
+| SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
+| ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
+
+Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`.
+
+**TR-300 chained `tr300 install`:** The TR-300 wrapper has one extra step after the cargo-dist call — it runs `tr300 install` (by full path so it works without re-sourcing `PATH`). That subcommand writes a marker block to the user's shell profile (`~/.zshrc`, `~/.bashrc`, or PowerShell `$PROFILE`) that adds a `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. `tr300 install` is idempotent — re-running the one-liner does not duplicate profile entries. SD-300 and ND-300 wrappers don't chain a self-install subcommand because their CLIs don't expose one.
+
+**TR-300 first-class Windows installers:** As of v3.15.0, TR-300 also publishes Global/Corporate MSI and EXE installers with every release. They're surfaced as four magenta download buttons under the Windows tab in the install panel — `Install.jsx` reads them from `https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc{,-corporate}{,-setup}.{msi,exe}`. Users who'd rather have a system-wide install or a double-click setup can use those instead of the command line.
 
 ## Project Structure
 

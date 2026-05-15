@@ -44,17 +44,35 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 
 ## Install Documentation Contract
 
-Product install sections must stay Cargo-first across macOS, Linux, and Windows. Each platform one-liner should install rustup/Rust when needed, load Cargo's bin directory into the current terminal `PATH`, run `rustup update stable`, then install the matching crates.io package.
+All three products use the same **wrapper-script** install pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}` since the root domain is the TR-300 page). Each wrapper calls the upstream cargo-dist installer script — published with every product's GitHub release — which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin. Each wrapper exits nonzero with a clear message if the binary isn't present after install.
 
-| Product | Cargo package | Installed command | Update command |
-|---------|---------------|-------------------|----------------|
-| TR-300 | `tr300` | `tr300` | `tr300 update` |
-| ND-300 | `nd300` | `nd300`, `speedqx` | `nd300 update`, `speedqx update` |
-| SD-300 | `tr300-tui` | `sd300` | `sd300 update` |
+### Install one-liners
 
-SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary. Do not change SD-300 docs or install commands to `cargo install sd300` or `cargo install sd-300`. Each platform's one-liner must also be accompanied by a per-platform admin/sudo guidance note: Windows users must run an elevated PowerShell or CMD before pasting the command; macOS users without administrator rights should prefix the command with `sudo`. Linux requires no such note.
+| Product | Mac/Linux | Windows (PowerShell) |
+|---------|-----------|----------------------|
+| TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `irm https://reports.qubetx.com/install.ps1 \| iex` |
+| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `irm https://reports.qubetx.com/install-sd300.ps1 \| iex` |
+| ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `irm https://reports.qubetx.com/install-nd300.ps1 \| iex` |
 
-**TR-300 only — chained `tr300 install`:** The TR-300 one-liner appends `&& tr300 install` (Unix) or `; tr300 install` (Windows PowerShell) after `cargo install tr300`. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 stop at `cargo install` because their CLIs do not expose a self-install subcommand.
+### Upstream cargo-dist asset names
+
+| Product | GitHub repo | Asset names | Installed commands |
+|---------|------------|------------|--------------------|
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` | `tr300` |
+| SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
+| ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
+
+Asset URLs use `releases/latest/download/...` so wrappers auto-track new versions — no version pinning. SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary; do not "fix" this to `cargo install sd300`.
+
+**TR-300 only — chained `tr300 install`:** The TR-300 wrapper appends `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell) after the cargo-dist call. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 wrappers don't chain it because their CLIs do not expose a self-install subcommand.
+
+**TR-300 first-class Windows installers (.MSI / .EXE):** As of v3.15.0, TR-300 also ships four prebuilt Windows installers per release — Global MSI/EXE (`perMachine`, admin, installs to `C:\Program Files\tr300\bin\`) and Corporate MSI/EXE (`perUser`, no admin, installs to `%LocalAppData%\Programs\tr300\bin\`). They're surfaced as four magenta CTA buttons under the Windows tab in `Install.jsx`, grouped into a GLOBAL row and a CORPORATE row. Asset URLs use `https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc{,-corporate}{,-setup}.{msi,exe}`. When SD-300 and ND-300 begin shipping similar installers, they should gain the same four-button block — see the `DownloadButton` helper and installer-block grid layout in `src/components/Install.jsx`.
+
+### Maintenance notes
+
+- **Wrappers should stay tiny.** If a wrapper needs more than ~10 lines, push the complexity upstream into the cargo-dist installer or the product's own `<product> install` subcommand instead.
+- **Keep error handling consistent.** All wrappers verify the installed binary exists after the cargo-dist call and exit nonzero with a clear message if not.
+- **Don't reintroduce the MSVC Build Tools preflight.** It was a workaround for `cargo install <crate>` building from source on Windows. With the prebuilt cargo-dist binary, MSVC is irrelevant.
 
 ## Styling Conventions
 

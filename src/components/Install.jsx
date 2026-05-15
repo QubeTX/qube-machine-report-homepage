@@ -72,6 +72,39 @@ const CopyButton = ({ text }) => {
   )
 }
 
+const DownloadButton = ({ href, label }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: 'var(--accent-signal)',
+        border: '2px solid var(--accent-signal)',
+        color: 'var(--bg-void)',
+        fontFamily: 'var(--font-mono)',
+        fontWeight: '700',
+        padding: '0.5rem 1rem',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        textTransform: 'uppercase',
+        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
+        transform: isHovered ? 'translateY(-2px)' : 'none',
+        boxShadow: isHovered ? '0 4px 12px rgba(255, 0, 212, 0.3)' : 'none',
+        fontSize: '0.75rem',
+        textDecoration: 'none',
+        display: 'inline-block'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {label}
+    </a>
+  )
+}
+
 const CodeBlock = ({ prompt, comment, command }) => (
   <div style={{ marginBottom: '0.75rem' }}>
     {comment && (
@@ -95,36 +128,38 @@ const CodeBlock = ({ prompt, comment, command }) => (
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
   const version = useGitHubVersion('QubeTX/qube-machine-report', '3.14.3')
-  const unixCommand = "(command -v rustup >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; export PATH=\"${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin:$PATH\"; } && rustup update stable && cargo install tr300 && tr300 install"
-  const pathNote = "The command adds Cargo's bin directory to PATH for this terminal so tr300 works immediately; when rustup installs Rust, it also configures future terminal sessions."
+  const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
+  const pathNote = "Behind the scenes the wrapper downloads the prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), updates your shell config so future terminals can find it, then runs tr300 install to write a small marker block to your shell profile — every new interactive shell picks up a report alias and an auto-run of tr300 --fast."
   const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'
+
+  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300 binary for macOS arm64/x64 or Linux x64 into ~/.cargo/bin), then runs tr300 install to add a report alias and an auto-run line to your shell profile so new terminals start with tr300 ready. No Rust toolchain is downloaded or built — the binary is already compiled. The wrapper itself is two-files-of-shell, source on the homepage repo."
 
   const platforms = {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Install Rust/Cargo, then TR-300',
+      comment: '# Install the prebuilt tr300 binary',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your shell profile.",
+      explanation: unixExplanation,
       updateCommand: 'tr300 update',
-      note: "If your macOS account isn't an administrator, prefix the command with sudo. Admin users can paste it as-is."
+      note: "Runs entirely in user scope — no sudo needed. The installer script is the official cargo-dist artifact published with every TR-300 release; it installs to your home directory and updates your shell config, nothing system-wide."
     },
     linux: {
       label: 'Linux',
       prompt: '$',
-      comment: '# Install Rust/Cargo, then TR-300',
+      comment: '# Install the prebuilt tr300 binary',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your shell profile.",
+      explanation: unixExplanation,
       updateCommand: 'tr300 update'
     },
     windows: {
       label: 'Windows',
       prompt: 'PS>',
-      comment: '# Install Rust/Cargo, then TR-300',
-      command: '$VSWhere = "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\Installer\\vswhere.exe"; $HasMsvc = $false; if (Test-Path $VSWhere) { $HasMsvc = [bool](& $VSWhere -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath 2>$null) }; if (-not $HasMsvc) { Write-Host "Installing Visual Studio Build Tools (required by Rust, ~3 GB, several minutes)..." -ForegroundColor Cyan; if (Get-Command winget -ErrorAction SilentlyContinue) { winget install --id Microsoft.VisualStudio.2022.BuildTools --source winget --silent --accept-package-agreements --accept-source-agreements --override "--quiet --wait --norestart --nocache --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended" } else { $VSBT = Join-Path $env:TEMP "vs_buildtools.exe"; Invoke-WebRequest -Uri "https://aka.ms/vs/17/release/vs_buildtools.exe" -OutFile $VSBT; Start-Process -Wait -FilePath $VSBT -ArgumentList "--quiet","--wait","--norestart","--nocache","--add","Microsoft.VisualStudio.Workload.VCTools","--includeRecommended" } }; $CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install tr300; if ($LASTEXITCODE -eq 0) { tr300 install } }',
-      explanation: "Checks for Visual Studio C++ Build Tools (silently installs the VCTools workload via winget if missing — required by Rust on Windows), adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, installs TR-300 from crates.io as the tr300 package, then runs tr300 install to add the report alias and auto-run line to your PowerShell profile.",
+      comment: '# Install the prebuilt tr300 binary',
+      command: 'irm https://reports.qubetx.com/install.ps1 | iex',
+      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to add a report PowerShell alias and an auto-run line to your PowerShell profile so every new session starts with tr300 ready. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'tr300 update',
-      note: 'Launch PowerShell as Administrator before pasting — rustup-init and the Build Tools installer need elevated permissions. First-time installs without existing Visual Studio Build Tools will download ~2–5 GB and take several minutes (subsequent runs detect the existing install and skip).'
+      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binary, just packaged for double-click."
     }
   }
 
@@ -253,6 +288,78 @@ export default function Install() {
           {installNote}
         </p>
       </div>
+
+      {selectedPlatform === 'windows' && (() => {
+        const chipStyle = {
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.7rem',
+          color: 'var(--fg-dim)',
+          border: '1px solid var(--fg-dim)',
+          padding: '2px 8px',
+          borderRadius: '4px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          justifySelf: 'end',
+          whiteSpace: 'nowrap'
+        }
+        const descStyle = {
+          fontFamily: 'var(--font-serif)',
+          fontStyle: 'italic',
+          fontSize: '1rem',
+          color: '#aaa'
+        }
+        const buttonsRowStyle = { display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', flexWrap: 'wrap' }
+        return (
+          <div style={{
+            width: '100%',
+            maxWidth: '800px',
+            marginTop: '3rem',
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr auto',
+            columnGap: '1rem',
+            rowGap: '1.5rem',
+            alignItems: 'center'
+          }}>
+            <p style={{
+              gridColumn: '1 / -1',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              lineHeight: '1.6',
+              color: 'var(--fg-dim)',
+              textAlign: 'center',
+              margin: 0
+            }}>
+              Prefer not to install Rust? Use a prebuilt Windows installer.
+            </p>
+
+            <span style={chipStyle}>Global</span>
+            <span style={descStyle}>Installs to Program Files — requires administrator.</span>
+            <div style={buttonsRowStyle}>
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc.msi"
+                label="↓ Download .MSI"
+              />
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-setup.exe"
+                label="↓ Download .EXE"
+              />
+            </div>
+
+            <span style={chipStyle}>Corporate</span>
+            <span style={descStyle}>Installs to your user profile — no admin required.</span>
+            <div style={buttonsRowStyle}>
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate.msi"
+                label="↓ Download .MSI"
+              />
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate-setup.exe"
+                label="↓ Download .EXE"
+              />
+            </div>
+          </div>
+        )
+      })()}
 
       <p style={{
         fontFamily: 'var(--font-mono)',

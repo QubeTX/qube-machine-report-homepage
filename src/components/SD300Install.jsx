@@ -95,36 +95,38 @@ const CodeBlock = ({ prompt, comment, command }) => (
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
   const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
-  const unixCommand = "(command -v rustup >/dev/null 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y) && { [ -f \"$HOME/.cargo/env\" ] && . \"$HOME/.cargo/env\"; export PATH=\"${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin:$PATH\"; } && rustup update stable && cargo install tr300-tui"
-  const pathNote = "The command adds Cargo's bin directory to PATH for this terminal so sd300 works immediately; when rustup installs Rust, it also configures future terminal sessions."
-  const installNote = 'Already installed with older instructions? Run sd300 update. If an older Cargo command used sd-300, rerun this command; the crates.io package is tr300-tui and the installed command is sd300.'
+  const unixCommand = "curl -LsSf https://reports.qubetx.com/install-sd300.sh | sh"
+  const pathNote = "Behind the scenes the wrapper downloads the prebuilt sd300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find it."
+  const installNote = 'Already installed with older instructions? Run sd300 update. The crates.io package is still tr300-tui and the installed command is still sd300 — the wrapper just installs the prebuilt binary instead of building from source.'
+
+  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt sd300 binary for macOS arm64/x64 or Linux x64 into ~/.cargo/bin. No Rust toolchain is downloaded or built — the binary is already compiled."
 
   const platforms = {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Install Rust/Cargo, then SD-300',
+      comment: '# Install the prebuilt sd300 binary',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs SD-300 from crates.io as the tr300-tui package.",
+      explanation: unixExplanation,
       updateCommand: 'sd300 update',
-      note: "If your macOS account isn't an administrator, prefix the command with sudo. Admin users can paste it as-is."
+      note: "Runs entirely in user scope — no sudo needed. The wrapper is two lines of shell hosted on this site; it calls the official cargo-dist installer published with every SD-300 release."
     },
     linux: {
       label: 'Linux',
       prompt: '$',
-      comment: '# Install Rust/Cargo, then SD-300',
+      comment: '# Install the prebuilt sd300 binary',
       command: unixCommand,
-      explanation: "Installs Rust with rustup when needed, loads Cargo into this terminal's PATH, updates stable Rust, then installs SD-300 from crates.io as the tr300-tui package.",
+      explanation: unixExplanation,
       updateCommand: 'sd300 update'
     },
     windows: {
       label: 'Windows',
       prompt: 'PS>',
-      comment: '# Install Rust/Cargo, then SD-300',
-      command: '$VSWhere = "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\Installer\\vswhere.exe"; $HasMsvc = $false; if (Test-Path $VSWhere) { $HasMsvc = [bool](& $VSWhere -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath 2>$null) }; if (-not $HasMsvc) { Write-Host "Installing Visual Studio Build Tools (required by Rust, ~3 GB, several minutes)..." -ForegroundColor Cyan; if (Get-Command winget -ErrorAction SilentlyContinue) { winget install --id Microsoft.VisualStudio.2022.BuildTools --source winget --silent --accept-package-agreements --accept-source-agreements --override "--quiet --wait --norestart --nocache --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended" } else { $VSBT = Join-Path $env:TEMP "vs_buildtools.exe"; Invoke-WebRequest -Uri "https://aka.ms/vs/17/release/vs_buildtools.exe" -OutFile $VSBT; Start-Process -Wait -FilePath $VSBT -ArgumentList "--quiet","--wait","--norestart","--nocache","--add","Microsoft.VisualStudio.Workload.VCTools","--includeRecommended" } }; $CargoBin=Join-Path $env:USERPROFILE ".cargo\\bin"; $env:Path="$CargoBin;$env:Path"; if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { $Rustup=Join-Path $env:TEMP "rustup-init.exe"; Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile $Rustup; & $Rustup -y; $env:Path="$CargoBin;$env:Path" }; rustup update stable; if ($LASTEXITCODE -eq 0) { cargo install tr300-tui }',
-      explanation: "Checks for Visual Studio C++ Build Tools (silently installs the VCTools workload via winget if missing — required by Rust on Windows), adds Cargo to this PowerShell session's PATH, installs Rust with rustup when needed, updates stable Rust, then installs SD-300 from crates.io as the tr300-tui package.",
+      comment: '# Install the prebuilt sd300 binary',
+      command: 'irm https://reports.qubetx.com/install-sd300.ps1 | iex',
+      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt sd300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'sd300 update',
-      note: 'Launch PowerShell as Administrator before pasting — rustup-init and the Build Tools installer need elevated permissions. First-time installs without existing Visual Studio Build Tools will download ~2–5 GB and take several minutes (subsequent runs detect the existing install and skip).'
+      note: "Runs in user scope — no administrator PowerShell needed."
     }
   }
 

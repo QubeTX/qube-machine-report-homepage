@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.9.0] - 2026-05-15
+
+### Changed
+
+- **All three product install commands switched to a wrapper-script pattern hosted on this site.** Each Install component now shows a single short one-liner that downloads a tiny wrapper from `reports.qubetx.com`, which in turn invokes the upstream cargo-dist installer published with every product release. Result: no Rust toolchain bootstrap, no MSVC Build Tools download, no admin/sudo — the binary is already compiled.
+  - **TR-300** (`Install.jsx`): Mac/Linux now runs `curl -LsSf https://reports.qubetx.com/install.sh | sh`; Windows runs `irm https://reports.qubetx.com/install.ps1 | iex`. The wrapper additionally chains `tr300 install` so the `report` shell alias and `tr300 --fast` auto-run line still get set up.
+  - **SD-300** (`SD300Install.jsx`): Mac/Linux runs `curl -LsSf https://reports.qubetx.com/install-sd300.sh | sh`; Windows runs `irm https://reports.qubetx.com/install-sd300.ps1 | iex`.
+  - **ND-300** (`ND300Install.jsx`): Mac/Linux runs `curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh`; Windows runs `irm https://reports.qubetx.com/install-nd300.ps1 | iex`.
+- Per-platform `explanation`, `note`, and `pathNote` strings rewritten across all three Install components to describe the wrapper-script flow accurately (downloads a small wrapper from this site → cargo-dist installer → prebuilt binary into `~/.cargo/bin` / `%USERPROFILE%\.cargo\bin`). User-scope install means the prior macOS sudo notes and Windows administrator-PowerShell notes are gone.
+- `CLAUDE.md` "Install Documentation Contract" section rewritten to reflect the unified wrapper-script pattern across all three products; the old "Cargo-first" rule, the MSVC Build Tools preflight subsection, and the SD-300/ND-300 future-migration plan have all been removed (they're now obsolete or implemented).
+
+### Added
+
+- **TR-300 Windows MSI/EXE installer download buttons** under the install terminal box. Surfaces the four first-class Windows installers TR-300 has published since v3.15.0 — Global MSI (`tr300-x86_64-pc-windows-msvc.msi`), Global EXE (`tr300-x86_64-pc-windows-msvc-setup.exe`), Corporate MSI (`tr300-x86_64-pc-windows-msvc-corporate.msi`), Corporate EXE (`tr300-x86_64-pc-windows-msvc-corporate-setup.exe`) — as four magenta CTA buttons grouped into a labeled GLOBAL row (admin / all users) and CORPORATE row (per-user / no admin). Each group has a small pill chip plus an italic one-line description; the chip column right-aligns and the button column right-aligns so both rows share the same right edge and the "Installs to..." descriptions share the same left edge. Only renders when the Windows tab is selected. Asset URLs use `releases/latest/download/...` so they auto-track new TR-300 releases.
+- Local `DownloadButton` helper inside `Install.jsx`, matching the existing magenta-CTA pattern from `ExecutablesContent.jsx` (inline hover state, `translateY(-2px)` lift, `0 4px 12px rgba(255, 0, 212, 0.3)` shadow).
+- `public/install.sh`, `public/install.ps1`, `public/install-sd300.sh`, `public/install-sd300.ps1`, `public/install-nd300.sh`, `public/install-nd300.ps1` — six wrapper scripts served as static files by Vercel under `reports.qubetx.com/install-*.{sh,ps1}`. Each wrapper invokes the matching upstream cargo-dist installer URL, then verifies the installed binary exists (TR-300 additionally chains `tr300 install`). All wrappers exit nonzero with a clear message if the cargo-dist call left the binary missing.
+
+### Removed
+
+- The multi-step Visual Studio Build Tools (VCTools) preflight from the TR-300 Windows one-liner (`Install.jsx`). It was a workaround for `cargo install` building from source on Windows; with the cargo-dist installer the binary is already compiled, so MSVC is irrelevant. The same preflight was also removed from `SD300Install.jsx` and `ND300Install.jsx` when those products migrated to the wrapper-script pattern.
+- The macOS sudo guidance note from `Install.jsx`, `SD300Install.jsx`, and `ND300Install.jsx`. The wrapper-script install is user-scoped; sudo is no longer needed.
+- The Windows administrator-PowerShell guidance from `SD300Install.jsx` and `ND300Install.jsx`. Same reason — user-scoped install.
+
 ## [1.8.12] - 2026-05-11
 
 ### Changed
