@@ -34,8 +34,8 @@ function App() {
       <SampleOutput />
       <Demos />
       <Commands />
-      <Install />
       <Quote />
+      <Install />
       <Footer />
     </>
   )
