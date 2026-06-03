@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.9.2] - 2026-06-03
+
+### Fixed
+
+- **Product-page accuracy pass against the live source repos.** Audited every product page with a verification agent (local clones + authenticated GitHub) and corrected drift:
+  - **Install Guide** now pulls each tool's version live from GitHub (no more hardcoded version strings), and the offline-bundle filenames are corrected to match what the bundle actually ships — Windows/Linux use the hyphenated `tr-300-` / `nd-300-` / `sd-300-` names, and the SD300 table no longer lists nonexistent `tr300-tui-*` files.
+  - **ND-300**: deep-diagnostic count corrected to 8 core + 18 deep (26 total), with Traffic Counters added; `nd300 fix` reframed as the diagnostic-driven triage loop (no longer "3-stage"); added `-y, --yes` and noted the subcommand forms; docs link `master` → `main`.
+  - **SD-300**: keybindings corrected (`j`/`k` scrolls processes/connections/drivers/disk; added the `M` Memory sort); added `sd300 update`; docs link `master` → `main`.
+  - **shaughvOS**: version fallback `V1.2.0` → `V1.20.0`; deep-diagnostic count → 18; Claude Code scoped to installer ISOs (Node.js/npm on all images); only TR-300 auto-runs; desktop-vs-console boot clarified.
+  - **TR-300**: version fallbacks `3.14.3` → `3.15.3` (its docs link correctly stays on `master`).
+  - **Executables Hub**: platform line now lists Linux x64/arm64.
+
 ## [1.9.1] - 2026-06-02
 
 ### Added

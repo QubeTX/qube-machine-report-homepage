@@ -76,12 +76,12 @@ export default function ND300Modes() {
       <GridCell
         label="02 // TECHNICIAN MODE"
         title="Deep<br />Diagnostics"
-        description="Everything in User Mode, plus 17 advanced checks — routing paths, active connections, firewall rules, connection quality, and security inspection for full network visibility."
+        description="Everything in User Mode, plus 18 advanced checks — routing paths, active connections, firewall rules, connection quality, traffic counters, and security inspection for full network visibility."
       />
       <GridCell
         label="03 // REPAIR TOOLS"
         title="Network<br />Recovery"
-        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a step-by-step network repair with diagnostic reports, clear your DNS cache, and cleanly remove when done."
+        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a diagnostic-driven repair that fixes only what failed, clear your DNS cache, and cleanly remove when done."
         noBorder
       />
     </section>

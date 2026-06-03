@@ -65,7 +65,7 @@ export default function ND300Features() {
     { title: 'Color-Coded Status', description: 'OK / Warn / Fail / Skip indicators with --no-color for plain text' },
     { title: 'Cross-Platform', description: 'Native support for Windows, macOS, and Linux from a single binary' },
     { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare (recommended), Google, NextDNS, DHCP reset, or Hybrid. Platform-specific encrypted DNS with auto-revert on failure.' },
-    { title: 'Network Recovery', description: 'Graduated 3-stage repair — service restart, interface reset, stack recreation. VPN-aware with connectivity verification. Generates detailed Markdown report with root cause analysis.' },
+    { title: 'Network Recovery', description: 'Diagnostic-driven recovery — tests the network, applies only the fixes that target what failed, re-tests, and repeats (bounded so it always finishes). VPN-aware; high-risk steps ask first. Generates a detailed Markdown report with root cause analysis.' },
     { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' },
     { title: 'SpeedQX', description: 'Standalone quad-provider speed test binary — Cloudflare + M-Lab NDT7 + LibreSpeed + fast.com with per-provider breakdown, configurable duration, and latency probes.' },
     { title: 'Pre-Installed on shaughvOS', description: <span>ND-300 and SpeedQX come pre-installed on <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> — a complete diagnostic OS you can boot from USB to troubleshoot any machine without touching the existing OS.</span> }

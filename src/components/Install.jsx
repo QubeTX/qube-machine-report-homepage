@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.14.3')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.15.3')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), updates your shell config so future terminals can find it, then runs tr300 install to write a small marker block to your shell profile — every new interactive shell picks up a report alias and an auto-run of tr300 --fast."
   const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'

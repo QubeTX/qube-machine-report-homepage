@@ -8,6 +8,11 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## June 3, 2026 — Product pages double-checked against the real tools
+
+**Fixed**
+- Went through every product page and corrected details that had drifted from the actual tools — version numbers, command lists, feature counts, and download file names — after checking each one against the real source. A few examples: the download guide now shows each tool's current version automatically and lists the exact file names you'll actually find in the folder; the network tool's deep-check count and repair description now match what it really does; the system tool's keyboard shortcuts are complete; and the shaughvOS page no longer overstates what's pre-installed.
+
 ## June 2, 2026 — Friendlier release notes + behind-the-scenes tooling
 
 **Added**

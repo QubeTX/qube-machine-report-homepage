@@ -70,9 +70,9 @@ export default function ShaughvOSPitch() {
               flexDirection: 'column',
               gap: '1.25rem'
             }}>
-              <li><strong style={{ color: 'var(--fg-bone)' }}>A beautiful, fast desktop</strong> — boots into a polished Xfce desktop with the Dracula dark theme, custom fonts, and a clean taskbar. No bloatware, no clutter.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>A beautiful, fast desktop</strong> — the installer ISO boots straight into a polished Xfce desktop with the Dracula dark theme, custom fonts, and a clean taskbar; installed systems start at a console and bring up the desktop with one command. No bloatware, no clutter.</li>
               <li><strong style={{ color: 'var(--fg-bone)' }}>Try before you install</strong> — boot the installer ISO to get a full live desktop you can explore. If you like it, click "Install" and it's on your disk in minutes.</li>
-              <li><strong style={{ color: 'var(--fg-bone)' }}>Developer tools included</strong> — Node.js, npm, and Claude Code CLI come pre-installed, so you can start coding right away.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Developer tools included</strong> — Node.js and npm come pre-installed on every image (the installer ISOs add the Claude Code CLI), so you can start coding right away.</li>
               <li><strong style={{ color: 'var(--fg-bone)' }}>Easy mode switching</strong> — type <code style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85em', color: 'var(--fg-bone)' }}>desktop on</code> for the graphical desktop or <code style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85em', color: 'var(--fg-bone)' }}>desktop off</code> for a minimal console.</li>
             </ul>
           </div>
@@ -102,8 +102,8 @@ export default function ShaughvOSPitch() {
               flexDirection: 'column',
               gap: '1.25rem'
             }}>
-              <li><strong style={{ color: 'var(--fg-bone)' }}>Instant system diagnostics</strong> — three professional-grade QubeTX tools run automatically on every login, giving you CPU, memory, disk, and network status at a glance.</li>
-              <li><strong style={{ color: 'var(--fg-bone)' }}>Network troubleshooting</strong> — 17 deep diagnostic checks including DNS resolution, gateway reachability, packet loss, MTU testing, and quad-provider speed testing with bufferbloat grading.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Instant system diagnostics</strong> — three professional-grade QubeTX tools come pre-installed, and TR-300 runs automatically on every terminal session, giving you CPU, memory, disk, and network status at a glance.</li>
+              <li><strong style={{ color: 'var(--fg-bone)' }}>Network troubleshooting</strong> — 18 deep diagnostic checks including DNS resolution, gateway reachability, packet loss, MTU testing, and quad-provider speed testing with bufferbloat grading.</li>
               <li><strong style={{ color: 'var(--fg-bone)' }}>Portable diagnostic toolkit</strong> — boot from a USB drive on any x86_64 machine to diagnose problems without touching the existing OS.</li>
               <li><strong style={{ color: 'var(--fg-bone)' }}>Headless server ready</strong> — switch to console mode for a minimal-footprint server. Perfect for Raspberry Pi home labs, media servers, or IoT projects.</li>
             </ul>

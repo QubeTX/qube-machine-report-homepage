@@ -84,7 +84,7 @@ export default function ND300Footer() {
           {' / '}
           <a href="https://github.com/QubeTX/qube-network-diagnostics" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
           {' / '}
-          <a href="https://github.com/QubeTX/qube-network-diagnostics/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
+          <a href="https://github.com/QubeTX/qube-network-diagnostics/blob/main/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
         </span>
         <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
         <span style={{ color: 'var(--accent-signal)' }}>

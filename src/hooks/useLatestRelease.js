@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const FALLBACK_VERSION = 'V1.2.0'
+const FALLBACK_VERSION = 'V1.20.0'
 const API_URL = 'https://api.github.com/repos/RealEmmettS/shaughvOS/releases/latest'
 
 export default function useLatestRelease() {
@@ -14,7 +14,7 @@ export default function useLatestRelease() {
       })
       .then(data => {
         if (data.tag_name) {
-          setVersion(data.tag_name.toUpperCase().replace(/^V/, 'V'))
+          setVersion(data.tag_name.toUpperCase())
         }
       })
       .catch(() => {})

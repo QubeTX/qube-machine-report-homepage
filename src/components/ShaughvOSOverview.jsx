@@ -88,7 +88,7 @@ export default function ShaughvOSOverview() {
         index={1}
         label="02 // BOOT EXPERIENCE"
         title={<>Power On.<br />Start Working.</>}
-        description="See your system status the moment you log in. A custom boot splash, ASCII art banner, and an automatic machine report — instant awareness with zero effort. Node.js, npm, and Claude Code CLI are pre-installed."
+        description="See your system status the moment you log in. A custom boot splash, ASCII art banner, and an automatic machine report — instant awareness with zero effort. Node.js and npm are pre-installed on every image; the installer ISOs add the Claude Code CLI."
         detail="Plymouth Splash · ASCII Banner · TR-300 Auto-Report · Node.js · Claude Code"
       />
       <GridCell

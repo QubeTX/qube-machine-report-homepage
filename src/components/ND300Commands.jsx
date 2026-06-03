@@ -63,7 +63,7 @@ const GroupSeparator = ({ label }) => (
 
 export default function ND300Commands() {
   const diagnosticFlags = [
-    { command: '-t, --tech', description: 'Run all 25 diagnostics (technician mode)' },
+    { command: '-t, --tech', description: 'Run all 26 diagnostics (technician mode)' },
     { command: '-T, --title <TEXT>', description: 'Custom title for the report header' },
     { command: '--json', description: 'Output results as JSON' },
     { command: '--ascii', description: 'Use ASCII box-drawing characters' },
@@ -75,8 +75,9 @@ export default function ND300Commands() {
 
   const actionCommands = [
     { command: '-d, --dns', description: 'Interactive DNS provider selection with auto-revert' },
-    { command: '-f, --fix', description: 'Multi-stage graduated network recovery (3 stages)' },
+    { command: '-f, --fix', description: 'Diagnostic-driven recovery loop — fixes only what failed, re-tests, repeats (high-risk steps still ask first)' },
     { command: '-c, --clear-dns', description: 'Flush system DNS resolver cache' },
+    { command: '-y, --yes', description: 'Auto-confirm medium-risk fix prompts (never bypasses high-risk Y/N)' },
     { command: '--uninstall', description: 'Complete removal (nd300 + speedqx binaries, registry, PATH cleanup)' },
     { command: '--update', description: 'Check for updates and install latest version' }
   ]
@@ -203,7 +204,7 @@ export default function ND300Commands() {
           color: '#555',
           textAlign: 'center'
         }}>
-          Run nd300 --help for full documentation
+          Action commands also work as subcommands (e.g. nd300 fix, nd300 update) — the preferred form. Run nd300 --help for full documentation.
         </p>
       </div>
     </section>

@@ -72,7 +72,7 @@ export default function ShaughvOSCommands() {
     { command: 'tr300 / report', description: 'Machine report (CPU, memory, disk, network)' },
     { command: 'tr300 --fast', description: 'Quick machine report (skip speed test)' },
     { command: 'nd300', description: 'Network diagnostics — user mode (8 core checks)' },
-    { command: 'nd300 -t', description: 'Network diagnostics — technician mode (all 25 checks)' },
+    { command: 'nd300 -t', description: 'Network diagnostics — technician mode (8 core + 18 deep)' },
     { command: 'speedqx', description: 'Quad-provider speed test with bufferbloat grading' },
     { command: 'sd300', description: 'Interactive real-time system monitoring TUI' }
   ]

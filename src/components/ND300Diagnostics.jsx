@@ -96,7 +96,8 @@ export default function ND300Diagnostics() {
     { num: '22', diagnostic: 'Connection States', description: 'TCP state distribution analysis' },
     { num: '23', diagnostic: 'Bufferbloat Detection', description: 'Latency under load grading (A+ to F)' },
     { num: '24', diagnostic: 'Reverse DNS', description: 'PTR record lookup for public IP' },
-    { num: '25', diagnostic: 'TLS Inspection', description: 'Certificate chain and cipher validation' }
+    { num: '25', diagnostic: 'TLS Inspection', description: 'Certificate chain and cipher validation' },
+    { num: '26', diagnostic: 'Traffic Counters', description: 'Per-interface bytes/packets since boot' }
   ]
 
   return (
@@ -180,7 +181,7 @@ export default function ND300Diagnostics() {
           color: '#555',
           textAlign: 'center'
         }}>
-          User mode runs 1–8 • Technician mode runs all 25
+          User mode runs 1–8 • Technician mode runs all 26
         </p>
       </div>
     </section>

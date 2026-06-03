@@ -46,8 +46,8 @@ export default function SD300Keybindings() {
     { key: 'm', action: 'Return to mode selection' },
     { key: '?', action: 'Show help overlay' },
     { key: 'f', action: 'Toggle temperature unit (C/F)' },
-    { key: 'j / k', action: 'Scroll (processes, connections in Tech Mode)' },
-    { key: 'c / n / p', action: 'Sort by CPU / Name / PID (process table)' },
+    { key: 'j / k', action: 'Scroll (processes, connections, drivers, disk in Tech Mode)' },
+    { key: 'c / M / n / p', action: 'Sort by CPU / Memory / Name / PID (process table)' },
     { key: 'r', action: 'Manual refresh (Section 9 — Drivers)' }
   ]
 
