@@ -16,7 +16,8 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 - Deployment is handled by Vercel Git integration. The repository's default remote branch is currently `main`.
 - User branch wording preference: when the user says "push to main" or "push to master", treat it as "push to the repository's default branch". In this repository, that means `main`; do not create a `master` branch unless explicitly asked for a separate branch named `master`.
 - No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.
-- `AGENTS.md` and `CLAUDE.md` provide internal agent guidance and should be kept aligned when repository conventions change.
+- `AGENTS.md`, `CLAUDE.md`, and `CODEX_PROJECT.md` provide internal agent guidance and must be kept aligned in the same commit when repository conventions change. The repo also keeps a plain-English `HUMAN_CHANGELOG.md` in lockstep with `CHANGELOG.md` — any changelog entry must be added to both.
+- Source-tool repos are resolved dynamically as `$HOME/git/<repo-name>` (e.g. `C:\Users\hey\git\qube-machine-report` on Windows) rather than a hardcoded absolute path, and all five are public so they're always readable from GitHub when no local clone exists.
 
 ## Project Goals
 
@@ -28,11 +29,24 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 ```text
 .
+├── .claude
+│   ├── agents
+│   │   └── product-page-accuracy-reviewer.md
+│   ├── hooks
+│   │   ├── doc-sync-reminder.mjs
+│   │   └── lint-changed.mjs
+│   ├── settings.json
+│   └── skills
+│       ├── new-product-page
+│       │   └── SKILL.md
+│       └── sync-agent-docs
+│           └── SKILL.md
 ├── .gitignore
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── CLAUDE.md
 ├── CODEX_PROJECT.md
+├── HUMAN_CHANGELOG.md
 ├── LICENSE
 ├── README.md
 ├── eslint.config.js

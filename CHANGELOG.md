@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.9.1] - 2026-06-02
+
+### Added
+
+- `HUMAN_CHANGELOG.md` — a plain-English companion to this changelog, with every release translated into layman's terms. A new "Changelog rule" in `CLAUDE.md` and `AGENTS.md` requires the two files to be updated in lockstep.
+- `.claude/` automation, checked into the repo: a PostToolUse ESLint hook that blocks on lint errors (`.claude/hooks/lint-changed.mjs`), a doc-sync reminder hook that fires when an agent-guidance doc or `CHANGELOG.md` is edited (`.claude/hooks/doc-sync-reminder.mjs`), a `product-page-accuracy-reviewer` subagent that cross-checks each product page against its source repo (local clone + live GitHub), and `sync-agent-docs` + `new-product-page` skills.
+
+### Fixed
+
+- Source-repository paths in `CLAUDE.md`, `AGENTS.md`, and `CODEX_PROJECT.md` were macOS-only and broke on Windows. They now resolve dynamically as `$HOME/git/<repo>` (with the public GitHub repo as a fallback), so they work on any machine.
+
+### Changed
+
+- `CLAUDE.md`, `AGENTS.md`, and `CODEX_PROJECT.md` now carry an explicit "keep these three docs in sync" rule, and `CODEX_PROJECT.md`'s workspace file tree was updated to include the new files.
+
 ## [1.9.0] - 2026-05-15
 
 ### Changed

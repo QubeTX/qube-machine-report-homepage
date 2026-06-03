@@ -42,6 +42,8 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
 
+**Non-shipped files:** `reference/` holds working snapshots (`main_version.js`, `alternate-version.js`, `tr300_documentation.md`), not live code — don't import from it or mistake it for the running app.
+
 ## Install Documentation Contract
 
 All three products use the same **wrapper-script** install pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}` since the root domain is the TR-300 page). Each wrapper calls the upstream cargo-dist installer script — published with every product's GitHub release — which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin. The wrapper fails loudly if the binary isn't present after install.
@@ -111,19 +113,43 @@ URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/down
 
 ## Source Repositories
 
-Each product page on this site markets a separate CLI tool / project. When updating features, commands, install instructions, or capabilities on a product page, **read the actual source repo** to ensure accuracy. All repos are accessible via GitHub (QubeTX org or RealEmmettS) and most are cloned locally.
+Each product page on this site markets a separate CLI tool / project. When updating features, commands, install instructions, or capabilities on a product page, **read the actual source repo** to ensure accuracy. **All five repos are public**, so they're always reachable via `gh` / raw GitHub even when no local clone is present.
 
-| Product | GitHub Repo | Local Path |
-|---------|------------|------------|
-| TR-300 Machine Report | `QubeTX/qube-machine-report` | `/Users/realemmetts/Downloads/temp_git/qube-machine-report` |
-| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `/Users/realemmetts/Downloads/temp_git/qube-system-diagnostics` |
-| ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `/Users/realemmetts/Downloads/temp_git/qube-network-diagnostics` |
-| Executables Download Hub | `QubeTX/qube-reports-executables` | *(not cloned locally)* |
-| shaughvOS | `RealEmmettS/shaughvOS` | *(not cloned locally)* |
+**Finding the local clone (resolve dynamically — survives new machines / re-wipes).** Clones live under a single `git/` directory in the home folder, named exactly after the repo (lowercase, via GitHub Desktop). So the path is `$HOME/git/<repo-name>` on macOS/Linux and `%USERPROFILE%\git\<repo-name>` (a.k.a. `$HOME\git\<repo-name>`) on Windows. Don't hardcode a full absolute path — derive it from `$HOME` + the repo name so it keeps working if the user gets a new machine:
 
-**Workflow for feature/content updates:** Read the source repo's README, CHANGELOG, and relevant source files before updating the corresponding product page here. Use the local clone when available; fall back to `gh` CLI or GitHub API for the executables repo.
+```bash
+# works on macOS, Linux, and Git Bash on Windows
+repo=qube-machine-report
+clone="$HOME/git/$repo"
+if [ -d "$clone" ]; then echo "$clone"; else echo "no local clone — read from GitHub: QubeTX/$repo"; fi
+```
+
+| Product | GitHub Repo (public) | Repo dir name (under `~/git/`) |
+|---------|---------------------|--------------------------------|
+| TR-300 Machine Report | `QubeTX/qube-machine-report` | `qube-machine-report` |
+| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `qube-system-diagnostics` |
+| ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `qube-network-diagnostics` |
+| Executables Download Hub | `QubeTX/qube-reports-executables` | *(usually not cloned — use GitHub)* |
+| shaughvOS | `RealEmmettS/shaughvOS` | *(usually not cloned — use GitHub)* |
+
+Verified current location on the Windows machine: `C:\Users\hey\git\<repo>` (i.e. `$HOME/git/<repo>`). Older docs referenced a macOS `~/Downloads/temp_git/<repo>` location; if `$HOME/git/<repo>` isn't present there as a legacy fallback, then read from GitHub.
+
+**Workflow for feature/content updates:** Read the source repo's README, CHANGELOG, and relevant source files before updating the corresponding product page here. Prefer the local clone (`$HOME/git/<repo>`) when it exists; otherwise (always for the un-cloned executables hub and shaughvOS) read straight from the public repo with `gh` (e.g. `gh api repos/QubeTX/qube-machine-report/contents/README.md --jq '.content' | base64 -d`) or raw GitHub.
 
 ## Key Libraries
 
 - **framer-motion** — entrance animations (hero sections only)
 - **lenis** — smooth scrolling with custom easing (initialized in each App component)
+
+## Agent docs (keep in sync)
+
+This repo carries three overlapping agent-guidance files: `CLAUDE.md` (this file, for Claude Code), `AGENTS.md` (for Codex), and `CODEX_PROJECT.md` (project summary + canonical file tree). They share most of their content. **A convention change in one must be mirrored to the other two in the same commit** — they have drifted before. The `sync-agent-docs` skill (`.claude/skills/sync-agent-docs/`) automates this propagation.
+
+## Changelog rule
+
+This repo maintains two changelogs in parallel:
+
+- `CHANGELOG.md` — the technical changelog (Keep a Changelog style). Version numbers, file references, and detail are welcome here.
+- `HUMAN_CHANGELOG.md` — a plain-English companion. Every entry in `CHANGELOG.md` has a corresponding entry here, written for a non-engineer reader: no version numbers, no file paths, no jargon — just what changed and why it matters.
+
+**When you update `CHANGELOG.md`, you must also update `HUMAN_CHANGELOG.md` in the same commit.** Translate each entry by stripping version numbers, file paths, function names, and metrics; replace jargon with everyday words; add a short "why it matters" clause where the effect isn't obvious. Use the labels Added / Improved / Fixed / Removed / Security / Behind the scenes. Purely internal changes still get a one-line "Behind the scenes" entry — the two files stay in lockstep.

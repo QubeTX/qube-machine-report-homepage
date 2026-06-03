@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "node .claude/hooks/lint-changed.mjs" },
+          { "type": "command", "command": "node .claude/hooks/doc-sync-reminder.mjs" }
+        ]
+      }
+    ]
+  }
+}
