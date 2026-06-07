@@ -72,6 +72,39 @@ const CopyButton = ({ text }) => {
   )
 }
 
+const DownloadButton = ({ href, label }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: 'var(--accent-signal)',
+        border: '2px solid var(--accent-signal)',
+        color: 'var(--bg-void)',
+        fontFamily: 'var(--font-mono)',
+        fontWeight: '700',
+        padding: '0.5rem 1rem',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        textTransform: 'uppercase',
+        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
+        transform: isHovered ? 'translateY(-2px)' : 'none',
+        boxShadow: isHovered ? '0 4px 12px rgba(255, 0, 212, 0.3)' : 'none',
+        fontSize: '0.75rem',
+        textDecoration: 'none',
+        display: 'inline-block'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {label}
+    </a>
+  )
+}
+
 const CodeBlock = ({ prompt, comment, command }) => (
   <div style={{ marginBottom: '0.75rem' }}>
     {comment && (
@@ -94,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.0.7')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.1.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
   const installNote = 'Already installed with older instructions? Run nd300 update or speedqx update. The crates.io package is still nd300 — the wrapper just installs the prebuilt binary instead of building from source.'
@@ -126,7 +159,7 @@ export default function ND300Install() {
       command: 'irm https://reports.qubetx.com/install-nd300.ps1 | iex',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt nd300.exe and speedqx.exe binaries for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binaries are already compiled.",
       updateCommand: 'nd300 update',
-      note: "Runs in user scope — no administrator PowerShell needed."
+      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binaries, just packaged for double-click."
     }
   }
 
@@ -255,6 +288,78 @@ export default function ND300Install() {
           {installNote}
         </p>
       </div>
+
+      {selectedPlatform === 'windows' && (() => {
+        const chipStyle = {
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.7rem',
+          color: 'var(--fg-dim)',
+          border: '1px solid var(--fg-dim)',
+          padding: '2px 8px',
+          borderRadius: '4px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          justifySelf: 'end',
+          whiteSpace: 'nowrap'
+        }
+        const descStyle = {
+          fontFamily: 'var(--font-serif)',
+          fontStyle: 'italic',
+          fontSize: '1rem',
+          color: '#aaa'
+        }
+        const buttonsRowStyle = { display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', flexWrap: 'wrap' }
+        return (
+          <div style={{
+            width: '100%',
+            maxWidth: '800px',
+            marginTop: '3rem',
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr auto',
+            columnGap: '1rem',
+            rowGap: '1.5rem',
+            alignItems: 'center'
+          }}>
+            <p style={{
+              gridColumn: '1 / -1',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              lineHeight: '1.6',
+              color: 'var(--fg-dim)',
+              textAlign: 'center',
+              margin: 0
+            }}>
+              Prefer not to install Rust? Use a prebuilt Windows installer.
+            </p>
+
+            <span style={chipStyle}>Global</span>
+            <span style={descStyle}>Installs to Program Files — requires administrator.</span>
+            <div style={buttonsRowStyle}>
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-x86_64-pc-windows-msvc.msi"
+                label="↓ Download .MSI"
+              />
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-x86_64-pc-windows-msvc-setup.exe"
+                label="↓ Download .EXE"
+              />
+            </div>
+
+            <span style={chipStyle}>Corporate</span>
+            <span style={descStyle}>Installs to your user profile — no admin required.</span>
+            <div style={buttonsRowStyle}>
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-x86_64-pc-windows-msvc-corporate.msi"
+                label="↓ Download .MSI"
+              />
+              <DownloadButton
+                href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-x86_64-pc-windows-msvc-corporate-setup.exe"
+                label="↓ Download .EXE"
+              />
+            </div>
+          </div>
+        )
+      })()}
 
       <p style={{
         fontFamily: 'var(--font-mono)',
