@@ -334,7 +334,7 @@ const HorizontalRule = () => (
 
 export default function InstallGuideContent() {
   const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '3.15.3')
-  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.0.7')
+  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.1.0')
   const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
 
   return (
