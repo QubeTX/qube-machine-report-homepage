@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.1.0')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.2.1')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
   const installNote = 'Already installed with older instructions? Run nd300 update or speedqx update. The crates.io package is still nd300 — the wrapper just installs the prebuilt binary instead of building from source.'
@@ -159,7 +159,7 @@ export default function ND300Install() {
       command: 'irm https://reports.qubetx.com/install-nd300.ps1 | iex',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt nd300.exe and speedqx.exe binaries for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binaries are already compiled.",
       updateCommand: 'nd300 update',
-      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binaries, just packaged for double-click."
+      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binaries, just packaged for double-click. The installers keep a single version on your PC — both offer (on by default) to remove an older Cargo-installed copy and the other edition, so you never end up with duplicates; the built-in update does the same automatically."
     }
   }
 
