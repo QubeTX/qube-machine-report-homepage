@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.15.3')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '3.17.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), updates your shell config so future terminals can find it, then runs tr300 install to write a small marker block to your shell profile — every new interactive shell picks up a report alias and an auto-run of tr300 --fast."
   const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'
@@ -159,7 +159,7 @@ export default function Install() {
       command: 'irm https://reports.qubetx.com/install.ps1 | iex',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to add a report PowerShell alias and an auto-run line to your PowerShell profile so every new session starts with tr300 ready. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'tr300 update',
-      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binary, just packaged for double-click."
+      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binary, just packaged for double-click. The installers keep a single version on your PC — both offer (on by default) to remove an older Cargo-installed copy and the other edition, so you never end up with duplicates; the built-in update does the same automatically."
     }
   }
 
