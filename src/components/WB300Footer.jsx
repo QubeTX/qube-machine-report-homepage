@@ -28,7 +28,7 @@ const SizeBadge = ({ children, active }) => {
 }
 
 export default function WB300Footer() {
-  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '0.1.0')
+  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '1.0.0')
 
   return (
     <footer style={{

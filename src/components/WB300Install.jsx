@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function WB300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '0.1.0')
+  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '1.0.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-wb300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt wb300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find it."
   const installNote = 'WB-300 drives the installed git CLI directly — it needs git on your PATH, but no Rust toolchain. The crates.io package is wb300; the wrapper just installs the prebuilt binary instead of building from source.'

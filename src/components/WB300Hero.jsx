@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function WB300Hero() {
-  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '0.1.0')
+  const version = useGitHubVersion('QubeTX/qube-workbranch-view', '1.0.0')
 
   useEffect(() => {
     document.title = 'QUBETX WB-300'
