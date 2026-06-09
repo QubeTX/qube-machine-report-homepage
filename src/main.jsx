@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import SD300App from './SD300App.jsx'
 import ND300App from './ND300App.jsx'
+import WB300App from './WB300App.jsx'
 import ExecutablesApp from './ExecutablesApp.jsx'
 import InstallGuideApp from './InstallGuideApp.jsx'
 import ShaughvOSApp from './ShaughvOSApp.jsx'
@@ -12,6 +13,7 @@ const path = window.location.pathname
 const Page =
   path === '/sd300' || path === '/sd300/' ? SD300App :
   path === '/nd300' || path === '/nd300/' ? ND300App :
+  path === '/wb300' || path === '/wb300/' ? WB300App :
   path === '/executables' || path === '/executables/' ? ExecutablesApp :
   path === '/install-guide' || path === '/install-guide/' ? InstallGuideApp :
   path === '/shaughvos' || path === '/shaughvos/' ? ShaughvOSApp :
