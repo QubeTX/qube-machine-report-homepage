@@ -71,17 +71,17 @@ export default function WB300Modes() {
       <GridCell
         label="01 // REPO CONSOLE"
         title="Live<br />Cockpit"
-        description="Run it inside any repo and watch every worktree at once — branches, dirty/clean status, ahead/behind drift, and which agent is working where, all updating live as files change."
+        description="Run it inside any repo and watch the branch tree breathe — each agent on its branch, the files it's changing right now, what's uncommitted, committed, pushed, or merged, all updating live as files change."
       />
       <GridCell
         label="02 // HOME VIEW"
         title="Machine<br />Control Tower"
-        description="Run it outside a repo and it finds every project being actively worked on across your machine — grouped by workbranch, with the same live flashes — so you can supervise several agents across several projects at a glance."
+        description="Run it outside a repo and the same tree shows every project being actively worked on across your machine — every branch and agent beneath each one — so you can supervise the entire fleet in a single window."
       />
       <GridCell
         label="03 // HEADLESS AGENT"
         title="JSON<br />For Agents"
-        description="wb300 agent prints the whole worktree, branch, agent, and collision picture as pure JSON and exits — no TUI — so another agent or a script can read the state in one shot and orchestrate the rest."
+        description="wb300 agent prints the whole branch hierarchy — roles, parents, lifecycle stages, agents, and changed files — as pure JSON and exits — no TUI — so another agent or a script can read the state in one shot and orchestrate the rest."
         noBorder
       />
     </section>

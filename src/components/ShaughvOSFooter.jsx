@@ -92,6 +92,8 @@ export default function ShaughvOSFooter() {
           {' / '}
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
           {' / '}
+          <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
+          {' / '}
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
           <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>

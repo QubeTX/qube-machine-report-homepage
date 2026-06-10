@@ -155,8 +155,8 @@ export default function WB300Hero() {
           fontWeight: '400',
           maxWidth: '700px'
         }}>
-          Mission control for parallel Git worktrees.<br />
-          Watch every agent workspace live.
+          Mission control for parallel coding agents.<br />
+          One window — every repo, every branch, every agent, live.
         </h2>
       </div>
 

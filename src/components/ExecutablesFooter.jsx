@@ -81,6 +81,7 @@ export default function ExecutablesFooter() {
       }}>
         <SizeBadge href="/" title="Machine Report">TR-300</SizeBadge>
         <SizeBadge href="/nd300" title="Network Diagnostic">ND-300</SizeBadge>
+        <SizeBadge href="/wb300" title="Workbranch View">WB-300</SizeBadge>
         <SizeBadge href="/sd300" title="System Diagnostic">SD-300</SizeBadge>
       </div>
 
@@ -95,6 +96,8 @@ export default function ExecutablesFooter() {
           <a href="/" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>TR-300</a>
           {' / '}
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
+          {' / '}
+          <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
           {' / '}
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
