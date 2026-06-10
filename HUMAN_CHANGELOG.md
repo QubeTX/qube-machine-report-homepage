@@ -8,6 +8,19 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## June 10, 2026 — WB-300 is back on the menu, and its page tells the new story
+
+The WB-300 page is visible again in the site's navigation and in every page's footer links
+(it had been temporarily hidden while the tool was reworked). The page itself now describes
+the new WB-300: instead of talking about working folders as the main thing, it shows what
+the tool really does now — draw your project's family tree of branches, with each AI agent
+on its own branch, the files it's changing live, and a clear stage for every branch (being
+edited, saved-but-not-committed, committed, pushed, or finished). It also mentions the new
+system notifications (a tap on the shoulder when work lands, ships, or two agents start
+touching the same file), the built-in manual, and the clean uninstall command. The download
+buttons and version badge already update themselves, so they show the new 2.0 release
+automatically.
+
 ## June 3, 2026 — Product pages double-checked against the real tools
 
 **Fixed**

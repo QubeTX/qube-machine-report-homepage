@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.10.0] - 2026-06-10
+
+### Added
+
+- **WB-300 page re-enabled and refreshed for wb300 v2.0.0** (the corrected-model release):
+  - `ProductNav` shows WB-300 again (the `/wb300` route had stayed live, just unlinked), and
+    every product/footer cross-link chain (`Footer`, `ND300Footer`, `SD300Footer`,
+    `ShaughvOSFooter`, `ExecutablesFooter`, `InstallGuideFooter`) now includes WB-300.
+  - Hero tagline updated: "Mission control for parallel coding agents. One window — every
+    repo, every branch, every agent, live."
+  - Features rewritten around the v2 model (one agent = one branch = one worktree): the real
+    branch hierarchy derived from commit topology, per-branch lifecycle
+    (editing → uncommitted → committed → pushed → merged), agents pinned to branches with
+    their changed files, OS notifications (commit / push / merge-conflict risk only),
+    merge-risk forecast, safe cleanup, unified machine-wide tree, `wb300 help` +
+    `wb300 uninstall`, and the `wb300.agent.v2` JSON schema. The stale
+    "grouped by workbranch" phrasing (v1's misconception) is gone from Features and Modes.
+  - Install links and the version badge were already version-agnostic
+    (`releases/latest/download`, live GitHub version fetch) and pick up v2.0.0 automatically.
+
 ## [1.9.2] - 2026-06-03
 
 ### Fixed

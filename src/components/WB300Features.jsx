@@ -58,14 +58,16 @@ const FeatureRow = ({ index, title, description }) => {
 
 export default function WB300Features() {
   const features = [
-    { title: 'Branch + Worktree Explorer', description: 'Local branches, remote-tracking branches, and worktrees in one tree, with detached, locked, prunable, and stale state flagged inline.' },
-    { title: 'Process → Worktree Mapping', description: 'Scans running programs and works out which agent (Claude / Codex) or task (build / test / shell / editor) is inside which worktree, with CPU, memory, and runtime.' },
-    { title: 'Live Flashes', description: 'Created, modified, pushed, deleted, and merged shown the moment they happen — with temporary colour flashes — no need to press refresh.' },
-    { title: 'Collision Detection', description: 'Flags any file two or more worktrees have touched — including files already committed since the shared branch — colour-coded by risk, with lockfiles, migrations, and CI configs as the scariest.' },
-    { title: 'Readiness & Safe Cleanup', description: "Shows what's ready to review, stale, risky, or safe to remove. Removal needs you to type the name to confirm — and a rescue snapshot is saved first if there's uncommitted work." },
-    { title: 'Machine-Wide Home View', description: 'Run wb300 outside a repo to see every project being actively worked on across the machine, grouped by workbranch, with the same live flashes — supervise several agents across several projects at once.' },
-    { title: 'Headless Agent JSON', description: 'wb300 agent prints the whole worktree, branch, agent, and collision state as pure JSON and exits, carrying a stable schema tag so orchestrating agents can read the picture in one shot.' },
-    { title: 'Remote-Aware, Never Noisy', description: 'It never touches the network on its own — press f to fetch — and a worktree flashes green the moment its commits make it to the remote.' },
+    { title: 'The Real Branch Hierarchy', description: 'Your actual branch tree — main, the daily workbranch, and a task branch per agent — derived from Git’s commit history itself, never guessed from names. One agent, one branch, one worktree.' },
+    { title: 'Per-Branch Lifecycle', description: 'Every branch shows where its work stands at a glance: being edited right now → uncommitted (held yellow) → committed (↑) → pushed (✓) → merged. Falling behind its parent? It says so.' },
+    { title: 'Agents On Their Branches', description: 'Scans running programs and pins each agent (Claude / Codex) or task (build / test / shell / editor) to the branch it’s working, with CPU, memory, runtime — and the exact files it’s changing, expandable like a file explorer.' },
+    { title: 'Live Flashes', description: 'A blue pulse on the very file being saved, magenta the moment a branch commits, green the moment it pushes — no refresh key. Rebases don’t masquerade as commits.' },
+    { title: 'OS Notifications', description: 'A real system notification when a branch gets new commits, when work reaches the remote, and when two branches start changing the same file — and never for anything else. Bursts coalesce; repeats stay quiet.' },
+    { title: 'Merge-Risk Forecast', description: 'Flags any file changed on two or more branches — including files already committed since the shared base — colour-coded by risk, with lockfiles, migrations, and CI configs as the scariest.' },
+    { title: 'Safe Cleanup', description: "Shows which worktrees are safe to remove (merged, pushed, no agent). Removal needs you to type the branch name to confirm — the branch and its commits are kept, and a rescue snapshot is saved first if there's uncommitted work." },
+    { title: 'Machine-Wide Home View', description: 'Run wb300 outside a repo and the same tree shows every active project as a top-level entry — every branch and agent beneath it. One window over the entire fleet; press Enter to step into a repo.' },
+    { title: 'Headless Agent JSON', description: 'wb300 agent prints the whole branch hierarchy — roles, parents, lifecycle stages, agents, changed files — as pure JSON and exits (schema wb300.agent.v2), so orchestrating agents can read the picture in one shot.' },
+    { title: 'Self-Documenting, Self-Removing', description: 'wb300 help prints the full manual — every view, key, and symbol — right in the terminal. wb300 uninstall removes it cleanly whatever way it was installed, and never touches your repositories.' },
     { title: 'Registry-Aware Self-Update', description: 'wb300 update upgrades in place and, on Windows, remembers how you installed it, fetches the matching installer, verifies its checksum, and confirms the new version — even no-admin corporate installs.' },
     { title: 'Cross-Platform', description: 'A single Rust + Ratatui binary with native support for Windows, macOS, and Linux, on both Intel and ARM.' }
   ]
