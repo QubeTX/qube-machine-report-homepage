@@ -21,6 +21,18 @@ When the user says "push to main" or "push to master", interpret that as "push t
 
 SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
 
+## Temporarily delisted pages (WIP — SD-300 & Shaughv OS)
+
+**Status (since 2026-06-14):** The **SD-300** (`/sd300`) and **Shaughv OS** (`/shaughvos`) pages are being reworked and must **not be marketed** yet. Both routes and all their components are fully intact — each page still renders if reached by direct URL — but every discoverable in-site link to them (the nav bar, all footers, and in-content cross-links) has been removed. Do **not** re-add links or otherwise re-market these two pages until the WIP updates are finished.
+
+**⚠️ Standing reminder — while this section exists:** any time you update a product page in this repo, **remind Emmett that SD-300 and Shaughv OS still need to be finished and re-linked** so they can be marketed again. When they're ready, restore the links per the manifest below and delete this whole section.
+
+**Restore manifest.** Every delisted spot keeps a greppable `WIP-DELISTED` comment that preserves the original markup — find them all with `grep -r "WIP-DELISTED" src/`:
+- **Nav** — `src/components/ProductNav.jsx`: uncomment the `SD-300` and `SHAUGHVOS` entries in the `products` array (mirrors the earlier WB-300 hide).
+- **Footers** — uncomment the SD-300 / SHAUGHVOS `<a>` entries (and the SD-300 `SizeBadge` where present) in `Footer.jsx`, `ND300Footer.jsx`, `WB300Footer.jsx`, `SD300Footer.jsx` (Shaughv OS link only), `ShaughvOSFooter.jsx`, `ExecutablesFooter.jsx` (badge + text row), and `InstallGuideFooter.jsx` (badge + text row, SD-300 only).
+- **In-content** — `ExecutablesContent.jsx`: uncomment the SD-300 `GridCell` **and remove the `noBorder` that was added to the ND-300 cell** (it was a temporary last-cell border fix). In `Demos.jsx`, `ND300Features.jsx`, `SD300Platform.jsx`, and `ShaughvOSOverview.jsx`, re-wrap the de-linked `shaughvOS` / `SD-300` text in the anchor preserved in its adjacent comment.
+- Routes in `src/main.jsx` and the `public/install-sd300.*` wrappers were intentionally left untouched.
+
 ## Architecture
 
 **Stack:** React 18 + Vite (plain JavaScript, no TypeScript). No state management library, no React Router.
@@ -38,7 +50,7 @@ SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html
 
 To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add a rewrite if needed (current `vercel.json` already catches all paths).
 
-**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared cross-product navigation bar.
+**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. There is **no shared footer**: each page has its own inline `*Footer.jsx` that hardcodes its own cross-product link row (`Footer.jsx` is the TR-300/homepage one), so cross-product link changes touch every footer individually.
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
 
@@ -153,3 +165,5 @@ This repo maintains two changelogs in parallel:
 - `HUMAN_CHANGELOG.md` — a plain-English companion. Every entry in `CHANGELOG.md` has a corresponding entry here, written for a non-engineer reader: no version numbers, no file paths, no jargon — just what changed and why it matters.
 
 **When you update `CHANGELOG.md`, you must also update `HUMAN_CHANGELOG.md` in the same commit.** Translate each entry by stripping version numbers, file paths, function names, and metrics; replace jargon with everyday words; add a short "why it matters" clause where the effect isn't obvious. Use the labels Added / Improved / Fixed / Removed / Security / Behind the scenes. Purely internal changes still get a one-line "Behind the scenes" entry — the two files stay in lockstep.
+
+The `package.json` `version` is kept in lockstep with the top `CHANGELOG.md` heading — bump both together (e.g. `1.10.0` → `1.11.0`) in the same commit.

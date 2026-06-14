@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## June 14, 2026 — SD-300 and Shaughv OS temporarily taken out of the spotlight
+
+We're polishing the SD-300 and Shaughv OS pages, so for now we've removed them from the site's
+menus, footers, and the cross-links that point to them from other pages — nothing leads
+visitors there while the work is in progress. The pages themselves still work if you have the
+direct link; they just aren't advertised anywhere on the site. Everything was tagged so it's
+easy to put back, and we left ourselves a note to finish and re-launch both pages before
+featuring them again.
+
 ## June 10, 2026 — WB-300 is back on the menu, and its page tells the new story
 
 The WB-300 page is visible again in the site's navigation and in every page's footer links

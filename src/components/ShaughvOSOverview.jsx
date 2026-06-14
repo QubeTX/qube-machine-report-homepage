@@ -102,7 +102,7 @@ export default function ShaughvOSOverview() {
             {' \u00b7 '}
             <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
             {' \u00b7 '}
-            <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
+            SD-300{/* WIP-DELISTED — SD-300 de-linked (WIP); restore the anchor: <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a> */}
             {' \u00b7 SPEEDQX'}
           </>
         }

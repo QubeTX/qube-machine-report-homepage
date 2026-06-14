@@ -84,7 +84,7 @@ export default function Demos() {
     },
     {
       title: 'Pre-Installed on shaughvOS',
-      description: <span>TR-300 runs automatically on every login in <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> — a complete diagnostic OS you can boot from USB on any machine</span>
+      description: <span>TR-300 runs automatically on every login in shaughvOS{/* WIP-DELISTED — Shaughv OS de-linked (WIP); restore the anchor: <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> */} — a complete diagnostic OS you can boot from USB on any machine</span>
     }
   ]
 

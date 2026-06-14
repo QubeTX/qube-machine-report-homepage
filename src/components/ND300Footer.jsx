@@ -80,10 +80,11 @@ export default function ND300Footer() {
           {' / '}
           <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
           {' / '}
+          {/* WIP-DELISTED — SD-300 & Shaughv OS delisted (WIP); restore both links + their separators:
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
           <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
-          {' / '}
+          {' / '} */}
           <a href="https://github.com/QubeTX/qube-network-diagnostics" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
           {' / '}
           <a href="https://github.com/QubeTX/qube-network-diagnostics/blob/main/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>

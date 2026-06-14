@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.11.0] - 2026-06-14
+
+### Changed
+
+- **SD-300 and Shaughv OS temporarily delisted from all marketing surfaces (WIP).** Both pages
+  are getting work-in-progress updates and should not be marketed yet, so every discoverable
+  in-site link to them was removed while the pages and routes were left fully intact
+  (`/sd300` → `SD300App`, `/shaughvos` → `ShaughvOSApp` still render via direct URL):
+  - **Nav bar** (`ProductNav`): the SD-300 and SHAUGHVOS entries are commented out (mirrors the
+    earlier WB-300 hide pattern).
+  - **Footers**: the SD-300 / SHAUGHVOS link entries (and the SD-300 `SizeBadge`) are commented
+    out across `Footer`, `ND300Footer`, `WB300Footer`, `SD300Footer`, `ShaughvOSFooter`,
+    `ExecutablesFooter`, and `InstallGuideFooter`.
+  - **In-content links**: the Executables product grid's SD-300 card is commented out (with
+    `noBorder` moved to the now-last ND-300 card), and the shaughvOS / SD-300 mentions in
+    `Demos`, `ND300Features`, `SD300Platform`, and `ShaughvOSOverview` are de-linked to plain
+    text.
+  - Every removed/de-linked site carries a greppable `WIP-DELISTED` comment preserving the
+    original markup, so restoration is `grep -r "WIP-DELISTED" src/`. A restore manifest and a
+    standing "remind me to finish these before re-marketing" note were added to `CLAUDE.md`
+    (mirrored to `AGENTS.md` and `CODEX_PROJECT.md`).
+
 ## [1.10.0] - 2026-06-10
 
 ### Added

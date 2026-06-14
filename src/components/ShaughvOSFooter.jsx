@@ -94,10 +94,11 @@ export default function ShaughvOSFooter() {
           {' / '}
           <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
           {' / '}
+          {/* WIP-DELISTED — SD-300 & Shaughv OS (self) delisted (WIP); restore both links + their separators:
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
           <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
-          {' / '}
+          {' / '} */}
           <a href="https://github.com/RealEmmettS/shaughvOS" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
         </span>
         <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GPLv2 LICENSE</a>

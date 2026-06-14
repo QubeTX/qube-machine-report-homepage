@@ -4,9 +4,11 @@ const products = [
   { label: 'TR-300', path: '/' },
   { label: 'ND-300', path: '/nd300' },
   { label: 'WB-300', path: '/wb300' },
-  { label: 'SD-300', path: '/sd300' },
+  // WIP-DELISTED — SD-300 temporarily hidden from navigation; page/route still live at /sd300, just unlinked.
+  // { label: 'SD-300', path: '/sd300' },
   { label: 'OFFLINE', path: '/executables' },
-  { label: 'SHAUGHVOS', path: '/shaughvos' }
+  // WIP-DELISTED — Shaughv OS temporarily hidden from navigation; page/route still live at /shaughvos, just unlinked.
+  // { label: 'SHAUGHVOS', path: '/shaughvos' }
 ]
 
 const NavLink = ({ label, path, active }) => {
