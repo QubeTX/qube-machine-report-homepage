@@ -138,3 +138,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vercel
+
+# Exported Claude Code conversation transcripts (may contain private/global config — keep local, never commit)
+disable-sd300-shaughvos.txt
