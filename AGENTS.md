@@ -17,6 +17,8 @@ No test framework is configured — there are no tests to run.
 
 Push to `main` triggers automatic production deployment via Vercel Git integration. No Vercel CLI needed.
 
+**This repo is PUBLIC** — every push to `main` is both a public commit and an auto-deploy to production. Treat each commit as a public release: never `git add -A` blindly (exported `/export` transcripts and local dumps can leak private/global config), and prefer staging explicit paths. Exported conversation transcripts are gitignored.
+
 When the user says "push to main" or "push to master", interpret that as "push to the repository's default branch". For this repository, the default branch is `main`; do not create or push a new `master` branch unless the user explicitly asks for a separate branch named `master`.
 
 SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
