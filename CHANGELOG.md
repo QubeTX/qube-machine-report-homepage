@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.12.0] - 2026-06-23
+
+### Changed
+
+- **Windows install one-liners are now wrapped in `powershell -ExecutionPolicy ByPass -c "..."`.**
+  Every product page's Windows command changed from the bare `irm https://reports.qubetx.com/install-<product>.ps1 | iex`
+  to `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-<product>.ps1 | iex"`,
+  across all four install components (`Install.jsx`, `SD300Install.jsx`, `ND300Install.jsx`,
+  `WB300Install.jsx`). The wrapped form is copy-pasteable from any Windows context (`cmd.exe`, the
+  Win+R Run dialog, a shortcut target — not just an already-open `PS>` prompt), and
+  `-ExecutionPolicy ByPass` lets it run regardless of the machine's script policy. The Mac/Linux
+  `curl … | sh` commands and the internal logic of the `public/install*.ps1` wrapper files are
+  unchanged. This reverses the earlier deliberately-unwrapped form.
+- **Docs updated to match.** The install one-liner tables in `CLAUDE.md`, `AGENTS.md`, and
+  `README.md`, the pattern prose in `CLAUDE.md` and `CODEX_PROJECT.md`, and the
+  `new-product-page` skill reference all now show the wrapped Windows form so future pages
+  scaffold consistently.
+
 ## [1.11.0] - 2026-06-14
 
 ### Changed

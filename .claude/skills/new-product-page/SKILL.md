@@ -51,7 +51,7 @@ styling, and install rules — this skill is the checklist that ties them togeth
      (`releases/latest/download/<asset>`) and fail loudly if the binary is missing afterward. Keep
      them tiny (~10 lines). Don't add an MSVC preflight — the cargo-dist binary is prebuilt.
    - Build an `<Prefix>Install.jsx` with the platform-tabbed one-liners (`curl … | sh` /
-     `irm … | iex`). Reuse the `DownloadButton` helper + installer-block layout from `Install.jsx`
+     `powershell -ExecutionPolicy ByPass -c "irm … | iex"`). Reuse the `DownloadButton` helper + installer-block layout from `Install.jsx`
      if the product also ships MSI/EXE installers.
 
 6. **Changelog** — add the change to `CHANGELOG.md` **and** `HUMAN_CHANGELOG.md` in the same commit

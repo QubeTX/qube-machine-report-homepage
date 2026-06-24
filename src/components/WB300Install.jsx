@@ -156,7 +156,7 @@ export default function WB300Install() {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install the prebuilt wb300 binary',
-      command: 'irm https://reports.qubetx.com/install-wb300.ps1 | iex',
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-wb300.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt wb300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'wb300 update',
       note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — same binary, just packaged for double-click. Each records how it was installed, so wb300 update later fetches the matching installer — the no-admin Corporate install upgrades without ever prompting for admin."

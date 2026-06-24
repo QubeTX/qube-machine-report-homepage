@@ -156,7 +156,7 @@ export default function ND300Install() {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install the prebuilt nd300 binary',
-      command: 'irm https://reports.qubetx.com/install-nd300.ps1 | iex',
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt nd300.exe and speedqx.exe binaries for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binaries are already compiled.",
       updateCommand: 'nd300 update',
       note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binaries, just packaged for double-click. The installers keep a single version on your PC — both offer (on by default) to remove an older Cargo-installed copy and the other edition, so you never end up with duplicates; the built-in update does the same automatically."

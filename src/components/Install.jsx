@@ -156,7 +156,7 @@ export default function Install() {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install the prebuilt tr300 binary',
-      command: 'irm https://reports.qubetx.com/install.ps1 | iex',
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to add a report PowerShell alias and an auto-run line to your PowerShell profile so every new session starts with tr300 ready. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'tr300 update',
       note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binary, just packaged for double-click. The installers keep a single version on your PC — both offer (on by default) to remove an older Cargo-installed copy and the other edition, so you never end up with duplicates; the built-in update does the same automatically."

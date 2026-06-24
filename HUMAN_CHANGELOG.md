@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## June 23, 2026 — The Windows install command now works from any window
+
+We changed the one-line install command shown on the Windows tab of every product page so it
+starts with `powershell …`. Before, it only worked if you'd already opened a PowerShell window;
+now you can paste it almost anywhere on Windows — a regular Command Prompt, the Run box, or a
+desktop shortcut — and it still installs correctly, even on computers with stricter security
+settings. The Mac and Linux commands are unchanged.
+
 ## June 14, 2026 — SD-300 and Shaughv OS temporarily taken out of the spotlight
 
 We're polishing the SD-300 and Shaughv OS pages, so for now we've removed them from the site's

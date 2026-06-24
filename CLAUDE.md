@@ -66,11 +66,11 @@ All three products use the same **wrapper-script** install pattern. The homepage
 
 | Product | Mac/Linux | Windows (PowerShell) |
 |---------|-----------|----------------------|
-| TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `irm https://reports.qubetx.com/install.ps1 \| iex` |
-| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `irm https://reports.qubetx.com/install-sd300.ps1 \| iex` |
-| ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `irm https://reports.qubetx.com/install-nd300.ps1 \| iex` |
+| TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 \| iex"` |
+| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-sd300.ps1 \| iex"` |
+| ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 \| iex"` |
 
-Each command corresponds to a wrapper file in `public/` that is served directly by Vercel (filesystem matches run before the SPA rewrite in `vercel.json` — confirmed by the fact that `assets/index-*.js` and the other static assets already work). On Windows the wrapper runs unwrapped (no `powershell -ExecutionPolicy ByPass -c "..."`) because the UI's terminal shows the `PS>` prompt and `iex` of an in-memory string isn't subject to execution policy under Restricted/RemoteSigned/Unrestricted.
+Each command corresponds to a wrapper file in `public/` that is served directly by Vercel (filesystem matches run before the SPA rewrite in `vercel.json` — confirmed by the fact that `assets/index-*.js` and the other static assets already work). The Windows one-liner is shown wrapped in `powershell -ExecutionPolicy ByPass -c "irm ... | iex"` so it's copy-pasteable from any Windows context — `cmd.exe`, the Win+R Run dialog, or a shortcut target, not just an already-open `PS>` prompt — and `-ExecutionPolicy ByPass` lets it run regardless of the machine's script policy. (This reverses the earlier unwrapped form; if you scaffold a new product page, use the wrapped form to match.)
 
 ### Upstream cargo-dist asset names
 
