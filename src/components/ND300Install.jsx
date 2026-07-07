@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.4.0')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.5.1')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
   const installNote = 'Already installed with older instructions? Run nd300 update or speedqx update. The crates.io package is still nd300 — the wrapper just installs the prebuilt binary instead of building from source.'
