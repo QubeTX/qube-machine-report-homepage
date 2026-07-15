@@ -40,18 +40,21 @@ const CommandRow = ({ command, description, isEven }) => {
 
 export default function Commands() {
   const commands = [
-    { command: 'tr300', description: 'Run report' },
-    { command: 'report', description: 'Alias (no flags)' },
+    { command: 'tr300', description: 'Print the full report; creates no file' },
+    { command: 'report', description: 'Convenience alias; creates no file' },
+    { command: 'tr300 -r, tr300 --report', description: 'Print and manually save a Markdown copy' },
+    { command: 'report -s, report --save', description: 'Alias spellings for the same manual save' },
+    { command: 'tr300 --fast', description: 'Startup-safe mode — skip slow optional probes' },
+    { command: 'tr300 --json', description: 'Schema-v1 JSON on stdout for scripting' },
+    { command: 'tr300 --ascii', description: 'ASCII table and bars for legacy terminals' },
+    { command: 'tr300 -t, --title <TITLE>', description: 'Set a custom report title' },
+    { command: 'tr300 --no-elevation-hint', description: 'Hide the optional Linux elevation footer' },
+    { command: 'tr300 update [--json]', description: 'Update safely, with optional structured status' },
+    { command: 'tr300 install / --install', description: 'Install the report alias and startup summary' },
+    { command: 'tr300 uninstall / --uninstall', description: 'Interactively remove profile or binary setup' },
     { command: 'tr300 --help', description: 'Show help' },
     { command: 'tr300 --version', description: 'Show version' },
-    { command: 'tr300 --install', description: 'Auto-run setup' },
-    { command: 'tr300 --uninstall', description: 'Remove config' },
-    { command: 'tr300 --update', description: 'Self-update to latest version' },
-    { command: 'tr300 --ascii', description: 'ASCII mode (legacy terminals)' },
-    { command: 'tr300 --json', description: 'JSON output for scripting' },
-    { command: 'tr300 --no-color', description: 'Disable colored output' },
-    { command: 'tr300 --fast', description: 'Fast mode — skip slow collectors' },
-    { command: 'tr300 -t, --title', description: 'Custom title' }
+    { command: 'tr300 --no-color', description: 'Disable color in update-flow messages' }
   ]
 
   return (

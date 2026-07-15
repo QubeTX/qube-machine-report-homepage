@@ -42,7 +42,7 @@ Upstream cargo-dist asset names (used inside the wrappers):
 
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
-| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` | `tr300` |
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
@@ -52,6 +52,15 @@ Each wrapper verifies the installed binary exists after the cargo-dist call and 
 **TR-300 chained `tr300 install`:** The TR-300 wrapper has one extra step after the cargo-dist call — it runs `tr300 install` (by full path so it works without re-sourcing `PATH`). That subcommand writes a marker block to the user's shell profile (`~/.zshrc`, `~/.bashrc`, or PowerShell `$PROFILE`) that adds a `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. `tr300 install` is idempotent — re-running the one-liner does not duplicate profile entries. SD-300 and ND-300 wrappers don't chain a self-install subcommand because their CLIs don't expose one.
 
 **TR-300 first-class Windows installers:** As of v3.15.0, TR-300 also publishes Global/Corporate MSI and EXE installers with every release. They're surfaced as four magenta download buttons under the Windows tab in the install panel — `Install.jsx` reads them from `https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc{,-corporate}{,-setup}.{msi,exe}`. Users who'd rather have a system-wide install or a double-click setup can use those instead of the command line.
+
+**TR-300 v4 report and trust contract:** A normal `tr300` or `report` run only
+prints to the terminal. Markdown persistence is explicit through `tr300 -r`,
+`tr300 --report`, `report -s`, or `report --save`; the shell-startup `--fast`
+run never auto-logs. Current Apple Silicon and Intel release archives are
+Developer ID signed and Apple notarized before hosting. On managed Windows
+machines, an antivirus/Group Policy/AppLocker staging or launch block stops the
+updater without overwriting the working binary and points users to the matching
+manual installer.
 
 ## Project Structure
 

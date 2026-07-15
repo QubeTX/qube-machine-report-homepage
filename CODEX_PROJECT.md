@@ -6,6 +6,12 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 ## Current Status
 
+- **TR-300 v4.0.1 is the current verified release.** The root page now lists
+  the complete manual-save contract (default/startup runs create no file), uses
+  the real 51-column report shape, documents native cross-platform accuracy
+  semantics and graceful unknowns, identifies both Mac architectures as
+  Developer ID signed/Apple notarized, and explains fail-safe managed-Windows
+  update blocks without promising a policy bypass.
 - **SD-300 (`/sd300`) and Shaughv OS (`/shaughvos`) are temporarily delisted (WIP).** Both routes/pages remain live and render by direct URL, but every nav, footer, and in-content link to them has been commented out / de-linked (each tagged `WIP-DELISTED`; restore via `grep -r "WIP-DELISTED" src/`). They must not be re-marketed until their WIP updates land, and while this holds, any product-page update should prompt a reminder to finish and re-link both. See the "Temporarily delisted pages" section in `CLAUDE.md` / `AGENTS.md` for the full restore manifest.
 - **Site composition:** routing is pathname-based in `src/main.jsx`; the nav is a module-level `products` array in `ProductNav.jsx` (rendered via each `*Hero.jsx`), and there is no shared footer — each page hardcodes its own inline `*Footer.jsx` link row (`Footer.jsx` is the TR-300/homepage one).
 - TR-300, ND-300, SD-300, and WB-300 product install sections all use the same **wrapper-script** one-liner pattern: `curl -LsSf https://reports.qubetx.com/install-<product>.sh | sh` on Mac/Linux and `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-<product>.ps1 | iex"` on Windows (wrapped in `powershell -ExecutionPolicy ByPass -c "..."` so it pastes into any Windows shell, not just an open PowerShell prompt). TR-300 uses the unprefixed `install.{sh,ps1}` filenames since the root domain is the TR-300 page.
@@ -37,25 +43,21 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   ├── hooks
 │   │   ├── doc-sync-reminder.mjs
 │   │   └── lint-changed.mjs
-│   ├── settings.json
-│   └── skills
-│       ├── new-product-page
-│       │   └── SKILL.md
-│       └── sync-agent-docs
-│           └── SKILL.md
-├── .gitignore
-├── AGENTS.md
-├── CHANGELOG.md
-├── CLAUDE.md
-├── CODEX_PROJECT.md
-├── HUMAN_CHANGELOG.md
-├── LICENSE
-├── README.md
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
+│   ├── skills
+│   │   ├── new-product-page
+│   │   │   └── SKILL.md
+│   │   └── sync-agent-docs
+│   │       └── SKILL.md
+│   └── settings.json
 ├── public
+│   ├── install-nd300.ps1
+│   ├── install-nd300.sh
+│   ├── install-sd300.ps1
+│   ├── install-sd300.sh
+│   ├── install-wb300.ps1
+│   ├── install-wb300.sh
+│   ├── install.ps1
+│   ├── install.sh
 │   ├── shaughv-logo.svg
 │   └── vite.svg
 ├── reference
@@ -63,12 +65,6 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   ├── main_version.js
 │   └── tr300_documentation.md
 ├── src
-│   ├── App.jsx
-│   ├── ExecutablesApp.jsx
-│   ├── InstallGuideApp.jsx
-│   ├── ND300App.jsx
-│   ├── SD300App.jsx
-│   ├── ShaughvOSApp.jsx
 │   ├── components
 │   │   ├── Commands.jsx
 │   │   ├── Demos.jsx
@@ -108,12 +104,39 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── ShaughvOSHero.jsx
 │   │   ├── ShaughvOSInstall.jsx
 │   │   ├── ShaughvOSOverview.jsx
-│   │   └── ShaughvOSPitch.jsx
+│   │   ├── ShaughvOSPitch.jsx
+│   │   ├── WB300Commands.jsx
+│   │   ├── WB300Diagnostics.jsx
+│   │   ├── WB300Features.jsx
+│   │   ├── WB300Footer.jsx
+│   │   ├── WB300Hero.jsx
+│   │   ├── WB300Install.jsx
+│   │   ├── WB300Modes.jsx
+│   │   └── WB300SampleOutput.jsx
 │   ├── hooks
 │   │   ├── useGitHubVersion.js
 │   │   └── useLatestRelease.js
+│   ├── App.jsx
+│   ├── ExecutablesApp.jsx
+│   ├── InstallGuideApp.jsx
+│   ├── ND300App.jsx
+│   ├── SD300App.jsx
+│   ├── ShaughvOSApp.jsx
+│   ├── WB300App.jsx
 │   ├── index.css
 │   └── main.jsx
+├── .gitignore
+├── AGENTS.md
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CODEX_PROJECT.md
+├── HUMAN_CHANGELOG.md
+├── LICENSE
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
 ├── vercel.json
 └── vite.config.js
 ```

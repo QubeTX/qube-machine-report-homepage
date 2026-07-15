@@ -101,6 +101,15 @@ As of v3.15.0, TR-300 also publishes four first-class Windows installers on ever
 
 URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/download/<asset>` form. When SD-300 and ND-300 begin shipping MSI/EXE installers (same naming convention with `sd300` / `nd300` / `speedqx` substituted), they should gain the same four-button block (Global + Corporate, `.MSI` + `.EXE` each) under their terminal boxes. Reference implementation: the `DownloadButton` helper and installer-block layout in `src/components/Install.jsx`.
 
+**TR-300 v4.0.1 accuracy/trust contract:** normal `tr300` / `report` runs and
+the installed `tr300 --fast` startup summary only print to the terminal. A
+Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or
+`report --save`. The current Apple Silicon and Intel archives are Developer ID
+signed and Apple notarized before GitHub hosts them. If endpoint policy blocks
+a Windows update staging write or installer launch, the updater retains the
+working binary, exits with a diagnostic, and points to the matching manual
+installer; never market this as bypassing antivirus or policy.
+
 ### Maintenance notes
 
 - **Wrappers should stay tiny.** If a wrapper needs more than ~10 lines, you're probably reaching for the wrong tool — push the complexity upstream into the cargo-dist installer or into the product's own `<product> install` subcommand instead.

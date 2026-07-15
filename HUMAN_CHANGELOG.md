@@ -8,6 +8,28 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 15, 2026 — The machine-report page now tells the full, accurate story
+
+**Improved**
+- Updated the machine-report page to match the release people can download
+  today. The command list now makes the important file-saving rule unmistakable:
+  normal and automatic startup summaries only appear in the terminal, and a
+  file is created only when you deliberately use one of the save commands.
+- Replaced the old made-up example with a true-to-life Mac report layout. The
+  labels and sections now match what the tool actually prints, including clear
+  processor topology, storage, available memory, battery, and encryption facts.
+- Added clearer trust and safety information: both kinds of Mac download must
+  pass Apple's checks before publishing, and a Windows update blocked by work
+  security software stops safely without replacing the copy that already works.
+- Refreshed the version badges and feature descriptions so visitors see the
+  current generation and understand how the same tool gathers native facts on
+  Windows, Mac, and Linux without guessing when information is unavailable.
+
+**Fixed**
+- Reworded a Windows download prompt that implied Rust might be installed even
+  though every option on the page already downloads a ready-to-run program.
+- Brought the site's internal version records back into agreement.
+
 ## June 23, 2026 — The Windows install command now works from any window
 
 We changed the one-line install command shown on the Windows tab of every product page so it

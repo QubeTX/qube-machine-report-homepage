@@ -73,7 +73,7 @@ All four products use the same **wrapper-script** install pattern. The homepage 
 
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
-| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` | `tr300` |
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy updater alias) | `tr300` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
@@ -83,6 +83,15 @@ Asset URLs use `releases/latest/download/...` so wrappers auto-track new version
 **TR-300 only — chained `tr300 install`:** The TR-300 wrapper appends `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell) after the cargo-dist call. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 wrappers don't chain it because their CLIs do not expose a self-install subcommand.
 
 **TR-300 first-class Windows installers (.MSI / .EXE):** As of v3.15.0, TR-300 also ships four prebuilt Windows installers per release — Global MSI/EXE (`perMachine`, admin, installs to `C:\Program Files\tr300\bin\`) and Corporate MSI/EXE (`perUser`, no admin, installs to `%LocalAppData%\Programs\tr300\bin\`). They're surfaced as four magenta CTA buttons under the Windows tab in `Install.jsx`, grouped into a GLOBAL row and a CORPORATE row. Asset URLs use `https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc{,-corporate}{,-setup}.{msi,exe}`. When SD-300 and ND-300 begin shipping similar installers, they should gain the same four-button block — see the `DownloadButton` helper and installer-block grid layout in `src/components/Install.jsx`.
+
+**TR-300 v4.0.1 accuracy/trust contract:** normal `tr300` / `report` runs and
+the installed `tr300 --fast` startup summary only print to the terminal. A
+Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or
+`report --save`. The current Apple Silicon and Intel archives are Developer ID
+signed and Apple notarized before GitHub hosts them. If endpoint policy blocks
+a Windows update staging write or installer launch, the updater retains the
+working binary, exits with a diagnostic, and points to the matching manual
+installer; never market this as bypassing antivirus or policy.
 
 ### Maintenance notes
 

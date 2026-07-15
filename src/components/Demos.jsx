@@ -64,23 +64,31 @@ export default function Demos() {
     },
     {
       title: 'Cross-Platform',
-      description: 'One tool for Windows, macOS, and Linux — no separate versions, no compatibility issues'
+      description: 'One Rust CLI with native collectors for Windows, macOS, and Linux, plus bounded fallbacks when optional OS tools are unavailable'
     },
     {
       title: 'Data Export',
-      description: 'Export results as structured data for automated workflows, monitoring dashboards, and custom integrations'
+      description: 'Emit schema-v1 JSON to standard output for workflows, dashboards, and integrations without creating a report file'
     },
     {
-      title: 'Automatic Reports',
-      description: 'Set it to run automatically when you log in, or feed results directly into your monitoring tools'
+      title: 'Read-Only Startup Summary',
+      description: 'Shell setup can print a fast summary once per interactive startup; it never auto-saves a log, and file saving remains manual'
     },
     {
-      title: 'Nothing to Install',
-      description: 'A single file with no extra software required — download it, run it, done'
+      title: 'Verified Mac Downloads',
+      description: 'Apple Silicon and Intel archives must pass Developer ID signing and Apple notarization before the release can publish'
     },
     {
-      title: 'Beautiful Output',
-      description: 'Clean, well-formatted reports that look great in any terminal, old or new'
+      title: 'Fail-Safe Updates',
+      description: 'Updates verify the installed version; endpoint-policy write or launch blocks stop cleanly without overwriting the working binary'
+    },
+    {
+      title: 'Privacy-Aware Facts',
+      description: 'Serial numbers and device UUIDs stay out of reports; unavailable or permission-gated facts remain clearly absent instead of fabricated'
+    },
+    {
+      title: 'Precise Output',
+      description: 'Fixed-width Unicode or ASCII tables, normalized load percentages, and explicit disk and memory definitions keep every value interpretable'
     },
     {
       title: 'Pre-Installed on shaughvOS',

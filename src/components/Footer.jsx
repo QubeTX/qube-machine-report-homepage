@@ -93,7 +93,8 @@ export default function Footer() {
         }}>›</span>
         <SizeBadge>V1</SizeBadge>
         <SizeBadge>V2</SizeBadge>
-        <SizeBadge active>V3</SizeBadge>
+        <SizeBadge>V3</SizeBadge>
+        <SizeBadge active>V4</SizeBadge>
         <SizeBadge>LTS</SizeBadge>
       </div>
 

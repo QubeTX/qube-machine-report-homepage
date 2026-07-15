@@ -4,6 +4,42 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.13.0] - 2026-07-15
+
+### Changed
+
+- **The TR-300 page now matches the verified v4.0.1 release.** Live-version
+  fallbacks moved from 3.17.0 to 4.0.1, the hero build marker moved to
+  `2026.07.A`, and the footer now identifies the active major line as V4.
+- **The command table now documents the complete persistence contract.** Plain
+  `tr300` / `report` runs explicitly create no file; all four manual Markdown
+  save spellings (`tr300 -r`, `tr300 --report`, `report -s`, `report --save`)
+  are listed alongside fast, JSON, ASCII, title, elevation-hint, action, and
+  structured-update forms.
+- **Feature and capability copy now reflects the source's accuracy model.** It
+  describes OS-native collectors, explicitly defined disk/memory/load values,
+  bounded optional probes, privacy exclusions, read-only startup summaries,
+  fail-safe endpoint-policy update behavior, and mandatory Developer ID plus
+  Apple notarization gates for both Mac architectures.
+- **The sample output is now an exact 51-column TR-300 v4 table shape.** The old
+  mock Windows panel showed network-throughput, packet, multi-disk, and generic
+  CPU/MEM/DSK rows that TR-300 does not render. It has been replaced with a
+  privacy-safe macOS example using the real section labels, topology, load,
+  allocated-disk, available-memory, battery, and FileVault presentation.
+- **Install guidance distinguishes terminal output from saved reports.** The
+  page now says that startup/default runs never auto-log, describes the four
+  explicit save aliases, calls out notarized Apple Silicon and Intel downloads,
+  and explains that antivirus or policy blocks stop updates without replacing
+  the current Windows binary.
+
+### Fixed
+
+- Reworded the Windows installer prompt so it no longer asks users whether they
+  want to avoid Rust immediately below a wrapper that already installs a
+  prebuilt binary without Rust.
+- Synchronized `package-lock.json` with the homepage package version; it had
+  remained at 1.10.0 while `package.json` and the changelog had advanced.
+
 ## [1.12.0] - 2026-06-23
 
 ### Changed

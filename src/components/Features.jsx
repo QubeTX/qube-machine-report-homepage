@@ -86,14 +86,14 @@ export default function Features() {
       <GridCell
         label="01 // FOR EVERYONE"
         title="Instant<br />Insight"
-        description="Run one command and see exactly how your system is doing — processor, memory, storage, and network, all in a clean formatted report. Export as data for automation."
+        description="Run one command for OS-native processor topology, allocated disk usage, available memory, default-route network context, and session details — with unknown facts omitted instead of guessed."
         linkText="> READ DOCUMENTATION"
         linkUrl="https://github.com/QubeTX/qube-machine-report/blob/master/README.md"
       />
       <GridCell
         label="02 // FOR TEAMS"
         title="Built to<br />Automate"
-        description="Set it up once and it runs on every login. Feeds directly into your monitoring tools and automated workflows. Free for non-commercial use."
+        description="The startup integration prints a fast, read-only summary. Schema-v1 JSON feeds tools and workflows, while Markdown files are created only when you explicitly ask to save one."
         linkText="> VIEW ON GITHUB"
         linkUrl="https://github.com/QubeTX/qube-machine-report"
         noBorder

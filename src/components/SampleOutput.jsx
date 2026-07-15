@@ -1,45 +1,67 @@
 export default function SampleOutput() {
-  const W = 52
-  const L = 14 // left column width (including borders)
-  const R = W - L - 1 // right column width (excluding final border)
-
-  const pad = (s, w) => s + ' '.repeat(Math.max(0, w - s.length))
-  const hr = (l, m, r) => l + '='.repeat(L - 2) + m + '='.repeat(R - 1) + r
-  const hrFull = (l, r) => l + '='.repeat(W - 2) + r
-  const row = (k, v) => '| ' + pad(k, L - 3) + '| ' + pad(v, R - 2) + '|'
-  const fullRow = (s) => '| ' + pad(s, W - 4) + ' |'
-  const bar = (pct, label) => {
-    const barW = 28
-    const filled = Math.round(barW * pct / 100)
-    const b = '#'.repeat(filled) + '.'.repeat(barW - filled)
-    return fullRow(b + ' ' + label)
+  const width = 51
+  const labelWidth = 12
+  const dataWidth = 32
+  const pad = (value, target) => value + ' '.repeat(Math.max(0, target - value.length))
+  const center = (value) => {
+    const innerWidth = width - 2
+    const left = Math.floor((innerWidth - value.length) / 2)
+    return `|${' '.repeat(left)}${value}${' '.repeat(innerWidth - left - value.length)}|`
   }
+  const row = (label, value) => `| ${pad(label, labelWidth)} | ${pad(value, dataWidth)} |`
+  const fullDivider = '+'.repeat(width)
+  const sectionDivider = `+${'-'.repeat(labelWidth + 2)}+${'-'.repeat(dataWidth + 2)}+`
 
   const sampleOutput = [
-    hrFull('+', '+'),
-    fullRow(''),
-    fullRow('          QUBETX DEVELOPER TOOLS'),
-    fullRow('           TR-300 MACHINE REPORT'),
-    hr('+', '+', '+'),
-    row('OS',         'Windows 11 24H2'),
-    row('KERNEL',     'Windows 10.0.26200'),
-    row('UPTIME',     '3 days, 14 hours, 22 min'),
-    row('SHELL',      'PowerShell 7.5.0'),
-    hr('+', '+', '+'),
-    row('CPU',        'AMD Ryzen 9 7950X (32) @ 4.5 GHz'),
-    row('GPU',        'NVIDIA GeForce RTX 5070'),
-    row('MEMORY',     '47.82 GiB / 62.70 GiB (76%)'),
-    hr('+', '+', '+'),
-    row('DISK (C:)',  '847.2 GB / 1.8 TB (45%)'),
-    row('DISK (D:)',  '3.2 TB / 7.3 TB (44%)'),
-    hr('+', '+', '+'),
-    row('NET (eth0)', 'DN 142.5 MB/s  UP 23.1 MB/s'),
-    row('PACKETS',    'DN 847,291     UP 412,847'),
-    hrFull('+', '+'),
-    bar(71, 'CPU 71%'),
-    bar(76, 'MEM 76%'),
-    bar(45, 'DSK 45%'),
-    hrFull('+', '+'),
+    fullDivider,
+    fullDivider,
+    center('QUBETX DEVELOPER TOOLS'),
+    center('TR-300 MACHINE REPORT'),
+    sectionDivider,
+    row('OS', 'macOS 26.3.1'),
+    row('CODENAME', 'Tahoe'),
+    row('BUILD', '25D2128'),
+    row('KERNEL', '25.3.0'),
+    row('ARCH', 'arm64'),
+    row('MODEL', 'MacBook Pro (Mac14,7)'),
+    row('BOOT MODE', 'Normal'),
+    row('DESKTOP', 'Aqua'),
+    row('SESSION', 'Quartz'),
+    row('DISPLAY', '1440x900@60Hz / 2880x1800px'),
+    sectionDivider,
+    row('HOSTNAME', 'example-mac.local'),
+    row('DEFAULT IP', '192.0.2.10'),
+    row('SSH CLIENT', 'Not an SSH session'),
+    row('DNS  IP 1', '192.0.2.53'),
+    row('USER', 'sample'),
+    sectionDivider,
+    row('PROCESSOR', 'Apple M2'),
+    row('CORES', '8 cores / 8 threads'),
+    row('CORE TYPE', '4P + 4E'),
+    row('GPU', 'Apple M2'),
+    row('REPORTED ...', '3.5 GHz'),
+    row('CPU USAGE', '######.................... 22.0%'),
+    row('LOAD/CPU 1m', '###....................... 10.2%'),
+    row('LOAD/CPU 5m', '##........................ 8.7%'),
+    row('LOAD/CPU 15m', '##........................ 7.9%'),
+    sectionDivider,
+    row('VOLUME', '210.00/460.43 GiB [45.61%]'),
+    row('DISK USAGE', '############.............. 45.6%'),
+    sectionDivider,
+    row('MEMORY', '4.75/8.00 GiB [59.4%]'),
+    row('AVAILABLE', '3.25 GiB'),
+    row('SWAP', '0 B/2.00 GiB [0.0%]'),
+    row('USAGE', '###############........... 59.4%'),
+    sectionDivider,
+    row('LAST LOGIN', 'Tue Jul 14 22:03'),
+    row('UPTIME', '3d 14h 22m'),
+    row('LOGIN SHELL', 'zsh 5.9'),
+    row('TERMINAL', 'Terminal.app'),
+    row('LOCALE', 'en_US.UTF-8'),
+    row('BATTERY', '80% (Plugged in)'),
+    row('BAT HEALTH', 'Good, max 92%, 114 cycles'),
+    row('ENCRYPTION', 'FileVault On'),
+    sectionDivider,
   ].join('\n')
 
   return (
@@ -111,7 +133,7 @@ export default function SampleOutput() {
           color: '#555',
           textAlign: 'center'
         }}>
-          ASCII table output • Use --json for machine-readable format
+          Live 51-column ASCII layout • Normal runs save no file • Use --json for schema-v1 data
         </p>
       </div>
     </section>
