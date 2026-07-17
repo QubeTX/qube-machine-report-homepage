@@ -6,8 +6,8 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 ## Current Status
 
-- **ND-300 v3.6.1 release alignment is prepared.** The ND-300 hero, install
-  section, footer, and unified install guide all use 3.6.1 as their fallback
+- **ND-300 v3.6.2 release alignment is prepared.** The ND-300 hero, install
+  section, footer, and unified install guide all use 3.6.2 as their fallback
   when GitHub's live release API is unavailable; the fetched live release
   remains authoritative.
 - **TR-300 v4.0.1 is the current verified release.** The root page now lists
