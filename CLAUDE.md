@@ -99,7 +99,11 @@ As of v3.15.0, TR-300 also publishes four first-class Windows installers on ever
 | Corporate MSI | `tr300-x86_64-pc-windows-msvc-corporate.msi` | `perUser` — `%LocalAppData%\Programs\tr300\bin\`, no admin |
 | Corporate EXE | `tr300-x86_64-pc-windows-msvc-corporate-setup.exe` | `perUser` — no admin |
 
-URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/download/<asset>` form. When SD-300 and ND-300 begin shipping MSI/EXE installers (same naming convention with `sd300` / `nd300` / `speedqx` substituted), they should gain the same four-button block (Global + Corporate, `.MSI` + `.EXE` each) under their terminal boxes. Reference implementation: the `DownloadButton` helper and installer-block layout in `src/components/Install.jsx`.
+URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/download/<asset>` form. SD-300 should gain the same four-button block if it begins shipping equivalent installers. Reference implementation: the `DownloadButton` helper and installer-block layout in `src/components/Install.jsx`.
+
+### ND-300 — command-first and native installer channels
+
+Keep the versionless wrapper commands as the recommended macOS/Linux/Windows path. The Mac native option is the direct signed/notarized/stapled universal `nd300-universal-apple-darwin.pkg`, not the legacy compatibility DMG. Windows native options are the four Global/Corporate MSI/EXE assets already surfaced in `ND300Install.jsx`. Copy must state that CLI updates preserve a proven channel and that a deliberately launched different official installer represents fresh intent when the scope transition is safe.
 
 **TR-300 v4.0.1 accuracy/trust contract:** normal `tr300` / `report` runs and
 the installed `tr300 --fast` startup summary only print to the terminal. A

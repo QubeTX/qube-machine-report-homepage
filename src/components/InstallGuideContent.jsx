@@ -334,7 +334,7 @@ const HorizontalRule = () => (
 
 export default function InstallGuideContent() {
   const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.0.1')
-  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.2')
+  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.3')
   const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
 
   return (
@@ -528,6 +528,9 @@ export default function InstallGuideContent() {
                 <InlineCode>.dmg</InlineCode> (Mac) — a "disk image" file. Double-click it and it opens like a virtual USB drive.
               </MonoParagraph>
               <MonoParagraph>
+                <InlineCode>.pkg</InlineCode> (Mac) — a standard Apple Installer package. Double-click it and follow the prompts.
+              </MonoParagraph>
+              <MonoParagraph>
                 <InlineCode>.msi</InlineCode> (Windows) — a standard Windows installer. Double-click and follow the prompts.
               </MonoParagraph>
               <MonoParagraph>
@@ -567,7 +570,7 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['Your Computer', 'File to Download', 'Folder']}
             rows={[
-              [<><Bold>Mac</Bold> — Apple Silicon or Intel (recommended)</>, <InlineCode>nd300-universal-apple-darwin.dmg</InlineCode>, 'macos/'],
+              [<><Bold>Mac</Bold> — Apple Silicon or Intel (native installer)</>, <InlineCode>nd300-universal-apple-darwin.pkg</InlineCode>, 'macos/'],
               [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
               [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
               [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>nd300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
@@ -611,13 +614,26 @@ export default function InstallGuideContent() {
           <SectionHeading>Install It</SectionHeading>
 
           <Paragraph>
-            Follow the instructions for your operating system below.
-            The steps are the same for all three tools (TR300, ND300, and SD300) —
-            just use the file you picked in Step 2.
+            Follow the instructions for your operating system below. ND300 uses a direct Apple
+            Installer package on Mac; TR300 and SD300 use disk images. On Windows and Linux,
+            use the file you picked in Step 2.
           </Paragraph>
 
-          {/* Mac Install */}
-          <PlatformHeading>Mac</PlatformHeading>
+          {/* Mac ND300 Package Install */}
+          <PlatformHeading>Mac — ND300 Apple Installer (.pkg)</PlatformHeading>
+
+          <NumberedStep number={1}>
+            <Bold>Double-click</Bold> <InlineCode>nd300-universal-apple-darwin.pkg</InlineCode>.
+          </NumberedStep>
+          <NumberedStep number={2}>
+            <Bold>Follow Apple Installer.</Bold> It installs both <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode> for the computer.
+          </NumberedStep>
+          <NumberedStep number={3}>
+            <Bold>Run it:</Bold> open Terminal and type <InlineCode>nd300</InlineCode>. Future <InlineCode>nd300 update</InlineCode> commands keep using this package channel.
+          </NumberedStep>
+
+          {/* Mac TR300 and SD300 Disk Image Install */}
+          <PlatformHeading>Mac — TR300 or SD300 Disk Image (.dmg)</PlatformHeading>
 
           <NumberedStep number={1}>
             <Bold>Double-click</Bold> the <InlineCode>.dmg</InlineCode> file. A small window (disk image) will open showing the tool inside.

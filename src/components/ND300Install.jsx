@@ -127,10 +127,10 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.2')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.3')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
-  const installNote = 'Already installed with older instructions? Run nd300 update or speedqx update. The crates.io package is still nd300 — the wrapper just installs the prebuilt binary instead of building from source.'
+  const installNote = 'Already installed? Run nd300 update or speedqx update. Updates preserve the proven channel you installed last time; deliberately running a different official installer changes the channel for future updates.'
 
   const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt nd300 and speedqx binaries for macOS arm64/x64 or Linux x64 into ~/.cargo/bin. No Rust toolchain is downloaded or built — the binaries are already compiled."
 
@@ -138,16 +138,16 @@ export default function ND300Install() {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Terminal-only alternative to the recommended Apple Installer below',
+      comment: '# Recommended — install both commands without opening an installer',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'nd300 update',
-      note: "For a normal Mac installation, use the universal signed and notarized DMG below. The terminal wrapper remains available for existing managed-archive users and installs entirely in user scope with no sudo."
+      note: "This command-first route is the recommended Mac install and stays in the managed-archive update channel. If you prefer Apple's graphical Installer, use the signed, notarized universal PKG below; later CLI updates reopen that same PKG channel."
     },
     linux: {
       label: 'Linux',
       prompt: '$',
-      comment: '# Install the prebuilt nd300 binary',
+      comment: '# Recommended — install the prebuilt nd300 and speedqx binaries',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'nd300 update'
@@ -155,11 +155,11 @@ export default function ND300Install() {
     windows: {
       label: 'Windows',
       prompt: 'PS>',
-      comment: '# Install the prebuilt nd300 binary',
+      comment: '# Recommended — install the prebuilt nd300 and speedqx binaries',
       command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt nd300.exe and speedqx.exe binaries for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binaries are already compiled.",
       updateCommand: 'nd300 update',
-      note: "Runs in user scope — no administrator PowerShell needed. If you'd rather have a system-wide install, skip the command line entirely, or hand a single installer to a colleague, use one of the prebuilt MSI/EXE installers below — they're the same binaries, just packaged for double-click. The installers keep a single version on your PC — both offer (on by default) to remove an older Cargo-installed copy and the other edition, so you never end up with duplicates; the built-in update does the same automatically."
+      note: "This command-first route is the recommended Windows install and runs in user scope with no administrator PowerShell. For system-wide, managed, or double-click deployment, choose one MSI/EXE channel below. Later CLI updates reuse the proven channel; deliberately launching a different official installer makes that fresh choice authoritative when the scope change is safe."
     }
   }
 
@@ -310,7 +310,7 @@ export default function ND300Install() {
               textTransform: 'uppercase',
               margin: '0 0 0.5rem 0'
             }}>
-              Recommended — Apple Installer
+              Optional — Apple Installer
             </p>
             <p style={{
               fontFamily: 'var(--font-serif)',
@@ -320,13 +320,13 @@ export default function ND300Install() {
               color: '#aaa',
               margin: 0
             }}>
-              One universal DMG for Apple Silicon and Intel. The package installs both commands,
-              is signed and notarized by Apple, and keeps future CLI updates on the same installer channel.
+              One direct universal PKG for Apple Silicon and Intel. It installs both commands,
+              is signed, notarized, and stapled by Apple, and keeps future CLI updates on the same package channel.
             </p>
           </div>
           <DownloadButton
-            href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-universal-apple-darwin.dmg"
-            label="↓ Download .DMG"
+            href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-universal-apple-darwin.pkg"
+            label="↓ Download .PKG"
           />
         </div>
       )}
@@ -371,7 +371,7 @@ export default function ND300Install() {
               textAlign: 'center',
               margin: 0
             }}>
-              Prefer not to install Rust? Use a prebuilt Windows installer.
+              Optional native installers for managed, system-wide, or double-click deployment.
             </p>
 
             <span style={chipStyle}>Global</span>
