@@ -333,7 +333,7 @@ const HorizontalRule = () => (
 /* ── Main Content ──────────────────────────────────────────────── */
 
 export default function InstallGuideContent() {
-  const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.0.1')
+  const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
   const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.3')
   const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
 
@@ -386,8 +386,9 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['I have a...', 'Grab this file']}
             rows={[
-              ['Mac (2021 or newer, Apple chip)', <InlineCode>*-aarch64-apple-darwin.dmg</InlineCode>],
-              ['Mac (older, Intel chip)', <InlineCode>*-x86_64-apple-darwin.dmg</InlineCode>],
+              ['Mac — TR300 or ND300 (Apple or Intel)', <InlineCode>*-universal-apple-darwin.pkg</InlineCode>],
+              ['Mac — SD300 (Apple chip)', <InlineCode>*-aarch64-apple-darwin.dmg</InlineCode>],
+              ['Mac — SD300 (Intel chip)', <InlineCode>*-x86_64-apple-darwin.dmg</InlineCode>],
               ['Windows PC (any)', <InlineCode>*-x86_64-pc-windows-msvc.msi</InlineCode>],
               ['Linux PC (most distros)', <InlineCode>*-x86_64-unknown-linux-gnu.tar.xz</InlineCode>]
             ]}
@@ -551,13 +552,12 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['Your Computer', 'File to Download', 'Folder']}
             rows={[
-              [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>tr300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>tr300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>tr-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>tr-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Mac</Bold> — Apple Silicon or Intel (native installer)</>, <InlineCode>tr300-universal-apple-darwin.pkg</InlineCode>, 'macos/'],
+              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>tr300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>tr300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
 
@@ -614,26 +614,26 @@ export default function InstallGuideContent() {
           <SectionHeading>Install It</SectionHeading>
 
           <Paragraph>
-            Follow the instructions for your operating system below. ND300 uses a direct Apple
-            Installer package on Mac; TR300 and SD300 use disk images. On Windows and Linux,
+            Follow the instructions for your operating system below. TR300 and ND300 use direct Apple
+            Installer packages on Mac; SD300 uses a disk image. On Windows and Linux,
             use the file you picked in Step 2.
           </Paragraph>
 
-          {/* Mac ND300 Package Install */}
-          <PlatformHeading>Mac — ND300 Apple Installer (.pkg)</PlatformHeading>
+          {/* Mac TR300 and ND300 Package Install */}
+          <PlatformHeading>Mac — TR300 or ND300 Apple Installer (.pkg)</PlatformHeading>
 
           <NumberedStep number={1}>
-            <Bold>Double-click</Bold> <InlineCode>nd300-universal-apple-darwin.pkg</InlineCode>.
+            <Bold>Double-click</Bold> <InlineCode>tr300-universal-apple-darwin.pkg</InlineCode> or <InlineCode>nd300-universal-apple-darwin.pkg</InlineCode>.
           </NumberedStep>
           <NumberedStep number={2}>
-            <Bold>Follow Apple Installer.</Bold> It installs both <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode> for the computer.
+            <Bold>Follow Apple Installer.</Bold> TR300 installs <InlineCode>tr300</InlineCode>; ND300 installs <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode> for the computer.
           </NumberedStep>
           <NumberedStep number={3}>
-            <Bold>Run it:</Bold> open Terminal and type <InlineCode>nd300</InlineCode>. Future <InlineCode>nd300 update</InlineCode> commands keep using this package channel.
+            <Bold>Run it:</Bold> open Terminal and type <InlineCode>tr300</InlineCode> or <InlineCode>nd300</InlineCode>. Future update commands keep using the package channel you selected.
           </NumberedStep>
 
-          {/* Mac TR300 and SD300 Disk Image Install */}
-          <PlatformHeading>Mac — TR300 or SD300 Disk Image (.dmg)</PlatformHeading>
+          {/* Mac SD300 Disk Image Install */}
+          <PlatformHeading>Mac — SD300 Disk Image (.dmg)</PlatformHeading>
 
           <NumberedStep number={1}>
             <Bold>Double-click</Bold> the <InlineCode>.dmg</InlineCode> file. A small window (disk image) will open showing the tool inside.
@@ -663,12 +663,12 @@ export default function InstallGuideContent() {
             <Bold>Run the tool:</Bold> Open Terminal and type:
           </NumberedStep>
 
-          <CodeBlock copyText="~/Desktop/tr300">
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>~/Desktop/tr300
+          <CodeBlock copyText="~/Desktop/sd300">
+            <span style={{ color: 'var(--accent-signal)' }}>$ </span>~/Desktop/sd300
           </CodeBlock>
 
           <MonoParagraph>
-            Replace <InlineCode>tr300</InlineCode> with <InlineCode>nd300</InlineCode> or <InlineCode>sd300</InlineCode> depending on which tool you're using.
+            Replace the Desktop path if you copied <InlineCode>sd300</InlineCode> somewhere else.
           </MonoParagraph>
 
           <NumberedStep number={5}>
@@ -723,8 +723,8 @@ export default function InstallGuideContent() {
             <Bold>Extract the archive.</Bold> Open a terminal in the folder where you saved the file, then run:
           </NumberedStep>
 
-          <CodeBlock copyText="tar -xf tr-300-x86_64-unknown-linux-gnu.tar.xz">
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>tar -xf tr-300-x86_64-unknown-linux-gnu.tar.xz
+          <CodeBlock copyText="tar -xf tr300-x86_64-unknown-linux-gnu.tar.xz">
+            <span style={{ color: 'var(--accent-signal)' }}>$ </span>tar -xf tr300-x86_64-unknown-linux-gnu.tar.xz
           </CodeBlock>
 
           <MonoParagraph>

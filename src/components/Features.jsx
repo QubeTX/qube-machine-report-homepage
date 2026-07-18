@@ -88,7 +88,7 @@ export default function Features() {
         title="Instant<br />Insight"
         description="Run one command for OS-native processor topology, allocated disk usage, available memory, default-route network context, and session details — with unknown facts omitted instead of guessed."
         linkText="> READ DOCUMENTATION"
-        linkUrl="https://github.com/QubeTX/qube-machine-report/blob/master/README.md"
+        linkUrl="https://github.com/QubeTX/qube-machine-report/blob/main/README.md"
       />
       <GridCell
         label="02 // FOR TEAMS"

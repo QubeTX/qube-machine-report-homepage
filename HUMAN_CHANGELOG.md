@@ -8,6 +8,24 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 18, 2026 — The machine report keeps your chosen install path
+
+**Improved**
+- The quickest recommended install is still one copy-and-paste command on Mac,
+  Linux, and Windows, with familiar graphical installers available when you
+  want a managed or double-click setup.
+- Mac visitors can now open one Apple Installer package directly. It works on
+  both Apple-chip and Intel Macs, so there is no extra disk-image step.
+- Terminal updates keep using the installation method that is already proven
+  to own the program. If you intentionally run a different fresh official
+  installer, that becomes your new choice when the change can be made safely.
+  If ownership is unclear or security policy blocks the change, the working
+  copy stays intact and the tool gives you a fresh-download link.
+- The offline guide now shows filenames that match the current machine-report
+  downloads while the public links continue following the latest release.
+- Both machine-report documentation links now open the live documentation
+  instead of the project's retired branch.
+
 ## July 18, 2026 — Faster default installs with native choices when you want them
 
 **Improved**
