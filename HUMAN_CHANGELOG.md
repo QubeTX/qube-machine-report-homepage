@@ -8,6 +8,20 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 18, 2026 — One familiar installer is now the preferred Mac download
+
+**Improved**
+- Mac visitors now get one Apple-approved disk image that works on both newer
+  Apple-chip Macs and older Intel Macs. It installs both network-diagnostic
+  commands through the normal Apple Installer and keeps later terminal updates
+  on that same installation path.
+- The command-line method remains available for people who already use it, and
+  backup version labels stay current if GitHub cannot be reached temporarily.
+
+**Fixed**
+- Corrected the download guide so every network-diagnostic filename matches a
+  file people can actually download.
+
 ## July 17, 2026 — The network-diagnostic page stays current when GitHub is unavailable
 
 **Improved**

@@ -334,7 +334,7 @@ const HorizontalRule = () => (
 
 export default function InstallGuideContent() {
   const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.0.1')
-  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.6.4')
+  const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.1')
   const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
 
   return (
@@ -567,13 +567,12 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['Your Computer', 'File to Download', 'Folder']}
             rows={[
-              [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>nd300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>nd300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>nd-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>nd-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>nd-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>nd-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>nd-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Mac</Bold> — Apple Silicon or Intel (recommended)</>, <InlineCode>nd300-universal-apple-darwin.dmg</InlineCode>, 'macos/'],
+              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>nd300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>nd300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>nd300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>nd300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
 
