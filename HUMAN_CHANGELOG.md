@@ -8,6 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 17, 2026 — The network-diagnostic page stays current when GitHub is unavailable
+
+**Improved**
+- Refreshed the backup version shown across the network-diagnostic page and
+  install guide, so visitors still see the current release during a temporary
+  GitHub outage or blocked request.
+
 ## July 15, 2026 — The machine-report page now tells the full, accurate story
 
 **Improved**
