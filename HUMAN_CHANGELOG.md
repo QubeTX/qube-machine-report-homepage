@@ -8,6 +8,19 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 18, 2026 — Faster default installs with native choices when you want them
+
+**Improved**
+- The network diagnostic now recommends one copy-and-paste command on Mac,
+  Linux, and Windows, while keeping familiar graphical installers available
+  for managed or double-click setups.
+- Mac visitors can open the Apple Installer package directly instead of first
+  opening a disk image. It works on both Apple-chip and Intel Macs and remains
+  on the same update path afterward.
+- The page now explains that normal updates keep using the install method you
+  already chose, while intentionally running a different official installer
+  makes that your new choice when it can be changed safely.
+
 ## July 18, 2026 — The network-diagnostic release label is current
 
 **Improved**

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.16.0] - 2026-07-18
+
+### Changed
+
+- **ND-300 now recommends the versionless command install on every platform.**
+  The macOS, Linux, and Windows tabs lead with the wrapper command while the
+  native Apple/Windows installers remain optional deployment channels.
+- **The Mac native download now opens the direct v3.7.3 universal PKG.** The
+  versionless button and unified install guide point to
+  `nd300-universal-apple-darwin.pkg`; the release's legacy DMG remains an
+  updater compatibility asset rather than the advertised download.
+- **Install and update copy now describes channel intent accurately.** CLI
+  updates reuse the proven install channel, while deliberately launching a
+  different official installer records the user's fresh choice when the scope
+  transition is safe. All four ND-300 fallback labels now use 3.7.3.
+
 ## [1.15.1] - 2026-07-18
 
 ### Changed
