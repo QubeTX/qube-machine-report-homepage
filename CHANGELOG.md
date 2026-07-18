@@ -8,9 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **ND-300 version fallbacks now match the v3.6.2 release cycle.** Updated all
+- **ND-300 version fallbacks now match the v3.6.4 release cycle.** Updated all
   four live GitHub-version fallbacks in the ND-300 hero, install section,
-  footer, and unified install guide from 3.4.0 to 3.6.2. The live GitHub
+  footer, and unified install guide from 3.4.0 to 3.6.4. The live GitHub
   release remains authoritative whenever the release API is reachable.
 
 ## [1.13.0] - 2026-07-15
