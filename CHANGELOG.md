@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.15.1] - 2026-07-18
+
+### Changed
+
+- **ND-300 fallback labels now match the verified v3.7.2 release.** Updated all
+  four live GitHub-version fallbacks after the final updater/installer release;
+  download links remain versionless `releases/latest` URLs.
+
 ## [1.15.0] - 2026-07-18
 
 ### Changed
