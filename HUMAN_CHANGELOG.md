@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 18, 2026 — The network-diagnostic release label is current
+
+**Improved**
+- Refreshed the backup release label shown when GitHub cannot be reached, while
+  keeping every download on the automatically updating latest-release link.
+
 ## July 18, 2026 — One familiar installer is now the preferred Mac download
 
 **Improved**
