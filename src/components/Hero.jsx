@@ -82,7 +82,7 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function Hero() {
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.0.1')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
 
   return (
     <header style={{
@@ -106,7 +106,7 @@ export default function Hero() {
         <div style={{ maxWidth: '200px' }}>
           MACHINE REPORT<br />
           TR-300 SERIES<br />
-          BUILD: 2026.07.A
+          BUILD: 2026.07.B
         </div>
 
         <ProductNav />

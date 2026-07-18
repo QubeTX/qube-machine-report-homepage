@@ -88,9 +88,14 @@ All upstream URLs use `releases/latest/download/...` so wrappers auto-track new 
 
 TR-300's wrapper appends a second step after the cargo-dist call: `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell). This subcommand writes a marker block to the user's shell profile that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300, ND-300, and WB-300 stop at the cargo-dist call because their CLIs do not expose a self-install subcommand.
 
-### TR-300 — first-class Windows installers (`.MSI` / `.EXE`)
+### TR-300 — command-first and native installer channels
 
-As of v3.15.0, TR-300 also publishes four first-class Windows installers on every GitHub release, surfaced as download buttons directly under the Windows install command in `Install.jsx`. They're an alternative to the wrapper for users who want a GUI install or a system-wide deployment:
+Keep the versionless wrapper commands as the recommended macOS/Linux/Windows
+path. macOS also offers the direct signed/notarized/stapled universal
+`tr300-universal-apple-darwin.pkg`. The universal DMG is retained only as a
+compatibility bridge for older updater clients; do not advertise it as the
+preferred native download. Windows offers four first-class installers for GUI
+and managed deployment:
 
 | Variant | Asset name | Mode |
 |---------|------------|------|
@@ -101,11 +106,18 @@ As of v3.15.0, TR-300 also publishes four first-class Windows installers on ever
 
 URLs use the `https://github.com/QubeTX/qube-machine-report/releases/latest/download/<asset>` form. SD-300 should gain the same four-button block if it begins shipping equivalent installers. Reference implementation: the `DownloadButton` helper and installer-block layout in `src/components/Install.jsx`.
 
+`tr300 update` preserves the proven channel, edition, scope, and path. A
+deliberately launched fresh official wrapper, PKG, MSI, or EXE represents the
+user's newest intent, including a reinstall or downgrade, only when ownership
+and takeover are unambiguous and safe. Ambiguous, conflicting, or
+policy-blocked transitions retain the working installation and show immutable
+plus latest recovery links; never promise silent cross-channel fallback.
+
 ### ND-300 — command-first and native installer channels
 
 Keep the versionless wrapper commands as the recommended macOS/Linux/Windows path. The Mac native option is the direct signed/notarized/stapled universal `nd300-universal-apple-darwin.pkg`, not the legacy compatibility DMG. Windows native options are the four Global/Corporate MSI/EXE assets already surfaced in `ND300Install.jsx`. Copy must state that CLI updates preserve a proven channel and that a deliberately launched different official installer represents fresh intent when the scope transition is safe.
 
-**TR-300 v4.0.1 accuracy/trust contract:** normal `tr300` / `report` runs and
+**TR-300 v4.2.2 accuracy/trust contract:** normal `tr300` / `report` runs and
 the installed `tr300 --fast` startup summary only print to the terminal. A
 Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or
 `report --save`. The current Apple Silicon and Intel archives are Developer ID

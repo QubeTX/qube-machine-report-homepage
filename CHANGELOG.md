@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.17.0] - 2026-07-18
+
+### Changed
+
+- **TR-300 now recommends the versionless managed command on macOS, Linux, and
+  Windows.** The copy-paste wrapper remains the fastest default while the
+  native Apple and Windows installers stay available for GUI and managed
+  deployment.
+- **The Mac native button now downloads the direct universal PKG.** The signed,
+  notarized, stapled `tr300-universal-apple-darwin.pkg` supports Apple Silicon
+  and Intel without an unnecessary DMG-opening step. The legacy universal DMG
+  remains published only as an updater-compatibility bridge.
+- **Install and update intent is explicit.** `tr300 update` keeps the proven
+  channel and scope; deliberately launching a fresh official wrapper, PKG,
+  MSI, or EXE makes that method the user's newest choice when takeover can be
+  proven safe. Ambiguous or blocked transitions retain the working install and
+  show recovery links.
+- **The unified install guide uses the current stable TR-300 filenames.** The
+  fallback release label is v4.2.2 and every public download remains a
+  versionless `releases/latest/download/...` entrypoint.
+
+### Fixed
+
+- **TR-300 documentation links follow the repository's `main` branch.** The
+  feature and footer links no longer target the deleted `master` branch.
+
 ## [1.16.0] - 2026-07-18
 
 ### Changed

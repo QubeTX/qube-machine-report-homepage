@@ -127,11 +127,11 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.0.1')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
-  const pathNote = "Behind the scenes the wrapper downloads the prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), updates your shell config so future terminals can find it, then runs tr300 install to write a small marker block to your shell profile — every new interactive shell picks up a report alias and an auto-run of tr300 --fast."
+  const pathNote = "Behind the scenes the wrapper installs a prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), records that managed CLI channel and exact path for future updates, then runs tr300 install to add the report alias and tr300 --fast startup summary."
   const reportNote = "Normal tr300 and report runs only print to the terminal — they do not create a log file. Save a Markdown copy manually with tr300 -r, tr300 --report, report -s, or report --save."
-  const installNote = 'Already installed with older instructions? Run tr300 update. If an older Cargo command used tr-300, rerun this command; the crates.io package is tr300.'
+  const installNote = 'Run tr300 update later to keep the proven install channel. Deliberately running this command or a different official installer makes that fresh method your new choice; ambiguous or blocked takeovers leave the working install intact and show the latest recovery link.'
 
   const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that runs the official cargo-dist installer (downloads the prebuilt tr300 binary for macOS arm64/x64 or Linux x64 into ~/.cargo/bin), then runs tr300 install to add a report alias and a fast startup summary to your shell profile. No Rust toolchain is downloaded or built — the binary is already compiled."
 
@@ -143,7 +143,7 @@ export default function Install() {
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'tr300 update',
-      note: "Runs entirely in user scope — no sudo needed. Both current Mac archives (Apple Silicon and Intel) are Developer ID signed and Apple notarized before GitHub can publish them."
+      note: "Runs entirely in user scope — no sudo needed. For Apple Installer or managed deployment, use the signed, notarized universal PKG below; later CLI updates reopen that same PKG channel."
     },
     linux: {
       label: 'Linux',
@@ -298,6 +298,33 @@ export default function Install() {
           {installNote}
         </p>
       </div>
+
+      {selectedPlatform === 'macos' && (
+        <div style={{
+          width: '100%',
+          maxWidth: '800px',
+          marginTop: '3rem',
+          display: 'grid',
+          justifyItems: 'center',
+          gap: '1rem'
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.75rem',
+            lineHeight: '1.6',
+            color: 'var(--fg-dim)',
+            textAlign: 'center',
+            margin: 0
+          }}>
+            Prefer Apple Installer? One universal PKG supports Apple Silicon and Intel,
+            installs TR-300 system-wide, and preserves the PKG channel for later updates.
+          </p>
+          <DownloadButton
+            href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-universal-apple-darwin.pkg"
+            label="↓ Download universal .PKG"
+          />
+        </div>
+      )}
 
       {selectedPlatform === 'windows' && (() => {
         const chipStyle = {
