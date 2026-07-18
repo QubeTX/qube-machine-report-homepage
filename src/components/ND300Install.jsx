@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.6.4')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.1')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
   const installNote = 'Already installed with older instructions? Run nd300 update or speedqx update. The crates.io package is still nd300 — the wrapper just installs the prebuilt binary instead of building from source.'
@@ -138,11 +138,11 @@ export default function ND300Install() {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Install the prebuilt nd300 binary',
+      comment: '# Terminal-only alternative to the recommended Apple Installer below',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'nd300 update',
-      note: "Runs entirely in user scope — no sudo needed. The wrapper is two lines of shell hosted on this site; it calls the official cargo-dist installer published with every ND-300 release."
+      note: "For a normal Mac installation, use the universal signed and notarized DMG below. The terminal wrapper remains available for existing managed-archive users and installs entirely in user scope with no sudo."
     },
     linux: {
       label: 'Linux',
@@ -288,6 +288,48 @@ export default function ND300Install() {
           {installNote}
         </p>
       </div>
+
+      {selectedPlatform === 'macos' && (
+        <div style={{
+          width: '100%',
+          maxWidth: '800px',
+          marginTop: '3rem',
+          border: '1px solid #333',
+          borderRadius: '4px',
+          padding: '1.5rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          alignItems: 'center'
+        }}>
+          <div style={{ flex: '1 1 420px' }}>
+            <p style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              color: 'var(--fg-bone)',
+              textTransform: 'uppercase',
+              margin: '0 0 0.5rem 0'
+            }}>
+              Recommended — Apple Installer
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontSize: '1rem',
+              lineHeight: '1.5',
+              color: '#aaa',
+              margin: 0
+            }}>
+              One universal DMG for Apple Silicon and Intel. The package installs both commands,
+              is signed and notarized by Apple, and keeps future CLI updates on the same installer channel.
+            </p>
+          </div>
+          <DownloadButton
+            href="https://github.com/QubeTX/qube-network-diagnostics/releases/latest/download/nd300-universal-apple-darwin.dmg"
+            label="↓ Download .DMG"
+          />
+        </div>
+      )}
 
       {selectedPlatform === 'windows' && (() => {
         const chipStyle = {

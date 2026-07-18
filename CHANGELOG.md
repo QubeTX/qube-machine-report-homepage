@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.15.0] - 2026-07-18
+
+### Changed
+
+- **ND-300 now presents the universal Apple Installer as the recommended Mac
+  download.** The Mac tab links to the versionless signed and notarized
+  PKG-in-DMG that supports Apple Silicon and Intel, while retaining the
+  terminal-managed archive as an alternative for existing users. All four live
+  version fallbacks now use 3.7.1.
+
+### Fixed
+
+- **The unified install guide now names the assets that actually ship.** ND-300
+  uses one universal Mac DMG and the current `nd300-*` Windows/Linux filenames;
+  the previous architecture-specific DMG and `nd-300-*` names did not exist in
+  the public release.
+
 ## [1.14.0] - 2026-07-17
 
 ### Changed
