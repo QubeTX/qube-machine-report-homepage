@@ -8,6 +8,18 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 19, 2026 — The system diagnostic is back in the product lineup
+
+**Improved**
+- Restored the system diagnostic immediately after the network diagnostic in
+  menus, footers, downloads, and related product links so it is easy to find
+  again after its new release is verified. The operating-system page remains
+  hidden while its separate work continues.
+- Made the command line the preferred install path on Mac, Linux, and Windows,
+  while keeping familiar Apple and Windows installers available. Future
+  updates remember the original install method instead of unexpectedly
+  changing it.
+
 ## July 18, 2026 — The machine report keeps your chosen install path
 
 **Improved**
