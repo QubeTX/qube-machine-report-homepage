@@ -72,6 +72,40 @@ const CopyButton = ({ text }) => {
   )
 }
 
+const DownloadButton = ({ href, label }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: 'var(--accent-signal)',
+        border: '2px solid var(--accent-signal)',
+        color: 'var(--bg-void)',
+        fontFamily: 'var(--font-mono)',
+        fontWeight: '700',
+        padding: '0.5rem 1rem',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        textTransform: 'uppercase',
+        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
+        transform: isHovered ? 'translateY(-2px)' : 'none',
+        boxShadow: isHovered ? '0 4px 12px rgba(255, 0, 212, 0.3)' : 'none',
+        fontSize: '0.75rem',
+        textDecoration: 'none',
+        display: 'inline-block',
+        textAlign: 'center'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {label}
+    </a>
+  )
+}
+
 const CodeBlock = ({ prompt, comment, command }) => (
   <div style={{ marginBottom: '0.75rem' }}>
     {comment && (
@@ -94,27 +128,28 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
-  const unixCommand = "curl -LsSf https://reports.qubetx.com/install-sd300.sh | sh"
-  const pathNote = "Behind the scenes the wrapper downloads the prebuilt sd300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find it."
-  const installNote = 'Already installed with older instructions? Run sd300 update. The crates.io package is still tr300-tui and the installed command is still sd300 — the wrapper just installs the prebuilt binary instead of building from source.'
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.2')
+  const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
+  const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
+  const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
+  const installNote = 'A fresh official install is authoritative, even over another edition or an older/newer copy. It either completes the requested takeover or leaves the working installation unchanged. The crates.io package remains tr300-tui; raw Cargo installs are an advanced unmanaged option.'
 
-  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt sd300 binary for macOS arm64/x64 or Linux x64 into ~/.cargo/bin. No Rust toolchain is downloaded or built — the binary is already compiled."
+  const unixExplanation = 'Downloads the latest prebuilt sd300 binary and writes a managed-install receipt. No Rust toolchain is downloaded or built; the CLI installer is the recommended path on macOS and Linux.'
 
   const platforms = {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Install the prebuilt sd300 binary',
+      comment: '# Recommended managed CLI install',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
-      note: "Runs entirely in user scope — no sudo needed. The wrapper is two lines of shell hosted on this site; it calls the official cargo-dist installer published with every SD-300 release."
+      note: 'Runs in user scope with no sudo. The signed and notarized Apple PKG below remains available for a native Installer workflow.'
     },
     linux: {
       label: 'Linux',
       prompt: '$',
-      comment: '# Install the prebuilt sd300 binary',
+      comment: '# Recommended managed CLI install',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update'
@@ -122,11 +157,11 @@ export default function SD300Install() {
     windows: {
       label: 'Windows',
       prompt: 'PS>',
-      comment: '# Install the prebuilt sd300 binary',
-      command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-sd300.ps1 | iex"',
-      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer, which downloads the prebuilt sd300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
+      comment: '# Recommended managed CLI install',
+      command: `irm ${releaseBase}/sd300-cli-installer.ps1 | iex`,
+      explanation: 'Downloads the latest prebuilt sd300.exe and writes a managed-install receipt. No Rust toolchain or MSVC Build Tools are required.',
       updateCommand: 'sd300 update',
-      note: "Runs in user scope — no administrator PowerShell needed."
+      note: 'Runs in user scope with no administrator PowerShell. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'
     }
   }
 
@@ -255,6 +290,99 @@ export default function SD300Install() {
           {installNote}
         </p>
       </div>
+
+      {selectedPlatform === 'macos' && (
+        <div style={{
+          width: '100%',
+          maxWidth: '800px',
+          marginTop: '3rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '1rem',
+          alignItems: 'center'
+        }}>
+          <div>
+            <p style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              color: 'var(--fg-bone)',
+              textTransform: 'uppercase',
+              margin: '0 0 0.5rem 0'
+            }}>
+              Apple Installer Alternative
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontSize: '1rem',
+              lineHeight: '1.5',
+              color: '#aaa',
+              margin: 0
+            }}>
+              One universal signed and notarized PKG for Apple Silicon and Intel.
+              Future CLI updates remain on the PKG channel.
+            </p>
+          </div>
+          <div style={{ justifySelf: 'end' }}>
+            <DownloadButton
+              href={`${releaseBase}/sd300-macos-universal.pkg`}
+              label="Download .PKG"
+            />
+          </div>
+        </div>
+      )}
+
+      {selectedPlatform === 'windows' && (
+        <div style={{
+          width: '100%',
+          maxWidth: '800px',
+          marginTop: '3rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '2rem'
+        }}>
+          {[
+            {
+              edition: 'Global',
+              description: 'Installs to Program Files and requires administrator approval.',
+              msi: 'sd300-windows-x64-global.msi',
+              exe: 'sd300-windows-x64-global.exe'
+            },
+            {
+              edition: 'Corporate',
+              description: 'Installs to your user profile without administrator access.',
+              msi: 'sd300-windows-x64-corporate.msi',
+              exe: 'sd300-windows-x64-corporate.exe'
+            }
+          ].map(({ edition, description, msi, exe }) => (
+            <div key={edition} style={{ minWidth: 0 }}>
+              <p style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.75rem',
+                color: 'var(--fg-bone)',
+                textTransform: 'uppercase',
+                margin: '0 0 0.5rem 0'
+              }}>
+                {edition}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontSize: '1rem',
+                lineHeight: '1.5',
+                color: '#aaa',
+                margin: '0 0 1rem 0'
+              }}>
+                {description}
+              </p>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <DownloadButton href={`${releaseBase}/${msi}`} label="Download .MSI" />
+                <DownloadButton href={`${releaseBase}/${exe}`} label="Download .EXE" />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <p style={{
         fontFamily: 'var(--font-mono)',

@@ -335,7 +335,7 @@ const HorizontalRule = () => (
 export default function InstallGuideContent() {
   const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
   const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.3')
-  const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '1.4.3')
+  const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.2')
 
   return (
     <>
@@ -386,11 +386,9 @@ export default function InstallGuideContent() {
           <StyledTable
             headers={['I have a...', 'Grab this file']}
             rows={[
-              ['Mac — TR300 or ND300 (Apple or Intel)', <InlineCode>*-universal-apple-darwin.pkg</InlineCode>],
-              ['Mac — SD300 (Apple chip)', <InlineCode>*-aarch64-apple-darwin.dmg</InlineCode>],
-              ['Mac — SD300 (Intel chip)', <InlineCode>*-x86_64-apple-darwin.dmg</InlineCode>],
-              ['Windows PC (any)', <InlineCode>*-x86_64-pc-windows-msvc.msi</InlineCode>],
-              ['Linux PC (most distros)', <InlineCode>*-x86_64-unknown-linux-gnu.tar.xz</InlineCode>]
+              ['Mac — TR300, ND300, or SD300', 'Use the product-specific universal PKG in Step 2'],
+              ['Windows PC', 'Use the product-specific MSI in Step 2'],
+              ['Linux PC', 'Use the product-specific archive in Step 2']
             ]}
           />
 
@@ -583,19 +581,19 @@ export default function InstallGuideContent() {
           <SubHeading>SD300 — System Diagnostics Tool (v{sd300Version})</SubHeading>
           <MonoParagraph>
             All files are inside the <InlineCode>SD300-qube-system-diagnostics/</InlineCode> folder.
-            Files are named <InlineCode>sd300</InlineCode> (macOS) or <InlineCode>sd-300</InlineCode> (Windows and Linux); the installed command is <InlineCode>sd300</InlineCode>.
+            Installer and archive names are stable across releases; the installed command is <InlineCode>sd300</InlineCode>.
           </MonoParagraph>
 
           <StyledTable
             headers={['Your Computer', 'File to Download', 'Folder']}
             rows={[
-              [<><Bold>Mac</Bold> — Apple M1/M2/M3/M4</>, <InlineCode>sd300-aarch64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Mac</Bold> — Intel processor</>, <InlineCode>sd300-x86_64-apple-darwin.dmg</InlineCode>, 'macos/'],
-              [<><Bold>Windows</Bold> — installer (recommended)</>, <InlineCode>sd-300-x86_64-pc-windows-msvc.msi</InlineCode>, 'windows/'],
-              [<><Bold>Windows</Bold> — portable (no install)</>, <InlineCode>sd-300-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
-              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>sd-300-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>sd-300-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
-              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>sd-300-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
+              [<><Bold>Mac</Bold> — Apple Silicon or Intel</>, <InlineCode>sd300-macos-universal.pkg</InlineCode>, 'macos/'],
+              [<><Bold>Windows</Bold> — Global installer</>, <InlineCode>sd300-windows-x64-global.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — Corporate installer</>, <InlineCode>sd300-windows-x64-corporate.msi</InlineCode>, 'windows/'],
+              [<><Bold>Windows</Bold> — portable archive</>, <InlineCode>tr300-tui-x86_64-pc-windows-msvc.zip</InlineCode>, 'windows/'],
+              [<><Bold>Linux</Bold> — Ubuntu, Fedora, Debian, etc.</>, <InlineCode>tr300-tui-x86_64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Raspberry Pi / ARM server</>, <InlineCode>tr300-tui-aarch64-unknown-linux-gnu.tar.xz</InlineCode>, 'linux/'],
+              [<><Bold>Linux</Bold> — Alpine / Docker</>, <InlineCode>tr300-tui-x86_64-unknown-linux-musl.tar.xz</InlineCode>, 'linux/']
             ]}
           />
         </div>
@@ -614,65 +612,22 @@ export default function InstallGuideContent() {
           <SectionHeading>Install It</SectionHeading>
 
           <Paragraph>
-            Follow the instructions for your operating system below. TR300 and ND300 use direct Apple
-            Installer packages on Mac; SD300 uses a disk image. On Windows and Linux,
-            use the file you picked in Step 2.
+            Follow the instructions for your operating system below. All three products use direct
+            Apple Installer packages on Mac. On Windows and Linux, use the product-specific file
+            you picked in Step 2.
           </Paragraph>
 
-          {/* Mac TR300 and ND300 Package Install */}
-          <PlatformHeading>Mac — TR300 or ND300 Apple Installer (.pkg)</PlatformHeading>
+          {/* Mac Package Install */}
+          <PlatformHeading>Mac — Apple Installer (.pkg)</PlatformHeading>
 
           <NumberedStep number={1}>
-            <Bold>Double-click</Bold> <InlineCode>tr300-universal-apple-darwin.pkg</InlineCode> or <InlineCode>nd300-universal-apple-darwin.pkg</InlineCode>.
+            <Bold>Double-click</Bold> the product-specific <InlineCode>.pkg</InlineCode> file from Step 2.
           </NumberedStep>
           <NumberedStep number={2}>
-            <Bold>Follow Apple Installer.</Bold> TR300 installs <InlineCode>tr300</InlineCode>; ND300 installs <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode> for the computer.
+            <Bold>Follow Apple Installer.</Bold> TR300 installs <InlineCode>tr300</InlineCode>; ND300 installs <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode>; SD300 installs <InlineCode>sd300</InlineCode>.
           </NumberedStep>
           <NumberedStep number={3}>
-            <Bold>Run it:</Bold> open Terminal and type <InlineCode>tr300</InlineCode> or <InlineCode>nd300</InlineCode>. Future update commands keep using the package channel you selected.
-          </NumberedStep>
-
-          {/* Mac SD300 Disk Image Install */}
-          <PlatformHeading>Mac — SD300 Disk Image (.dmg)</PlatformHeading>
-
-          <NumberedStep number={1}>
-            <Bold>Double-click</Bold> the <InlineCode>.dmg</InlineCode> file. A small window (disk image) will open showing the tool inside.
-          </NumberedStep>
-          <NumberedStep number={2}>
-            <Bold>Copy the tool</Bold> to your Desktop: drag the file from the disk image window to your Desktop (or any folder you'd like to keep it in).
-          </NumberedStep>
-          <NumberedStep number={3}>
-            <Bold>First time running it:</Bold> Since these tools aren't from the Mac App Store, macOS will show a security warning.
-            To get past it:
-            <ul style={{ listStyle: 'none', padding: 0, marginTop: '0.5rem' }}>
-              <li style={{ marginBottom: '0.3rem', paddingLeft: '1rem' }}>
-                — <Bold>Right-click</Bold> (or Control-click) the tool on your Desktop.
-              </li>
-              <li style={{ marginBottom: '0.3rem', paddingLeft: '1rem' }}>
-                — Click <Bold>"Open"</Bold> from the menu.
-              </li>
-              <li style={{ marginBottom: '0.3rem', paddingLeft: '1rem' }}>
-                — In the dialog that appears, click <Bold>"Open"</Bold> again to confirm.
-              </li>
-              <li style={{ paddingLeft: '1rem' }}>
-                — You only need to do this once per tool.
-              </li>
-            </ul>
-          </NumberedStep>
-          <NumberedStep number={4}>
-            <Bold>Run the tool:</Bold> Open Terminal and type:
-          </NumberedStep>
-
-          <CodeBlock copyText="~/Desktop/sd300">
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>~/Desktop/sd300
-          </CodeBlock>
-
-          <MonoParagraph>
-            Replace the Desktop path if you copied <InlineCode>sd300</InlineCode> somewhere else.
-          </MonoParagraph>
-
-          <NumberedStep number={5}>
-            <Bold>Eject the disk image</Bold> when you're done: right-click the disk image on your Desktop and choose <Bold>"Eject"</Bold>.
+            <Bold>Run it:</Bold> open Terminal and type the installed command. Future CLI updates keep using the package channel you selected.
           </NumberedStep>
 
           {/* Windows Installer */}
@@ -769,17 +724,11 @@ export default function InstallGuideContent() {
 
           <TroubleshootCard title={'Mac: "macOS cannot verify that this app is free from malware"'}>
             <p style={{ marginBottom: '0.75rem' }}>
-              This appears because the tools are signed by a developer but not submitted to Apple's review service. It's safe to proceed.
+              The current universal PKGs are Developer ID signed, notarized, and stapled. This warning means macOS could not verify the file you opened.
             </p>
-            <p style={{ marginBottom: '0.75rem' }}>
-              <Bold>Fix:</Bold> Right-click the tool → click <Bold>"Open"</Bold> → click <Bold>"Open"</Bold> again in the dialog. You only need to do this once.
+            <p>
+              <Bold>Fix:</Bold> Delete that copy, download the current product-specific PKG again from the official QubeTX release, and verify its SHA-256 sidecar before opening it. Do not remove quarantine metadata to bypass a failed verification.
             </p>
-            <p style={{ marginBottom: '0.75rem', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--fg-dim)' }}>
-              Alternative fix (Terminal):
-            </p>
-            <CodeBlock copyText="xattr -d com.apple.quarantine ~/Desktop/tr300">
-              <span style={{ color: 'var(--accent-signal)' }}>$ </span>xattr -d com.apple.quarantine ~/Desktop/tr300
-            </CodeBlock>
           </TroubleshootCard>
 
           <TroubleshootCard title={'Windows: "Windows protected your PC" (SmartScreen)'}>

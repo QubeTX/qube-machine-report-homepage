@@ -23,17 +23,17 @@ When the user says "push to main" or "push to master", interpret that as "push t
 
 SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
 
-## Temporarily delisted pages (WIP — SD-300 & Shaughv OS)
+## Temporarily delisted page (WIP — Shaughv OS)
 
-**Status (since 2026-06-14):** The **SD-300** (`/sd300`) and **Shaughv OS** (`/shaughvos`) pages are being reworked and must **not be marketed** yet. Both routes and all their components are fully intact — each page still renders if reached by direct URL — but every discoverable in-site link to them (the nav bar, all footers, and in-content cross-links) has been removed. Do **not** re-add links or otherwise re-market these two pages until the WIP updates are finished.
+**Status (since 2026-06-14):** The **Shaughv OS** (`/shaughvos`) page is being reworked and must **not be marketed** yet. Its route and components remain intact and render at the direct URL, but discoverable in-site links to it are removed. SD-300 has been restored to product lists immediately after ND-300.
 
-**⚠️ Standing reminder — while this section exists:** any time you update a product page in this repo, **remind Emmett that SD-300 and Shaughv OS still need to be finished and re-linked** so they can be marketed again. When they're ready, restore the links per the manifest below and delete this whole section.
+**⚠️ Standing reminder — while this section exists:** any time you update a product page in this repo, **remind Emmett that Shaughv OS still needs to be finished and re-linked** before it can be marketed again. When it is ready, restore the links per the manifest below and delete this whole section.
 
-**Restore manifest.** Every delisted spot keeps a greppable `WIP-DELISTED` comment that preserves the original markup — find them all with `grep -r "WIP-DELISTED" src/`:
-- **Nav** — `src/components/ProductNav.jsx`: uncomment the `SD-300` and `SHAUGHVOS` entries in the `products` array (mirrors the earlier WB-300 hide).
-- **Footers** — uncomment the SD-300 / SHAUGHVOS `<a>` entries (and the SD-300 `SizeBadge` where present) in `Footer.jsx`, `ND300Footer.jsx`, `WB300Footer.jsx`, `SD300Footer.jsx` (Shaughv OS link only), `ShaughvOSFooter.jsx`, `ExecutablesFooter.jsx` (badge + text row), and `InstallGuideFooter.jsx` (badge + text row, SD-300 only).
-- **In-content** — `ExecutablesContent.jsx`: uncomment the SD-300 `GridCell` **and remove the `noBorder` that was added to the ND-300 cell** (it was a temporary last-cell border fix). In `Demos.jsx`, `ND300Features.jsx`, `SD300Platform.jsx`, and `ShaughvOSOverview.jsx`, re-wrap the de-linked `shaughvOS` / `SD-300` text in the anchor preserved in its adjacent comment.
-- Routes in `src/main.jsx` and the `public/install-sd300.*` wrappers were intentionally left untouched.
+**Restore manifest.** Every remaining delisted spot keeps a greppable `WIP-DELISTED` comment that preserves the original markup — find them all with `grep -r "WIP-DELISTED" src/`:
+- **Nav** — `src/components/ProductNav.jsx`: uncomment the `SHAUGHVOS` entry in the `products` array.
+- **Footers** — uncomment the SHAUGHVOS `<a>` entry and separator in `Footer.jsx`, `ND300Footer.jsx`, `WB300Footer.jsx`, `SD300Footer.jsx`, `ShaughvOSFooter.jsx`, and `ExecutablesFooter.jsx`.
+- **In-content** — in `Demos.jsx`, `ND300Features.jsx`, and `SD300Platform.jsx`, re-wrap the de-linked `shaughvOS` text in the anchor preserved in its adjacent comment.
+- The route in `src/main.jsx` remains intact.
 
 ## Architecture
 
@@ -58,15 +58,15 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 
 ## Install Documentation Contract
 
-All four products use the same **wrapper-script** install pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}` since the root domain is the TR-300 page). Each wrapper calls the upstream cargo-dist installer script — published with every product's GitHub release — which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin. Each wrapper exits nonzero with a clear message if the binary isn't present after install.
+Product pages prefer a versionless CLI installer command. The homepage keeps tiny redirects under `public/install-<product>.{sh,ps1}` for compatibility, while SD-300 v2 advertises its upstream ownership-aware installer directly. SD-300 records its exact install path and channel so `sd300 update` can reuse managed CLI, MSI, EXE, or PKG ownership without switching formats.
 
 ### Install one-liners
 
 | Product | Mac/Linux | Windows (PowerShell) |
 |---------|-----------|----------------------|
 | TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 \| iex"` |
-| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-sd300.ps1 \| iex"` |
 | ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 \| iex"` |
+| SD-300 | `curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh \| sh` | `irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 \| iex` |
 | WB-300 | `curl -LsSf https://reports.qubetx.com/install-wb300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-wb300.ps1 \| iex"` |
 
 ### Upstream cargo-dist asset names
@@ -74,13 +74,13 @@ All four products use the same **wrapper-script** install pattern. The homepage 
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
 | TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy updater alias) | `tr300` |
-| SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
+| SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy updater routers remain `tr300-tui-installer.*` / `SD300-installer.*` | `sd300` (crates.io package is still `tr300-tui`) |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
 
 Asset URLs use `releases/latest/download/...` so wrappers auto-track new versions — no version pinning. SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary; do not "fix" this to `cargo install sd300`.
 
-**TR-300 only — chained `tr300 install`:** The TR-300 wrapper appends `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell) after the cargo-dist call. This subcommand writes a shell-profile marker block that adds a `report` alias and auto-runs `tr300 --fast` on every new interactive shell. `tr300 install` is idempotent — the marker block is not duplicated on repeated runs. SD-300 and ND-300 wrappers don't chain it because their CLIs do not expose a self-install subcommand.
+**Product install subcommands:** TR-300's wrapper chains `tr300 install` to configure its shell-profile integration. SD-300 exposes `sd300 install`, but the advertised upstream wrapper already performs the same managed-channel installation, receipt verification, and native takeover; the website redirect must not invoke it a second time. ND-300 has no equivalent self-install command.
 
 **TR-300 command-first and native installer channels:** Keep the versionless
 wrapper commands as the recommended macOS/Linux/Windows path. The Mac native
@@ -101,6 +101,8 @@ immutable plus latest recovery links; copy must never imply a silent
 cross-channel fallback.
 
 **ND-300 command-first and native installer channels:** Keep the versionless wrapper commands as the recommended macOS/Linux/Windows path. The Mac native option is the direct signed/notarized/stapled universal `nd300-universal-apple-darwin.pkg`, not the legacy compatibility DMG. Windows native options are the four Global/Corporate MSI/EXE assets already surfaced in `ND300Install.jsx`. Copy must state that CLI updates preserve a proven channel and that a deliberately launched different official installer represents fresh intent when the scope transition is safe.
+
+**SD-300 command-first and native installer channels:** SD-300 v2 publishes versionless `sd300-windows-x64-{global,corporate}.{msi,exe}` assets plus one universal `sd300-macos-universal.pkg`; `SD300Install.jsx` surfaces them below the preferred CLI command. A later `sd300 update` must redownload and execute the same recorded installer channel. A deliberately launched fresh official installer is authoritative, including over another format or version, but must fail before mutation when ownership evidence is contradictory.
 
 **TR-300 v4.2.2 accuracy/trust contract:** normal `tr300` / `report` runs and
 the installed `tr300 --fast` startup summary only print to the terminal. A
@@ -153,8 +155,8 @@ if [ -d "$clone" ]; then echo "$clone"; else echo "no local clone — read from 
 | Product | GitHub Repo (public) | Repo dir name (under `~/git/`) |
 |---------|---------------------|--------------------------------|
 | TR-300 Machine Report | `QubeTX/qube-machine-report` | `qube-machine-report` |
-| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `qube-system-diagnostics` |
 | ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `qube-network-diagnostics` |
+| SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `qube-system-diagnostics` |
 | Executables Download Hub | `QubeTX/qube-reports-executables` | *(usually not cloned — use GitHub)* |
 | shaughvOS | `RealEmmettS/shaughvOS` | *(usually not cloned — use GitHub)* |
 

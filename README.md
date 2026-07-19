@@ -1,6 +1,6 @@
 # QubeTX Product Homepage
 
-Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers, and the [shaughvOS](https://github.com/RealEmmettS/shaughvOS) custom operating system.
+Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), and a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers. The shaughvOS page remains separately delisted while that product is reworked.
 
 ## Tech Stack
 
@@ -29,13 +29,13 @@ npm run preview
 
 ## Install Content Contract
 
-All four product install sections use the same **wrapper-script** pattern. The homepage hosts a small shell/PowerShell wrapper under `public/install-<product>.{sh,ps1}` (TR-300 uses the unprefixed `public/install.{sh,ps1}`). Each wrapper invokes the upstream cargo-dist installer script published with every product release, which drops the prebuilt binary into `CARGO_HOME` (`~/.cargo/bin` on Unix, `%USERPROFILE%\.cargo\bin` on Windows). No Rust toolchain, no MSVC Build Tools, no admin/sudo.
+Product pages prefer versionless CLI installer commands. The homepage still hosts small compatibility redirects under `public/install-<product>.{sh,ps1}`, while SD-300 v2 links directly to its ownership-aware upstream managed installer.
 
 | Product | Mac/Linux one-liner | Windows one-liner |
 |---------|--------------------|--------------------|
 | TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 \| iex"` |
-| SD-300 | `curl -LsSf https://reports.qubetx.com/install-sd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-sd300.ps1 \| iex"` |
 | ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 \| iex"` |
+| SD-300 | `curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh \| sh` | `irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 \| iex` |
 | WB-300 | `curl -LsSf https://reports.qubetx.com/install-wb300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-wb300.ps1 \| iex"` |
 
 Upstream cargo-dist asset names (used inside the wrappers):
@@ -43,13 +43,13 @@ Upstream cargo-dist asset names (used inside the wrappers):
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
 | TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300` |
-| SD-300 | `QubeTX/qube-system-diagnostics` | `SD300-installer.{sh,ps1}` (uppercase) | `sd300` (crates.io package is still `tr300-tui`) |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
+| SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy routers remain for old updaters | `sd300` (crates.io package is still `tr300-tui`) |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
 
 Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`, `wb300 update`.
 
-**TR-300 chained `tr300 install`:** The TR-300 wrapper has one extra step after the cargo-dist call — it runs `tr300 install` (by full path so it works without re-sourcing `PATH`). That subcommand writes a marker block to the user's shell profile (`~/.zshrc`, `~/.bashrc`, or PowerShell `$PROFILE`) that adds a `report` alias and configures `tr300 --fast` to run automatically on every new interactive shell. `tr300 install` is idempotent — re-running the one-liner does not duplicate profile entries. SD-300 and ND-300 wrappers don't chain a self-install subcommand because their CLIs don't expose one.
+**Install ownership:** TR-300's wrapper still chains its profile-configuration subcommand. SD-300's managed installer writes a receipt, `sd300 update` preserves that owner (including MSI, EXE, or PKG), and `sd300 install` deliberately moves a recognized installation to the preferred managed CLI channel. Raw `cargo install tr300-tui` remains an unmanaged advanced option.
 
 **TR-300 native installer options:** The versionless shell/PowerShell wrapper is
 the recommended install on macOS, Linux, and Windows. macOS also has one direct,
@@ -66,6 +66,8 @@ user's newest install choice, including an intentional reinstall or downgrade,
 when takeover can be proven safe. Ambiguous, conflicting, or policy-blocked
 transitions keep the working installation intact and return exact and latest
 recovery links rather than crossing channels silently.
+
+**SD-300 native installer alternatives:** SD-300 v2 lists one signed/notarized universal macOS PKG plus Global/Corporate MSI and EXE installers for Windows. Their stable asset names contain no release number, and later CLI updates stay on the recorded native channel.
 
 **ND-300 native installer options:** The versionless shell/PowerShell wrapper is the recommended install on macOS, Linux, and Windows. ND-300 also publishes a direct universal Apple Installer package at `releases/latest/download/nd300-universal-apple-darwin.pkg` and four Global/Corporate MSI/EXE variants. `ND300Install.jsx` presents these as optional native deployment channels. `nd300 update` preserves the proven channel; deliberately launching a different official installer records the user's fresh choice when the scope transition is safe.
 
@@ -137,11 +139,11 @@ src/
 | Route | Product | Description |
 |-------|---------|-------------|
 | `/` | TR-300 Machine Report | System hardware reporting tool |
-| `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/nd300` | ND-300 Network Diagnostic | Network diagnostics and repair tool |
+| `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/executables` | Executables Download Hub | Pre-built offline installers for all QubeTX CLI tools |
 | `/install-guide` | Install Guide | Step-by-step offline installer guide |
-| `/shaughvos` | shaughvOS | Custom diagnostic operating system for any hardware |
+| `/shaughvos` | shaughvOS | Direct-only WIP route; intentionally delisted from product discovery |
 
 ## Design
 

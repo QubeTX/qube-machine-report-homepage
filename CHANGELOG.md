@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.18.0] - 2026-07-19
+
+### Changed
+
+- **SD-300 is discoverable again after its v2 release gate.** Restored the
+  product immediately after ND-300 in navigation, footers, offline downloads,
+  product documentation, and cross-product references. Shaughv OS remains the
+  only intentionally delisted page.
+- **SD-300 now leads with versionless CLI installation on every platform.**
+  The page uses direct latest-release shell/PowerShell commands, with the
+  universal macOS PKG and Windows Global/Corporate MSI/EXE installers retained
+  as alternatives. Copy now explains same-channel updates and authoritative,
+  transactional fresh installs.
+
 ## [1.17.0] - 2026-07-18
 
 ### Changed
@@ -24,7 +38,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **The unified install guide uses the current stable TR-300 filenames.** The
   fallback release label is v4.2.2 and every public download remains a
   versionless `releases/latest/download/...` entrypoint.
-
 ### Fixed
 
 - **TR-300 documentation links follow the repository's `main` branch.** The
@@ -45,7 +58,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   updates reuse the proven install channel, while deliberately launching a
   different official installer records the user's fresh choice when the scope
   transition is safe. All four ND-300 fallback labels now use 3.7.3.
-
 ## [1.15.1] - 2026-07-18
 
 ### Changed

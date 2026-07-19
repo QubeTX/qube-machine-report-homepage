@@ -202,9 +202,7 @@ export default function ExecutablesContent() {
           description="Find and fix network problems. Tests your connection, checks DNS, traces routes, and analyzes your network setup."
           linkText="> VIEW ND-300"
           linkUrl="/nd300"
-          noBorder
         />
-        {/* WIP-DELISTED — SD-300 product card delisted (WIP). The ND-300 GridCell above was given `noBorder` to stay the grid's clean last cell; remove that noBorder when restoring this card:
         <GridCell
           label="03 // SYSTEM DIAGNOSTIC"
           title="SD-300<br/>System Diagnostic"
@@ -212,7 +210,7 @@ export default function ExecutablesContent() {
           linkText="> VIEW SD-300"
           linkUrl="/sd300"
           noBorder
-        /> */}
+        />
       </section>
 
       {/* Secondary download CTA */}

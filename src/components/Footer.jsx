@@ -108,11 +108,11 @@ export default function Footer() {
         <span>
           <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
           {' / '}
-          <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
-          {' / '}
-          {/* WIP-DELISTED — SD-300 & Shaughv OS delisted (WIP); restore both links + their separators:
           <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
           {' / '}
+          <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
+          {' / '}
+          {/* WIP-DELISTED — Shaughv OS delisted (WIP); restore link + separator:
           <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
           {' / '} */}
           <a href="https://github.com/QubeTX/qube-machine-report" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
