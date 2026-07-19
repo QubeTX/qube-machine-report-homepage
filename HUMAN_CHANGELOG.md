@@ -8,6 +8,18 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 19, 2026 — Complete removal is one command
+
+**Added**
+- Added the system diagnostic's uninstall command to its command list and each
+  platform's install panel so it is easy to find when the tool is no longer
+  needed.
+
+**Improved**
+- Explained that the command uses the original installation method to remove
+  the program and its own setup records without removing shared developer
+  tools, which makes cleanup complete without disturbing unrelated software.
+
 ## July 19, 2026 — The system diagnostic is back in the product lineup
 
 **Improved**

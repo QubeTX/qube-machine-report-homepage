@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.19.0] - 2026-07-19
+
+### Added
+
+- **The SD-300 command list now includes complete uninstall.** The product page
+  lists `sd300 uninstall`, and every platform tab repeats it beside the update
+  command with the proven-owner cleanup behavior explained.
+
+### Changed
+
+- **SD-300 uninstall guidance now matches the qualified lifecycle.** The
+  command removes managed receipts, native registrations, installer markers,
+  SD-300 payloads, and product-owned PATH entries while leaving shared
+  Cargo/Rust tooling intact.
+
 ## [1.18.0] - 2026-07-19
 
 ### Changed

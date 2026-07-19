@@ -104,6 +104,8 @@ cross-channel fallback.
 
 **SD-300 command-first and native installer channels:** SD-300 v2 publishes versionless `sd300-windows-x64-{global,corporate}.{msi,exe}` assets plus one universal `sd300-macos-universal.pkg`; `SD300Install.jsx` surfaces them below the preferred CLI command. A later `sd300 update` must redownload and execute the same recorded installer channel. A deliberately launched fresh official installer is authoritative, including over another format or version, but must fail before mutation when ownership evidence is contradictory.
 
+**SD-300 uninstall contract:** Keep `sd300 uninstall` in both the Commands table and every platform's install panel. It delegates to the proven managed, Cargo, MSI, EXE, or PKG owner and removes SD-300 payloads, receipts/registrations, markers, and product-owned PATH entries while preserving shared Cargo/Rust tooling.
+
 **TR-300 v4.2.2 accuracy/trust contract:** normal `tr300` / `report` runs and
 the installed `tr300 --fast` startup summary only print to the terminal. A
 Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or

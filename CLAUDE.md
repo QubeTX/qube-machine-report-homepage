@@ -121,6 +121,8 @@ Keep the versionless wrapper commands as the recommended macOS/Linux/Windows pat
 
 SD-300 v2 publishes `sd300-windows-x64-{global,corporate}.{msi,exe}` and the universal `sd300-macos-universal.pkg`; `SD300Install.jsx` lists those alternatives below its preferred CLI command. SD-300's updater must preserve whichever managed, MSI, EXE, or PKG channel owns the running binary. A fresh official install may take over from another recognized channel or version only as a verified transaction.
 
+Keep `sd300 uninstall` in both the SD-300 Commands table and every platform's install panel. It delegates to the proven managed, Cargo, MSI, EXE, or PKG owner and removes SD-300 payloads, receipts/registrations, markers, and product-owned PATH entries while preserving shared Cargo/Rust tooling.
+
 **TR-300 v4.2.2 accuracy/trust contract:** normal `tr300` / `report` runs and
 the installed `tr300 --fast` startup summary only print to the terminal. A
 Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or

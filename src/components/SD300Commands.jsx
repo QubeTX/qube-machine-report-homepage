@@ -45,7 +45,8 @@ export default function SD300Commands() {
     { command: 'sd300 --tech', description: 'Technician mode — raw data' },
     { command: 'sd300 --help', description: 'Show help' },
     { command: 'sd300 --version', description: 'Show version' },
-    { command: 'sd300 update', description: 'Check for and install the latest release' }
+    { command: 'sd300 update', description: 'Check for and install the latest release' },
+    { command: 'sd300 uninstall', description: 'Fully remove SD-300 through its proven install channel' }
   ]
 
   return (

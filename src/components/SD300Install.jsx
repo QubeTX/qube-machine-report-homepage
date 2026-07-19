@@ -128,10 +128,11 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.2')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.3')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
   const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
+  const uninstallNote = 'sd300 uninstall calls the proven owner to remove the binary, receipt or native registration, installer marker, and any SD-300-only PATH entry. Shared Cargo and Rust tooling is left intact.'
   const installNote = 'A fresh official install is authoritative, even over another edition or an older/newer copy. It either completes the requested takeover or leaves the working installation unchanged. The crates.io package remains tr300-tui; raw Cargo installs are an advanced unmanaged option.'
 
   const unixExplanation = 'Downloads the latest prebuilt sd300 binary and writes a managed-install receipt. No Rust toolchain is downloaded or built; the CLI installer is the recommended path on macOS and Linux.'
@@ -144,6 +145,7 @@ export default function SD300Install() {
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
+      uninstallCommand: 'sd300 uninstall',
       note: 'Runs in user scope with no sudo. The signed and notarized Apple PKG below remains available for a native Installer workflow.'
     },
     linux: {
@@ -152,7 +154,8 @@ export default function SD300Install() {
       comment: '# Recommended managed CLI install',
       command: unixCommand,
       explanation: unixExplanation,
-      updateCommand: 'sd300 update'
+      updateCommand: 'sd300 update',
+      uninstallCommand: 'sd300 uninstall'
     },
     windows: {
       label: 'Windows',
@@ -161,6 +164,7 @@ export default function SD300Install() {
       command: `irm ${releaseBase}/sd300-cli-installer.ps1 | iex`,
       explanation: 'Downloads the latest prebuilt sd300.exe and writes a managed-install receipt. No Rust toolchain or MSVC Build Tools are required.',
       updateCommand: 'sd300 update',
+      uninstallCommand: 'sd300 uninstall',
       note: 'Runs in user scope with no administrator PowerShell. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'
     }
   }
@@ -279,6 +283,24 @@ export default function SD300Install() {
           margin: '0.5rem 0 0 0'
         }}>
           Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
+          Uninstall completely: <span style={{ color: 'var(--fg-bone)' }}>{current.uninstallCommand}</span>
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
+          {uninstallNote}
         </p>
 
         <p style={{
