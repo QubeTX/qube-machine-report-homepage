@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function SD300Hero() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.2')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.3')
 
   useEffect(() => {
     document.title = 'QUBETX SD-300'

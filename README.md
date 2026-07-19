@@ -47,7 +47,7 @@ Upstream cargo-dist asset names (used inside the wrappers):
 | SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy routers remain for old updaters | `sd300` (crates.io package is still `tr300-tui`) |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
 
-Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`, `wb300 update`.
+Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`, `wb300 update`. SD-300's complete proven-owner removal command is `sd300 uninstall` on every platform and install channel.
 
 **Install ownership:** TR-300's wrapper still chains its profile-configuration subcommand. SD-300's managed installer writes a receipt, `sd300 update` preserves that owner (including MSI, EXE, or PKG), and `sd300 install` deliberately moves a recognized installation to the preferred managed CLI channel. Raw `cargo install tr300-tui` remains an unmanaged advanced option.
 
