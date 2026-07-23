@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 23, 2026 — SD-300 carries its new identity onto the website
+
+**Improved**
+
+- Replaced the generic three-circle symbol above the SD-300 page with the
+  monochrome isometric SD/300 cube from the desktop app. It stays sharp at
+  desktop and mobile sizes and adopts the page's light foreground color, while
+  the other product pages keep their existing symbols.
+
 ## July 23, 2026 — SD-300 gets a desktop app, and tidier downloads
 
 **Added**

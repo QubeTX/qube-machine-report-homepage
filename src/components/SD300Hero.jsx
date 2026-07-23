@@ -2,32 +2,20 @@ import { useState, useEffect } from 'react'
 import ProductNav from './ProductNav'
 import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
 
-const Logo = () => {
-  const shapeStyle = {
-    width: '60px',
-    height: '120px',
-    border: '8px solid var(--fg-bone)',
-    borderRadius: '60px',
-    margin: '0 -12px',
-    background: 'transparent',
-    position: 'relative',
-    mixBlendMode: 'exclusion'
-  }
-
-  return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+const Logo = () => (
+  <div
+    aria-hidden="true"
+    style={{
+      width: 'clamp(112px, 10vw, 132px)',
+      aspectRatio: '1',
       marginBottom: '2rem',
-      opacity: 0.9
-    }}>
-      <div style={shapeStyle}></div>
-      <div style={shapeStyle}></div>
-      <div style={shapeStyle}></div>
-    </div>
-  )
-}
+      background: 'var(--fg-bone)',
+      WebkitMask: "url('/sd300-monochrome.svg') center / contain no-repeat",
+      mask: "url('/sd300-monochrome.svg') center / contain no-repeat",
+      opacity: 0.92
+    }}
+  />
+)
 
 const VersionBadge = ({ version, active }) => {
   const [isHovered, setIsHovered] = useState(false)
