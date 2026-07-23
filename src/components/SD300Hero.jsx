@@ -81,7 +81,7 @@ const ScrollLink = ({ label, targetId }) => {
 }
 
 export default function SD300Hero() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.3')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '3.1.1')
 
   useEffect(() => {
     document.title = 'QUBETX SD-300'
@@ -116,7 +116,7 @@ export default function SD300Hero() {
 
         <div className="hide-on-mobile" style={{ maxWidth: '200px', textAlign: 'right' }}>
           DIAGNOSTIC TOOL<br />
-          LIVE DASHBOARD (TUI)<br />
+          TERMINAL + DESKTOP APP<br />
           QUBETX
         </div>
       </div>
@@ -156,7 +156,7 @@ export default function SD300Hero() {
           maxWidth: '600px'
         }}>
           A live dashboard for your system's health.<br />
-          Watch diagnostics update in real time.
+          In your terminal or a native desktop app.
         </h2>
       </div>
 

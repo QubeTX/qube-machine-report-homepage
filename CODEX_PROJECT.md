@@ -96,6 +96,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── Quote.jsx
 │   │   ├── SampleOutput.jsx
 │   │   ├── SD300Commands.jsx
+│   │   ├── SD300Desktop.jsx
 │   │   ├── SD300Footer.jsx
 │   │   ├── SD300Hero.jsx
 │   │   ├── SD300Install.jsx

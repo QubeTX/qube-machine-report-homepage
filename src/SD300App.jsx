@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import SD300Hero from './components/SD300Hero'
 import SD300Modes from './components/SD300Modes'
+import SD300Desktop from './components/SD300Desktop'
 import SD300Sections from './components/SD300Sections'
 import SD300Commands from './components/SD300Commands'
 import SD300Keybindings from './components/SD300Keybindings'
@@ -31,6 +32,7 @@ function SD300App() {
     <>
       <SD300Hero />
       <SD300Modes />
+      <SD300Desktop />
       <SD300Sections />
       <SD300Commands />
       <SD300Keybindings />

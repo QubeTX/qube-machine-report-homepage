@@ -8,7 +8,16 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
-## July 19, 2026 — Complete removal is one command
+## July 23, 2026 — SD-300 gets a desktop app, and tidier downloads
+
+**Added**
+
+- The SD-300 page now shows off its new desktop app. Alongside the terminal tool, SD-300 comes with a real desktop window that shows the same nine health sections live, keeps a quick glance in your system tray on Windows and Mac, and can even update itself with one click. Both are installed together but can be used on their own. A new section on the page explains all of this, and the command list now shows how to open the app and install the whole thing.
+
+**Improved**
+
+- Made the Windows download areas on the TR-300 and ND-300 pages look like the SD-300 one. All three now use the same clean two-card layout — one card for the everyone-on-the-computer install and one for the just-me install, each with its download buttons — so the pages feel consistent.
+- Updated the SD-300 page's headline and install notes so they mention both the terminal and the desktop app, and refreshed the version number shown before the live one loads.
 
 **Added**
 - Added the system diagnostic's uninstall command to its command list and each

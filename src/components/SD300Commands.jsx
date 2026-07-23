@@ -43,8 +43,10 @@ export default function SD300Commands() {
     { command: 'sd300', description: 'Interactive mode selection' },
     { command: 'sd300 --user', description: 'User mode — plain language health' },
     { command: 'sd300 --tech', description: 'Technician mode — raw data' },
+    { command: 'sd300 gui', description: 'Launch or focus the native desktop app' },
     { command: 'sd300 --help', description: 'Show help' },
     { command: 'sd300 --version', description: 'Show version' },
+    { command: 'sd300 install', description: 'Install the complete CLI + desktop app through the managed channel' },
     { command: 'sd300 update', description: 'Check for and install the latest release' },
     { command: 'sd300 uninstall', description: 'Fully remove SD-300 through its proven install channel' }
   ]

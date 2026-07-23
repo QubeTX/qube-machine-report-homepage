@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.0] - 2026-07-23
+
+### Added
+
+- **SD-300 now markets its native desktop app (v3).** Added a new
+  `SD300Desktop.jsx` section ("New in Version 3 — The Desktop App") between
+  `SD300Modes` and `SD300Sections`, describing the one-product model
+  (terminal + app installed/updated/uninstalled together, run independently),
+  all nine diagnostic sections in a native window, the Windows/macOS tray
+  glance, and in-app "Update now". The section uses the site's existing
+  typographic language and a hover card grid; Linux is noted as tray-free.
+- **SD-300 command table gains the v3 commands.** `SD300Commands.jsx` now lists
+  `sd300 gui` (launch or focus the desktop app) and `sd300 install` (managed
+  install of the complete CLI + app) alongside the existing entries.
+
+### Improved
+
+- **TR-300 and ND-300 Windows download sections now match SD-300's layout.**
+  `Install.jsx` and `ND300Install.jsx` replace the older chip-and-row Windows
+  block with SD-300's per-edition card grid (`repeat(auto-fit, minmax(260px,
+  1fr))`) — Global and Corporate cards, each with a description and MSI/EXE
+  download buttons — for a consistent, cleaner look across all three products.
+  The versionless `releases/latest/download` asset URLs are unchanged.
+- **SD-300 hero and install copy reflect both frontends.** The hero corner now
+  reads "TERMINAL + DESKTOP APP" and the tagline mentions the native app; the
+  install panel notes that the managed install includes the app and that
+  `sd300 gui` opens it. Stale `2.0.3` version fallbacks bumped to `3.1.1`.
+
 ## [1.19.0] - 2026-07-19
 
 ### Added

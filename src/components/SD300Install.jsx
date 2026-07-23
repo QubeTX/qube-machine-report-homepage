@@ -128,12 +128,13 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.3')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '3.1.1')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
   const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
   const uninstallNote = 'sd300 uninstall calls the proven owner to remove the binary, receipt or native registration, installer marker, and any SD-300-only PATH entry. Shared Cargo and Rust tooling is left intact.'
   const installNote = 'A fresh official install is authoritative, even over another edition or an older/newer copy. It either completes the requested takeover or leaves the working installation unchanged. The crates.io package remains tr300-tui; raw Cargo installs are an advanced unmanaged option.'
+  const appNote = 'The managed install includes the native desktop app alongside the terminal tool. Open or focus it any time with sd300 gui; the two update and uninstall together but run independently.'
 
   const unixExplanation = 'Downloads the latest prebuilt sd300 binary and writes a managed-install receipt. No Rust toolchain is downloaded or built; the CLI installer is the recommended path on macOS and Linux.'
 
@@ -282,6 +283,15 @@ export default function SD300Install() {
           lineHeight: '1.6',
           margin: '0.5rem 0 0 0'
         }}>
+          {appNote}
+        </p>
+
+        <p style={{
+          color: 'var(--fg-dim)',
+          fontSize: '0.7rem',
+          lineHeight: '1.6',
+          margin: '0.5rem 0 0 0'
+        }}>
           Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
         </p>
 
@@ -414,7 +424,7 @@ export default function SD300Install() {
         color: '#555',
         textAlign: 'center'
       }}>
-        PolyForm Noncommercial License • Real-time system diagnostics TUI
+        PolyForm Noncommercial License • Real-time system diagnostics — terminal + native desktop app
       </p>
     </section>
   )

@@ -327,73 +327,56 @@ export default function Install() {
       )}
 
       {selectedPlatform === 'windows' && (() => {
-        const chipStyle = {
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.7rem',
-          color: 'var(--fg-dim)',
-          border: '1px solid var(--fg-dim)',
-          padding: '2px 8px',
-          borderRadius: '4px',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          justifySelf: 'end',
-          whiteSpace: 'nowrap'
-        }
-        const descStyle = {
-          fontFamily: 'var(--font-serif)',
-          fontStyle: 'italic',
-          fontSize: '1rem',
-          color: '#aaa'
-        }
-        const buttonsRowStyle = { display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', flexWrap: 'wrap' }
+        const base = 'https://github.com/QubeTX/qube-machine-report/releases/latest/download'
         return (
           <div style={{
             width: '100%',
             maxWidth: '800px',
             marginTop: '3rem',
             display: 'grid',
-            gridTemplateColumns: 'auto 1fr auto',
-            columnGap: '1rem',
-            rowGap: '1.5rem',
-            alignItems: 'center'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '2rem'
           }}>
-            <p style={{
-              gridColumn: '1 / -1',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              lineHeight: '1.6',
-              color: 'var(--fg-dim)',
-              textAlign: 'center',
-              margin: 0
-            }}>
-              Prefer a double-click or managed install? Choose the matching Windows edition.
-            </p>
-
-            <span style={chipStyle}>Global</span>
-            <span style={descStyle}>Installs to Program Files — requires administrator.</span>
-            <div style={buttonsRowStyle}>
-              <DownloadButton
-                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc.msi"
-                label="↓ Download .MSI"
-              />
-              <DownloadButton
-                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-setup.exe"
-                label="↓ Download .EXE"
-              />
-            </div>
-
-            <span style={chipStyle}>Corporate</span>
-            <span style={descStyle}>Installs to your user profile — no admin required.</span>
-            <div style={buttonsRowStyle}>
-              <DownloadButton
-                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate.msi"
-                label="↓ Download .MSI"
-              />
-              <DownloadButton
-                href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate-setup.exe"
-                label="↓ Download .EXE"
-              />
-            </div>
+            {[
+              {
+                edition: 'Global',
+                description: 'Installs to Program Files and requires administrator approval.',
+                msi: 'tr300-x86_64-pc-windows-msvc.msi',
+                exe: 'tr300-x86_64-pc-windows-msvc-setup.exe'
+              },
+              {
+                edition: 'Corporate',
+                description: 'Installs to your user profile without administrator access.',
+                msi: 'tr300-x86_64-pc-windows-msvc-corporate.msi',
+                exe: 'tr300-x86_64-pc-windows-msvc-corporate-setup.exe'
+              }
+            ].map(({ edition, description, msi, exe }) => (
+              <div key={edition} style={{ minWidth: 0 }}>
+                <p style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--fg-bone)',
+                  textTransform: 'uppercase',
+                  margin: '0 0 0.5rem 0'
+                }}>
+                  {edition}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontStyle: 'italic',
+                  fontSize: '1rem',
+                  lineHeight: '1.5',
+                  color: '#aaa',
+                  margin: '0 0 1rem 0'
+                }}>
+                  {description}
+                </p>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <DownloadButton href={`${base}/${msi}`} label="Download .MSI" />
+                  <DownloadButton href={`${base}/${exe}`} label="Download .EXE" />
+                </div>
+              </div>
+            ))}
           </div>
         )
       })()}
