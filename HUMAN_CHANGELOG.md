@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 25, 2026 — WB-300 brings its own identity to the website
+
+**Improved**
+
+- Replaced the generic three-circle symbol above the WB-300 page with its
+  custom workbranch mark. It now appears in the page's light foreground color,
+  stays sharp and centered on desktop and mobile, and leaves every other
+  product's symbol unchanged.
+
 ## July 23, 2026 — SD-300 carries its new identity onto the website
 
 **Improved**

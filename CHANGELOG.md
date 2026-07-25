@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.2] - 2026-07-25
+
+### Changed
+
+- **WB-300 now carries its own product mark on the website.** Replaced the
+  generic three-circle hero crown on the WB-300 page with its custom
+  workbranch symbol. The SVG is rendered as a color-adaptive mask in the
+  site's existing bone-white foreground, preserving its wide proportions and
+  keeping it crisp and centered across desktop and mobile layouts without
+  changing the other product pages.
+
 ## [1.20.1] - 2026-07-23
 
 ### Changed
