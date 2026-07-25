@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.5] - 2026-07-25
+
+### Changed
+
+- **The primary hero action now draws attention immediately.** On TR-300,
+  ND-300, SD-300, and WB-300, the paired hero links now place Full Reference
+  first and Get Started second. Get Started keeps its bone-white label and
+  signal-magenta arrow before hover while preserving both smooth-scroll
+  destinations.
+
 ## [1.20.4] - 2026-07-25
 
 ### Added

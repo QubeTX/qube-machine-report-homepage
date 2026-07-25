@@ -42,8 +42,9 @@ const VersionBadge = ({ version, active }) => {
   )
 }
 
-const ScrollLink = ({ label, targetId }) => {
+const ScrollLink = ({ label, targetId, emphasized = false }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const isHighlighted = emphasized || isHovered
   return (
     <div
       role="button"
@@ -57,12 +58,13 @@ const ScrollLink = ({ label, targetId }) => {
         fontFamily: 'var(--font-mono)',
         fontSize: '0.65rem',
         textAlign: 'right',
-        color: isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
+        whiteSpace: 'nowrap',
+        color: isHighlighted ? 'var(--fg-bone)' : 'var(--fg-dim)',
         transition: 'all 0.2s ease',
         transform: isHovered ? 'translateX(-2px)' : 'none',
       }}
     >
-      <span style={{ color: isHovered ? 'var(--accent-signal)' : 'var(--fg-dim)', transition: 'color 0.2s ease' }}>↓</span>
+      <span style={{ color: isHighlighted ? 'var(--accent-signal)' : 'var(--fg-dim)', transition: 'color 0.2s ease' }}>↓</span>
       {'  '}{label}
     </div>
   )
@@ -170,8 +172,8 @@ export default function ND300Hero() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-          <ScrollLink label="GET STARTED" targetId="install" />
           <ScrollLink label="FULL REFERENCE" targetId="commands" />
+          <ScrollLink label="GET STARTED" targetId="install" emphasized />
         </div>
       </div>
     </header>

@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 25, 2026 — Getting started stands out sooner
+
+**Improved**
+
+- Reordered the two shortcuts on each matching product page so the full
+  reference comes first and getting started comes second. The getting-started
+  shortcut is now highlighted immediately, making the recommended next step
+  easier to spot without hovering.
+
 ## July 25, 2026 — Every page gets a quick return to the top
 
 **Added**
