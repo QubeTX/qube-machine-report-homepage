@@ -8,6 +8,7 @@ import WB300App from './WB300App.jsx'
 import ExecutablesApp from './ExecutablesApp.jsx'
 import InstallGuideApp from './InstallGuideApp.jsx'
 import ShaughvOSApp from './ShaughvOSApp.jsx'
+import BackToTopButton from './components/BackToTopButton.jsx'
 
 const path = window.location.pathname
 const Page =
@@ -21,6 +22,9 @@ const Page =
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Page />
+    <>
+      <Page />
+      <BackToTopButton />
+    </>
   </StrictMode>,
 )

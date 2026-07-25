@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.4] - 2026-07-25
+
+### Added
+
+- **Every page now has a gentle back-to-top control.** After the visitor
+  scrolls well into the page, a fixed 44-pixel arrow fades and slides into the
+  lower-right corner. It smoothly returns to the top, stays out of keyboard
+  navigation while hidden, and respects reduced-motion preferences.
+
+### Changed
+
+- **WB-300's Windows downloads now match the other product pages.** Replaced
+  the dense chip-and-row installer layout with the shared responsive Global
+  and Corporate card grid used by TR-300, ND-300, and SD-300. The existing
+  MSI/EXE channels and versionless release URLs are unchanged.
+
 ## [1.20.3] - 2026-07-25
 
 ### Changed

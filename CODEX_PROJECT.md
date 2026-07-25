@@ -72,6 +72,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   └── tr300_documentation.md
 ├── src
 │   ├── components
+│   │   ├── BackToTopButton.jsx
 │   │   ├── Commands.jsx
 │   │   ├── Demos.jsx
 │   │   ├── ExecutablesContent.jsx

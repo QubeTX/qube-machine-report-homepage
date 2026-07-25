@@ -8,6 +8,22 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 25, 2026 — Every page gets a quick return to the top
+
+**Added**
+
+- Added a small arrow that gently appears after scrolling down any page and
+  returns visitors to the top with one click. It stays out of the way near the
+  top and honors reduced-motion preferences.
+
+## July 25, 2026 — WB-300's Windows downloads are easier to scan
+
+**Improved**
+
+- Organized the WB-300 Windows installers into the same Global and Corporate
+  card layout used by the other product pages, making it easier to choose
+  between computer-wide and no-administrator installation.
+
 ## July 25, 2026 — WB-300's mark settles in, and ND-300 gets its own
 
 **Improved**
