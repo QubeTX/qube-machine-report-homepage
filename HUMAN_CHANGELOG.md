@@ -8,6 +8,16 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## July 25, 2026 — WB-300's mark settles in, and ND-300 gets its own
+
+**Improved**
+
+- Made the custom symbol above WB-300 slightly smaller while keeping it sharp,
+  centered, and comfortably spaced from the title.
+- Replaced the generic three-circle symbol above ND-300 with its custom network
+  diagnostic mark. It stays clear, centered, and balanced on both desktop and
+  mobile screens.
+
 ## July 25, 2026 — WB-300 brings its own identity to the website
 
 **Improved**

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.3] - 2026-07-25
+
+### Changed
+
+- **WB-300's product mark is more restrained in the hero.** Reduced the
+  custom workbranch symbol's responsive height while preserving its native
+  proportions, monochrome treatment, centering, and spacing above the title.
+- **ND-300 now carries its own product mark on the website.** Replaced the
+  generic three-circle hero crown with the supplied network diagnostic symbol,
+  rendered as a responsive bone-white mask that preserves its wide geometry
+  across desktop and mobile layouts.
+
 ## [1.20.2] - 2026-07-25
 
 ### Changed

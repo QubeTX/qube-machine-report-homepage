@@ -6,7 +6,7 @@ const Logo = () => (
   <div
     aria-hidden="true"
     style={{
-      height: 'clamp(112px, 10vw, 132px)',
+      height: 'clamp(104px, 9vw, 120px)',
       aspectRatio: '150 / 98',
       marginBottom: '2rem',
       background: 'var(--fg-bone)',
