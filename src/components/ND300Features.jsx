@@ -58,7 +58,7 @@ const FeatureRow = ({ index, title, description }) => {
 
 export default function ND300Features() {
   const features = [
-    { title: 'Speed Test', description: 'Dual-provider speed test — Cloudflare + M-Lab NDT7 averaged for accuracy. Measures download, upload, ping, jitter, and packet loss.' },
+    { title: 'Speed Test', description: 'Sustained application throughput from Cloudflare and consenting M-Lab MSAK, with a separately labeled single-stream NDT7 comparison. Median idle HTTP ping and jitter stay distinct from packet loss.' },
     { title: 'Bufferbloat Detection', description: 'Latency-under-load grading from A+ through F with idle/loaded comparison' },
     { title: 'JSON Output', description: 'Machine-readable output for scripting, automation, and CI pipelines' },
     { title: 'Unicode Tables', description: 'Box-drawing table output with automatic ASCII fallback for legacy terminals' },
@@ -67,7 +67,7 @@ export default function ND300Features() {
     { title: 'DNS Configuration', description: 'Interactive provider selection — Cloudflare (recommended), Google, NextDNS, DHCP reset, or Hybrid. Platform-specific encrypted DNS with auto-revert on failure.' },
     { title: 'Network Recovery', description: 'Diagnostic-driven recovery — tests the network, applies only the fixes that target what failed, re-tests, and repeats (bounded so it always finishes). VPN-aware; high-risk steps ask first. Generates a detailed Markdown report with root cause analysis.' },
     { title: 'Clean Uninstall', description: 'Complete system removal of binary, registry entries, and PATH modifications with a single command.' },
-    { title: 'SpeedQX', description: 'Standalone quad-provider speed test binary — Cloudflare + M-Lab NDT7 + LibreSpeed + fast.com with per-provider breakdown, configurable duration, and latency probes.' },
+    { title: 'SpeedQX', description: 'Standalone speed test with the same Quick default as ND-300, a Deep option, configurable data ceilings, partial results on stop, and repeatable estimated ceilings alongside sustained speed.' },
     { title: 'Pre-Installed on shaughvOS', description: <span>ND-300 and SpeedQX come pre-installed on shaughvOS{/* WIP-DELISTED — Shaughv OS de-linked (WIP); restore the anchor: <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> */} — a complete diagnostic OS you can boot from USB to troubleshoot any machine without touching the existing OS.</span> }
   ]
 
