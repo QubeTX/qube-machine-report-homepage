@@ -69,7 +69,9 @@ export default function ND300Commands() {
     { command: '--ascii', description: 'Use ASCII box-drawing characters' },
     { command: '--no-color', description: 'Disable colored output' },
     { command: '--fast', description: 'Skip speed test for faster results' },
-    { command: '--speed-duration <SEC>', description: 'Speed test duration in seconds (default: 10)' },
+    { command: '--deep', description: 'Deep speed measurement with a five-minute cap; Quick is the default' },
+    { command: '--accept-mlab', description: 'Allow M-Lab to publish measurements and your IP address' },
+    { command: '--max-bytes <BYTES>', description: 'Bound synthetic speed-test payload; protocol overhead is additional' },
     { command: '--verbose', description: 'Show detailed progress during scan' }
   ]
 
@@ -88,10 +90,11 @@ export default function ND300Commands() {
   ]
 
   const speedqxFlags = [
-    { command: 'speedqx', description: 'Full quad-provider speed test (Cloudflare + NDT7 + LibreSpeed + fast.com)' },
-    { command: '--duration <SEC|auto>', description: 'Test duration per direction for CF/NDT7/LibreSpeed (default: 30)' },
-    { command: '--fastcom-duration <SEC|auto>', description: 'Test duration per direction for fast.com (default: auto)' },
-    { command: '--latency-probes <N>', description: 'Number of latency probes (default: 20)' },
+    { command: 'speedqx', description: 'Quick sustained-throughput measurement, capped at 90 seconds' },
+    { command: '--deep', description: 'Repeat the primary comparison and add supporting sources within five minutes' },
+    { command: '--accept-mlab', description: 'Add M-Lab MSAK and NDT7 after accepting publication of your IP address and results' },
+    { command: '--max-bytes <BYTES>', description: 'Set a synthetic-payload ceiling; valid partial results survive a limit or stop' },
+    { command: '--fast', description: 'Alias for Quick; legacy duration/probe-count options still parse' },
     { command: '--update', description: 'Check for updates and install latest version' },
     { command: '--json / --ascii / --no-color', description: 'Output formatting (same as nd300)' }
   ]

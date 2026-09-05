@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.20.6] - 2026-09-04
+
+Release candidate; publish only with the validated ND300 4.0.0 release.
+
+### Changed
+- ND300 version fallbacks advance to 4.0.0. Speed-test feature and command descriptions reflect Methodology v5 sustained throughput, the common Quick/Deep profiles, M-Lab publication consent and synthetic-byte ceilings. The Machine Reports interface is unchanged.
+
 ## [1.20.5] - 2026-07-25
 
 ### Changed

@@ -127,7 +127,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function ND300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '3.7.3')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '4.0.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
   const pathNote = "Behind the scenes the wrapper downloads the prebuilt nd300 and speedqx binaries into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows) and updates your shell config so future terminals can find them."
   const installNote = 'Already installed? Run nd300 update or speedqx update. Updates preserve the proven channel you installed last time; deliberately running a different official installer changes the channel for future updates.'
