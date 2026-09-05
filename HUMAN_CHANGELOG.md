@@ -8,9 +8,9 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
-## September 4, 2026 — Clearer speed-test documentation
+## September 5, 2026 — Clearer speed-test documentation
 
-Release candidate; publication follows validation of the diagnostic tools.
+The updated guidance accompanies the diagnostic-tool release and its disclosed testing limits.
 
 **Updated**
 - The network diagnostic page describes sustained speed, the Quick and Deep choices, a data ceiling and the choice to share measurements with M-Lab. Download labels track the new release. The site's layout stays the same.
