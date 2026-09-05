@@ -13,7 +13,7 @@ For the technical version with versions, file paths, and release details, see CH
 The updated guidance accompanies the diagnostic-tool release and its disclosed testing limits.
 
 **Updated**
-- The network diagnostic page describes sustained speed, the Quick and Deep choices, a data ceiling and the choice to share measurements with M-Lab. Download labels track the new release. The site's layout stays the same.
+- The network diagnostic page describes sustained speed, the Quick and Deep choices, a data ceiling and the choice to share measurements with M-Lab. Download labels track the published release, including its publication-tool compatibility fix. The site's layout stays the same.
 
 ## July 25, 2026 — Getting started stands out sooner
 
