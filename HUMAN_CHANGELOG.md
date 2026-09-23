@@ -8,6 +8,16 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 23, 2026 — See the system monitor in action
+
+**Added**
+
+- Preview the desktop app and terminal dashboard, switch between their screenshots, and open either image at full size.
+
+**Improved**
+
+- The system-monitor page explains its new navigation, useful detail, live sampling and optional diagnostics. Installation guidance makes clear where to find the clickable app and its custom logo.
+
 ## September 5, 2026 — Clearer speed-test documentation
 
 The updated guidance accompanies the diagnostic-tool release and its disclosed testing limits.

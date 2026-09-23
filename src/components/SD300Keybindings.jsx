@@ -41,14 +41,22 @@ const KeyRow = ({ keyName, action, isEven }) => {
 export default function SD300Keybindings() {
   const keybindings = [
     { key: '1-9', action: 'Jump to diagnostic section' },
-    { key: 'q / Esc', action: 'Quit' },
+    { key: 'q', action: 'Quit' },
+    { key: 'Esc', action: 'Close an overlay or clear the filter; otherwise quit' },
     { key: 'Ctrl+C', action: 'Quit to shell' },
     { key: 'm', action: 'Return to mode selection' },
     { key: '?', action: 'Show help overlay' },
     { key: 'f', action: 'Toggle temperature unit (C/F)' },
-    { key: 'j / k', action: 'Scroll (processes, connections, drivers, disk in Tech Mode)' },
+    { key: 'j / k / ↑ / ↓', action: 'Select rows or scroll the inspector' },
+    { key: 'Page Up / Down', action: 'Move through a page of rows or detail' },
+    { key: '/', action: 'Filter the current inventory' },
+    { key: 'Enter', action: 'Inspect the selected row' },
+    { key: 'Space', action: 'Freeze the view while collection continues; resume at the newest sample' },
     { key: 'c / M / n / p', action: 'Sort by CPU / Memory / Name / PID (process table)' },
-    { key: 'r', action: 'Manual refresh (Section 9 — Drivers)' }
+    { key: 's', action: 'Reverse process sort direction' },
+    { key: 'F', action: 'Inspect findings and next steps' },
+    { key: 'N', action: 'Open optional network diagnostics' },
+    { key: 'r', action: 'Retry providers and refresh readings' }
   ]
 
   return (
