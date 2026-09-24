@@ -292,7 +292,8 @@ export default function SD300Install() {
           lineHeight: '1.6',
           margin: '0.5rem 0 0 0'
         }}>
-          Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
+          Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>.
+          {' '}See the upgrade notes below before updating an older installation.
         </p>
 
         <p style={{
@@ -320,6 +321,21 @@ export default function SD300Install() {
           margin: '0.5rem 0 0 0'
         }}>
           {installNote}
+        </p>
+      </div>
+
+      <div style={{ width: '100%', maxWidth: '800px', marginTop: '1.5rem', color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 1.7 }}>
+        <h3 style={{ fontSize: '1rem', margin: '0 0 0.5rem' }}>Upgrading an existing installation</h3>
+        <p style={{ margin: '0 0 0.75rem' }}>
+          Moving from SD-300 3.x to 4? Run the current official installer in the same format you used before.
+          {' '}For a managed command-line installation, repeat the install command above. For a Windows MSI or EXE,
+          keep the same Global or Corporate edition; for a Mac package installation, use the current PKG below.
+          {' '}The older automatic updater can reject the new desktop app. You do not need to uninstall first.
+        </p>
+        <p style={{ margin: 0 }}>
+          Windows 4.0.0 also has a known automatic update-check issue. Use the same official installer route
+          until a corrected release is available. The desktop app and terminal monitor remain independently usable.
+          {' '}<a href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" style={{ color: 'var(--accent-signal)' }}>Release notes and downloads</a>.
         </p>
       </div>
 

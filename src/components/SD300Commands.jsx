@@ -47,7 +47,7 @@ export default function SD300Commands() {
     { command: 'sd300 --help', description: 'Show help' },
     { command: 'sd300 --version', description: 'Show version' },
     { command: 'sd300 install', description: 'Install the complete CLI + desktop app through the managed channel' },
-    { command: 'sd300 update', description: 'Check for and install the latest release' },
+    { command: 'sd300 update', description: 'Check for updates; see install notes for 3.x upgrades and Windows 4.0.0' },
     { command: 'sd300 uninstall', description: 'Fully remove SD-300 through its proven install channel' }
   ]
 
