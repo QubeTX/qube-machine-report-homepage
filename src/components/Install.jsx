@@ -1,132 +1,7 @@
-import { useState } from 'react'
-import useGitHubVersion, { shortVersion } from '../hooks/useGitHubVersion'
-
-const TabButton = ({ children, active, onClick }) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <button
-      style={{
-        background: active ? 'var(--accent-signal)' : 'transparent',
-        border: `2px solid ${active ? 'var(--accent-signal)' : 'var(--fg-bone)'}`,
-        color: active ? 'var(--bg-void)' : isHovered ? 'var(--accent-signal)' : 'var(--fg-bone)',
-        fontFamily: 'var(--font-mono)',
-        fontWeight: '700',
-        padding: '0.5rem 1rem',
-        cursor: 'pointer',
-        borderRadius: '6px',
-        textTransform: 'uppercase',
-        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
-        borderColor: isHovered && !active ? 'var(--accent-signal)' : active ? 'var(--accent-signal)' : 'var(--fg-bone)',
-        transform: isHovered && !active ? 'translateY(-2px)' : 'none',
-        boxShadow: isHovered && !active ? '0 4px 12px rgba(255, 0, 212, 0.15)' : 'none',
-        fontSize: '0.75rem'
-      }}
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {children}
-    </button>
-  )
-}
-
-const CopyButton = ({ text }) => {
-  const [copied, setCopied] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error('Failed to copy:', err)
-    }
-  }
-
-  return (
-    <button
-      onClick={handleCopy}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{
-        position: 'absolute',
-        top: '1rem',
-        right: '1rem',
-        background: copied ? 'var(--accent-signal)' : 'var(--fg-bone)',
-        color: 'var(--bg-void)',
-        border: 'none',
-        padding: '4px 8px',
-        borderRadius: '2px',
-        fontSize: '0.6rem',
-        fontFamily: 'var(--font-mono)',
-        cursor: 'pointer',
-        opacity: isHovered || copied ? 1 : 0.5,
-        transition: 'all 0.2s ease',
-        textTransform: 'uppercase'
-      }}
-    >
-      {copied ? 'COPIED!' : 'COPY'}
-    </button>
-  )
-}
-
-const DownloadButton = ({ href, label }) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        background: 'var(--accent-signal)',
-        border: '2px solid var(--accent-signal)',
-        color: 'var(--bg-void)',
-        fontFamily: 'var(--font-mono)',
-        fontWeight: '700',
-        padding: '0.5rem 1rem',
-        cursor: 'pointer',
-        borderRadius: '6px',
-        textTransform: 'uppercase',
-        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
-        transform: isHovered ? 'translateY(-2px)' : 'none',
-        boxShadow: isHovered ? '0 4px 12px rgba(255, 0, 212, 0.3)' : 'none',
-        fontSize: '0.75rem',
-        textDecoration: 'none',
-        display: 'inline-block'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {label}
-    </a>
-  )
-}
-
-const CodeBlock = ({ prompt, comment, command }) => (
-  <div style={{ marginBottom: '0.75rem' }}>
-    {comment && (
-      <span style={{ display: 'block', color: '#666', marginBottom: '0.25rem' }}>
-        {comment}
-      </span>
-    )}
-    <span style={{
-      display: 'block',
-      color: 'var(--fg-bone)',
-      overflowWrap: 'anywhere',
-      wordBreak: 'break-word',
-      paddingRight: '3.5rem'
-    }}>
-      <span style={{ color: 'var(--accent-signal)' }}>{prompt} </span>
-      {command}
-    </span>
-  </div>
-)
+import ProductInstall, { InstallDetails, InstallHeading, InstallNote } from './ProductInstall'
+import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function Install() {
-  const [selectedPlatform, setSelectedPlatform] = useState('macos')
   const version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
   const pathNote = "Behind the scenes the wrapper installs a prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), records that managed CLI channel and exact path for future updates, then runs tr300 install to add the report alias and tr300 --fast startup summary."
@@ -138,8 +13,6 @@ export default function Install() {
   const platforms = {
     macos: {
       label: 'macOS',
-      prompt: '$',
-      comment: '# Install the prebuilt tr300 binary',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'tr300 update',
@@ -147,16 +20,12 @@ export default function Install() {
     },
     linux: {
       label: 'Linux',
-      prompt: '$',
-      comment: '# Install the prebuilt tr300 binary',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'tr300 update'
     },
     windows: {
       label: 'Windows',
-      prompt: 'PS>',
-      comment: '# Install the prebuilt tr300 binary',
       command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"',
       explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to add a report PowerShell alias and an auto-run line to your PowerShell profile so every new session starts with tr300 ready. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
       updateCommand: 'tr300 update',
@@ -164,233 +33,45 @@ export default function Install() {
     }
   }
 
-  const current = platforms[selectedPlatform]
-
   return (
-    <section id="install" style={{
-      padding: '6rem 2rem',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }}>
-      <h2 style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-        textTransform: 'uppercase',
-        marginBottom: '3rem',
-        transform: 'scaleX(1.1)',
-        textAlign: 'center'
-      }}>
-        Initialize
-      </h2>
-
-      <div style={{
-        display: 'flex',
-        gap: '0.75rem',
-        marginBottom: '3rem',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
-      }}>
-        <TabButton
-          active={selectedPlatform === 'macos'}
-          onClick={() => setSelectedPlatform('macos')}
-        >
-          macOS
-        </TabButton>
-        <TabButton
-          active={selectedPlatform === 'linux'}
-          onClick={() => setSelectedPlatform('linux')}
-        >
-          Linux
-        </TabButton>
-        <TabButton
-          active={selectedPlatform === 'windows'}
-          onClick={() => setSelectedPlatform('windows')}
-        >
-          Windows
-        </TabButton>
-      </div>
-
-      <div style={{
-        width: '100%',
-        maxWidth: '800px',
-        background: '#000',
-        border: '1px solid #333',
-        borderRadius: '4px',
-        padding: '2rem',
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.85rem',
-        position: 'relative'
-      }}>
-        <span style={{
-          position: 'absolute',
-          top: '-10px',
-          left: '10px',
-          background: 'var(--bg-void)',
-          padding: '0 10px',
-          fontSize: '0.7rem',
-          color: 'var(--fg-dim)'
-        }}>
-          TERMINAL // V.{shortVersion(version)}
-        </span>
-
-        <CopyButton text={current.command} />
-
-        <CodeBlock
-          prompt={current.prompt}
-          comment={current.comment}
-          command={current.command}
-        />
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '1.5rem 0 0 0'
-        }}>
-          {current.explanation}
-        </p>
-
-        {current.note && (
-          <p style={{
-            color: 'var(--fg-dim)',
-            fontSize: '0.7rem',
-            lineHeight: '1.6',
-            margin: '0.5rem 0 0 0'
-          }}>
-            {current.note}
-          </p>
-        )}
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {pathNote}
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {reportNote}
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {installNote}
-        </p>
-      </div>
-
-      {selectedPlatform === 'macos' && (
-        <div style={{
-          width: '100%',
-          maxWidth: '800px',
-          marginTop: '3rem',
-          display: 'grid',
-          justifyItems: 'center',
-          gap: '1rem'
-        }}>
-          <p style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            lineHeight: '1.6',
-            color: 'var(--fg-dim)',
-            textAlign: 'center',
-            margin: 0
-          }}>
-            Prefer Apple Installer? One universal PKG supports Apple Silicon and Intel,
-            installs TR-300 system-wide, and preserves the PKG channel for later updates.
-          </p>
-          <DownloadButton
-            href="https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-universal-apple-darwin.pkg"
-            label="↓ Download universal .PKG"
-          />
-        </div>
+    <ProductInstall
+      product="TR-300"
+      version={version}
+      summary="System reports in your terminal. Prebuilt for Windows, macOS and Linux."
+      platforms={platforms}
+      releaseBase={'https://github.com/QubeTX/qube-machine-report/releases/latest/download'}
+      windowsInstallers={[
+        {
+          edition: 'Global',
+          msi: 'tr300-x86_64-pc-windows-msvc.msi',
+          exe: 'tr300-x86_64-pc-windows-msvc-setup.exe'
+        },
+        {
+          edition: 'Corporate',
+          msi: 'tr300-x86_64-pc-windows-msvc-corporate.msi',
+          exe: 'tr300-x86_64-pc-windows-msvc-corporate-setup.exe'
+        }
+      ]}
+      macInstaller={{ asset: 'tr300-universal-apple-darwin.pkg', description: 'Signed and notarized universal PKG for Apple Silicon and Intel. Installs system-wide; later updates keep using the PKG.' }}
+    >
+      {(current) => (
+        <>
+          <InstallHeading>After installation</InstallHeading>
+          <InstallNote>Open a new terminal and run <code>tr300</code> or <code>report</code>. The shell integration also shows a quick summary when a new terminal starts.</InstallNote>
+          <InstallHeading>Save a report when you need one</InstallHeading>
+          <InstallNote>{reportNote}</InstallNote>
+          <InstallHeading>Keep it up to date</InstallHeading>
+          <InstallNote>Run <code>{current.updateCommand}</code>. Updates keep your existing installation method.</InstallNote>
+          <InstallDetails title="Setup details and permissions">
+            <InstallNote>{current.explanation}</InstallNote>
+            {current.note && <InstallNote>{current.note}</InstallNote>}
+            <InstallNote>{pathNote}</InstallNote>
+          </InstallDetails>
+          <InstallDetails title="Changing installation methods">
+            <InstallNote>{installNote}</InstallNote>
+          </InstallDetails>
+        </>
       )}
-
-      {selectedPlatform === 'windows' && (() => {
-        const base = 'https://github.com/QubeTX/qube-machine-report/releases/latest/download'
-        return (
-          <div style={{
-            width: '100%',
-            maxWidth: '800px',
-            marginTop: '3rem',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '2rem'
-          }}>
-            {[
-              {
-                edition: 'Global',
-                description: 'Installs to Program Files and requires administrator approval.',
-                msi: 'tr300-x86_64-pc-windows-msvc.msi',
-                exe: 'tr300-x86_64-pc-windows-msvc-setup.exe'
-              },
-              {
-                edition: 'Corporate',
-                description: 'Installs to your user profile without administrator access.',
-                msi: 'tr300-x86_64-pc-windows-msvc-corporate.msi',
-                exe: 'tr300-x86_64-pc-windows-msvc-corporate-setup.exe'
-              }
-            ].map(({ edition, description, msi, exe }) => (
-              <div key={edition} style={{ minWidth: 0 }}>
-                <p style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  color: 'var(--fg-bone)',
-                  textTransform: 'uppercase',
-                  margin: '0 0 0.5rem 0'
-                }}>
-                  {edition}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontStyle: 'italic',
-                  fontSize: '1rem',
-                  lineHeight: '1.5',
-                  color: '#aaa',
-                  margin: '0 0 1rem 0'
-                }}>
-                  {description}
-                </p>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  <DownloadButton href={`${base}/${msi}`} label="Download .MSI" />
-                  <DownloadButton href={`${base}/${exe}`} label="Download .EXE" />
-                </div>
-              </div>
-            ))}
-          </div>
-        )
-      })()}
-
-      <p style={{
-        fontFamily: 'var(--font-mono)',
-        letterSpacing: '-0.5px',
-        fontSize: '0.7rem',
-        marginTop: '2rem',
-        color: '#555',
-        textAlign: 'center'
-      }}>
-        PolyForm Noncommercial License • Self-installing shell integration
-      </p>
-    </section>
+    </ProductInstall>
   )
 }

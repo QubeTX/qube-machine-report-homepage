@@ -185,3 +185,16 @@ This repo maintains two changelogs in parallel:
 **When you update `CHANGELOG.md`, you must also update `HUMAN_CHANGELOG.md` in the same commit.** Strip version numbers, file paths, function names, and metrics; replace jargon with everyday words; add a short "why it matters" clause. Use the labels Added / Improved / Fixed / Removed / Security / Behind the scenes. Purely internal changes still get a one-line "Behind the scenes" entry.
 
 The `package.json` `version` is kept in lockstep with the top `CHANGELOG.md` heading — bump both together (e.g. `1.10.0` → `1.11.0`) in the same commit.
+
+## Installation-tab defaults
+
+All desktop-product installation selectors use `src/hooks/useInstallPlatform.js`
+to suggest the current desktop OS synchronously on first render. Keep detection
+shared, leave mobile/unknown clients on the existing default, and never override
+a visitor's manual selection during the mounted page session. Do not require
+storage, permission prompts or remote lookups for this default.
+
+The four product pages share `ProductInstall.jsx`: installer/downloads on the
+left and usage guidance on the right at desktop widths, stacked on narrow
+screens. Keep essential commands visible and longer setup/upgrade/source
+material in native disclosure sections; do not shrink text to fit a viewport.
