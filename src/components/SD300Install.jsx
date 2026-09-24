@@ -128,7 +128,7 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.0')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.1')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
   const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
@@ -333,8 +333,9 @@ export default function SD300Install() {
           {' '}The older automatic updater can reject the new desktop app. You do not need to uninstall first.
         </p>
         <p style={{ margin: 0 }}>
-          Windows 4.0.0 also has a known automatic update-check issue. Use the same official installer route
-          until a corrected release is available. The desktop app and terminal monitor remain independently usable.
+          SD-300 4.0.1 fixes the Windows automatic update check and gives clearer recovery instructions when a check fails.
+          {' '}If you have Windows 4.0.0, use your matching official installer once to get the fix. After that,
+          {' '}<code>sd300 update</code> works normally. Your settings are preserved.
           {' '}<a href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" style={{ color: 'var(--accent-signal)' }}>Release notes and downloads</a>.
         </p>
       </div>

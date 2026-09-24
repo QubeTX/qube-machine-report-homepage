@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.2] - 2026-09-23
+
+### Fixed
+
+- Point SD-300 users to the published 4.0.1 updater correction, advance release fallbacks, and explain the one-time matching-installer recovery from Windows 4.0.0. Retain the 3.x major-upgrade guidance, stable download routes and actual desktop/terminal screenshots.
+
 ## [1.21.1] - 2026-09-23
 
 ### Fixed
