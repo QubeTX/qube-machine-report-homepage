@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.3] - 2026-09-24
+
+### Changed
+
+- Reorganize SD-300 installation guidance around the recommended PowerShell or shell installer on each platform. Show CLI/TUI plus desktop-app scope, application locations and terminal startup instructions before advanced ownership details.
+- Distinguish Windows EXE setup, MSI deployment and Global/Corporate scope; explain the universal macOS PKG alternative and Cargo's CLI-only scope. Preserve versionless URLs, owner-preserving updates and older-version recovery instructions. Add announced platform selection and edition-specific download names for assistive technology.
+
 ## [1.21.2] - 2026-09-23
 
 ### Fixed

@@ -6,6 +6,8 @@ const TabButton = ({ children, active, onClick }) => {
 
   return (
     <button
+      type="button"
+      aria-pressed={active}
       style={{
         background: active ? 'var(--accent-signal)' : 'transparent',
         border: `2px solid ${active ? 'var(--accent-signal)' : 'var(--fg-bone)'}`,
@@ -72,7 +74,7 @@ const CopyButton = ({ text }) => {
   )
 }
 
-const DownloadButton = ({ href, label }) => {
+const DownloadButton = ({ href, label, accessibleLabel }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -80,6 +82,7 @@ const DownloadButton = ({ href, label }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={accessibleLabel || label}
       style={{
         background: 'var(--accent-signal)',
         border: '2px solid var(--accent-signal)',
@@ -131,47 +134,41 @@ export default function SD300Install() {
   const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.1')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
-  const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
-  const uninstallNote = 'sd300 uninstall calls the proven owner to remove the binary, receipt or native registration, installer marker, and any SD-300-only PATH entry. Shared Cargo and Rust tooling is left intact.'
-  const installNote = 'A fresh official install is authoritative, even over another edition or an older/newer copy. It either completes the requested takeover or leaves the working installation unchanged. The crates.io package remains tr300-tui; raw Cargo installs are an advanced unmanaged option.'
-  const appNote = 'The recommended installers include both the terminal tool and a clickable SD-300 app with its custom icon. Find it in the Windows Start menu, macOS Applications folder, or Linux application menu, or open it with sd300 gui. Both update and uninstall together, then run independently.'
-
-  const unixExplanation = 'Installs the latest prebuilt terminal tool and desktop app, and records their owner for updates and removal. No Rust toolchain is needed. This is the recommended installation on macOS and Linux.'
-
   const platforms = {
     macos: {
       label: 'macOS',
+      installer: 'Terminal installer',
       prompt: '$',
-      comment: '# Recommended: terminal tool + desktop app',
+      comment: '# Paste into Terminal',
       command: unixCommand,
-      explanation: unixExplanation,
-      updateCommand: 'sd300 update',
-      uninstallCommand: 'sd300 uninstall',
-      note: 'Runs in user scope with no sudo and places the app in ~/Applications. Open a new terminal to use sd300. The signed and notarized Apple PKG below installs the app in /Applications.'
+      explanation: 'Installs for your user account without sudo. Supports Apple Silicon and Intel Macs.',
+      appLocation: 'Open SD-300.app in your home Applications folder (~/Applications).',
+      terminalNote: 'Open a new terminal after installation, then run sd300.'
     },
     linux: {
       label: 'Linux',
+      installer: 'Shell installer',
       prompt: '$',
-      comment: '# Recommended: terminal tool + desktop app',
+      comment: '# Paste into your terminal',
       command: unixCommand,
-      explanation: unixExplanation,
-      updateCommand: 'sd300 update',
-      uninstallCommand: 'sd300 uninstall',
-      note: 'Find SD-300 in your desktop application menu. Open a new terminal after installation to use sd300; setup includes Bash and fish command discovery, including custom fish configuration locations.'
+      explanation: 'Use the official shell installer on supported Linux systems, including servers where you only need the terminal tools.',
+      appLocation: 'On a graphical desktop, find SD-300 in your application menu. The terminal tools also work without a desktop session.',
+      terminalNote: 'Open a new terminal after installation, then run sd300. Setup configures Bash and fish command discovery, including custom fish configuration locations.'
     },
     windows: {
       label: 'Windows',
+      installer: 'PowerShell installer',
       prompt: 'PS>',
-      comment: '# Recommended: terminal tool + desktop app',
+      comment: '# Paste into PowerShell',
       command: `irm ${releaseBase}/sd300-cli-installer.ps1 | iex`,
-      explanation: 'Installs the prebuilt terminal tool and desktop app, adds SD-300 to the Start menu, and records their owner for updates and removal. No Rust toolchain or MSVC Build Tools are required.',
-      updateCommand: 'sd300 update',
-      uninstallCommand: 'sd300 uninstall',
-      note: 'Runs in user scope with no administrator PowerShell. Setup verifies the saved command path and Start-menu shortcut, and identifies the step if installation fails. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'
+      explanation: 'Run in a normal PowerShell window; no administrator access is needed. Setup verifies the saved command path and Start-menu shortcut, and identifies the step if installation fails.',
+      appLocation: 'Search for SD-300 in the Windows Start menu to open the desktop app.',
+      terminalNote: 'Run sd300 in PowerShell, Command Prompt, or a terminal tab. The installer refreshes its PowerShell session; fully quit and reopen other terminal apps to pick up the saved PATH.'
     }
   }
 
   const current = platforms[selectedPlatform]
+  const bodyStyle = { color: '#aaa', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 1.7 }
 
   return (
     <section id="install" style={{
@@ -184,17 +181,22 @@ export default function SD300Install() {
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(2.5rem, 6vw, 4rem)',
         textTransform: 'uppercase',
-        marginBottom: '3rem',
-        transform: 'scaleX(1.1)',
+        marginBottom: '1rem',
         textAlign: 'center'
       }}>
-        Initialize
+        Install <span style={{ whiteSpace: 'nowrap' }}>SD-300</span>
       </h2>
 
-      <div style={{
+      <p style={{ ...bodyStyle, maxWidth: '650px', textAlign: 'center', margin: '0 0 2rem' }}>
+        One install includes the terminal tools (CLI/TUI) and the desktop app.
+        {' '}Use the recommended command for your operating system, or choose a clickable installer below.
+        {' '}Both include the complete product; no Rust toolchain or compilation is needed.
+      </p>
+
+      <div role="group" aria-label="Choose your operating system" style={{
         display: 'flex',
         gap: '0.75rem',
-        marginBottom: '3rem',
+        marginBottom: '2rem',
         flexWrap: 'wrap',
         justifyContent: 'center'
       }}>
@@ -218,6 +220,13 @@ export default function SD300Install() {
         </TabButton>
       </div>
 
+      <div style={{ width: '100%', maxWidth: '800px', marginBottom: '1rem' }}>
+        <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', margin: '0 0 0.5rem' }}>
+          Recommended for {current.label}: {current.installer}
+        </h3>
+        <p style={{ ...bodyStyle, margin: 0 }}>{current.explanation}</p>
+      </div>
+
       <div style={{
         width: '100%',
         maxWidth: '800px',
@@ -238,7 +247,7 @@ export default function SD300Install() {
           fontSize: '0.7rem',
           color: 'var(--fg-dim)'
         }}>
-          TERMINAL // V.{shortVersion(version)}
+          SD-300 {shortVersion(version)} · CLI + DESKTOP APP
         </span>
 
         <CopyButton text={current.command} />
@@ -249,96 +258,17 @@ export default function SD300Install() {
           command={current.command}
         />
 
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '1.5rem 0 0 0'
-        }}>
-          {current.explanation}
-        </p>
-
-        {current.note && (
-          <p style={{
-            color: 'var(--fg-dim)',
-            fontSize: '0.7rem',
-            lineHeight: '1.6',
-            margin: '0.5rem 0 0 0'
-          }}>
-            {current.note}
-          </p>
-        )}
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {pathNote}
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {appNote}
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          Update later: <span style={{ color: 'var(--fg-bone)' }}>{current.updateCommand}</span>.
-          {' '}See the upgrade notes below before updating an older installation.
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          Uninstall completely: <span style={{ color: 'var(--fg-bone)' }}>{current.uninstallCommand}</span>
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {uninstallNote}
-        </p>
-
-        <p style={{
-          color: 'var(--fg-dim)',
-          fontSize: '0.7rem',
-          lineHeight: '1.6',
-          margin: '0.5rem 0 0 0'
-        }}>
-          {installNote}
-        </p>
       </div>
 
-      <div style={{ width: '100%', maxWidth: '800px', marginTop: '1.5rem', color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 1.7 }}>
-        <h3 style={{ fontSize: '1rem', margin: '0 0 0.5rem' }}>Upgrading an existing installation</h3>
-        <p style={{ margin: '0 0 0.75rem' }}>
-          Moving from SD-300 3.x to 4? Run the current official installer in the same format you used before.
-          {' '}For a managed command-line installation, repeat the install command above. For a Windows MSI or EXE,
-          keep the same Global or Corporate edition; for a Mac package installation, use the current PKG below.
-          {' '}The older automatic updater can reject the new desktop app. You do not need to uninstall first.
-        </p>
-        <p style={{ margin: 0 }}>
-          SD-300 4.0.1 fixes the Windows automatic update check and gives clearer recovery instructions when a check fails.
-          {' '}If you have Windows 4.0.0, use your matching official installer once to get the fix. After that,
-          {' '}<code>sd300 update</code> works normally. Your settings are preserved.
-          {' '}<a href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" style={{ color: 'var(--accent-signal)' }}>Release notes and downloads</a>.
-        </p>
+      <div style={{ ...bodyStyle, width: '100%', maxWidth: '800px', marginTop: '1.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem' }}>
+        <div>
+          <h3 style={{ color: 'var(--fg-bone)', fontSize: '0.9rem', margin: '0 0 0.5rem' }}>Open the desktop app</h3>
+          <p style={{ margin: 0 }}>{current.appLocation} You can also run <code>sd300 gui</code>.</p>
+        </div>
+        <div>
+          <h3 style={{ color: 'var(--fg-bone)', fontSize: '0.9rem', margin: '0 0 0.5rem' }}>Open the terminal dashboard</h3>
+          <p style={{ margin: 0 }}>{current.terminalNote}</p>
+        </div>
       </div>
 
       {selectedPlatform === 'macos' && (
@@ -359,7 +289,7 @@ export default function SD300Install() {
               textTransform: 'uppercase',
               margin: '0 0 0.5rem 0'
             }}>
-              Apple Installer Alternative
+              Prefer a clickable Mac installer?
             </p>
             <p style={{
               fontFamily: 'var(--font-serif)',
@@ -370,7 +300,8 @@ export default function SD300Install() {
               margin: 0
             }}>
               One universal signed and notarized PKG for Apple Silicon and Intel.
-              Future CLI updates remain on the PKG channel.
+              Installs the terminal tools and desktop app in one setup, with the app in /Applications.
+              Future updates keep using the PKG installer.
             </p>
           </div>
           <div style={{ justifySelf: 'end' }}>
@@ -383,12 +314,15 @@ export default function SD300Install() {
       )}
 
       {selectedPlatform === 'windows' && (
+        <div style={{ width: '100%', maxWidth: '800px', marginTop: '3rem' }}>
+          <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', margin: '0 0 0.5rem' }}>Prefer a Windows setup wizard?</h3>
+          <p style={{ ...bodyStyle, margin: '0 0 1.5rem' }}>
+            Choose EXE for a clickable setup wizard, or MSI for Windows Installer and IT deployment.
+            {' '}Both install the terminal tools and desktop app. Choose the edition that matches your access:
+          </p>
         <div style={{
-          width: '100%',
-          maxWidth: '800px',
-          marginTop: '3rem',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
           gap: '2rem'
         }}>
           {[
@@ -426,13 +360,52 @@ export default function SD300Install() {
                 {description}
               </p>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                <DownloadButton href={`${releaseBase}/${msi}`} label="Download .MSI" />
-                <DownloadButton href={`${releaseBase}/${exe}`} label="Download .EXE" />
+                <DownloadButton href={`${releaseBase}/${exe}`} label="Download .EXE" accessibleLabel={`Download ${edition} EXE`} />
+                <DownloadButton href={`${releaseBase}/${msi}`} label="Download .MSI" accessibleLabel={`Download ${edition} MSI`} />
               </div>
             </div>
           ))}
         </div>
+        </div>
       )}
+
+      <div style={{ ...bodyStyle, width: '100%', maxWidth: '800px', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #333' }}>
+        <h3 style={{ color: 'var(--fg-bone)', fontSize: '1rem', margin: '0 0 0.5rem' }}>Already installed?</h3>
+        <p style={{ margin: '0 0 0.75rem' }}>
+          Update both frontends with <code>sd300 update</code>. It keeps your existing installation method,
+          edition and location, whether you started with a terminal command, EXE, MSI or PKG.
+          {' '}The desktop app and terminal dashboard run independently.
+        </p>
+        <p style={{ margin: '0 0 1.5rem' }}>
+          To remove both, run <code>sd300 uninstall</code>. It uses the recorded installer to remove
+          SD-300 and its own settings, shortcuts and command-path entries, while preserving shared Cargo and Rust tools.
+        </p>
+        <h3 style={{ color: 'var(--fg-bone)', fontSize: '1rem', margin: '0 0 0.5rem' }}>Upgrading an older installation</h3>
+        <p style={{ margin: '0 0 0.75rem' }}>
+          Moving from SD-300 3.x to 4? Run the current official installer in the same format you used before.
+          {' '}For a managed command-line installation, repeat the install command above. For a Windows MSI or EXE,
+          keep the same Global or Corporate edition; for a Mac package installation, use the current PKG above.
+          {' '}The older automatic updater can reject the new desktop app. You do not need to uninstall first.
+        </p>
+        <p style={{ margin: '0 0 1.5rem' }}>
+          SD-300 4.0.1 fixes the Windows automatic update check and gives clearer recovery instructions when a check fails.
+          {' '}If you have Windows 4.0.0, use your matching official installer once to get the fix. After that,
+          {' '}<code>sd300 update</code> works normally. Your settings are preserved.
+          {' '}<a href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" style={{ color: 'var(--accent-signal)' }}>Release notes and downloads</a>.
+        </p>
+        <details>
+          <summary style={{ color: 'var(--fg-bone)', cursor: 'pointer' }}>Advanced: Cargo and changing installation methods</summary>
+          <p>
+            <code>cargo install tr300-tui</code> is an advanced CLI/TUI-only installation. It does not install the desktop app.
+            {' '}Choose one of the official installers above for the complete product.
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            Deliberately running a different official installer requests a change of installation method or edition,
+            including a reinstall or downgrade. Setup completes that change only when ownership is clear and the transition is safe;
+            otherwise, it preserves the working installation and explains the problem.
+          </p>
+        </details>
+      </div>
 
       <p style={{
         fontFamily: 'var(--font-mono)',
