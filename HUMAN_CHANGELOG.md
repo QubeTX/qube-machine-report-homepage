@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 23, 2026 — Get the Windows update fix
+
+**Fixed**
+
+- The system-monitor page now points to the corrected updater and explains the one-time installer step for affected users. Existing settings are kept, and the app screenshots remain available to preview.
+- Installation instructions explain where to find the desktop app and when to open a new terminal, with clearer guidance for each operating system.
+
+---
+
 ## September 23, 2026 — Clearer system-monitor upgrades
 
 **Fixed**
