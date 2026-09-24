@@ -148,3 +148,16 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 ├── vercel.json
 └── vite.config.js
 ```
+
+## Installation-tab defaults
+
+All desktop-product installation selectors use `src/hooks/useInstallPlatform.js`
+to suggest the current desktop OS synchronously on first render. Keep detection
+shared, leave mobile/unknown clients on the existing default, and never override
+a visitor's manual selection during the mounted page session. Do not require
+storage, permission prompts or remote lookups for this default.
+
+The four product pages share `ProductInstall.jsx`: installer/downloads on the
+left and usage guidance on the right at desktop widths, stacked on narrow
+screens. Keep essential commands visible and longer setup/upgrade/source
+material in native disclosure sections; do not shrink text to fit a viewport.

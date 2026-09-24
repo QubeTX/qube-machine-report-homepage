@@ -8,6 +8,16 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 — Shorter installation sections, ready for your computer
+
+**Improved**
+
+- Installation sections now open to the matching Windows, Mac or Linux instructions automatically. You can still switch to another computer's instructions, and that choice stays selected while you read the page.
+- Screen readers can identify the selected operating system on every product's installation tabs. Phones and unrecognized devices keep the existing default with all choices available.
+- Installation commands and downloads now sit beside the instructions on larger screens, making every product's setup section much shorter. On phones they stack neatly. Longer setup, upgrade and troubleshooting notes expand when you need them, while launch, update and removal instructions remain easy to find.
+
+---
+
 ## September 24, 2026 — Choose your installation method
 
 **Improved**

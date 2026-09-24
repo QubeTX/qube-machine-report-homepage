@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.4] - 2026-09-24
+
+### Changed
+
+- Default the TR-300, ND-300, SD-300 and WB-300 installation tabs to the browser's desktop OS through one synchronous shared hook. Prefer user-agent client hints, fall back to platform/user-agent data, and preserve the existing macOS default for mobile, ChromeOS and unrecognized clients. Manual selection remains authoritative for the mounted page, including after version updates; detection needs no storage, permissions or network request.
+- Expose the selected platform to assistive technology on all four installation selectors.
+- Replace the four tall installation panels with a shared responsive layout: installer commands and native downloads on the left, launch/update guidance on the right, and native keyboard-accessible disclosures for longer setup, recovery and source-build instructions. Keep command-first recommendations, stable download URLs, update ownership and removal guidance intact. Stack the columns on small screens and keep command copying selectable with announced success/failure feedback.
+
 ## [1.21.3] - 2026-09-24
 
 ### Changed
