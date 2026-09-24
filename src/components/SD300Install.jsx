@@ -147,7 +147,7 @@ export default function SD300Install() {
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
       uninstallCommand: 'sd300 uninstall',
-      note: 'Runs in user scope with no sudo. The signed and notarized Apple PKG below remains available for a native Installer workflow.'
+      note: 'Runs in user scope with no sudo and places the app in ~/Applications. Open a new terminal to use sd300. The signed and notarized Apple PKG below installs the app in /Applications.'
     },
     linux: {
       label: 'Linux',
@@ -156,7 +156,8 @@ export default function SD300Install() {
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
-      uninstallCommand: 'sd300 uninstall'
+      uninstallCommand: 'sd300 uninstall',
+      note: 'Find SD-300 in your desktop application menu. Open a new terminal after installation to use sd300; setup includes Bash and fish command discovery, including custom fish configuration locations.'
     },
     windows: {
       label: 'Windows',
@@ -166,7 +167,7 @@ export default function SD300Install() {
       explanation: 'Installs the prebuilt terminal tool and desktop app, adds SD-300 to the Start menu, and records their owner for updates and removal. No Rust toolchain or MSVC Build Tools are required.',
       updateCommand: 'sd300 update',
       uninstallCommand: 'sd300 uninstall',
-      note: 'Runs in user scope with no administrator PowerShell. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'
+      note: 'Runs in user scope with no administrator PowerShell. Setup verifies the saved command path and Start-menu shortcut, and identifies the step if installation fails. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'
     }
   }
 
