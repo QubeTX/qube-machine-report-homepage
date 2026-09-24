@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 23, 2026 — Clearer system-monitor upgrades
+
+**Fixed**
+
+- Explain how to upgrade an older installation with its matching official installer, including the current Windows update-check workaround. Existing settings and the familiar installation format are preserved.
+
+---
+
 ## September 23, 2026 — See the system monitor in action
 
 **Added**

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.1] - 2026-09-23
+
+### Fixed
+
+- Document the SD-300 3.x-to-4 major-upgrade installer route and the reproduced Windows 4.0.0 automatic update-check limitation. Keep existing installer format/edition and settings, link public recovery downloads, and retain the deployed desktop/TUI screenshot gallery.
+
 ## [1.21.0] - 2026-09-23
 
 ### Added
