@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 — Choose your installation method
+
+**Improved**
+
+- The system-monitor page now clearly recommends an installation method for each operating system and explains that it includes both the terminal dashboard and desktop app, with directions for finding each.
+- Clickable installer choices explain who they are for and when administrator access is needed. Advanced terminal-only installation is clearly separated, existing users keep their update method, and screen readers can identify the selected platform and each download.
+
+---
+
 ## September 23, 2026 — Get the Windows update fix
 
 **Fixed**
