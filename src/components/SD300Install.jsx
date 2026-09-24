@@ -128,21 +128,21 @@ const CodeBlock = ({ prompt, comment, command }) => (
 
 export default function SD300Install() {
   const [selectedPlatform, setSelectedPlatform] = useState('macos')
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '3.1.1')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.0')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
   const pathNote = 'The installer records its exact owner and install path. A later sd300 update reuses that same managed, MSI, EXE, or PKG channel instead of silently switching formats.'
   const uninstallNote = 'sd300 uninstall calls the proven owner to remove the binary, receipt or native registration, installer marker, and any SD-300-only PATH entry. Shared Cargo and Rust tooling is left intact.'
   const installNote = 'A fresh official install is authoritative, even over another edition or an older/newer copy. It either completes the requested takeover or leaves the working installation unchanged. The crates.io package remains tr300-tui; raw Cargo installs are an advanced unmanaged option.'
-  const appNote = 'The managed install includes the native desktop app alongside the terminal tool. Open or focus it any time with sd300 gui; the two update and uninstall together but run independently.'
+  const appNote = 'The recommended installers include both the terminal tool and a clickable SD-300 app with its custom icon. Find it in the Windows Start menu, macOS Applications folder, or Linux application menu, or open it with sd300 gui. Both update and uninstall together, then run independently.'
 
-  const unixExplanation = 'Downloads the latest prebuilt sd300 binary and writes a managed-install receipt. No Rust toolchain is downloaded or built; the CLI installer is the recommended path on macOS and Linux.'
+  const unixExplanation = 'Installs the latest prebuilt terminal tool and desktop app, and records their owner for updates and removal. No Rust toolchain is needed. This is the recommended installation on macOS and Linux.'
 
   const platforms = {
     macos: {
       label: 'macOS',
       prompt: '$',
-      comment: '# Recommended managed CLI install',
+      comment: '# Recommended: terminal tool + desktop app',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
@@ -152,7 +152,7 @@ export default function SD300Install() {
     linux: {
       label: 'Linux',
       prompt: '$',
-      comment: '# Recommended managed CLI install',
+      comment: '# Recommended: terminal tool + desktop app',
       command: unixCommand,
       explanation: unixExplanation,
       updateCommand: 'sd300 update',
@@ -161,9 +161,9 @@ export default function SD300Install() {
     windows: {
       label: 'Windows',
       prompt: 'PS>',
-      comment: '# Recommended managed CLI install',
+      comment: '# Recommended: terminal tool + desktop app',
       command: `irm ${releaseBase}/sd300-cli-installer.ps1 | iex`,
-      explanation: 'Downloads the latest prebuilt sd300.exe and writes a managed-install receipt. No Rust toolchain or MSVC Build Tools are required.',
+      explanation: 'Installs the prebuilt terminal tool and desktop app, adds SD-300 to the Start menu, and records their owner for updates and removal. No Rust toolchain or MSVC Build Tools are required.',
       updateCommand: 'sd300 update',
       uninstallCommand: 'sd300 uninstall',
       note: 'Runs in user scope with no administrator PowerShell. Global and Corporate MSI/EXE installers remain available below for deployment-policy and double-click workflows.'

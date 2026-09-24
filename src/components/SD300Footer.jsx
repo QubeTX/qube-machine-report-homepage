@@ -47,7 +47,7 @@ const SizeBadge = ({ children, active, href, title }) => {
 }
 
 export default function SD300Footer() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '3.1.1')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.0')
 
   return (
     <footer style={{

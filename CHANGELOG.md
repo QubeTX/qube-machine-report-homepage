@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.0] - 2026-09-23
+
+### Added
+
+- Add a selectable SD-300 screenshot gallery for the native desktop app and terminal dashboard, with descriptive alternatives and full-size image links.
+
+### Changed
+
+- Align SD-300 copy and keyboard reference with v4: independent collection cadences, filtering, inspection, pause-view, findings and optional diagnostics. Explain clickable application-menu installation and keep stable installer routes. Advance release fallbacks to 4.0.0 alongside the published product.
+
 ## [1.20.6] - 2026-09-05
 
 Published alongside ND300 4.0.1; its methodology documentation records the remaining accuracy and physical-device testing limits.

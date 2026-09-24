@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SD300Screenshots from './SD300Screenshots'
 
 const FeatureCard = ({ label, title, body }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -58,17 +59,17 @@ export default function SD300Desktop() {
     {
       label: 'One product',
       title: 'Terminal + App',
-      body: 'The command-line tool and the desktop app install, update, and uninstall together as one product — then run independently. Open the terminal for a quick check, or the app for a live window.'
+      body: 'The recommended installers include the terminal tool and a clickable app with the SD-300 icon: in the Windows Start menu, macOS Applications folder, or Linux application menu. Both update and uninstall together, then run independently.'
     },
     {
       label: 'Same truth',
       title: 'All Nine Sections',
-      body: 'Overview, CPU, Memory, Disk, GPU, Network, Processes, Thermals, and Drivers — the exact same collectors and honest states, in User or Technician mode, sampled every second.'
+      body: 'Overview, CPU, Memory, Disk, GPU, Network, Processes, Thermals, and Drivers use the same collectors in User or Technician mode. Live activity updates every second; slower hardware checks show their own freshness and availability.'
     },
     {
       label: 'Always in reach',
       title: 'Tray & Glance',
-      body: 'On Windows and macOS, keep SD-300 in the system tray with CPU, memory, GPU, storage, and disk health at a glance. Close to the tray or quit — your choice, off by default.'
+      body: 'On Windows and macOS, optional tray monitoring keeps a live system summary in reach. With it enabled, choose whether closing the window keeps monitoring in the background or quits. The terminal stays independent.'
     },
     {
       label: 'One click',
@@ -85,15 +86,6 @@ export default function SD300Desktop() {
     }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.7rem',
-            color: 'var(--accent-signal)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em'
-          }}>
-            New in Version 3
-          </span>
           <h2 style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -102,7 +94,7 @@ export default function SD300Desktop() {
             transformOrigin: 'center',
             margin: '1rem 0 1.25rem 0'
           }}>
-            The Desktop App
+            Live Monitoring, Two Ways
           </h2>
           <p style={{
             fontFamily: 'var(--font-serif)',
@@ -113,11 +105,13 @@ export default function SD300Desktop() {
             maxWidth: '620px',
             margin: '0 auto'
           }}>
-            The same live diagnostics, now in a native desktop window — with its own
-            dark, focused Warm Carbon design. The terminal dashboard is unchanged;
-            the app is simply another way to see it.
+            Choose a desktop window or a terminal dashboard. Both use the same
+            monitoring core, with live readings, searchable detail, and explanations
+            of what can and cannot be observed.
           </p>
         </div>
+
+        <SD300Screenshots />
 
         <div style={{
           display: 'grid',
