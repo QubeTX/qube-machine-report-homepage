@@ -8,6 +8,15 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 — More room between installation columns
+
+**Improved**
+
+- Add a little more space between the installer and the instructions on larger screens, making the two columns easier to distinguish while keeping the compact phone layout.
+- Clarify which product the advanced terminal-only installation command installs, despite its older package name.
+
+---
+
 ## September 24, 2026 — Use the room on larger monitors
 
 **Improved**

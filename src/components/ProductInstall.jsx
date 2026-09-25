@@ -73,7 +73,7 @@ export default function ProductInstall({ product, version, summary, platforms, r
           </div>
         </div>
 
-        <div className="product-install-grid" style={{ ...textStyle, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: 'clamp(2rem, 4vw, 4rem)', alignItems: 'start' }}>
+        <div className="product-install-grid" style={{ ...textStyle, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', rowGap: 'clamp(2rem, 4vw, 4rem)', columnGap: 'clamp(2rem, 5vw, 6rem)', alignItems: 'start' }}>
           <div style={{ minWidth: 0 }}>
             <InstallHeading>Recommended for {current.label}</InstallHeading>
             <p>{selectedPlatform === 'windows' ? 'Paste into a normal PowerShell window. No administrator access needed.' : 'Paste into your terminal. No Rust toolchain or compilation needed.'}</p>

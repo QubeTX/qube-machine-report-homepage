@@ -64,7 +64,7 @@ export default function SD300Install() {
           <InstallDetails title="Setup, removal and advanced options">
             <InstallNote>{current.explanation}</InstallNote>
             <InstallNote>Uninstall uses the recorded owner to remove SD-300 and its own settings, shortcuts and command-path entries. Shared Cargo and Rust tools are preserved.</InstallNote>
-            <InstallNote><code>cargo install tr300-tui</code> installs the CLI/TUI only. It does not install the desktop app. Choose an official installer for the complete product.</InstallNote>
+            <InstallNote><code>cargo install tr300-tui</code> (SD300) installs the CLI/TUI only. It does not install the desktop app. Choose an official installer for the complete product.</InstallNote>
             <InstallNote>Deliberately running a different official installer requests a change of method or edition, including a reinstall or downgrade. Setup completes the change only when ownership is clear and the transition is safe; otherwise it preserves the working installation and explains the problem.</InstallNote>
           </InstallDetails>
         </>

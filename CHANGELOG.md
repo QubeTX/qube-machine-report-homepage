@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.6] - 2026-09-24
+
+### Changed
+
+- Increase the shared installation layout's desktop column gutter from a 64 px to a 96 px maximum. Keep the stacked layout's vertical spacing unchanged.
+- Label the legacy `cargo install tr300-tui` package command with `(SD300)` in the advanced installation notes so the installed product is unambiguous.
+
 ## [1.21.5] - 2026-09-24
 
 ### Changed
