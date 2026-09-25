@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.5] - 2026-09-24
+
+### Changed
+
+- Let the shared installation layout grow with wide desktop viewports instead of stopping at 1160 px. Scale its width to 84vw with an 1800 px upper bound, retaining the existing layout on smaller screens and all platform controls and installation guidance.
+
 ## [1.21.4] - 2026-09-24
 
 ### Changed

@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 — Use the room on larger monitors
+
+**Improved**
+
+- Installation sections now spread out further on larger monitors, giving commands and instructions more room and leaving less empty space at the sides. Smaller screens keep their compact layout.
+
+---
+
 ## September 24, 2026 — Shorter installation sections, ready for your computer
 
 **Improved**
