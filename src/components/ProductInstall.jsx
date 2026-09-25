@@ -62,7 +62,7 @@ export default function ProductInstall({ product, version, summary, platforms, r
   const current = platforms[selectedPlatform]
   return (
     <section id="install" style={{ padding: 'clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)' }}>
-      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+      <div style={{ maxWidth: 'clamp(1160px, 84vw, 1800px)', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '1.5rem' }}>
           <div>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15, textTransform: 'uppercase' }}>Install <span style={{ whiteSpace: 'nowrap' }}>{product}</span></h2>
