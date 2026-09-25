@@ -333,7 +333,7 @@ const HorizontalRule = () => (
 /* ── Main Content ──────────────────────────────────────────────── */
 
 export default function InstallGuideContent() {
-  const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
+  const tr300Version = useGitHubVersion('QubeTX/qube-machine-report', '4.4.0')
   const nd300Version = useGitHubVersion('QubeTX/qube-network-diagnostics', '4.0.1')
   const sd300Version = useGitHubVersion('QubeTX/qube-system-diagnostics', '2.0.3')
 
@@ -624,7 +624,7 @@ export default function InstallGuideContent() {
             <Bold>Double-click</Bold> the product-specific <InlineCode>.pkg</InlineCode> file from Step 2.
           </NumberedStep>
           <NumberedStep number={2}>
-            <Bold>Follow Apple Installer.</Bold> TR300 installs <InlineCode>tr300</InlineCode>; ND300 installs <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode>; SD300 installs <InlineCode>sd300</InlineCode>.
+            <Bold>Follow Apple Installer.</Bold> TR300 installs <InlineCode>tr300</InlineCode> and <InlineCode>report</InlineCode>; ND300 installs <InlineCode>nd300</InlineCode> and <InlineCode>speedqx</InlineCode>; SD300 installs <InlineCode>sd300</InlineCode>.
           </NumberedStep>
           <NumberedStep number={3}>
             <Bold>Run it:</Bold> open Terminal and type the installed command. Future CLI updates keep using the package channel you selected.
@@ -661,7 +661,7 @@ export default function InstallGuideContent() {
           </NumberedStep>
           <NumberedStep number={2}>
             <Bold>Open the extracted folder.</Bold> You'll see a file
-            called <InlineCode>tr300.exe</InlineCode> (or <InlineCode>nd300.exe</InlineCode> / <InlineCode>sd300.exe</InlineCode>).
+            called <InlineCode>tr300.exe</InlineCode> alongside <InlineCode>report.exe</InlineCode> (other products use <InlineCode>nd300.exe</InlineCode> / <InlineCode>sd300.exe</InlineCode>).
           </NumberedStep>
           <NumberedStep number={3}>
             <Bold>Run it:</Bold> Open Command Prompt in that folder (type <InlineCode>cmd</InlineCode> in the folder's address bar and press Enter), then type:
@@ -690,8 +690,8 @@ export default function InstallGuideContent() {
             <Bold>Make it executable and run it:</Bold>
           </NumberedStep>
 
-          <CodeBlock copyText={"chmod +x tr300\n./tr300"}>
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>chmod +x tr300{'\n'}
+          <CodeBlock copyText={"chmod +x tr300 report\n./tr300"}>
+            <span style={{ color: 'var(--accent-signal)' }}>$ </span>chmod +x tr300 report{'\n'}
             <span style={{ color: 'var(--accent-signal)' }}>$ </span>./tr300
           </CodeBlock>
 
@@ -699,13 +699,13 @@ export default function InstallGuideContent() {
             <Bold>Optional — install it system-wide</Bold> so you can run it from anywhere:
           </NumberedStep>
 
-          <CodeBlock copyText={"sudo cp tr300 /usr/local/bin/\ntr300"}>
-            <span style={{ color: 'var(--accent-signal)' }}>$ </span>sudo cp tr300 /usr/local/bin/{'\n'}
+          <CodeBlock copyText={"sudo cp tr300 report /usr/local/bin/\ntr300"}>
+            <span style={{ color: 'var(--accent-signal)' }}>$ </span>sudo cp tr300 report /usr/local/bin/{'\n'}
             <span style={{ color: 'var(--accent-signal)' }}>$ </span>tr300
           </CodeBlock>
 
           <MonoParagraph>
-            Replace <InlineCode>tr300</InlineCode> with <InlineCode>nd300</InlineCode> or <InlineCode>sd300</InlineCode> depending on which tool you're using.
+            Keep <InlineCode>tr300</InlineCode> and <InlineCode>report</InlineCode> together. For other products, use their own executable names instead.
           </MonoParagraph>
         </div>
       </section>
@@ -747,8 +747,8 @@ export default function InstallGuideContent() {
             <p style={{ marginBottom: '0.75rem' }}>
               <Bold>Fix:</Bold> Run the following command, then try again:
             </p>
-            <CodeBlock copyText="chmod +x tr300">
-              <span style={{ color: 'var(--accent-signal)' }}>$ </span>chmod +x tr300
+            <CodeBlock copyText="chmod +x tr300 report">
+              <span style={{ color: 'var(--accent-signal)' }}>$ </span>chmod +x tr300 report
             </CodeBlock>
           </TroubleshootCard>
 

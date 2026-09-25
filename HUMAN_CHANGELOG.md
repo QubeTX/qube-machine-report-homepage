@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 - Two equivalent reporting commands
+
+**Improved**
+
+- Explain that either reporting command can also install, update, or uninstall the tool. Clarify the optional terminal startup summary and keep setup instructions in step with the latest release.
+
+---
+
 ## September 24, 2026 - Consistent Windows download order
 
 **Improved**

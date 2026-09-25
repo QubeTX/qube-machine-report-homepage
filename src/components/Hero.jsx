@@ -84,7 +84,7 @@ const ScrollLink = ({ label, targetId, emphasized = false }) => {
 }
 
 export default function Hero() {
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.4.0')
 
   return (
     <header style={{

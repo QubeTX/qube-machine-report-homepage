@@ -56,6 +56,8 @@ To add a new route: import the new App component in `main.jsx`, add a ternary br
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
 
+TR-300 v4.4.0 installs `tr300` and `report` together. Both names accept all reporting options and install/update/uninstall actions. `tr300 install` configures optional shell startup output and retires the legacy TR-300-owned profile alias; the packaged `report` command does not depend on a profile.
+
 ## Install Documentation Contract
 
 Product pages prefer a versionless CLI installer command. The homepage keeps tiny redirects under `public/install-<product>.{sh,ps1}` for compatibility, while SD-300 v2 advertises its upstream ownership-aware installer directly. SD-300 records its exact install path and channel so `sd300 update` can reuse managed CLI, MSI, EXE, or PKG ownership without switching formats.
@@ -73,7 +75,7 @@ Product pages prefer a versionless CLI installer command. The homepage keeps tin
 
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
-| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy updater alias) | `tr300` |
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy updater alias) | `tr300`, `report` |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy updater routers remain `tr300-tui-installer.*` / `SD300-installer.*` | `sd300` (crates.io package is still `tr300-tui`) |
 | WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |

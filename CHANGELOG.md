@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.8] - 2026-09-24
+
+### Changed
+
+- Synchronize TR-300 guidance with v4.4.0: both packaged commands support all reporting and maintenance actions, while `tr300 install` configures optional startup output and retires the old owned profile alias.
+- Refresh TR-300 fallback version labels and installation-guide examples to retain both companion commands.
+
 ## [1.21.7] - 2026-09-24
 
 ### Changed

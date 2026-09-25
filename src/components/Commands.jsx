@@ -41,7 +41,7 @@ const CommandRow = ({ command, description, isEven }) => {
 export default function Commands() {
   const commands = [
     { command: 'tr300', description: 'Print the full report; creates no file' },
-    { command: 'report', description: 'Convenience alias; creates no file' },
+    { command: 'report', description: 'Full alias for tr300, including install, update, and uninstall' },
     { command: 'tr300 -r, tr300 --report', description: 'Print and manually save a Markdown copy' },
     { command: 'report -s, report --save', description: 'Alias spellings for the same manual save' },
     { command: 'tr300 --fast', description: 'Startup-safe mode — skip slow optional probes' },
@@ -50,7 +50,7 @@ export default function Commands() {
     { command: 'tr300 -t, --title <TITLE>', description: 'Set a custom report title' },
     { command: 'tr300 --no-elevation-hint', description: 'Hide the optional Linux elevation footer' },
     { command: 'tr300 update [--json]', description: 'Update safely, with optional structured status' },
-    { command: 'tr300 install / --install', description: 'Install the report alias and startup summary' },
+    { command: 'tr300 install / --install', description: 'Configure optional startup summary; retire the old TR-300-owned alias' },
     { command: 'tr300 uninstall / --uninstall', description: 'Interactively remove profile or binary setup' },
     { command: 'tr300 --help', description: 'Show help' },
     { command: 'tr300 --version', description: 'Show version' },

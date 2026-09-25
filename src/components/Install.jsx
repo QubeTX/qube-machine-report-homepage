@@ -2,13 +2,13 @@ import ProductInstall, { InstallDetails, InstallHeading, InstallNote } from './P
 import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function Install() {
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.2.2')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.4.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
-  const pathNote = "Behind the scenes the wrapper installs a prebuilt tr300 binary into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), records that managed CLI channel and exact path for future updates, then runs tr300 install to add the report alias and tr300 --fast startup summary."
+  const pathNote = "Behind the scenes the wrapper installs the prebuilt tr300 and report commands into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), records that managed CLI channel and exact path for future updates, then runs tr300 install to configure the optional tr300 --fast startup summary and retire any old TR-300-owned profile alias."
   const reportNote = "Normal tr300 and report runs only print to the terminal — they do not create a log file. Save a Markdown copy manually with tr300 -r, tr300 --report, report -s, or report --save."
   const installNote = 'Run tr300 update later to keep the proven install channel. Deliberately running this command or a different official installer makes that fresh method your new choice; ambiguous or blocked takeovers leave the working install intact and show the latest recovery link.'
 
-  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that runs the official cargo-dist installer (downloads the prebuilt tr300 binary for macOS arm64/x64 or Linux x64 into ~/.cargo/bin), then runs tr300 install to add a report alias and a fast startup summary to your shell profile. No Rust toolchain is downloaded or built — the binary is already compiled."
+  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that runs the official cargo-dist installer (downloads the prebuilt tr300 and report commands for macOS arm64/x64 or Linux x64 into ~/.cargo/bin), then runs tr300 install to configure a fast startup summary in your shell profile. No Rust toolchain is downloaded or built — both commands are already compiled."
 
   const platforms = {
     macos: {
@@ -27,7 +27,7 @@ export default function Install() {
     windows: {
       label: 'Windows',
       command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"',
-      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe binary for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to add a report PowerShell alias and an auto-run line to your PowerShell profile so every new session starts with tr300 ready. No Rust toolchain, no MSVC Build Tools — the binary is already compiled.",
+      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe and report.exe commands for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to configure a fast startup summary in your PowerShell profile. No Rust toolchain, no MSVC Build Tools — both commands are already compiled.",
       updateCommand: 'tr300 update',
       note: "Runs in user scope — no administrator PowerShell needed. For double-click or managed deployment, use one of the MSI/EXE installers below. If antivirus, Group Policy, or another endpoint rule blocks an update write or installer launch, TR-300 stops without overwriting the working binary and explains the manual installer path."
     }
@@ -57,11 +57,11 @@ export default function Install() {
       {(current) => (
         <>
           <InstallHeading>After installation</InstallHeading>
-          <InstallNote>Open a new terminal and run <code>tr300</code> or <code>report</code>. The shell integration also shows a quick summary when a new terminal starts.</InstallNote>
+          <InstallNote>Open a new terminal and run <code>tr300</code> or <code>report</code>. Both commands support every reporting option and install, update, and uninstall action. Optional shell integration shows a quick summary when a new terminal starts.</InstallNote>
           <InstallHeading>Save a report when you need one</InstallHeading>
           <InstallNote>{reportNote}</InstallNote>
           <InstallHeading>Keep it up to date</InstallHeading>
-          <InstallNote>Run <code>{current.updateCommand}</code>. Updates keep your existing installation method.</InstallNote>
+          <InstallNote>Run <code>{current.updateCommand}</code> or <code>report update</code>. Updates keep your existing installation method.</InstallNote>
           <InstallDetails title="Setup details and permissions">
             <InstallNote>{current.explanation}</InstallNote>
             {current.note && <InstallNote>{current.note}</InstallNote>}
