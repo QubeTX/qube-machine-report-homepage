@@ -1,7 +1,7 @@
 {
   "name": "tr300-homepage",
   "private": true,
-  "version": "1.21.6",
+  "version": "1.21.7",
   "license": "PolyForm-Noncommercial-1.0.0",
   "type": "module",
   "scripts": {

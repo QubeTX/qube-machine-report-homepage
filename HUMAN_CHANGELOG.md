@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## September 24, 2026 - Consistent Windows download order
+
+**Improved**
+
+- Show the Windows Installer download before the setup executable for every product and edition, making the download choices easier to scan consistently.
+
+---
+
 ## September 24, 2026 — More room between installation columns
 
 **Improved**

@@ -81,14 +81,14 @@ export default function ProductInstall({ product, version, summary, platforms, r
 
             {selectedPlatform === 'windows' && windowsInstallers && <div style={{ marginTop: '1.5rem' }}>
               <InstallHeading>Prefer a setup wizard?</InstallHeading>
-              <p style={{ marginBottom: '1rem' }}>EXE: setup wizard. MSI: Windows Installer / IT deployment.</p>
+              <p style={{ marginBottom: '1rem' }}>MSI: Windows Installer / IT deployment. EXE: setup wizard.</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem' }}>
                 {windowsInstallers.map(({ edition, msi, exe }) => <div key={edition} style={{ borderTop: '1px solid #444', paddingTop: '0.8rem', minWidth: 0 }}>
                   <h4 style={{ fontSize: '0.85rem', color: 'var(--fg-bone)' }}>{edition}</h4>
                   <p style={{ margin: '0.4rem 0 0.8rem' }}>{edition === 'Global' ? 'All users · Program Files. Requires administrator approval.' : 'Your user account. No administrator access needed.'}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    <DownloadLink href={`${releaseBase}/${exe}`} label={`Download ${edition} EXE`}>↓ EXE</DownloadLink>
                     <DownloadLink href={`${releaseBase}/${msi}`} label={`Download ${edition} MSI`}>↓ MSI</DownloadLink>
+                    <DownloadLink href={`${releaseBase}/${exe}`} label={`Download ${edition} EXE`}>↓ EXE</DownloadLink>
                   </div>
                 </div>)}
               </div>

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.7] - 2026-09-24
+
+### Changed
+
+- List MSI before EXE within each Global and Corporate Windows installer group on the TR-300, ND-300, SD-300, and WB-300 pages. Match the shared format explanation to that order while retaining all download URLs and installation guidance.
+
 ## [1.21.6] - 2026-09-24
 
 ### Changed
