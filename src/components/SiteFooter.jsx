@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 
 const products = [
   { label: 'TR-300', path: '/' },
@@ -8,6 +8,14 @@ const products = [
   // WIP-DELISTED — restore when Shaughv OS is ready to be marketed:
   // { label: 'SHAUGHVOS', path: '/shaughvos' },
 ]
+
+const mobileFooterQuery = '(max-width: 640px)'
+const isMobileFooter = () => window.matchMedia(mobileFooterQuery).matches
+const subscribeFooterLayout = (onChange) => {
+  const query = window.matchMedia(mobileFooterQuery)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
 
 const brandRoot = 'https://cdn.shaughv.com/brand'
 
@@ -49,11 +57,68 @@ function BrandMark({ label, file, width, height }) {
 }
 
 export default function SiteFooter({ title, repository, status = 'Operational', children, attribution, gpl = false }) {
+  const mobile = useSyncExternalStore(subscribeFooterLayout, isMobileFooter)
   const path = window.location.pathname.replace(/\/$/, '') || '/'
   const headingStyle = {
     fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase',
     letterSpacing: '0.1em', color: '#999', marginBottom: '0.75rem',
   }
+
+  const identity = (
+    <div style={{ minWidth: 0, ...(mobile ? { borderTop: '1px solid #333', paddingTop: '2rem' } : {}) }}>
+      <p style={headingStyle}>QUBETX Developer Tools</p>
+      <a href="https://shaughv.com" target="_blank" rel="noopener noreferrer"
+        aria-label="SHAUGHV — Emmett Shaughnessy's portfolio"
+        style={{ display: 'grid', gridTemplateColumns: '104px 80px', gap: '24px', alignItems: 'center', width: 'fit-content', color: 'var(--fg-bone)' }}>
+        {/* The standalone wordmark has a square viewBox with internal whitespace.
+            Keep its aspect ratio; 104px gives the reference's visible proportions. */}
+        <BrandMark label="SHAUGHV" file="shaughv/logos/SHAUGHV-Official.svg" width="104px" height="104px" />
+        <BrandMark label="Shaughnessy family crest — Fortis et stabilis" file="crests/Shaughnessy-Crest-Footer.svg" width="80px" height="100px" />
+      </a>
+      <p style={{ marginTop: '1.25rem', fontSize: '0.7rem', lineHeight: 1.8, color: '#999' }}>
+        &copy; {new Date().getFullYear()} QUBETX
+      </p>
+      <FooterLink href="https://qubetx.com">QUBETX.COM ↗</FooterLink>
+      {attribution}
+    </div>
+  )
+
+  const navigation = (
+    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, max-content)', gap: '1.5rem' }}>
+      <nav aria-label="Footer products">
+        <h2 style={headingStyle}>The tools</h2>
+        {products.map(product => (
+          <FooterLink key={product.path} href={product.path} current={path === product.path}>
+            {product.label}
+          </FooterLink>
+        ))}
+      </nav>
+
+      <nav aria-label="Footer resources">
+        <h2 style={headingStyle}>Resources</h2>
+        <FooterLink href="/install-guide" current={path === '/install-guide'}>Install guide</FooterLink>
+        <FooterLink href="/executables" current={path === '/executables'}>Offline downloads</FooterLink>
+        <FooterLink href={`https://github.com/${repository}`}>GitHub ↗</FooterLink>
+        {!gpl && <FooterLink href={`https://github.com/${repository}/blob/main/README.md`}>Documentation ↗</FooterLink>}
+        <FooterLink href={gpl ? 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.html' : 'https://polyformproject.org/licenses/noncommercial/1.0.0/'}>
+          {gpl ? 'GPLv2 license' : 'PolyForm NC license'} ↗
+        </FooterLink>
+      </nav>
+    </div>
+  )
+
+  const productDetails = (
+    <div style={{
+      display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
+      gap: '1rem 2rem', paddingTop: '1.5rem', paddingRight: '3.5rem', borderTop: '1px solid #333',
+    }}>
+      <p style={{ fontSize: '0.7rem', lineHeight: 1.7, color: '#aaa' }}>{title}</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>{children}</div>
+      <p style={{ fontSize: '0.65rem', lineHeight: 1.7, color: 'var(--accent-signal)', textTransform: 'uppercase' }}>
+        Status: {status}
+      </p>
+    </div>
+  )
 
   return (
     <footer aria-label="QUBETX site footer" style={{
@@ -61,60 +126,24 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
       borderTop: '1px solid #333', marginTop: 'auto',
       color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)',
     }}>
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
-        gap: '2.5rem', paddingBottom: '3rem',
-      }}>
-        <div style={{ minWidth: 0 }}>
-          <p style={headingStyle}>QUBETX Developer Tools</p>
-          <a href="https://shaughv.com" target="_blank" rel="noopener noreferrer"
-            aria-label="SHAUGHV — Emmett Shaughnessy's portfolio"
-            style={{ display: 'grid', gridTemplateColumns: '104px 80px', gap: '24px', alignItems: 'center', width: 'fit-content', color: 'var(--fg-bone)' }}>
-            {/* The standalone wordmark has a square viewBox with internal whitespace.
-                Keep its aspect ratio; 104px gives the reference's visible proportions. */}
-            <BrandMark label="SHAUGHV" file="shaughv/logos/SHAUGHV-Official.svg" width="104px" height="104px" />
-            <BrandMark label="Shaughnessy family crest — Fortis et stabilis" file="crests/Shaughnessy-Crest-Footer.svg" width="80px" height="100px" />
-          </a>
-          <p style={{ marginTop: '1.25rem', fontSize: '0.7rem', lineHeight: 1.8, color: '#999' }}>
-            &copy; {new Date().getFullYear()} QUBETX
-          </p>
-          <FooterLink href="https://qubetx.com">QUBETX.COM ↗</FooterLink>
-          {attribution}
+      {mobile ? (
+        <div style={{ display: 'grid', gap: '2rem' }}>
+          {navigation}
+          {productDetails}
+          {identity}
         </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, max-content)', gap: '1.5rem' }}>
-          <nav aria-label="Footer products">
-            <h2 style={headingStyle}>The tools</h2>
-            {products.map(product => (
-              <FooterLink key={product.path} href={product.path} current={path === product.path}>
-                {product.label}
-              </FooterLink>
-            ))}
-          </nav>
-
-          <nav aria-label="Footer resources">
-            <h2 style={headingStyle}>Resources</h2>
-            <FooterLink href="/install-guide" current={path === '/install-guide'}>Install guide</FooterLink>
-            <FooterLink href="/executables" current={path === '/executables'}>Offline downloads</FooterLink>
-            <FooterLink href={`https://github.com/${repository}`}>GitHub ↗</FooterLink>
-            {!gpl && <FooterLink href={`https://github.com/${repository}/blob/main/README.md`}>Documentation ↗</FooterLink>}
-            <FooterLink href={gpl ? 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.html' : 'https://polyformproject.org/licenses/noncommercial/1.0.0/'}>
-              {gpl ? 'GPLv2 license' : 'PolyForm NC license'} ↗
-            </FooterLink>
-          </nav>
-        </div>
-      </div>
-
-      <div style={{
-        display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
-        gap: '1rem 2rem', paddingTop: '1.5rem', paddingRight: '3.5rem', borderTop: '1px solid #333',
-      }}>
-        <p style={{ fontSize: '0.7rem', lineHeight: 1.7, color: '#aaa' }}>{title}</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>{children}</div>
-        <p style={{ fontSize: '0.65rem', lineHeight: 1.7, color: 'var(--accent-signal)', textTransform: 'uppercase' }}>
-          Status: {status}
-        </p>
-      </div>
+      ) : (
+        <>
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+            gap: '2.5rem', paddingBottom: '3rem',
+          }}>
+            {identity}
+            {navigation}
+          </div>
+          {productDetails}
+        </>
+      )}
     </footer>
   )
 }

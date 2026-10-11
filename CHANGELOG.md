@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.11] - 2026-10-10
+
+### Changed
+
+- Place footer navigation first, product details second, and the paired brand marks and copyright last at mobile widths. Keep desktop placement unchanged and match DOM/keyboard order to the mobile visual order, including when resizing.
+
 ## [1.21.10] - 2026-10-10
 
 ### Changed

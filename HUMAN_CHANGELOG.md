@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 10, 2026 — Navigation first on phones
+
+**Improved**
+
+- Put footer links above the logos on phones, making navigation easier to reach and letting the branding close the page. Desktop keeps its existing layout.
+
+---
+
 ## October 10, 2026 — Better use of the footer width
 
 **Improved**
