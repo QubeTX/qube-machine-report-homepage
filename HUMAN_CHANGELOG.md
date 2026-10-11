@@ -8,6 +8,14 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 10, 2026 — Better use of the footer width
+
+**Improved**
+
+- Move the help and download links toward the right edge so the footer feels balanced across a wide screen and still fits on a phone.
+
+---
+
 ## October 10, 2026 — A footer that brings the site together
 
 **Improved**

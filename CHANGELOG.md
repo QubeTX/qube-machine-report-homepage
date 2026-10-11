@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.10] - 2026-10-10
+
+### Changed
+
+- Size the shared footer resource column to its content and align it with the right content edge, removing the unused trailing desktop space while preserving the compact mobile layout.
+
 ## [1.21.9] - 2026-10-10
 
 ### Changed

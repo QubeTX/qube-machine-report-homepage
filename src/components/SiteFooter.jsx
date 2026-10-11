@@ -82,7 +82,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
           {attribution}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, max-content)', gap: '1.5rem' }}>
           <nav aria-label="Footer products">
             <h2 style={headingStyle}>The tools</h2>
             {products.map(product => (
