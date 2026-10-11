@@ -107,7 +107,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
 
       <div style={{
         display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
-        gap: '1rem 2rem', paddingTop: '1.5rem', borderTop: '1px solid #333',
+        gap: '1rem 2rem', paddingTop: '1.5rem', paddingRight: '3.5rem', borderTop: '1px solid #333',
       }}>
         <p style={{ fontSize: '0.7rem', lineHeight: 1.7, color: '#aaa' }}>{title}</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>{children}</div>
