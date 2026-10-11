@@ -20,7 +20,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
   origin-preserving updates and fail-safe managed-Windows blocks without
   promising a policy bypass. The DMG is compatibility-only and not advertised.
 - **Shaughv OS (`/shaughvos`) is temporarily delisted (WIP).** Its route remains live, but discoverable links stay commented out or de-linked and tagged `WIP-DELISTED`. SD-300 is listed again immediately after ND-300. See the "Temporarily delisted page" section in `CLAUDE.md` / `AGENTS.md` for the remaining Shaughv OS restore manifest.
-- **Site composition:** routing is pathname-based in `src/main.jsx`; the nav is a module-level `products` array in `ProductNav.jsx` (rendered via each `*Hero.jsx`), and there is no shared footer — each page hardcodes its own inline `*Footer.jsx` link row (`Footer.jsx` is the TR-300/homepage one).
+- **Site composition:** routing is pathname-based in `src/main.jsx`; the nav is a module-level `products` array in `ProductNav.jsx` (rendered via each `*Hero.jsx`), and all page-specific `*Footer.jsx` wrappers use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Wrappers retain page-specific version badges, repository, status, and attribution. Brand assets load from the canonical CDN; footer typography uses the existing site tokens. Keep Shaughv OS delisted in the shared products array until ready.
 - Product pages prefer versionless CLI installer commands. SD-300 v2 advertises `sd300-cli-installer.{sh,ps1}` directly from GitHub's `releases/latest/download` endpoint; `public/install-sd300.*` remains only a thin compatibility redirect.
 - SD-300 records managed CLI, MSI, EXE, or PKG ownership and its exact install path. `sd300 update` stays on that channel; `sd300 install` deliberately makes the managed CLI channel authoritative. Contradictory ownership evidence must stop before mutation.
 - `sd300 uninstall` remains visible in the SD-300 Commands table and every platform install panel. It delegates to the proven owner and removes the product payload and owned setup state while preserving shared Cargo/Rust tooling.
@@ -81,6 +81,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── ExecutablesFooter.jsx
 │   │   ├── ExecutablesHero.jsx
 │   │   ├── Features.jsx
+│   │   ├── SiteFooter.jsx
 │   │   ├── Footer.jsx
 │   │   ├── Hero.jsx
 │   │   ├── Install.jsx

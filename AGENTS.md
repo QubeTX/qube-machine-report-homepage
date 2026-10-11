@@ -31,7 +31,7 @@ SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html
 
 **Restore manifest.** Every remaining delisted spot keeps a greppable `WIP-DELISTED` comment that preserves the original markup — find them all with `grep -r "WIP-DELISTED" src/`:
 - **Nav** — `src/components/ProductNav.jsx`: uncomment the `SHAUGHVOS` entry in the `products` array.
-- **Footers** — uncomment the SHAUGHVOS `<a>` entry and separator in `Footer.jsx`, `ND300Footer.jsx`, `WB300Footer.jsx`, `SD300Footer.jsx`, `ShaughvOSFooter.jsx`, and `ExecutablesFooter.jsx`.
+- **Footers** — uncomment the SHAUGHVOS entry in the shared `SiteFooter.jsx` products array.
 - **In-content** — in `Demos.jsx`, `ND300Features.jsx`, and `SD300Platform.jsx`, re-wrap the de-linked `shaughvOS` text in the anchor preserved in its adjacent comment.
 - The route in `src/main.jsx` remains intact.
 
@@ -52,7 +52,7 @@ SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html
 
 To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add a rewrite if needed (current `vercel.json` already catches all paths).
 
-**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. There is **no shared footer**: each page has its own inline `*Footer.jsx` that hardcodes its own cross-product link row (`Footer.jsx` is the TR-300/homepage one), so cross-product link changes touch every footer individually.
+**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`; keep Shaughv OS delisted there until ready. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
 

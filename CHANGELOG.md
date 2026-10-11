@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.21.9] - 2026-10-10
+
+### Changed
+
+- Adapt the CDN footer reference across all seven pages with the official SHAUGHV wordmark and footer-specific Shaughnessy crest, using the existing dark palette and typography.
+- Centralize responsive product/resource navigation in `SiteFooter.jsx`, with current-page indicators, keyboard focus treatment, and accessible brand labels. Preserve each page's version badges, status, repository, license, and attribution; keep Shaughv OS delisted.
+- Synchronize the three agent guides with the shared footer and its updated restore manifest.
+
 ## [1.21.8] - 2026-09-24
 
 ### Changed

@@ -1,3 +1,4 @@
+import SiteFooter from './SiteFooter'
 import { useState } from 'react'
 
 const SizeBadge = ({ children, active, href, heritage, title }) => {
@@ -48,93 +49,25 @@ const SizeBadge = ({ children, active, href, heritage, title }) => {
 
 export default function Footer() {
   return (
-    <footer style={{
-      padding: '4rem 2rem',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'flex-end',
-      borderTop: '1px solid #222',
-      fontSize: '0.75rem',
-      color: 'var(--fg-dim)',
-      marginTop: 'auto',
-      flexWrap: 'wrap',
-      gap: '2rem'
-    }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        minWidth: '0'
-      }}>
-        <span style={{
-          textTransform: 'uppercase',
-          color: 'var(--fg-bone)',
-          fontWeight: '500'
-        }}>
-          QUBETX
-        </span>
-        <span>TR-300 MACHINE REPORT</span>
-        <a href="https://qubetx.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>QUBETX.COM</a>
-      </div>
-
-      <div style={{
-        display: 'flex',
-        gap: '4px',
-        alignItems: 'center'
-      }}>
-        <SizeBadge heritage href="https://github.com/usgraphics/usgc-machine-report" title="U.S. Graphics Company">TR100</SizeBadge>
-        <SizeBadge heritage href="https://github.com/RealEmmettS/usgc-machine-report" title="Fork by Emmett S.">TR200</SizeBadge>
-        <span style={{
-          color: 'var(--fg-dim)',
-          opacity: 0.4,
-          fontSize: '0.7rem',
-          margin: '0 2px',
-          userSelect: 'none'
-        }}>›</span>
-        <SizeBadge>V1</SizeBadge>
-        <SizeBadge>V2</SizeBadge>
-        <SizeBadge>V3</SizeBadge>
-        <SizeBadge active>V4</SizeBadge>
-        <SizeBadge>LTS</SizeBadge>
-      </div>
-
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        textAlign: 'right',
-        minWidth: '0'
-      }}>
-        <span>
-          <a href="/nd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>ND-300</a>
-          {' / '}
-          <a href="/sd300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SD-300</a>
-          {' / '}
-          <a href="/wb300" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>WB-300</a>
-          {' / '}
-          {/* WIP-DELISTED — Shaughv OS delisted (WIP); restore link + separator:
-          <a href="/shaughvos" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>SHAUGHVOS</a>
-          {' / '} */}
-          <a href="https://github.com/QubeTX/qube-machine-report" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>GITHUB</a>
-          {' / '}
-          <a href="https://github.com/QubeTX/qube-machine-report/blob/main/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>DOCS</a>
-        </span>
-        <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}>POLYFORM NC LICENSE</a>
-        <span style={{ color: 'var(--accent-signal)' }}>
-          STATUS: OPERATIONAL
-        </span>
-      </div>
-
-      <div style={{
-        width: '100%',
-        fontSize: '0.6rem',
+    <SiteFooter
+      title="TR-300 MACHINE REPORT"
+      repository="QubeTX/qube-machine-report"
+      status="Operational"
+    >
+      <SizeBadge heritage href="https://github.com/usgraphics/usgc-machine-report" title="U.S. Graphics Company">TR100</SizeBadge>
+      <SizeBadge heritage href="https://github.com/RealEmmettS/usgc-machine-report" title="Fork by Emmett S.">TR200</SizeBadge>
+      <span style={{
         color: 'var(--fg-dim)',
-        marginTop: '0.5rem',
-        paddingTop: '1.5rem',
-        borderTop: '1px solid #222'
-      }}>
-        &copy; {new Date().getFullYear()} QUBETX
-      </div>
-    </footer>
+        opacity: 0.4,
+        fontSize: '0.7rem',
+        margin: '0 2px',
+        userSelect: 'none'
+      }}>›</span>
+      <SizeBadge>V1</SizeBadge>
+      <SizeBadge>V2</SizeBadge>
+      <SizeBadge>V3</SizeBadge>
+      <SizeBadge active>V4</SizeBadge>
+      <SizeBadge>LTS</SizeBadge>
+    </SiteFooter>
   )
 }

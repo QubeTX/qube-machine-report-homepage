@@ -8,6 +8,20 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 10, 2026 — A footer that brings the site together
+
+**Improved**
+
+- Pair the SHAUGHV logo and family crest with the site's existing colors and fonts for a consistent finish on every page.
+- Group product links, downloads, and help into clear columns that stack on smaller screens, making it easier to find the next step.
+- Keep each page's release details and credits, with clearer navigation for keyboard users.
+
+**Behind the scenes**
+
+- Share the footer layout across the site so future navigation changes stay consistent.
+
+---
+
 ## September 24, 2026 - Two equivalent reporting commands
 
 **Improved**
