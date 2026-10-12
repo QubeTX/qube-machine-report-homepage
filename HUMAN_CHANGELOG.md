@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 12, 2026 — Simpler footer navigation
+
+**Improved**
+
+- Put Documentation first in the footer and remove the separate install guide link, keeping the tool guides together in one place.
+
 ## October 12, 2026 — More balanced product pages
 
 **Improved**
