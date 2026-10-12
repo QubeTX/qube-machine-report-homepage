@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.25.0] - 2026-10-12
+
+### Changed
+
+- Replace Cormorant Garamond in the marketing site's serif text with the canonical CDN-hosted Michelangelus regular and italic faces, retaining Archivo Black headings and Paper Mono controls.
+
+### Fixed
+
+- Align offline-download product card labels, headings, descriptions, and links using shared content-sized rows across each responsive grid row.
+
 ## [1.24.0] - 2026-10-12
 
 ### Changed

@@ -130,7 +130,7 @@ installer; never market this as bypassing antivirus or policy.
 | `--fg-dim` | `#666666` | Secondary/muted text |
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
 | `--font-display` | Archivo Black | Headings |
-| `--font-serif` | Cormorant Garamond | Pull quotes |
+| `--font-serif` | Michelangelus (canonical CDN stylesheet) | Subtitles, descriptions, quotes |
 | `--font-mono` | Paper Mono | Body text, code |
 
 ## Source Repositories

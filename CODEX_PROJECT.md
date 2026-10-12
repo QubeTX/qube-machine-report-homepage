@@ -38,6 +38,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 - Present each QubeTX tool with clear product positioning, commands, feature summaries, platform support, and installation instructions.
 - Keep install and command content aligned with the corresponding source repositories when source state is relevant.
 - Preserve the existing industrial terminal-inspired visual language: dark background, mono-font copy, neon magenta accent, inline styles, and tabbed terminal install blocks.
+- Marketing typography uses Archivo Black for display headings, CDN-hosted Michelangelus for serif subtitles, descriptions, and quotes, and Paper Mono for body text and code. Load Michelangelus through its canonical CDN stylesheet; preserve its supplied regular and italic faces.
 
 ## Workspace File Tree
 

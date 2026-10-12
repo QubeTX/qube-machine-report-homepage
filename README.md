@@ -135,7 +135,7 @@ src/
 - **Background:** #0a0a0a
 - **Foreground:** #dcdcdc
 - **Accent:** #ff00d4
-- **Fonts:** Archivo Black (display), Cormorant Garamond (serif), Paper Mono (mono)
+- **Fonts:** Archivo Black (display), CDN-hosted Michelangelus (serif), Paper Mono (mono)
 
 ## Deployment
 

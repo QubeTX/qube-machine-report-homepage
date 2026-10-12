@@ -8,6 +8,16 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 12, 2026 — More balanced product pages
+
+**Improved**
+
+- Give subtitles, quotes, and product descriptions a fuller serif typeface that pairs more clearly with the site's bold headings.
+
+**Fixed**
+
+- Line up the product cards on the offline downloads page so their headings, descriptions, and links are easier to compare.
+
 ## October 12, 2026 — Clearer tool guides
 
 **Improved**

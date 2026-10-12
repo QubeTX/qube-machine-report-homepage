@@ -8,52 +8,51 @@ const GridCell = ({ label, title, description, linkText, linkUrl, noBorder }) =>
       style={{
         padding: 'clamp(2rem, 5vw, 4rem)',
         borderRight: noBorder ? 'none' : '1px solid #222',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        minHeight: '50vh',
+        display: 'grid',
+        gridTemplateRows: 'subgrid',
+        gridRow: 'span 4',
+        alignItems: 'start',
+        minWidth: 0,
         transition: 'background 0.3s ease',
         background: isHovered ? '#0f0f0f' : 'transparent'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div>
-        <span style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.8rem',
-          color: 'var(--fg-dim)',
-          marginBottom: '2rem',
-          border: '1px solid var(--fg-dim)',
-          display: 'inline-block',
-          padding: '2px 8px',
-          borderRadius: '4px'
-        }}>
-          {label}
-        </span>
-      </div>
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.8rem',
+        color: 'var(--fg-dim)',
+        marginBottom: '2rem',
+        border: '1px solid var(--fg-dim)',
+        display: 'inline-block',
+        justifySelf: 'start',
+        padding: '2px 8px',
+        borderRadius: '4px'
+      }}>
+        {label}
+      </span>
 
-      <div>
-        <h2
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            transform: 'scaleX(1.1)',
-            marginBottom: '1.5rem',
-            textTransform: 'uppercase',
-            lineHeight: '1.1'
-          }}
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-        <p style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-          lineHeight: '1.3',
-          color: '#aaa'
-        }}>
-          {description}
-        </p>
-      </div>
+      <h2
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+          transform: 'scaleX(1.1)',
+          transformOrigin: 'left center',
+          marginBottom: '1.5rem',
+          textTransform: 'uppercase',
+          lineHeight: '1.1'
+        }}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
+      <p style={{
+        fontFamily: 'var(--font-serif)',
+        fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+        lineHeight: '1.3',
+        color: '#aaa'
+      }}>
+        {description}
+      </p>
 
       <a
         href={linkUrl}
@@ -62,6 +61,7 @@ const GridCell = ({ label, title, description, linkText, linkUrl, noBorder }) =>
           letterSpacing: '-0.5px',
           fontSize: '0.7rem',
           marginTop: '2rem',
+          alignSelf: 'end',
           color: 'var(--accent-signal)',
           cursor: 'pointer',
           textDecoration: 'none'
@@ -185,7 +185,7 @@ export default function ExecutablesContent() {
       {/* Tool summary grid */}
       <section style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 30rem), 1fr))',
         borderBottom: '1px solid #222',
         overflow: 'hidden'
       }}>
