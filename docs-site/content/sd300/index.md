@@ -17,7 +17,7 @@ The first command opens the terminal mode chooser. The second opens or focuses t
 - [Desktop app, tray, and settings](/sd300/desktop)
 - [Snapshots and capability states](/sd300/snapshots)
 - [Practical monitoring examples](/sd300/examples)
-- [Install](/installation) or [update and uninstall](/installation/lifecycle)
+- [Install SD-300](/sd300/installation), [update](/sd300/installation#updates-and-repairs), or [uninstall](/sd300/installation#uninstall)
 
 Missing sensors and denied permissions remain explicit. An unavailable measurement is not a healthy reading or a zero.
 

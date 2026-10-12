@@ -10,7 +10,7 @@ TR-300 covers operating system and kernel information, processor and memory, dis
 - [Commands and options](/tr300/commands)
 - [Report and scripting examples](/tr300/examples)
 - [Optional shell integration](/tr300/shell-integration)
-- [Install](/installation) or [update and uninstall](/installation/lifecycle)
+- [Install TR-300](/tr300/installation), [update](/tr300/installation#updates-and-repairs), or [uninstall](/tr300/installation#uninstall)
 
 ## Available information
 - Cross-platform support (Windows, macOS, Linux)

@@ -28,3 +28,5 @@ the deployed output is static. The initial dependency audit also reports
 moderate/low transitive issues in Markdown/diagram build dependencies; do not
 apply `npm audit fix --force`, which currently suggests replacing Blume with an
 unrelated pre-release version. Reassess these reports with framework updates.
+
+Each tool owns its `installation.md`, covering platform setup, portable/offline use, updates, and uninstall. Keep installation within the tool navigation; old shared installation URLs redirect to the tool chooser.

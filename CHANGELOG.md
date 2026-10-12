@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.2] - 2026-10-11
+
+### Changed
+
+- Move installation, platform downloads, offline setup, updates, and uninstall into each tool's documentation. Remove the shared Installation navigation group, update contextual links, and redirect legacy installation URLs to the tool chooser.
+
 ## [1.23.1] - 2026-10-11
 
 ### Fixed

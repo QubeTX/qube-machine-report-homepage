@@ -56,6 +56,7 @@ function BrandMark({ label, file, width, height }) {
 export default function SiteFooter({ title, repository, status = 'Operational', children, attribution, gpl = false }) {
   const mobile = useSyncExternalStore(subscribeFooterLayout, isMobileFooter)
   const path = window.location.pathname.replace(/\/$/, '') || '/'
+  const installGuide = { '/': '/tr300', '/nd300': '/nd300', '/sd300': '/sd300' }[path]
   const headingStyle = {
     fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase',
     letterSpacing: '0.1em', color: '#999', marginBottom: '0.75rem',
@@ -98,7 +99,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
 
       <nav aria-label="Footer resources">
         <h2 style={headingStyle}>Resources</h2>
-        <FooterLink href="/docs/installation">Install guide</FooterLink>
+        <FooterLink href={installGuide ? `/docs${installGuide}/installation` : '/docs#choose-a-tool'}>Install guide</FooterLink>
         <FooterLink href="/executables" current={path === '/executables'}>Offline downloads</FooterLink>
         <FooterLink href={`https://github.com/${repository}`}>GitHub ↗</FooterLink>
         <FooterLink href="/docs">Documentation</FooterLink>

@@ -7,7 +7,7 @@ sidebar:
 
 Open SD-300 from your application menu or run `sd300 gui`. The command opens the installed app, or brings its existing window forward.
 
-If the desktop companion is missing or corrupt, the CLI prints repair guidance. Use the current official installer or the [managed lifecycle commands](/installation/lifecycle) to repair the whole product.
+If the desktop companion is missing or corrupt, the CLI prints repair guidance. Use the current official installer or the [managed lifecycle commands](/sd300/installation#updates-and-repairs) to repair the whole product.
 
 ## Find a measurement
 
@@ -45,7 +45,7 @@ Installation or an update started from the CLI does not automatically launch the
 
 Native Windows MSI/EXE and macOS PKG packages contain both CLI and GUI. Portable GUI archives are separate from the CLI archives.
 
-Keep the complete extracted directory or app bundle. On Linux, use `sd300/bin/sd300-gui` so the launcher can find its included runtime; a compatible graphical desktop is still required. See the [offline installation guide](/installation/offline) for the files for your platform.
+Keep the complete extracted directory or app bundle. On Linux, use `sd300/bin/sd300-gui` so the launcher can find its included runtime; a compatible graphical desktop is still required. See the [offline installation guide](/sd300/installation#offline-installation) for the files for your platform.
 
 ## Accessibility
 

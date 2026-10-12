@@ -40,7 +40,7 @@ The canceled operating-system product page and its marketing copy have been remo
 | `/nd300` | `ND300App.jsx` |
 | `/executables` | `ExecutablesApp.jsx` |
 | `/docs` and descendants | Static Blume documentation (`docs-site/`) |
-| `/install-guide` | Redirect to `/docs/installation/offline` |
+| `/install-guide` | Redirect to `/docs#choose-a-tool` |
 
 To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add an explicit marketing-route rewrite to `vercel.json`.
 
@@ -194,8 +194,10 @@ material in native disclosure sections; do not shrink text to fit a viewport.
 
 The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired product URLs redirect home and must not be marketed or bundled. Retired installer wrapper URLs are non-mutating error tombstones, so old commands cannot accidentally execute SPA HTML.
 
-`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs/installation/offline`.
+`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
 Documentation content is Markdown under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; code uses canonical CDN Paper Mono. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
 Check commands and claims against published source tags and CLI help, and record the exact versions in `/docs/sources`. The October 11, 2026 snapshot covers TR-300 4.4.0, ND-300 4.0.1, and SD-300 4.1.0. Online installers remain versionless. Offline downloads point at `QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip`; the ZIP is a curated, checksummed snapshot containing matching docs and a local start page. Keep the displayed bundle versions pinned to its manifest rather than live product API results. Native installation and hardware acceptance remain distinct from checksum/help/build verification.
+
+Installation documentation belongs inside each tool at `/docs/tr300/installation`, `/docs/nd300/installation`, and `/docs/sd300/installation`. Keep platform setup, offline instructions, updates, and removal with that tool; do not add a standalone Installation navigation group. Legacy shared installation URLs redirect to the documentation tool chooser.

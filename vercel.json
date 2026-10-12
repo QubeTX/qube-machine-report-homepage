@@ -24,12 +24,32 @@
     },
     {
       "source": "/install-guide",
-      "destination": "/docs/installation/offline",
+      "destination": "/docs#choose-a-tool",
       "permanent": true
     },
     {
       "source": "/install-guide/",
-      "destination": "/docs/installation/offline",
+      "destination": "/docs#choose-a-tool",
+      "permanent": true
+    },
+    {
+      "source": "/docs/installation",
+      "destination": "/docs#choose-a-tool",
+      "permanent": true
+    },
+    {
+      "source": "/docs/installation/",
+      "destination": "/docs#choose-a-tool",
+      "permanent": true
+    },
+    {
+      "source": "/docs/installation.md",
+      "destination": "/docs#choose-a-tool",
+      "permanent": true
+    },
+    {
+      "source": "/docs/installation/:path*",
+      "destination": "/docs#choose-a-tool",
       "permanent": true
     }
   ],

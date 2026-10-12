@@ -11,7 +11,7 @@ For portable Windows files, use `./tr300.exe` from the extracted directory. For 
 
 ## Wrong version or duplicate installation
 
-Check the resolved command path and `--version`. A shell alias, old PATH entry, or second installer channel can select a different copy. Do not remove registrations or replace managed files blindly. Follow the [lifecycle guide](/installation/lifecycle) and the updater's exact recovery diagnostic.
+Check the resolved command path and `--version`. A shell alias, old PATH entry, or second installer channel can select a different copy. Do not remove registrations or replace managed files blindly. Follow the updater's exact recovery diagnostic and the update guidance for [TR-300](/tr300/installation#updates-and-repairs), [ND-300](/nd300/installation#updates-and-repairs), or [SD-300](/sd300/installation#updates-and-repairs).
 
 ## Installer blocked or permission denied
 

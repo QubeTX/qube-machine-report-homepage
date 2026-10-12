@@ -12,7 +12,7 @@ Start with `nd300 --fast` when you want connectivity diagnostics without the spe
 - [SpeedQX profiles and measurement limits](/nd300/speedqx)
 - [DNS and recovery](/nd300/recovery)
 - [Examples](/nd300/examples)
-- [Install](/installation) or [update and uninstall](/installation/lifecycle)
+- [Install ND-300](/nd300/installation), [update](/nd300/installation#updates-and-repairs), or [uninstall](/nd300/installation#uninstall)
 
 
 Checked against [ND-300 v4.0.1](https://github.com/QubeTX/qube-network-diagnostics/releases/tag/v4.0.1).

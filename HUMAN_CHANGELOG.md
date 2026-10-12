@@ -8,7 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
-## October 11, 2026 � Consistent footer alignment
+## October 11, 2026 — Installation help beside each tool
+
+**Improved**
+
+- Keep setup, offline installation, updates, and removal in each tool's guide so you can find everything for that tool in one place. Older installation bookmarks now lead to the tool choices.
+
+## October 11, 2026 — Consistent footer alignment
 
 **Fixed**
 

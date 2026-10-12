@@ -173,10 +173,10 @@ export default function ExecutablesContent() {
           }}>
             New to this?{' '}
             <a
-              href="/docs/installation/offline"
+              href="/docs#choose-a-tool"
               style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}
             >
-              See the step-by-step install guide →
+              Choose your tool’s installation guide →
             </a>
           </p>
         </div>

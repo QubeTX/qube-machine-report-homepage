@@ -5,30 +5,18 @@ description: Choose a tool, install it, and get useful results from your compute
 
 Three tools for understanding your computer and its connection. Start with the question you want to answer.
 
-| Your task | Tool | Start here |
+## Choose a tool
+
+| Your task | Tool guide | Installation |
 | --- | --- | --- |
-| Check machine specifications and save a system report | TR-300, with the equivalent `report` command | [Machine reports](/tr300) |
-| Diagnose connectivity, DNS, Wi-Fi, or slow internet | ND-300, with the standalone `speedqx` speed test | [Network diagnostics](/nd300) |
-| Watch live system measurements in a terminal or desktop app | SD-300 | [System monitoring](/sd300) |
+| Check machine specifications and save a system report | [TR-300 and `report`](/tr300) | [Install TR-300](/tr300/installation) |
+| Diagnose connectivity, DNS, Wi-Fi, or slow internet | [ND-300 and SpeedQX](/nd300) | [Install ND-300](/nd300/installation) |
+| Watch live system measurements in a terminal or desktop app | [SD-300](/sd300) | [Install SD-300](/sd300/installation) |
 
-## Install and run
-
-Use the [online installers](/installation) for a managed installation. For disconnected machines, download the [offline bundle](/installation/offline) on another computer and transfer it.
-
-Once installed, open a new terminal:
-
-```sh
-tr300
-nd300 --fast
-sd300
-```
-
-`tr300` prints a report. `nd300 --fast` checks the network without the throughput test. `sd300` opens the terminal monitor's mode chooser; `sd300 gui` opens its installed desktop companion.
+Installation, offline setup, updates, and removal are covered inside each tool's guide. Choose your tool above, then open its installation page.
 
 ## Find the right guide
 
-- [Windows installation](/installation/windows), [macOS installation](/installation/macos), or [Linux installation](/installation/linux)
-- [Update or remove a tool](/installation/lifecycle)
 - [Troubleshoot installation and missing measurements](/troubleshooting)
 - [Export a machine report](/tr300/examples)
 - [Measure internet throughput](/nd300/speedqx)
