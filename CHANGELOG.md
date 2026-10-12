@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.1] - 2026-10-11
+
+### Fixed
+
+- Align the shared footer content with the product installation section using the same responsive side padding and centered maximum width.
+
 ## [1.23.0] - 2026-10-11
 
 ### Added

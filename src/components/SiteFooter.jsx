@@ -124,28 +124,30 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
 
   return (
     <footer aria-label="QUBETX site footer" style={{
-      padding: 'clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 4rem) 1.5rem',
+      padding: 'clamp(2rem, 5vw, 4.5rem) clamp(1rem, 3vw, 2rem) 1.5rem',
       borderTop: '1px solid #333', marginTop: 'auto',
       color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)',
     }}>
-      {mobile ? (
-        <div style={{ display: 'grid', gap: '2rem' }}>
-          {navigation}
-          {productDetails}
-          {identity}
-        </div>
-      ) : (
-        <>
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
-            gap: '2.5rem', paddingBottom: '3rem',
-          }}>
-            {identity}
+      <div style={{ maxWidth: 'clamp(1160px, 84vw, 1800px)', margin: '0 auto' }}>
+        {mobile ? (
+          <div style={{ display: 'grid', gap: '2rem' }}>
             {navigation}
+            {productDetails}
+            {identity}
           </div>
-          {productDetails}
-        </>
-      )}
+        ) : (
+          <>
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+              gap: '2.5rem', paddingBottom: '3rem',
+            }}>
+              {identity}
+              {navigation}
+            </div>
+            {productDetails}
+          </>
+        )}
+      </div>
     </footer>
   )
 }

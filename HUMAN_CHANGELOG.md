@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Consistent footer alignment
+
+**Fixed**
+
+- Line up the footer with the installation section above it so the page keeps consistent edges on desktop and mobile.
+
 ## October 11, 2026 â€” Guides and a refreshed offline toolkit
 
 **Added**
