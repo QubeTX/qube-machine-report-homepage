@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.4] - 2026-10-11
+
+### Fixed
+
+- Prevent wrapping in the documentation tool chooser's Installation column while retaining the table's native horizontal scrolling on narrow screens.
+
 ## [1.23.3] - 2026-10-11
 
 ### Fixed

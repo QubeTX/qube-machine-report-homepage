@@ -9,3 +9,8 @@
 :root {
   --blume-font-mono: 'Paper Mono Variable', ui-monospace, monospace;
 }
+
+/* Keep the tool chooser's short installation links together. */
+#choose-a-tool + .blume-table-scroll :is(th, td):last-child {
+  white-space: nowrap;
+}

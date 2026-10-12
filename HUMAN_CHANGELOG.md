@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Readable installation links
+
+**Fixed**
+
+- Keep each installation link on one line in the tool chooser so tool names are easier to scan.
+
 ## October 11, 2026 — Tool guides first
 
 **Improved**
