@@ -36,7 +36,6 @@ Product pages prefer versionless CLI installer commands. The homepage still host
 | TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 \| iex"` |
 | ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 \| iex"` |
 | SD-300 | `curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh \| sh` | `irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 \| iex` |
-| WB-300 | `curl -LsSf https://reports.qubetx.com/install-wb300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-wb300.ps1 \| iex"` |
 
 Upstream cargo-dist asset names (used inside the wrappers):
 
@@ -45,9 +44,8 @@ Upstream cargo-dist asset names (used inside the wrappers):
 | TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300` |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy routers remain for old updaters | `sd300` (crates.io package is still `tr300-tui`) |
-| WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
 
-Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`, `wb300 update`. SD-300's complete proven-owner removal command is `sd300 uninstall` on every platform and install channel.
+Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`. SD-300's complete proven-owner removal command is `sd300 uninstall` on every platform and install channel.
 
 **Install ownership:** TR-300's wrapper still chains its profile-configuration subcommand. SD-300's managed installer writes a receipt, `sd300 update` preserves that owner (including MSI, EXE, or PKG), and `sd300 install` deliberately moves a recognized installation to the preferred managed CLI channel. Raw `cargo install tr300-tui` remains an unmanaged advanced option.
 
@@ -94,9 +92,6 @@ src/
 │   ├── Footer.jsx            # TR-300 footer & version badges
 │   ├── Hero.jsx              # TR-300 hero section
 │   ├── Install.jsx           # TR-300 install commands
-│   ├── InstallGuideContent.jsx # Offline installer guide content
-│   ├── InstallGuideFooter.jsx
-│   ├── InstallGuideHero.jsx
 │   ├── ND300Commands.jsx
 │   ├── ND300Diagnostics.jsx
 │   ├── ND300Features.jsx
@@ -118,7 +113,6 @@ src/
 │   └── SD300Sections.jsx
 ├── App.jsx                   # TR-300 product page
 ├── ExecutablesApp.jsx        # Executables Download Hub page
-├── InstallGuideApp.jsx       # User install guide page
 ├── index.css                 # Global styles, CSS variables & .hide-on-mobile utility
 ├── main.jsx                  # Entry point & pathname-based router
 ├── ND300App.jsx              # ND-300 product page
@@ -133,7 +127,8 @@ src/
 | `/nd300` | ND-300 Network Diagnostic | Network diagnostics and repair tool |
 | `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/executables` | Executables Download Hub | Pre-built offline installers for all QubeTX CLI tools |
-| `/install-guide` | Install Guide | Step-by-step offline installer guide |
+| `/docs` | Documentation | Blume guides, commands, examples, and installation |
+| `/install-guide` | Compatibility redirect | Opens the offline installation guide |
 
 ## Design
 
@@ -157,3 +152,13 @@ npm run build
 ---
 
 QubeTX | https://qubetx.com
+
+## Documentation and offline downloads
+
+The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired product URLs redirect home and must not be marketed or bundled. Retired installer wrapper URLs are non-mutating error tombstones, so old commands cannot accidentally execute SPA HTML.
+
+`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs/installation/offline`.
+
+Documentation content is Markdown under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; code uses canonical CDN Paper Mono. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+
+Check commands and claims against published source tags and CLI help, and record the exact versions in `/docs/sources`. The October 11, 2026 snapshot covers TR-300 4.4.0, ND-300 4.0.1, and SD-300 4.1.0. Online installers remain versionless. Offline downloads point at `QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip`; the ZIP is a curated, checksummed snapshot containing matching docs and a local start page. Keep the displayed bundle versions pinned to its manifest rather than live product API results. Native installation and hardware acceptance remain distinct from checksum/help/build verification.

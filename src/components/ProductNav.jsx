@@ -4,8 +4,8 @@ const products = [
   { label: 'TR-300', path: '/' },
   { label: 'ND-300', path: '/nd300' },
   { label: 'SD-300', path: '/sd300' },
-  { label: 'WB-300', path: '/wb300' },
   { label: 'OFFLINE', path: '/executables' },
+  { label: 'DOCS', path: '/docs' },
 ]
 
 const NavLink = ({ label, path, active }) => {

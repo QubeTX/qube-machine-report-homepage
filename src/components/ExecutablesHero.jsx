@@ -33,7 +33,7 @@ const DownloadButton = () => {
 
   return (
     <a
-      href="https://github.com/QubeTX/qube-reports-executables/archive/refs/heads/main.zip"
+      href="https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip"
       style={{
         background: 'var(--accent-signal)',
         border: '2px solid var(--accent-signal)',
@@ -158,8 +158,8 @@ export default function ExecutablesHero() {
           fontWeight: '400',
           maxWidth: '700px'
         }}>
-          Every QubeTX tool in one download.<br />
-          Works offline, runs on any platform.
+          Three tools. One offline toolkit.<br />
+          For Windows, macOS, and Linux.
         </h2>
       </div>
 

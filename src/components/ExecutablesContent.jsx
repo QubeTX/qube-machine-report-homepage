@@ -78,7 +78,7 @@ const DownloadButton = () => {
 
   return (
     <a
-      href="https://github.com/QubeTX/qube-reports-executables/archive/refs/heads/main.zip"
+      href="https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip"
       style={{
         background: 'var(--accent-signal)',
         border: '2px solid var(--accent-signal)',
@@ -142,7 +142,7 @@ export default function ExecutablesContent() {
             fontStyle: 'italic',
             margin: '0 0 2rem 0'
           }}>
-            One zip file with every QubeTX CLI tool for macOS, Linux, and Windows. No internet connection, no extra software, no setup — just extract and run.
+            One ZIP with TR-300, ND-300 with SpeedQX, and SD-300 with its desktop app. Native installers, portable archives, and matching documentation, ready to transfer to another computer.
           </p>
 
           <p style={{
@@ -152,7 +152,7 @@ export default function ExecutablesContent() {
             color: 'var(--fg-dim)',
             margin: '0 0 2rem 0'
           }}>
-            These are the exact same tools available on GitHub — same versions, same features, just bundled for convenience.
+            Install from the included files without downloading a toolchain. Internet tests and self-updates still need connectivity. Open the included start page to choose an installer and verify its checksums.
           </p>
 
           <span style={{
@@ -161,7 +161,7 @@ export default function ExecutablesContent() {
             color: 'var(--fg-dim)',
             lineHeight: '1.6'
           }}>
-            Contains: TR-300, ND-300, SD-300<br />Platforms: macOS (arm64/x64), Linux (x64/arm64), Windows (x64)
+            Snapshot: October 11, 2026<br />TR-300 4.4.0 · ND-300 4.0.1 · SD-300 4.1.0<br />Windows x64 · macOS Intel/Apple Silicon · Linux x64 GNU/musl and ARM64 GNU
           </span>
 
           <p style={{
@@ -173,7 +173,7 @@ export default function ExecutablesContent() {
           }}>
             New to this?{' '}
             <a
-              href="/install-guide"
+              href="/docs/installation/offline"
               style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}
             >
               See the step-by-step install guide →
@@ -206,7 +206,7 @@ export default function ExecutablesContent() {
         <GridCell
           label="03 // SYSTEM DIAGNOSTIC"
           title="SD-300<br/>System Diagnostic"
-          description="Deep system health checks — scans drivers, audits services, and tests hardware on Windows, macOS, and Linux."
+          description="Live system monitoring in a terminal or native desktop app, with processes, resource history, hardware details, and explicit measurement availability."
           linkText="> VIEW SD-300"
           linkUrl="/sd300"
           noBorder
@@ -239,7 +239,7 @@ export default function ExecutablesContent() {
           fontStyle: 'italic',
           marginBottom: '2.5rem'
         }}>
-          All tools. All platforms. One archive.
+          Three current tools, matching manuals, and verified downloads.
         </p>
 
         <DownloadButton />

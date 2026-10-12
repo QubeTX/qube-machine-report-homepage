@@ -54,7 +54,6 @@ export default function ExecutablesFooter() {
       <SizeBadge href="/" title="Machine Report">TR-300</SizeBadge>
       <SizeBadge href="/nd300" title="Network Diagnostic">ND-300</SizeBadge>
       <SizeBadge href="/sd300" title="System Diagnostic">SD-300</SizeBadge>
-      <SizeBadge href="/wb300" title="Workbranch View">WB-300</SizeBadge>
     </SiteFooter>
   )
 }

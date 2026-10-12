@@ -4,7 +4,6 @@ const products = [
   { label: 'TR-300', path: '/' },
   { label: 'ND-300', path: '/nd300' },
   { label: 'SD-300', path: '/sd300' },
-  { label: 'WB-300', path: '/wb300' },
 ]
 
 const mobileFooterQuery = '(max-width: 640px)'
@@ -99,10 +98,10 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
 
       <nav aria-label="Footer resources">
         <h2 style={headingStyle}>Resources</h2>
-        <FooterLink href="/install-guide" current={path === '/install-guide'}>Install guide</FooterLink>
+        <FooterLink href="/docs/installation">Install guide</FooterLink>
         <FooterLink href="/executables" current={path === '/executables'}>Offline downloads</FooterLink>
         <FooterLink href={`https://github.com/${repository}`}>GitHub ↗</FooterLink>
-        {!gpl && <FooterLink href={`https://github.com/${repository}/blob/main/README.md`}>Documentation ↗</FooterLink>}
+        <FooterLink href="/docs">Documentation</FooterLink>
         <FooterLink href={gpl ? 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.html' : 'https://polyformproject.org/licenses/noncommercial/1.0.0/'}>
           {gpl ? 'GPLv2 license' : 'PolyForm NC license'} ↗
         </FooterLink>

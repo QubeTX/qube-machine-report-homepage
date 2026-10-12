@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/shaughvos",
@@ -9,12 +11,55 @@
       "source": "/shaughvos/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/wb300",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wb300/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/install-guide",
+      "destination": "/docs/installation/offline",
+      "permanent": true
+    },
+    {
+      "source": "/install-guide/",
+      "destination": "/docs/installation/offline",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/nd300",
+      "destination": "/"
+    },
+    {
+      "source": "/nd300/",
+      "destination": "/"
+    },
+    {
+      "source": "/sd300",
+      "destination": "/"
+    },
+    {
+      "source": "/sd300/",
+      "destination": "/"
+    },
+    {
+      "source": "/executables",
+      "destination": "/"
+    },
+    {
+      "source": "/executables/",
+      "destination": "/"
     }
-  ]
+  ],
+  "installCommand": "npm ci && npm ci --prefix docs-site",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }

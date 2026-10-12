@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Paper Mono Variable';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('https://cdn.shaughv.com/fonts/paper-mono/variable/PaperMono-Variable.woff2') format('woff2');
+}
+
+:root {
+  --blume-font-mono: 'Paper Mono Variable', ui-monospace, monospace;
+}

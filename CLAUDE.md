@@ -21,7 +21,7 @@ Push to `main` triggers automatic production deployment via Vercel Git integrati
 
 When the user says "push to main" or "push to master", interpret that as "push to the repository's default branch". For this repository, the default branch is `main`; do not create or push a new `master` branch unless the user explicitly asks for a separate branch named `master`.
 
-SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
+SPA routing is handled by explicit marketing-route rewrites in `vercel.json`; documentation is served as static files under `/docs`.
 
 ## Retired route
 
@@ -39,11 +39,12 @@ The canceled operating-system product page and its marketing copy have been remo
 | `/sd300` | `SD300App.jsx` |
 | `/nd300` | `ND300App.jsx` |
 | `/executables` | `ExecutablesApp.jsx` |
-| `/install-guide` | `InstallGuideApp.jsx` |
+| `/docs` and descendants | Static Blume documentation (`docs-site/`) |
+| `/install-guide` | Redirect to `/docs/installation/offline` |
 
-To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add a rewrite if needed (current `vercel.json` already catches all paths).
+To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add an explicit marketing-route rewrite to `vercel.json`.
 
-**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
+**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `Executables*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
 
 **Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo).
 
@@ -62,7 +63,6 @@ Product pages prefer a versionless CLI installer command. The homepage keeps tin
 | TR-300 | `curl -LsSf https://reports.qubetx.com/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 \| iex"` |
 | ND-300 | `curl -LsSf https://reports.qubetx.com/install-nd300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-nd300.ps1 \| iex"` |
 | SD-300 | `curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh \| sh` | `irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 \| iex` |
-| WB-300 | `curl -LsSf https://reports.qubetx.com/install-wb300.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install-wb300.ps1 \| iex"` |
 
 Each command corresponds to a wrapper file in `public/` that is served directly by Vercel (filesystem matches run before the SPA rewrite in `vercel.json` — confirmed by the fact that `assets/index-*.js` and the other static assets already work). The Windows one-liner is shown wrapped in `powershell -ExecutionPolicy ByPass -c "irm ... | iex"` so it's copy-pasteable from any Windows context — `cmd.exe`, the Win+R Run dialog, or a shortcut target, not just an already-open `PS>` prompt — and `-ExecutionPolicy ByPass` lets it run regardless of the machine's script policy. (This reverses the earlier unwrapped form; if you scaffold a new product page, use the wrapped form to match.)
 
@@ -73,13 +73,12 @@ Each command corresponds to a wrapper file in `public/` that is served directly 
 | TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300`, `report` |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (note hyphen) | `nd300`, `speedqx` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy updater routers remain `tr300-tui-installer.*` / `SD300-installer.*` | `sd300` (crates.io package is still `tr300-tui`) |
-| WB-300 | `QubeTX/qube-workbranch-view` | `wb300-installer.{sh,ps1}` | `wb300` |
 
 All upstream URLs use `releases/latest/download/...` so wrappers auto-track new versions — no version pinning. SD-300 intentionally uses `tr300-tui` as the crates.io package name while keeping `sd300` as the user-facing binary; do not "fix" this to `cargo install sd300`.
 
 ### TR-300 only — chained `tr300 install`
 
-TR-300's wrapper appends a second step after the cargo-dist call: `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell). SD-300 exposes `sd300 install`, but its advertised upstream wrapper already performs that managed installation and ownership takeover, so the website redirect must not invoke it twice. ND-300 and WB-300 have no equivalent self-install subcommand.
+TR-300's wrapper appends a second step after the cargo-dist call: `"$HOME/.cargo/bin/tr300" install` (Unix) or `& "$env:USERPROFILE\.cargo\bin\tr300.exe" install` (PowerShell). SD-300 exposes `sd300 install`, but its advertised upstream wrapper already performs that managed installation and ownership takeover, so the website redirect must not invoke it twice. ND-300 has no equivalent self-install subcommand.
 
 ### TR-300 — command-first and native installer channels
 
@@ -205,7 +204,17 @@ shared, leave mobile/unknown clients on the existing default, and never override
 a visitor's manual selection during the mounted page session. Do not require
 storage, permission prompts or remote lookups for this default.
 
-The four product pages share `ProductInstall.jsx`: installer/downloads on the
+The three product pages share `ProductInstall.jsx`: installer/downloads on the
 left and usage guidance on the right at desktop widths, stacked on narrow
 screens. Keep essential commands visible and longer setup/upgrade/source
 material in native disclosure sections; do not shrink text to fit a viewport.
+
+## Documentation and offline downloads
+
+The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired product URLs redirect home and must not be marketed or bundled. Retired installer wrapper URLs are non-mutating error tombstones, so old commands cannot accidentally execute SPA HTML.
+
+`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs/installation/offline`.
+
+Documentation content is Markdown under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; code uses canonical CDN Paper Mono. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+
+Check commands and claims against published source tags and CLI help, and record the exact versions in `/docs/sources`. The October 11, 2026 snapshot covers TR-300 4.4.0, ND-300 4.0.1, and SD-300 4.1.0. Online installers remain versionless. Offline downloads point at `QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip`; the ZIP is a curated, checksummed snapshot containing matching docs and a local start page. Keep the displayed bundle versions pinned to its manifest rather than live product API results. Native installation and hardware acceptance remain distinct from checksum/help/build verification.

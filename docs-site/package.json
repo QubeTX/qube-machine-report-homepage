@@ -1,0 +1,24 @@
+{
+  "name": "qubetx-reports-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "dev": "blume dev",
+    "build": "blume build",
+    "preview": "blume preview",
+    "validate": "blume validate",
+    "audit": "blume audit"
+  },
+  "dependencies": {
+    "blume": "2.2.3"
+  },
+  "overrides": {
+    "@vercel/routing-utils": {
+      "path-to-regexp": "6.3.0"
+    }
+  }
+}

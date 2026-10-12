@@ -8,6 +8,21 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Guides and a refreshed offline toolkit
+
+**Added**
+
+- Add searchable documentation with installation help, commands, examples, troubleshooting, and desktop-app guidance so the tools are easier to learn and use.
+
+**Improved**
+
+- Bring the offline download up to date with the current tools, matching manuals, and clearer installation choices. Explain which tasks still need internet access.
+- Send old install-guide bookmarks to the new guide and make documentation easier to reach from every product page.
+
+**Removed**
+
+- Remove the retired workbranch tool from the site and direct old bookmarks to the current tools.
+
 ## October 11, 2026 — Updated type and a tighter footer
 
 **Improved**

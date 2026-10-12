@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.0] - 2026-10-11
+
+### Added
+
+- Add Blume documentation at `/docs` with installation, lifecycle, troubleshooting, command references, and workflows for TR-300 4.4.0, ND-300/SpeedQX 4.0.1, and SD-300 4.1.0. Keep its framework dependencies isolated and merge the static output into the Vercel build.
+
+### Changed
+
+- Link shared navigation and footer resources to the documentation. Redirect the legacy install guide to the new offline guide and remove its stale duplicate components.
+- Point offline download buttons at the curated release ZIP, display its pinned snapshot versions, and distinguish offline installation from network-dependent diagnostics. Include SD-300 desktop installation guidance.
+
+### Removed
+
+- Remove the sunset workbranch product page, artwork, and marketing links. Redirect its old routes home and leave non-mutating error responses at old installer URLs.
+
 ## [1.22.0] - 2026-10-11
 
 ### Changed
