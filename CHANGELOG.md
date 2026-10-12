@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.5] - 2026-10-11
+
+### Changed
+
+- Order documentation Open in chat providers as ChatGPT, Claude, T3 Chat, Cursor, v0, and Scira.
+
 ## [1.23.4] - 2026-10-11
 
 ### Fixed

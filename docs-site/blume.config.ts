@@ -34,5 +34,6 @@ export default defineConfig({
   },
   deployment: { site: 'https://reports.qubetx.com', base: '/docs' },
   agents: { llmsTxt: true },
+  ai: { openInChat: ['chatgpt', 'claude', 't3', 'cursor', 'v0', 'scira'] },
   seo: { sitemap: true },
 })

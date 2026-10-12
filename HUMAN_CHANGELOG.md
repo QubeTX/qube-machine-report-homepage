@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Preferred chat options first
+
+**Improved**
+
+- Put ChatGPT, Claude, and T3 Chat first when opening a documentation page in a chat assistant.
+
 ## October 11, 2026 — Readable installation links
 
 **Fixed**
