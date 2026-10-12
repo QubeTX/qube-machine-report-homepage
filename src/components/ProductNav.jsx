@@ -6,8 +6,6 @@ const products = [
   { label: 'SD-300', path: '/sd300' },
   { label: 'WB-300', path: '/wb300' },
   { label: 'OFFLINE', path: '/executables' },
-  // WIP-DELISTED — Shaughv OS temporarily hidden from navigation; page/route still live at /shaughvos, just unlinked.
-  // { label: 'SHAUGHVOS', path: '/shaughvos' }
 ]
 
 const NavLink = ({ label, path, active }) => {

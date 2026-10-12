@@ -2,7 +2,7 @@
 name: product-page-accuracy-reviewer
 description: >-
   Verifies that a QubeTX product page on this marketing site (TR-300, SD-300, ND-300,
-  Executables hub, Install Guide, or shaughvOS) accurately reflects its upstream source repo —
+  Executables hub, or Install Guide) accurately reflects its upstream source repo —
   versions, install one-liners, commands/flags, feature claims, and download asset names.
   Cross-checks against BOTH the local clone (resolved dynamically for the current OS) AND the
   live public GitHub repo, flagging any drift. Read-only: it reports findings, it does not edit.
@@ -30,7 +30,6 @@ what to fix.
 | ND-300 Network Diagnostic | `/nd300` | `ND300App.jsx` + `ND300*` | `QubeTX/qube-network-diagnostics` | `nd300`, `speedqx` |
 | Executables Hub | `/executables` | `ExecutablesApp.jsx` + `Executables*` | `QubeTX/qube-reports-executables` | (bundled binaries) |
 | Install Guide | `/install-guide` | `InstallGuideApp.jsx` + `InstallGuide*` | offline bundle from `QubeTX/qube-reports-executables` | n/a |
-| shaughvOS | `/shaughvos` | `ShaughvOSApp.jsx` + `ShaughvOS*` | `RealEmmettS/shaughvOS` | `tr300`/`report`, `nd300`, etc. |
 
 If the caller named a product, use its row. If they named a component or route, map back to the row.
 
@@ -64,7 +63,7 @@ clone; GitHub covers it.
 ### 2b. Read live GitHub (authoritative for "latest")
 
 ```bash
-repo="QubeTX/qube-machine-report"     # owner/name; shaughvOS is RealEmmettS/shaughvOS
+repo="QubeTX/qube-machine-report"     # owner/name
 gh release view --repo "$repo" --json tagName,name,publishedAt,assets \
   --jq '{tag:.tagName, name:.name, published:.publishedAt, assets:[.assets[].name]}'
 gh api "repos/$repo/readme" --jq '.content' | base64 -d | head -200
@@ -80,7 +79,7 @@ Always record WHICH source each fact came from (local commit SHA vs. live tag) s
 For the target page, cross-check each of these against the source of truth:
 
 1. **Version strings** — hero badges, install-terminal labels, footer badges, and any hardcoded
-   fallback versions in `src/hooks/useGitHubVersion.js` / `useLatestRelease.js`. Compare to the
+   fallback versions in `src/hooks/useGitHubVersion.js`. Compare to the
    latest GitHub **release tag**. Flag stale or mismatched versions.
 2. **Install one-liners** — the commands shown must match the **Install Documentation Contract**
    in `CLAUDE.md`: the `public/install*.{sh,ps1}` wrapper files, and the upstream cargo-dist asset
@@ -91,7 +90,7 @@ For the target page, cross-check each of these against the source of truth:
    removed or renamed flags (this has bitten ND-300/SpeedQX before).
 4. **Feature claims** — feature rows and marketing descriptions must be supported by the upstream
    README/CHANGELOG. Flag features that no longer exist or capabilities described inaccurately.
-5. **Download assets** — MSI/EXE buttons (TR-300) and shaughvOS image links must point at asset
+5. **Download assets** — Native installer buttons must point at asset
    names that actually exist on the latest release. Verify against the `assets` list from `gh release view`.
 6. **Cross-references** — internal links (ProductNav, footers) resolve to real routes.
 

@@ -4,9 +4,12 @@ TR-300 v4.4.0 installs `tr300` and `report` together. Both names accept all repo
 
 ## TL;DR
 
-This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools and shaughvOS. Product pages are routed by pathname in `src/main.jsx`, with each top-level page composed from inline-styled React components under `src/components/`.
+This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools. Product pages are routed by pathname in `src/main.jsx`, with each top-level page composed from inline-styled React components under `src/components/`.
 
 ## Current Status
+
+- The canceled operating-system page and marketing copy have been removed; its old URL permanently redirects home through `vercel.json`. Do not restore the retired page or links.
+- Shared monospace typography uses Paper Mono from the canonical CDN.
 
 - **ND-300 v3.7.3 release alignment is live.** The ND-300 hero, install
   section, footer, and unified install guide all use 3.7.3 as their fallback
@@ -19,8 +22,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
   offers the direct universal signed/notarized/stapled Mac PKG, and explains
   origin-preserving updates and fail-safe managed-Windows blocks without
   promising a policy bypass. The DMG is compatibility-only and not advertised.
-- **Shaughv OS (`/shaughvos`) is temporarily delisted (WIP).** Its route remains live, but discoverable links stay commented out or de-linked and tagged `WIP-DELISTED`. SD-300 is listed again immediately after ND-300. See the "Temporarily delisted page" section in `CLAUDE.md` / `AGENTS.md` for the remaining Shaughv OS restore manifest.
-- **Site composition:** routing is pathname-based in `src/main.jsx`; the nav is a module-level `products` array in `ProductNav.jsx` (rendered via each `*Hero.jsx`), and all page-specific `*Footer.jsx` wrappers use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Wrappers retain page-specific version badges, repository, status, and attribution. Brand assets load from the canonical CDN; footer typography uses the existing site tokens. Keep Shaughv OS delisted in the shared products array until ready.
+- **Site composition:** routing is pathname-based in `src/main.jsx`; the nav is a module-level `products` array in `ProductNav.jsx` (rendered via each `*Hero.jsx`), and all page-specific `*Footer.jsx` wrappers use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Wrappers retain page-specific version badges, repository, status, and attribution. Brand assets load from the canonical CDN; footer typography uses the existing site tokens.
 - Product pages prefer versionless CLI installer commands. SD-300 v2 advertises `sd300-cli-installer.{sh,ps1}` directly from GitHub's `releases/latest/download` endpoint; `public/install-sd300.*` remains only a thin compatibility redirect.
 - SD-300 records managed CLI, MSI, EXE, or PKG ownership and its exact install path. `sd300 update` stays on that channel; `sd300 install` deliberately makes the managed CLI channel authoritative. Contradictory ownership evidence must stop before mutation.
 - `sd300 uninstall` remains visible in the SD-300 Commands table and every platform install panel. It delegates to the proven owner and removes the product payload and owned setup state while preserving shared Cargo/Rust tooling.
@@ -33,7 +35,7 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 - User branch wording preference: when the user says "push to main" or "push to master", treat it as "push to the repository's default branch". In this repository, that means `main`; do not create a `master` branch unless explicitly asked for a separate branch named `master`.
 - No test framework is configured. Verification should use `npm run lint`, `npm run build`, and rendered browser inspection.
 - `AGENTS.md`, `CLAUDE.md`, and `CODEX_PROJECT.md` provide internal agent guidance and must be kept aligned in the same commit when repository conventions change. The repo also keeps a plain-English `HUMAN_CHANGELOG.md` in lockstep with `CHANGELOG.md` — any changelog entry must be added to both, and `package.json` `version` is bumped in lockstep with the top `CHANGELOG.md` heading.
-- Source-tool repos are resolved dynamically as `$HOME/git/<repo-name>` (e.g. `C:\Users\hey\git\qube-machine-report` on Windows) rather than a hardcoded absolute path, and all five are public so they're always readable from GitHub when no local clone exists.
+- Source-tool repos are resolved dynamically as `$HOME/git/<repo-name>` (e.g. `C:\Users\hey\git\qube-machine-report` on Windows) rather than a hardcoded absolute path, and all source repos are public so they're always readable from GitHub when no local clone exists.
 
 ## Project Goals
 
@@ -108,14 +110,6 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── SD300Modes.jsx
 │   │   ├── SD300Platform.jsx
 │   │   ├── SD300Sections.jsx
-│   │   ├── ShaughvOSCommands.jsx
-│   │   ├── ShaughvOSFeatures.jsx
-│   │   ├── ShaughvOSFooter.jsx
-│   │   ├── ShaughvOSHardware.jsx
-│   │   ├── ShaughvOSHero.jsx
-│   │   ├── ShaughvOSInstall.jsx
-│   │   ├── ShaughvOSOverview.jsx
-│   │   ├── ShaughvOSPitch.jsx
 │   │   ├── WB300Commands.jsx
 │   │   ├── WB300Diagnostics.jsx
 │   │   ├── WB300Features.jsx
@@ -126,13 +120,12 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   └── WB300SampleOutput.jsx
 │   ├── hooks
 │   │   ├── useGitHubVersion.js
-│   │   └── useLatestRelease.js
+│   │   └── useInstallPlatform.js
 │   ├── App.jsx
 │   ├── ExecutablesApp.jsx
 │   ├── InstallGuideApp.jsx
 │   ├── ND300App.jsx
 │   ├── SD300App.jsx
-│   ├── ShaughvOSApp.jsx
 │   ├── WB300App.jsx
 │   ├── index.css
 │   └── main.jsx

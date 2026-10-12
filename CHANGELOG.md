@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.22.0] - 2026-10-11
+
+### Changed
+
+- Replace JetBrains Mono with CDN-hosted Paper Mono across the shared body/code typography, retaining Archivo Black and Cormorant Garamond.
+- Keep the footer Tools and Resources columns together in a compact right-aligned desktop group, with a bounded gap and the existing navigation-first mobile order.
+
+### Removed
+
+- Remove the canceled Shaughv OS page, components, release hook, and remaining product mentions. Permanently redirect `/shaughvos` and `/shaughvos/` to the homepage, and retire the restoration guidance in the synchronized agent docs.
+
 ## [1.21.11] - 2026-10-10
 
 ### Changed

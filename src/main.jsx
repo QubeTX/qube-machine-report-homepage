@@ -7,7 +7,6 @@ import ND300App from './ND300App.jsx'
 import WB300App from './WB300App.jsx'
 import ExecutablesApp from './ExecutablesApp.jsx'
 import InstallGuideApp from './InstallGuideApp.jsx'
-import ShaughvOSApp from './ShaughvOSApp.jsx'
 import BackToTopButton from './components/BackToTopButton.jsx'
 
 const path = window.location.pathname
@@ -17,7 +16,6 @@ const Page =
   path === '/wb300' || path === '/wb300/' ? WB300App :
   path === '/executables' || path === '/executables/' ? ExecutablesApp :
   path === '/install-guide' || path === '/install-guide/' ? InstallGuideApp :
-  path === '/shaughvos' || path === '/shaughvos/' ? ShaughvOSApp :
   App
 
 createRoot(document.getElementById('root')).render(

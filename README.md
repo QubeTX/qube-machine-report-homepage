@@ -1,6 +1,6 @@
 # QubeTX Product Homepage
 
-Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), and a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers. The shaughvOS page remains separately delisted while that product is reworked.
+Marketing homepage for QubeTX CLI tools: [TR-300 Machine Report](https://github.com/QubeTX/qube-machine-report), [ND-300 Network Diagnostic](https://github.com/QubeTX/qube-network-diagnostics), [SD-300 System Diagnostic](https://github.com/QubeTX/qube-system-diagnostics), and a unified [Executables Download Hub](https://github.com/QubeTX/qube-reports-executables) for pre-built offline installers.
 
 ## Tech Stack
 
@@ -115,23 +115,14 @@ src/
 │   ├── SD300Keybindings.jsx
 │   ├── SD300Modes.jsx
 │   ├── SD300Platform.jsx
-│   ├── SD300Sections.jsx
-│   ├── ShaughvOSCommands.jsx # shaughvOS quick commands table
-│   ├── ShaughvOSFeatures.jsx # shaughvOS feature rows
-│   ├── ShaughvOSFooter.jsx   # shaughvOS footer with DietPi attribution
-│   ├── ShaughvOSHardware.jsx # shaughvOS hardware compatibility table
-│   ├── ShaughvOSHero.jsx     # shaughvOS hero with SHAUGHV logo
-│   ├── ShaughvOSInstall.jsx  # shaughvOS tabbed install (images + Debian)
-│   ├── ShaughvOSOverview.jsx # shaughvOS 3-column overview grid
-│   └── ShaughvOSPitch.jsx    # shaughvOS marketing pitch section
+│   └── SD300Sections.jsx
 ├── App.jsx                   # TR-300 product page
 ├── ExecutablesApp.jsx        # Executables Download Hub page
 ├── InstallGuideApp.jsx       # User install guide page
 ├── index.css                 # Global styles, CSS variables & .hide-on-mobile utility
 ├── main.jsx                  # Entry point & pathname-based router
 ├── ND300App.jsx              # ND-300 product page
-├── SD300App.jsx              # SD-300 product page
-└── ShaughvOSApp.jsx          # shaughvOS product page
+└── SD300App.jsx              # SD-300 product page
 ```
 
 ## Pages
@@ -143,14 +134,13 @@ src/
 | `/sd300` | SD-300 System Diagnostic | Interactive system diagnostic utility |
 | `/executables` | Executables Download Hub | Pre-built offline installers for all QubeTX CLI tools |
 | `/install-guide` | Install Guide | Step-by-step offline installer guide |
-| `/shaughvos` | shaughvOS | Direct-only WIP route; intentionally delisted from product discovery |
 
 ## Design
 
 - **Background:** #0a0a0a
 - **Foreground:** #dcdcdc
 - **Accent:** #ff00d4
-- **Fonts:** Archivo Black (display), Cormorant Garamond (serif), JetBrains Mono (mono)
+- **Fonts:** Archivo Black (display), Cormorant Garamond (serif), Paper Mono (mono)
 
 ## Deployment
 

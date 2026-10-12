@@ -5,8 +5,6 @@ const products = [
   { label: 'ND-300', path: '/nd300' },
   { label: 'SD-300', path: '/sd300' },
   { label: 'WB-300', path: '/wb300' },
-  // WIP-DELISTED — restore when Shaughv OS is ready to be marketed:
-  // { label: 'SHAUGHVOS', path: '/shaughvos' },
 ]
 
 const mobileFooterQuery = '(max-width: 640px)'
@@ -84,7 +82,12 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
   )
 
   const navigation = (
-    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, max-content)', gap: '1.5rem' }}>
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: mobile ? 'minmax(0, 1fr) minmax(0, max-content)' : 'max-content max-content',
+      gap: mobile ? '1.5rem' : 'clamp(2rem, 4vw, 4rem)',
+      justifySelf: mobile ? 'stretch' : 'end', maxWidth: '100%',
+    }}>
       <nav aria-label="Footer products">
         <h2 style={headingStyle}>The tools</h2>
         {products.map(product => (

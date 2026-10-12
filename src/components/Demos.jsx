@@ -89,10 +89,6 @@ export default function Demos() {
     {
       title: 'Precise Output',
       description: 'Fixed-width Unicode or ASCII tables, normalized load percentages, and explicit disk and memory definitions keep every value interpretable'
-    },
-    {
-      title: 'Pre-Installed on shaughvOS',
-      description: <span>TR-300 runs automatically on every login in shaughvOS{/* WIP-DELISTED — Shaughv OS de-linked (WIP); restore the anchor: <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> */} — a complete diagnostic OS you can boot from USB on any machine</span>
     }
   ]
 

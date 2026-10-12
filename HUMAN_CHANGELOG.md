@@ -8,6 +8,17 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Updated type and a tighter footer
+
+**Improved**
+
+- Use Paper Mono for text and commands, bringing the site in line with the rest of the brand.
+- Bring Tools and Resources closer together so the footer is easier to scan. Links still appear above the logos on phones.
+
+**Removed**
+
+- Remove the canceled Shaughv OS page and its mentions. Old bookmarks now lead to the homepage so visitors can find the current tools.
+
 ## October 10, 2026 — Navigation first on phones
 
 **Improved**

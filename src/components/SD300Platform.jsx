@@ -115,7 +115,6 @@ export default function SD300Platform() {
     { title: 'Windows', description: 'Native adapter, disk, driver and service information, with additional readings from supported hardware providers' },
     { title: 'Linux', description: 'Kernel counters, graphics inventory, hardware sensors and battery data where the device exposes them' },
     { title: 'macOS', description: 'Physical-disk and Metal graphics inventory, display information and power-source data; unsupported readings are identified' },
-    { title: 'shaughvOS', description: <span>Pre-installed on shaughvOS{/* WIP-DELISTED — Shaughv OS de-linked (WIP); restore the anchor: <a href="/shaughvos" style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}>shaughvOS</a> */} — a complete diagnostic OS you can boot from USB. All 9 monitoring sections ready on any machine.</span> }
   ]
 
   return (

@@ -6,7 +6,7 @@
   --border-width: 1.5px;
   --font-display: 'Archivo Black', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Paper Mono', ui-monospace, monospace;
   --gap-grid: 1px;
 }
 

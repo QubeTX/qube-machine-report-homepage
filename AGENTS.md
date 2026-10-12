@@ -23,17 +23,9 @@ When the user says "push to main" or "push to master", interpret that as "push t
 
 SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html`.
 
-## Temporarily delisted page (WIP — Shaughv OS)
+## Retired route
 
-**Status (since 2026-06-14):** The **Shaughv OS** (`/shaughvos`) page is being reworked and must **not be marketed** yet. Its route and components remain intact and render at the direct URL, but discoverable in-site links to it are removed. SD-300 has been restored to product lists immediately after ND-300.
-
-**⚠️ Standing reminder — while this section exists:** any time you update a product page in this repo, **remind Emmett that Shaughv OS still needs to be finished and re-linked** before it can be marketed again. When it is ready, restore the links per the manifest below and delete this whole section.
-
-**Restore manifest.** Every remaining delisted spot keeps a greppable `WIP-DELISTED` comment that preserves the original markup — find them all with `grep -r "WIP-DELISTED" src/`:
-- **Nav** — `src/components/ProductNav.jsx`: uncomment the `SHAUGHVOS` entry in the `products` array.
-- **Footers** — uncomment the SHAUGHVOS entry in the shared `SiteFooter.jsx` products array.
-- **In-content** — in `Demos.jsx`, `ND300Features.jsx`, and `SD300Platform.jsx`, re-wrap the de-linked `shaughvOS` text in the anchor preserved in its adjacent comment.
-- The route in `src/main.jsx` remains intact.
+The canceled operating-system product page and its marketing copy have been removed. `vercel.json` permanently redirects its old URL to the homepage. Do not restore the retired page or its links.
 
 ## Architecture
 
@@ -48,13 +40,12 @@ SPA routing is handled by `vercel.json` which rewrites all paths to `/index.html
 | `/nd300` | `ND300App.jsx` |
 | `/executables` | `ExecutablesApp.jsx` |
 | `/install-guide` | `InstallGuideApp.jsx` |
-| `/shaughvos` | `ShaughvOSApp.jsx` |
 
 To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add a rewrite if needed (current `vercel.json` already catches all paths).
 
-**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `ShaughvOS*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`; keep Shaughv OS delisted there until ready. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
+**Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `Executables*`, `InstallGuide*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
 
-**Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo) and `useLatestRelease.js` (hardcoded to shaughvOS repo).
+**Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo).
 
 TR-300 v4.4.0 installs `tr300` and `report` together. Both names accept all reporting options and install/update/uninstall actions. `tr300 install` configures optional shell startup output and retires the legacy TR-300-owned profile alias; the packaged `report` command does not depend on a profile.
 
@@ -141,11 +132,11 @@ installer; never market this as bypassing antivirus or policy.
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
 | `--font-display` | Archivo Black | Headings |
 | `--font-serif` | Cormorant Garamond | Pull quotes |
-| `--font-mono` | JetBrains Mono | Body text, code |
+| `--font-mono` | Paper Mono | Body text, code |
 
 ## Source Repositories
 
-Each product page on this site markets a separate CLI tool / project. When updating features, commands, install instructions, or capabilities on a product page, **read the actual source repo** to ensure accuracy. **All five repos are public**, so they're always reachable via `gh` / raw GitHub even when no local clone is present.
+Each product page on this site markets a separate CLI tool / project. When updating features, commands, install instructions, or capabilities on a product page, **read the actual source repo** to ensure accuracy. **All source repos are public**, so they're always reachable via `gh` / raw GitHub even when no local clone is present.
 
 **Finding the local clone (resolve dynamically — survives new machines / re-wipes).** Clones live under a single `git/` directory in the home folder, named exactly after the repo (lowercase, via GitHub Desktop). So the path is `$HOME/git/<repo-name>` on macOS/Linux and `%USERPROFILE%\git\<repo-name>` (a.k.a. `$HOME\git\<repo-name>`) on Windows. Don't hardcode a full absolute path — derive it from `$HOME` + the repo name:
 
@@ -162,11 +153,10 @@ if [ -d "$clone" ]; then echo "$clone"; else echo "no local clone — read from 
 | ND-300 Network Diagnostic | `QubeTX/qube-network-diagnostics` | `qube-network-diagnostics` |
 | SD-300 System Diagnostic | `QubeTX/qube-system-diagnostics` | `qube-system-diagnostics` |
 | Executables Download Hub | `QubeTX/qube-reports-executables` | *(usually not cloned — use GitHub)* |
-| shaughvOS | `RealEmmettS/shaughvOS` | *(usually not cloned — use GitHub)* |
 
 Verified current location on the Windows machine: `C:\Users\hey\git\<repo>` (i.e. `$HOME/git/<repo>`). Older docs referenced a macOS `~/Downloads/temp_git/<repo>` location; treat that only as a legacy fallback, then read from GitHub.
 
-**Workflow for feature/content updates:** Read the source repo's README, CHANGELOG, and relevant source files before updating the corresponding product page here. Prefer the local clone (`$HOME/git/<repo>`) when it exists; otherwise (always for the un-cloned executables hub and shaughvOS) read straight from the public repo with `gh` (e.g. `gh api repos/QubeTX/qube-machine-report/contents/README.md --jq '.content' | base64 -d`) or raw GitHub.
+**Workflow for feature/content updates:** Read the source repo's README, CHANGELOG, and relevant source files before updating the corresponding product page here. Prefer the local clone (`$HOME/git/<repo>`) when it exists; otherwise (always for the un-cloned executables hub) read straight from the public repo with `gh` (e.g. `gh api repos/QubeTX/qube-machine-report/contents/README.md --jq '.content' | base64 -d`) or raw GitHub.
 
 ## Key Libraries
 
