@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.23.3] - 2026-10-11
+
+### Fixed
+
+- Use explicit Blume sidebar ordering so Troubleshooting and Source versions follow all three tool groups. Continue deriving tool subpages from their existing folder metadata.
+
 ## [1.23.2] - 2026-10-11
 
 ### Changed

@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 11, 2026 — Tool guides first
+
+**Improved**
+
+- Move troubleshooting and source information below the tool guides in the documentation menu so the tools are easier to reach.
+
 ## October 11, 2026 — Installation help beside each tool
 
 **Improved**
