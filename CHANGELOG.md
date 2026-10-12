@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.24.0] - 2026-10-12
+
+### Changed
+
+- Rewrite the documentation in plain language, with each tool ordered as overview, installation, commands, basic use cases, advanced use cases, and focused guides.
+- Replace raw help dumps and internal implementation prose with task examples, expected results, defined terms, and complete public command tables checked against the documented release sources.
+- Keep data-use, privacy, overwrite, permission, and network-change information beside the relevant actions; clarify platform installation choices and offline checksum steps.
+
+### Added
+
+- Add advanced-use guides for TR-300, ND-300/SpeedQX, and SD-300, separating scripting and detailed investigation from first-use examples.
+
 ## [1.23.5] - 2026-10-11
 
 ### Changed

@@ -1,71 +1,65 @@
 ---
 title: "Read the network diagnostics"
-description: "Core checks, technician checks, and unavailable information."
+description: "Understand core and detailed network checks and what unavailable results mean."
+sidebar:
+  label: "Read the diagnostics"
 ---
 
-**User mode** (default) runs 8 core diagnostics and presents a clean summary table. Ideal for quick network health checks.
+Start with the failed check and the connection you were using when the problem occurred. A failed check helps narrow the investigation; it does not always identify the cause on its own.
 
-**Technician mode** (`-t`) runs all 8 core diagnostics plus 25 additional deep diagnostic modules. Produces a detailed technical report with per-module breakdowns, suitable for troubleshooting and support workflows. A full technician run takes ~2–4 minutes — the long probes (traceroute, sustained packet loss, loaded bufferbloat) are doing real work.
+```sh
+nd300 --fast
+```
 
-## Checks and platform behavior
+This runs the standard checks without the speed test. The normal `nd300` run includes speed testing. See [SpeedQX](/nd300/speedqx) for its data use and results.
 
-### Core Diagnostics (both modes)
-1. Network Adapters
-2. IP Configuration / Interfaces
-3. Default Gateway
-4. DNS Resolution
-5. Public IP
-6. Latency
-7. Speed Test (common Quick profile in ND300 and SpeedQX; optional Deep)
-8. Port Connectivity
+## Core checks
 
-### Deep Diagnostics (technician mode only)
-9. ARP Table + Gateway Health
-10. Routing Table
-11. Active Connections
-12. Listening Ports
-13. DHCP Lease Info
-14. Protocol Statistics
-15. Adapter Hardware Details
-16. Proxy Detection (+ PAC validation, WPAD discovery)
-17. VPN Detection
-18. Firewall Status
-19. DNS Cache
-20. IPv6 Connectivity (+ real HTTPS-over-v6 fetch, v4-vs-v6 comparison)
-21. MTU per Interface + Path-MTU Discovery
-22. Connection State Summary
-23. Bufferbloat (real loaded-latency measurement, per-direction grades)
-24. Reverse DNS
-25. TLS Inspection
-26. Traffic Counters
-27. Route Path (traceroute with LAN/ISP/backbone analysis)
-28. Sustained Packet Loss (30 probes × 3 targets)
-29. NAT Analysis (double-NAT, CGNAT detection)
-30. Wi-Fi Link Quality (signal, channel, band, PHY, security)
-31. DNS Resolver Benchmark (+ NXDOMAIN-hijack and DNSSEC checks)
-32. Captive Portal Detection
-33. Clock Sync (SNTP offset measurement)
+| Check | What it tells you |
+| --- | --- |
+| Network adapters | Which wired, wireless, or other network connections are present |
+| IP configuration and interfaces | Which network addresses your computer is using |
+| Default gateway | Which router the computer uses to reach other networks |
+| DNS resolution | Whether website names can be translated into network addresses |
+| Public IP | Which address an internet service sees for your connection |
+| Latency | How long a request takes to travel out and back |
+| Speed test | How quickly data transfers over the tested connection |
+| Port connectivity | Whether connections to selected service ports succeed |
 
-### macOS accuracy notes
+A router can respond while the wider internet is unavailable. DNS can fail even when a direct connection works. Read the checks together before choosing a repair.
 
-ND300 builds one topology view from the default route, current interface flags,
-network-service/hardware-port mappings, and assigned addresses. The active count
-includes usable physical uplinks, not loopback, AWDL/LLW, dormant tunnels, or
-link-local-only devices. If a VPN owns the default route, the logical tunnel and
-underlying physical uplink are described separately.
+## Detailed checks
 
-Core mode never waits for optional Wi-Fi radio metadata. Technician mode uses a
-bounded `system_profiler` query, with a text fallback for older supported macOS
-versions; it reads only the connected network and treats a privacy-redacted SSID
-as unavailable. VPN reporting correlates macOS VPN configuration, network state,
-addresses, and routes rather than calling every `utun` device a VPN. IPv6 ULA is
-reported separately, and `dual_stack` means both IPv4 and IPv6 connectivity were
-actually verified.
+Run `nd300 --tech --fast` to add the detailed checks while skipping the speed test. They can take longer because some measure the connection repeatedly.
 
-TLS inspection reports **clear**, **detected**, or **inconclusive** evidence and
-populates the issuer only after a bounded Rust TLS handshake. DNSSEC is reported
-as validating only when a valid signed control resolves and the deliberately
-invalid control does not. If macOS suppresses protocol counters, that section is
-omitted instead of presenting unknown values as zero.
+Technician mode adds these 25 checks:
+
+| Area | Checks and their purpose |
+| --- | --- |
+| Local connection | **ARP table and gateway health** check nearby address records and the router. **DHCP lease** shows automatically assigned network settings. **Adapter hardware** adds device details. **Wi-Fi quality** shows available signal, band, channel, speed, and security information. |
+| Routes and addresses | **Routing table** shows where traffic is sent. **Route path** traces the hops toward a destination. **MTU** checks packet-size limits. **NAT analysis** looks for address translation at your router or provider, including double NAT and shared public addresses. |
+| Connections and traffic | **Active connections**, **listening ports**, and **connection states** show current network activity. **Protocol statistics** and **traffic counters** show available system totals. |
+| Network controls | **Proxy detection** checks intermediary settings and automatic configuration. **VPN detection** checks for a tunnel affecting traffic. **Firewall status** reports available firewall information. **TLS inspection** looks for evidence that encrypted traffic is being inspected. |
+| DNS | **DNS cache** shows saved lookups. **Reverse DNS** looks up names from addresses. **Resolver benchmarking** compares lookup behavior and checks for altered nonexistent-name responses and DNSSEC validation of signed answers. |
+| Connection quality | **IPv6 connectivity** tests the newer address system, including an HTTPS request. **Bufferbloat** measures extra delay while the connection is busy. **Sustained packet loss** checks whether repeated probes fail to return. |
+| Access and time | **Captive portal detection** looks for a network sign-in page. **Clock sync** compares the system clock with a network time reference. |
+
+## Interpret incomplete results
+
+**Unavailable** means the check did not obtain a usable reading. It does not mean zero, healthy, or absent. Hardware support, permissions, privacy settings, or blocked requests can limit a check.
+
+For example, TLS inspection can be **clear**, **detected**, or **inconclusive**. A clear result describes the evidence from that check; it is not proof that no inspection exists anywhere on the network.
+
+A VPN can change the route, public address, and measured speed. Keep that context when comparing results.
+
+## macOS details
+
+ND-300 distinguishes the route used by a VPN from the underlying wired or wireless connection. It does not count every tunnel as an active physical connection or assume that every `utun` interface is a VPN.
+
+The standard report does not wait for optional Wi-Fi radio details. Technician mode attempts to read them, but a Wi-Fi name hidden by macOS privacy controls stays unavailable. Suppressed system counters are omitted rather than reported as zero.
+
+The `dual_stack` result means both IPv4 and IPv6 connectivity were actually verified. DNSSEC is reported as validating only when the valid signed test succeeds and the deliberately invalid test fails.
+
+For the next step, see [Basic use cases](/nd300/examples), [Advanced use cases](/nd300/advanced), or [DNS changes and recovery](/nd300/recovery).
 
 Checked against [ND-300 v4.0.1](https://github.com/QubeTX/qube-network-diagnostics/releases/tag/v4.0.1).

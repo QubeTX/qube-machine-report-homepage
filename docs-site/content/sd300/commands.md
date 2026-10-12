@@ -1,205 +1,87 @@
 ---
-title: "SD-300 command reference"
-description: "Exact help for the terminal, desktop, snapshot, and lifecycle commands."
+title: "SD-300 commands"
+description: "Open the monitor, export readings, inspect optional tools, and manage SD-300."
+sidebar:
+  label: "Commands"
 ---
 
-The help below was captured from the published SD-300 4.1.0 executable. Lifecycle commands modify the installed product; adding `--help` only displays usage.
+Run `sd300` to choose a terminal mode, or open a mode directly with the commands below. The terminal monitor and desktop app can run independently.
 
+## Open a monitor
 
-## sd300
+| Command | What happens |
+| --- | --- |
+| `sd300` | Asks which terminal mode to open |
+| `sd300 --user` | Opens the terminal monitor with plain-language status |
+| `sd300 --tech` | Opens the terminal monitor with detailed readings |
+| `sd300 gui` | Opens the installed desktop app or brings its window forward |
 
-```text
-SD-300 is a live, interactive terminal user interface for real-time
-system diagnostics and monitoring. Part of the QubeTX 300 Series
-alongside TR-300 (Machine Report) and ND-300 (Network Diagnostic).
+For example:
 
-Run without flags to choose a diagnostic mode interactively,
-use --user / --tech to launch directly into a mode, or run
-sd300 update to check for and install the latest release. Use
-    sd300 snapshot --json for a redacted, noninteractive diagnostic report.
-
-Usage: sd300.exe [OPTIONS]
-       sd300.exe <COMMAND>
-
-Commands:
-  update        Check for updates and install the latest release
-  install       Install the latest release through the preferred managed CLI channel
-  uninstall     Remove SD-300 through its proven installation owner
-  snapshot      Collect one redacted noninteractive diagnostic snapshot
-  capabilities  Show which diagnostic capabilities are available on this machine
-  gui           Open or focus the installed SD-300 desktop monitor
-  tools         Inspect or explicitly install an independently owned optional companion
-  help          Print this message or the help of the given subcommand(s)
-
-Options:
-      --user
-          Launch directly into User Mode (plain language diagnostics)
-
-      --tech
-          Launch directly into Technician Mode (raw data and advanced metrics)
-
-      --update
-          Check for updates and install the latest version (legacy flag form of `sd300 update`)
-
-  -h, --help
-          Print help (see a summary with '-h')
-
-  -V, --version
-          Print version
-
-EXAMPLES:
-  sd300          Choose a diagnostic mode interactively
-  sd300 --user   Launch directly into User Mode
-  sd300 --tech   Launch directly into Technician Mode
-  sd300 update   Check for updates and install
-  sd300 install  Install latest through the managed CLI channel
-  sd300 uninstall Remove the proven installed channel
-  sd300 gui      Open or focus the installed desktop monitor
-  sd300 snapshot --json       Redacted diagnostic snapshot
-  sd300 capabilities --json   Capability and availability states
-  sd300 --update Same as 'sd300 update' (legacy flag form)
-
-KEYBINDINGS:
-  1-9          Switch to section
-  q / Esc      Quit (Esc closes panels and filters first)
-  Ctrl+C       Quit to shell
-  m            Return to mode selection
-  ?            Help overlay
-  f            Toggle temperature unit (C/F)
-  j / k        Select rows / scroll inspector
-  c / M / p / n  Sort processes by CPU / Memory / PID / Name
-  r            Retry providers and discovery
-  /            Filter the complete inventory
-  Enter        Inspect selected row
-  Space        Pause view / resume newest sample
-  PgUp/PgDn    Page through rows
-  Home / End   Select first / last row
-  Tab          Next section (Shift+Tab goes back)
-  s            Reverse process sort direction
-  F            Findings, evidence and next steps
-  N            Optional network diagnostics and SpeedQX
-  A            Review a privileged read of the selected drive
-  E            Export this session with redaction
-
-SECTIONS:
-  1 Overview    System health dashboard / identity and gauges
-  2 CPU         Load, sparkline, per-core utilization
-  3 Memory      Usage, swap, top consumers
-  4 Disk        Drive health, partitions, SMART data
-  5 GPU         Utilization, VRAM, temperature
-  6 Network     Connectivity, interfaces, active connections
-  7 Processes   Running apps / sortable process table
-  8 Thermals    Temperature, fans, battery, power
-  9 Drivers     Device health, driver versions, services
+```sh
+sd300 --user
 ```
 
+Press `1`–`9` to select a section and `q` to quit. See [Terminal controls](/sd300/terminal) for all keys, or [Desktop app](/sd300/desktop) for app settings.
 
-## sd300 tools
+Choose either `--user` or `--tech`. Do not combine them with each other or with a command such as `snapshot`.
 
-```text
-Inspect or explicitly install an independently owned optional companion
+## Collect a result without opening the monitor
 
-Usage: sd300.exe tools [OPTIONS] <TOOL>
+| Command | What it prints |
+| --- | --- |
+| `sd300 snapshot` | A compact summary of one collection of readings |
+| `sd300 snapshot --json` | The snapshot as structured JSON |
+| `sd300 capabilities` | Which readings this computer can provide |
+| `sd300 capabilities --json` | The same availability information as JSON |
 
-Arguments:
-  <TOOL>  [possible values: nd300, smartctl]
+Both commands accept these options:
 
-Options:
-      --install  Install the verified official distribution; requires explicit acceptance
-      --accept   Consent to the exact operation described by `sd300 tools TOOL`
-      --json
-  -h, --help     Print help
+| Option | Meaning |
+| --- | --- |
+| `--json` | Prints structured output for another program |
+| `--schema-version 1` or `--schema-version 2` | Chooses the JSON format version; requires `--json`; version 1 is the default |
+| `--include-sensitive` | Includes host, network-address, MAC-address, and drive-serial values; requires `--json` |
+
+Identifying information is removed by default. Use `--include-sensitive` only when you need those identifiers and review the output before sharing. See [Snapshots and sensor availability](/sd300/snapshots) for examples and the meaning of missing readings.
+
+## Optional tools
+
+Inspect a companion before requesting installation:
+
+```sh
+sd300 tools nd300
+sd300 tools smartctl
 ```
 
-Run `sd300 tools nd300` or `sd300 tools smartctl` to inspect the companion first. Adding `--install` requests installation; review the described operation before accepting it. Companions remain independently owned, so installing or removing SD-300 does not imply ownership of those tools.
+ND-300 provides network diagnostics. `smartctl` provides drive information. Each remains separately installed and managed.
 
-## sd300 gui
+| Option after `sd300 tools <TOOL>` | Meaning |
+| --- | --- |
+| `--install` | Requests installation of the verified official distribution; requires acceptance |
+| `--accept` | Accepts the operation already described by the tool; only valid with `--install` |
+| `--json` | Prints a structured result |
 
-```text
-Open or focus the installed SD-300 desktop monitor
+For an automated installation, first inspect the proposed operation and decide whether to accept it. Only then use `--install --accept`. See [Advanced use cases](/sd300/advanced#inspect-an-optional-diagnostic-tool) for the interactive workflow.
 
-Usage: sd300.exe gui
+## Install, update, or remove SD-300
 
-Options:
-  -h, --help  Print help
-```
+These commands change the installed product. The terminal and desktop components are handled together.
 
+| Command | What it does |
+| --- | --- |
+| `sd300 update` | Updates through the verified existing installation method |
+| `sd300 install` | Selects the preferred command-line installer; can repair the whole product |
+| `sd300 uninstall` | Removes SD-300 using its verified installation records |
 
-## sd300 install
+Each command accepts `--json` to return one structured result. This changes the output format, not the action. The older `sd300 --update` form still works.
 
-```text
-Install the latest release through the preferred managed CLI channel
+See [Installation](/sd300/installation#updates-and-repairs) for repair, upgrade, and removal details.
 
-Usage: sd300.exe install [OPTIONS]
+## Help and version
 
-Options:
-      --json  Emit exactly one machine-readable JSON result object
-  -h, --help  Print help
-```
+Use `sd300 --help` for the command list, `sd300 snapshot --help` for help with a particular command, or `sd300 help snapshot` for the same help. `-h` is the short help option.
 
-
-## sd300 update
-
-```text
-Check for updates and install the latest release
-
-Usage: sd300.exe update [OPTIONS]
-
-Options:
-      --json  Emit exactly one machine-readable JSON result object
-  -h, --help  Print help
-```
-
-
-## sd300 uninstall
-
-```text
-Remove SD-300 through its proven installation owner
-
-Usage: sd300.exe uninstall [OPTIONS]
-
-Options:
-      --json  Emit exactly one machine-readable JSON result object
-  -h, --help  Print help
-```
-
-
-## sd300 snapshot
-
-```text
-Collect one redacted noninteractive diagnostic snapshot
-
-Usage: sd300.exe snapshot [OPTIONS]
-
-Options:
-      --schema-version <SCHEMA_VERSION>
-          JSON representation: legacy schema 1 (default) or nullable, attributed schema 2 [default: 1]
-      --json
-          Emit machine-readable JSON instead of a compact text summary
-      --include-sensitive
-          Include host, network-address, MAC-address, and drive-serial values
-  -h, --help
-          Print help
-```
-
-
-## sd300 capabilities
-
-```text
-Show which diagnostic capabilities are available on this machine
-
-Usage: sd300.exe capabilities [OPTIONS]
-
-Options:
-      --schema-version <SCHEMA_VERSION>
-          JSON representation: legacy schema 1 (default) or nullable, attributed schema 2 [default: 1]
-      --json
-          Emit machine-readable JSON instead of a compact text summary
-      --include-sensitive
-          Include host, network-address, MAC-address, and drive-serial values
-  -h, --help
-          Print help
-```
-
+Use `sd300 --version` or `sd300 -V` to print the installed version. Adding `--help` to an installation command displays help without performing that action.
 
 Checked against [SD-300 v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0).

@@ -1,31 +1,75 @@
 ---
-title: "Snapshots and capabilities"
-description: "Export a diagnostic record and preserve the meaning of missing data."
+title: "Snapshots and sensor availability"
+description: "Save system readings and understand whether a missing value is unsupported, blocked, or unavailable."
+sidebar:
+  label: "Snapshots and sensors"
 ---
 
+A snapshot collects system readings once, without opening the live monitor. A capabilities report explains which readings the computer can provide.
+
+## View a snapshot
+
+```sh
+sd300 snapshot
+```
+
+This prints a compact text summary. To view sensor availability instead, run:
+
+```sh
+sd300 capabilities
+```
+
 ## Save a redacted snapshot
+
+SD-300 removes identifying information by default. Review the file before sharing it; redaction is not a guarantee that every detail is anonymous.
+
+The `>` operator writes a file in your current folder and replaces any existing file with the same name.
 
 ```sh
 sd300 snapshot --json > sd300-snapshot.json
 sd300 capabilities --json > sd300-capabilities.json
 ```
 
-Snapshot collection is noninteractive and redacts sensitive identifiers by default. Capability output distinguishes available, unavailable, unsupported, permission-denied, contradictory, and error states. Check those states before consuming a measurement.
+The first file contains readings. The second describes their availability. JSON is a structured format that support tools and scripts can read.
 
-Schema version 1 remains the default for existing automation. Request version 2 explicitly when your consumer supports it:
+## Understand availability states
+
+| State | How to read it |
+| --- | --- |
+| Available | The tool obtained a usable result |
+| Unavailable | No usable result was obtained for this reading |
+| Unsupported | The platform or provider does not support the reading |
+| Permission denied | Access was refused; more permission may help if the reading is supported |
+| Contradictory | The available evidence conflicts |
+| Error | An attempt to collect the reading failed |
+
+Keep the state with the value. A missing temperature must not become `0` in a script, and an unavailable drive-health check must not become a pass.
+
+## Choose a JSON format version
+
+Version 1 is the default for existing scripts. Request version 2 only when the program reading the result supports it:
 
 ```sh
 sd300 snapshot --json --schema-version 2
 sd300 capabilities --json --schema-version 2
 ```
 
-Use `--include-sensitive` only when you need the additional identifiers for a local JSON snapshot. Review any exported file before sharing it. An explicit shell redirection creates the file at your chosen path; the examples use the current directory.
+Version 2 represents unavailable values explicitly and includes information about their source. Keep source, collection time, and availability with the readings when comparing results. The `--schema-version` option requires `--json`.
+
+## Include identifiers when needed
+
+`--include-sensitive` adds host, network-address, MAC-address, and drive-serial values. Use it only when you need those details, and avoid sharing the result without reviewing it.
+
+```sh
+sd300 snapshot --json --include-sensitive
+```
+
+This prints the result without saving a file. The option requires `--json` and is also available for `capabilities`.
 
 ## Why a sensor can be missing
 
-The platform, hardware, driver, and permissions determine availability. CPU, GPU, aggregate temperature, and fan capabilities are independent. One unavailable provider does not invalidate another available sensor. Elevation can unlock some low-level providers, but it does not create support for unsupported hardware.
+Hardware, operating-system support, drivers, and permissions all affect availability. Processor temperature, graphics temperature, other temperature sensors, and fans are separate capabilities. One missing sensor does not invalidate another available reading.
 
-Some Windows readings use supported Libre/Open Hardware Monitor WMI bridges or read-only vendor firmware providers. macOS and Linux expose different data. Keep timestamps, source and capability states with the values when comparing snapshots.
-
+Some Windows readings depend on supported monitoring-software interfaces or vendor firmware. macOS and Linux provide different sources. Administrator privileges can unlock some supported readings, but cannot create support for hardware the tool does not recognize.
 
 Checked against [SD-300 v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0).

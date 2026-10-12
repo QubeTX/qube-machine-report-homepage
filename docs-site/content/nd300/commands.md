@@ -1,38 +1,66 @@
 ---
-title: "ND-300 command reference"
-description: "Diagnostic options, recovery actions, and output controls."
+title: "ND-300 commands"
+description: "Choose network checks, output options, and explicit recovery actions."
+sidebar:
+  label: "Commands"
 ---
 
-| Flag | Description |
-|------|-------------|
-| `-t, --tech` | Technician mode — show full technical report with deep diagnostics |
-| `-T, --title <TITLE>` | Custom title for the report header |
-| `--json` | Output results as JSON |
-| `--ascii` | Use ASCII characters instead of Unicode box-drawing |
-| `--no-color` | Disable colored output |
-| `--fast` | Skip the speed test (faster execution) |
-| `--deep` | Use the five-minute Deep speed profile; Quick is the default |
-| `--max-bytes <BYTES>` | Set a payload budget; defaults are 5 GB Quick / 20 GB Deep |
-| `--accept-mlab` | Consent to M-Lab publication of results and IP addresses |
-| `--speed-duration <SECS>` | Legacy parse-compatible alias; v5 uses its bounded profile schedule |
-| `--verbose` | Show additional debug/trace information |
-| `-d, --dns` | Change DNS servers and verify connectivity (requires elevated privileges) |
-| `-f, --fix` | Run the diagnostic-driven triage / fix loop (requires elevated privileges). Equivalent to `nd300 fix`. |
-| `-c, --clear-dns` | Flush the system DNS cache. Equivalent to `nd300 clear-dns`. |
-| `--uninstall` | Remove nd300 from the system. Equivalent to `nd300 uninstall`. |
-| `--update` | Check for updates and install the latest version. Equivalent to `nd300 update`. |
-| `-y, --yes` | Auto-confirm medium-risk prompts when running the fix flow. Does **not** bypass high-risk Y/N. |
-| `-h, --help` | Print help |
-| `-v, --version` | Print version |
+Run `nd300 --fast` for a connection check without the speed test. Run `nd300` for the standard checks including speed.
 
-### Subcommands
+Speed tests use internet data. The default Quick profile has a 5 GB test-data limit, excluding network overhead and transfers already in progress. Lower it with `--max-bytes` when needed.
 
-| Subcommand | Equivalent flag | Description |
-|------------|-----------------|-------------|
-| `nd300 dns` | `nd300 -d` / `nd300 --dns` | Change DNS servers and verify connectivity (semi-exit-early: exits on failure, continues to diagnostics on success) |
-| `nd300 fix [-y]` | `nd300 -f` / `nd300 --fix` | Diagnostic-driven triage and recovery loop |
-| `nd300 update` | `nd300 --update` | Self-update to the latest release |
-| `nd300 clear-dns` | `nd300 -c` / `nd300 --clear-dns` | Flush the DNS cache and exit |
-| `nd300 uninstall` | `nd300 --uninstall` | Uninstall nd300 from this system |
+## Common commands
+
+| What you want to do | Command |
+| --- | --- |
+| Check connectivity without testing speed | `nd300 --fast` |
+| Run the standard checks with a 250 MB test-data limit | `nd300 --max-bytes 250000000` |
+| Add detailed checks and skip the speed test | `nd300 --tech --fast` |
+| Name a report | `nd300 --fast --title "Office Wi-Fi"` |
+| Print structured results for a script | `nd300 --fast --json` |
+| Check the installed version | `nd300 --version` |
+
+For example:
+
+```sh
+nd300 --tech --fast
+```
+
+The result includes detailed network checks without the speed test. See [Read the diagnostics](/nd300/diagnostics) to interpret them. For speed testing alone, use [SpeedQX](/nd300/speedqx).
+
+## Diagnostic and output options
+
+| Option | What it does |
+| --- | --- |
+| `-t`, `--tech` | Adds detailed network checks and results |
+| `--fast` | Skips the speed test; other network checks still run |
+| `--deep` | Selects the longer speed profile, with a five-minute limit |
+| `--max-bytes <BYTES>` | Sets the test-data limit; defaults are 5 GB for Quick and 20 GB for Deep |
+| `--accept-mlab` | Consents to M-Lab publishing measurement results and IP addresses |
+| `-T`, `--title <TITLE>` | Sets the report heading; put a multiword title in quotes |
+| `--json` | Prints structured JSON output |
+| `--ascii` | Uses simple text characters for table borders |
+| `--no-color` | Removes colored output |
+| `--verbose` | Shows extra diagnostic information, mainly for troubleshooting the tool |
+| `-h`, `--help` | Shows command help |
+| `-v`, `--version` | Shows the installed version |
+
+ND-300 uses uppercase `-T` for a title and lowercase `-t` for Technician mode. The older `--speed-duration <SECS>` option is still accepted, but does not override the current speed profile's schedule.
+
+## Commands that make changes
+
+Network recovery can interrupt your connection. Read [DNS changes and recovery](/nd300/recovery) before running these actions, especially over a remote connection.
+
+| Command | What it changes |
+| --- | --- |
+| `nd300 dns` | Changes DNS servers, verifies the connection, and continues diagnostics if successful |
+| `nd300 clear-dns` | Clears saved DNS lookups, then exits |
+| `nd300 fix` | Checks failures, attempts relevant repairs, and checks the result |
+| `nd300 update` | Updates ND-300 and SpeedQX |
+| `nd300 uninstall` | Removes the installed product |
+
+DNS changes and the fix flow need administrator privileges. `-y` or `--yes` can confirm medium-risk fix prompts automatically. It never approves high-risk actions, and does not allow a consumer VPN to be disabled without an interactive confirmation.
+
+The older forms remain available: `-d`/`--dns`, `-c`/`--clear-dns`, `-f`/`--fix`, `--update`, and `--uninstall`. Prefer the named commands in new instructions and scripts.
 
 Checked against [ND-300 v4.0.1](https://github.com/QubeTX/qube-network-diagnostics/releases/tag/v4.0.1).

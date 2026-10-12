@@ -1,40 +1,62 @@
 ---
-title: "TR-300 command reference"
-description: "Every report option and lifecycle action in the documented release."
+title: "TR-300 commands"
+description: "Choose report options, save output, and manage TR-300."
+sidebar:
+  label: "Commands"
 ---
 
-Positional actions can be written without a double dash. They are mutually
-exclusive with each other and with the legacy action flags.
+Run `tr300` to read a report in the terminal. `report` is an equivalent command and accepts all the same options and actions.
 
-| Action | Description |
-|--------|-------------|
-| `update` | Check for updates and install the latest version |
-| `install` | Configure the optional shell-profile auto-run block |
-| `uninstall` | Remove the profile block, or choose Complete for both commands and an exact matching managed receipt |
+## Common commands
 
-| Option | Description |
-|--------|-------------|
-| `--ascii` | Use ASCII characters instead of Unicode |
-| `--json` | Output in JSON format |
-| `-t, --title <TITLE>` | Custom title for the report header |
-| `--no-color` | Disable colored output |
-| `--fast` | Fast mode: skip slow collectors for quick auto-run |
-| `-f, --full` | Explicit full collection (already the default; conflicts with `--fast`) |
-| `-r, -s, --report, --save` | Save this full table report as Markdown in Downloads |
-| `--no-elevation-hint` | Suppress the optional Linux `sudo` detail hint |
-| `--update` | Legacy flag form of `tr300 update` |
-| `--install` | Legacy flag form of `tr300 install` |
-| `--uninstall` | Legacy flag form of `tr300 uninstall` |
-| `-h, --help` | Print help information |
-| `-V, --version` | Print version information |
+| What you want to do | Command | Result |
+| --- | --- | --- |
+| Read a full report | `tr300` | Prints available system information; saves no file |
+| Run a quicker check | `tr300 --fast` | Skips slower information gathering; saves no file |
+| Save a report | `tr300 --report` | Saves a full Markdown report in Downloads |
+| Name a report | `tr300 --title "Office workstation"` | Changes the report heading |
+| View structured data | `tr300 --json` | Prints JSON for scripts |
+| Check the installed version | `tr300 --version` | Prints the version number |
 
-The packaged `report` command accepts every option and action in this table,
-including install, update, and uninstall. It is a full alias for `tr300` on
-Windows, macOS, and Linux. Keep `report` beside `tr300`; it delegates only to
-that exact adjacent payload, never to a PATH-resolved executable. Both names
-show the same help and version text and propagate the same exit status.
+For example, to save a named report:
 
-`tr300 config` is not a command. Configuration remains CLI-driven; passing the
-word `config` is rejected as an invalid action.
+```sh
+tr300 --title "Office workstation" --report
+```
+
+The output gives the saved file's location. Review it before sharing: reports may contain computer, user, and network information.
+
+## Report options
+
+Add options after `tr300` or `report`. Where both a short and long form appear, either form works.
+
+| Option | What it does |
+| --- | --- |
+| `--fast` | Skips slower checks for a quick summary |
+| `-f`, `--full` | Requests a full report; this is already the default |
+| `-r`, `-s`, `--report`, `--save` | Saves the full report as Markdown in Downloads |
+| `-t`, `--title <TITLE>` | Sets the report heading; put a multiword title in quotes |
+| `--json` | Prints structured JSON output |
+| `--ascii` | Uses simple text characters for table borders |
+| `--no-color` | Removes colored output |
+| `--no-elevation-hint` | Hides the Linux reminder about details that may need administrator privileges |
+| `-h`, `--help` | Shows command help |
+| `-V`, `--version` | Shows the installed version |
+
+Do not combine `--fast` with `--full`. Saving a Markdown report cannot be combined with `--fast`, `--json`, or an installation action. Use [Advanced use cases](/tr300/advanced) to save JSON instead.
+
+## Setup, updates, and removal
+
+These actions change the installation or terminal startup settings. Run one action at a time.
+
+| Command | What it changes |
+| --- | --- |
+| `tr300 install` | Sets up an optional short report when you open a terminal |
+| `tr300 update` | Downloads an update using the existing installation method when it can be verified |
+| `tr300 uninstall` | Offers startup cleanup or complete removal |
+
+See [Installation](/tr300/installation#updates-and-repairs) before changing an installation, or [Shell startup](/tr300/shell-integration) for the optional startup report.
+
+Older forms `--install`, `--update`, and `--uninstall` remain supported. Do not combine them with another action. There is no `tr300 config` command.
 
 Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).

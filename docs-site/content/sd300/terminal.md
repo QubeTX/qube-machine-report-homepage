@@ -1,64 +1,77 @@
 ---
 title: "Use the terminal monitor"
-description: "Navigate the nine sections in User or Technician mode."
+description: "Choose a mode, move between system sections, and use the keyboard controls."
+sidebar:
+  label: "Terminal controls"
 ---
 
-SD-300 provides two diagnostic modes designed for different audiences:
+Start the terminal monitor in User mode:
 
-**User Mode** presents system health in plain language with color-coded status indicators. Unsupported or unavailable telemetry remains explicit instead of being converted into a positive health claim.
+```sh
+sd300 --user
+```
 
-**Technician Mode** exposes raw data: per-core CPU utilization, memory-module topology, driver versions and dates, network interface tables, and real-time sparkline graphs.
+User mode explains status in plain language. Use `sd300 --tech` for more detailed measurements and tables, or `sd300` to choose a mode when you open it.
 
-### Diagnostic Sections
+## Find a reading
 
-Navigate between 9 sections using number keys:
+Press a number key to open a section:
 
-| # | Section | User Mode | Technician Mode |
-|---|---------|-----------|-----------------|
-| 1 | **Overview** | Resource cards in the app; system dashboard in the terminal | Identity, resource readings, top processes and findings |
-| 2 | **CPU** | Load status, sparkline | Per-core bars, frequency, process table |
-| 3 | **Memory** | Usage summary, top consumers | RAM/Swap sparklines, process table |
-| 4 | **Disk** | Drive health, space usage | Mount table, filesystem details |
-| 5 | **GPU** | Card status, utilization | VRAM, driver, utilization sparkline |
-| 6 | **Network** | Connection status, speed | Interface table, throughput sparklines |
-| 7 | **Processes** | Running apps in plain language | Sortable process table with scroll |
-| 8 | **Thermals** | Temperature, fans, battery | Sensor table, fan RPM, battery details |
-| 9 | **Drivers** | Device health overview | Driver versions, dates, service status |
+| Key | Section | What to look for |
+| --- | --- | --- |
+| `1` | Overview | Main system readings and findings |
+| `2` | CPU | Processor activity, with per-core detail in Technician mode |
+| `3` | Memory | Memory use and the programs using it |
+| `4` | Disk | Drive health, space, and available storage details |
+| `5` | GPU | Graphics activity, graphics memory, and driver information |
+| `6` | Network | Connections, interfaces, and current transfer activity |
+| `7` | Processes | Running programs, with sorting and filtering |
+| `8` | Thermals | Temperatures, fans, battery, and power |
+| `9` | Drivers | Device health, driver versions, and services |
 
-### Live Updates
+Read the status with each measurement. **Unavailable** or **unsupported** does not mean the reading is zero or that the component passed a health check.
 
-- **Fast metrics** (CPU, memory, network, processes): every 1 second
-- **Slow metrics** (disk, GPU, thermals): every 5 seconds
-- **Connections**: every 3 seconds
-- **Connectivity**: background refresh every 15 seconds
-- **Disk health**: background refresh every 60 seconds
-- **Drivers**: background startup scan and on demand (press `r`)
+## Inspect a running program
 
-## Keyboard controls
+1. Press `7` for Processes.
+2. Press `c` to sort by processor use or uppercase `M` for memory.
+3. Use `j` or `k` to select a row, then press `Enter` for details.
+4. Press `Esc` to close the detail panel.
+
+Use `/` to filter the list and `s` to reverse its sort order. These controls help you inspect activity; they do not stop programs.
+
+## Keyboard reference
 
 | Key | Action |
-|-----|--------|
-| `1`-`9` | Switch to section |
-| `q` / `Esc` | Quit |
-| `Ctrl+C` | Quit to shell |
-| `m` | Return to mode selection |
-| `?` | Help overlay |
-| `f` | Toggle temperature unit (C/F) |
-| `j` / `k` | Scroll (processes, connections, drivers; disk in Tech Mode) |
-| `c` / `M` / `n` / `p` | Sort by CPU / Memory / Name / PID (Section 7) |
-| `r` | Retry providers and discovery |
-| `/` | Filter the complete inventory |
+| --- | --- |
+| `1`–`9` | Open a section |
+| `Tab` / `Shift+Tab` | Next / previous section |
+| `j` / `k` | Select rows or scroll an open detail panel |
+| `PgUp` / `PgDn` | Move through a page of rows |
+| `Home` / `End` | Select the first / last row |
+| `/` | Filter the inventory |
 | `Enter` | Inspect the selected row |
-| `Space` | Pause the view or resume the newest sample |
-| `PgUp` / `PgDn` | Page through rows |
-| `Home` / `End` | Select the first or last row |
-| `Tab` / `Shift+Tab` | Next or previous section |
-| `s` | Reverse process sort direction |
-| `F` | Findings, evidence, and next steps |
-| `N` | Optional network diagnostics and SpeedQX |
-| `A` | Review a privileged read of the selected drive |
-| `E` | Export this session with redaction |
+| `c` / `M` / `n` / `p` | Sort processes by CPU / memory / name / process ID |
+| `s` | Reverse the process sort order |
+| `Space` | Pause the displayed view / return to the newest reading |
+| `f` | Switch between Celsius and Fahrenheit |
+| `r` | Retry information gathering and device discovery |
+| `F` | Open findings, evidence, and next steps |
+| `N` | Open optional network diagnostics and SpeedQX |
+| `A` | Review an administrator-level read of the selected drive |
+| `E` | Export the session with identifying information removed |
+| `m` | Return to mode selection |
+| `?` | Open help |
+| `q` | Quit |
+| `Esc` | Close a panel or filter first; otherwise quit |
+| `Ctrl+C` | Quit to the terminal prompt |
 
-`Esc` closes panels and filters before quitting. `j` and `k` select rows or scroll an inspector. Pausing the view holds what you see; resume to return to the newest sample. A privileged read or companion installation requires reviewing the proposed action.
+Pausing holds the displayed view while collection continues. Before a privileged drive read or companion installation, review the action shown by the tool. Review exported files before sharing them.
+
+## How often readings update
+
+Different readings refresh at different intervals. In the documented release, processor, memory, network activity, and process readings target one-second updates. Disk, graphics, and temperature readings target five seconds. Connection lists refresh about every three seconds, connectivity checks every 15 seconds, and drive health every 60 seconds. Driver discovery runs at startup and when you retry with `r`.
+
+These are collection intervals, not a guarantee that every sensor supplies a fresh value that often. Keep the reading's time and availability in mind when comparing values.
 
 Checked against [SD-300 v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0).

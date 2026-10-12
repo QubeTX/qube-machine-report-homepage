@@ -8,6 +8,17 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 12, 2026 — Clearer tool guides
+
+**Improved**
+
+- Explain each tool's purpose first, then guide readers through setup, commands, and everyday tasks with examples and expected results.
+- Explain necessary technical terms and put information about data use, saved files, and settings changes where readers need it.
+
+**Added**
+
+- Separate advanced guides for scripting and detailed investigation so readers can find the right level of help.
+
 ## October 11, 2026 — Preferred chat options first
 
 **Improved**

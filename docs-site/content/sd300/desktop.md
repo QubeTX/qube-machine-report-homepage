@@ -1,57 +1,67 @@
 ---
-title: Use the desktop app
-description: Open the native monitor and control its tray, startup, and settings.
+title: "Use the desktop app"
+description: "Open SD-300, find a reading, and control monitoring, startup, and updates."
 sidebar:
-  label: Desktop app
+  label: "Desktop app"
 ---
 
-Open SD-300 from your application menu or run `sd300 gui`. The command opens the installed app, or brings its existing window forward.
+Open SD-300 from your application menu, or run:
 
-If the desktop companion is missing or corrupt, the CLI prints repair guidance. Use the current official installer or the [managed lifecycle commands](/sd300/installation#updates-and-repairs) to repair the whole product.
+```sh
+sd300 gui
+```
 
-## Find a measurement
+The command opens the installed app or brings its existing window forward. If it reports a missing or damaged desktop component, see [Installation and repairs](/sd300/installation#updates-and-repairs).
 
-Choose User mode for plain-language status or Technician mode for detailed readings. Open the section for CPU, memory, disk, GPU, network, processes, thermals, or drivers. The overview brings the main resource readings and findings together.
+## Find a reading
 
-Read the status alongside each value. A sensor can be unsupported, unavailable, or permission-gated; none of those states means a zero reading or a healthy result. For a record you can inspect later, use [snapshots and capabilities](/sd300/snapshots).
+Choose **User mode** for plain-language status or **Technician mode** for detailed readings. Start with Overview, then select CPU, Memory, Disk, GPU, Network, Processes, Thermals, or Drivers.
 
-## Choose how the app behaves
+For example, open Processes while reproducing a slowdown, then compare the busy programs with the processor and memory readings. An unavailable sensor is not a zero reading or a healthy result.
 
-The app's Settings page includes display and monitoring preferences:
+To save a record for later, use a [snapshot](/sd300/snapshots).
 
-- Choose your temperature unit, chart density, and reduced-motion preference.
-- Choose whether to keep monitoring after closing the window.
-- Control the tray and launch-at-login separately. The tray defaults on; launch-at-login defaults off.
-
-Desktop preferences are independent of terminal preferences. Changing the app's mode or temperature unit does not change how a later terminal session starts.
+## Choose what happens when you close the window
 
 ### Windows and macOS
 
-Closing the window keeps the tray and monitoring engine running by default. Use **Open** in the tray to restore the window, or **Quit** to stop the GUI. Turn off **Keep monitoring after closing the window** if you want the close button to quit the GUI and tray instead.
+By default, closing the window keeps SD-300 monitoring in the background. Its icon stays in the Windows system tray or macOS menu bar. Choose **Open** there to restore the window or **Quit** to stop the desktop app.
 
-The tray tooltip summarizes live resource readings. Turning the tray off takes effect on the next GUI launch. Running bare `sd300`, `sd300 --user`, or `sd300 --tech` does not start the tray.
+To make closing the window stop the app, turn off **Keep monitoring after closing the window** in Settings.
+
+The tray setting is on by default. Turning it off takes effect the next time you launch the app. Opening the terminal monitor does not start the tray.
 
 ### Linux
 
-This release does not provide a Linux tray. Closing the app closes it normally. Launch-at-login opens a visible window, so monitoring is not left running without a way to reach it.
+This release has no Linux tray icon. Closing the window quits the app. If you enable launch at login, SD-300 opens a visible window.
 
-## Update from the app
+## Change display and startup settings
 
-**Settings > Update now** and the tray's **Update SD-300** action use the same channel-preserving transaction as `sd300 update`. A successful app-initiated update reopens the monitor. An already-current installation keeps the app open.
+Settings includes temperature units, chart density, and reduced motion. Launch at login is separate from the tray setting and is off by default.
 
-Installation or an update started from the CLI does not automatically launch the GUI. Uninstall remains a CLI action: `sd300 uninstall` removes the managed desktop and terminal components together.
+Desktop preferences are separate from terminal preferences. Changing the app's mode or temperature unit does not change how a later terminal session starts.
 
-## Portable desktop files
+## Update the app
 
-Native Windows MSI/EXE and macOS PKG packages contain both CLI and GUI. Portable GUI archives are separate from the CLI archives.
+Choose **Settings > Update now**, or **Update SD-300** from the tray menu. The updater preserves the verified installation method. After a successful app-started update, the monitor reopens; if it is already current, the app stays open.
 
-Keep the complete extracted directory or app bundle. On Linux, use `sd300/bin/sd300-gui` so the launcher can find its included runtime; a compatible graphical desktop is still required. See the [offline installation guide](/sd300/installation#offline-installation) for the files for your platform.
+An installation or update started from the terminal does not automatically open the desktop app. Removal also starts from the terminal: `sd300 uninstall` removes the installed terminal and desktop components together. See [Updates and repairs](/sd300/installation#updates-and-repairs) before changing installation methods.
+
+## Use a portable desktop copy
+
+Windows MSI/EXE installers and the macOS PKG include both terminal and desktop tools. Portable desktop downloads are separate from portable terminal downloads.
+
+Keep the whole extracted folder or Mac app bundle together. On Linux, run `sd300/bin/sd300-gui` so it can find its included support files. You still need a compatible graphical desktop. See [Installation](/sd300/installation) for downloads and [offline setup](/sd300/installation#offline-installation) for disconnected computers.
 
 ## Accessibility
 
-The app provides keyboard navigation, visible focus, text equivalents for charts, and reduced motion. In this release, individual desktop controls reach the operating system's accessibility tree on macOS. Windows and Linux expose the application canvas but not its child controls. Use the terminal interface when you need system screen-reader navigation on those platforms.
+The app includes keyboard navigation, visible focus, text equivalents for charts, and reduced motion. In this release, macOS exposes individual controls to the operating system's accessibility tools.
 
-## Settings file locations
+Windows and Linux expose the app's drawing area but not the controls within it. Use the terminal interface when you need system screen-reader navigation on those platforms. This limitation is separate from the app's keyboard controls.
+
+## Settings files
+
+Use Settings for everyday changes. If you need to locate the saved preferences for troubleshooting, they are stored here:
 
 | Platform | Location |
 | --- | --- |
@@ -59,6 +69,6 @@ The app provides keyboard navigation, visible focus, text equivalents for charts
 | macOS | `~/Library/Application Support/SD-300/settings.json` |
 | Linux | `${XDG_CONFIG_HOME:-~/.config}/sd300/settings.json` |
 
-The file separates shared helper paths, terminal preferences, and GUI preferences. Use the app's controls for normal changes.
+The file keeps shared helper paths, terminal preferences, and desktop preferences in separate sections.
 
 Checked against [SD-300 v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0).

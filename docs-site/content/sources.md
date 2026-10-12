@@ -1,11 +1,11 @@
 ---
-title: "Source versions and documentation scope"
+title: "Source versions"
 description: "The exact release sources used to check these guides."
 sidebar:
   label: Source versions
 ---
 
-These guides were checked on October 11, 2026 against published release documentation and command help. They describe the active TR-300, ND-300/SpeedQX, and SD-300 tools.
+These guides were checked on October 12, 2026 against published release documentation, source code, and command help. They describe the active TR-300, ND-300/SpeedQX, and SD-300 tools.
 
 | Tool | Documented release | Source commit |
 | --- | --- | --- |
@@ -14,16 +14,20 @@ These guides were checked on October 11, 2026 against published release document
 | SD-300 | [v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0) | [`1d66a461b3e4`](https://github.com/QubeTX/qube-system-diagnostics/tree/1d66a461b3e499e067b6c15658b04a8cde89671d) |
 
 
-## Online installers and offline snapshots
+## Online installers and offline copies
 
-Online installer and native download links use `releases/latest/download` and can advance independently of these pages. The offline bundle records exact versions, source commits, asset sizes, and SHA-256 hashes in `bundle-manifest.json`. Its included upstream documentation comes from those release commits.
+Online installation commands and download links follow the latest published release. They may install a newer version than the one described here. Check `--version` and `--help` if the behavior differs.
 
-The command examples describe the documented release. Check `--version` and `--help` when using a newer release. Release notes and historical design documents can describe limits, exceptions, or plans; they are not promises that every proposed feature has shipped.
+The offline bundle contains fixed versions. Its `bundle-manifest.json` records those versions, the source commits, file sizes, and SHA-256 checksums used to verify the files. Its included manuals come from the same releases.
 
-## Validation scope
+## What was checked
 
-Checksum and archive verification establishes file integrity. Command-help checks establish the documented command surface. Neither proves hardware accuracy, a successful native installation on your computer, screen-reader acceptance on every OS, or every measured performance target. SD-300's desktop accessibility limitations are described in the desktop guide; consult the exact release's qualification notes for platform and performance evidence.
+The guides use published release sources and command help to check command names, options, and behavior. File checksums confirm that bundled files match the recorded copies.
 
-## Maintainers
+These checks do not prove every hardware reading is accurate or that an installer has been tested on your particular computer. Platform support and known limits still apply. See the [desktop accessibility notes](/sd300/desktop#accessibility) and each release's testing notes for those details.
 
-Update these pages together with product installation contracts when a new release changes behavior. Refresh the offline bundle as a new immutable release, and update its pinned inventory independently of versionless online installers.
+Historical design documents may describe plans or experiments that have not shipped. Use the documented release behavior when following an example.
+
+## Maintaining these guides
+
+When a release changes behavior, update the relevant commands, examples, and installation instructions together. Publish refreshed offline bundles as new releases and update their recorded versions separately from online download links.
