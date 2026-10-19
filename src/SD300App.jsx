@@ -1,46 +1,23 @@
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+import useSmoothScroll from './hooks/useSmoothScroll'
 import SD300Hero from './components/SD300Hero'
-import SD300Modes from './components/SD300Modes'
 import SD300Desktop from './components/SD300Desktop'
-import SD300Sections from './components/SD300Sections'
-import SD300Commands from './components/SD300Commands'
-import SD300Keybindings from './components/SD300Keybindings'
-import SD300Platform from './components/SD300Platform'
 import SD300Install from './components/SD300Install'
+import SD300Commands from './components/SD300Commands'
 import SD300Footer from './components/SD300Footer'
+import SD300Modes from './components/SD300Modes'
+import DocumentationLinks from './components/DocumentationLinks'
 
-function SD300App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-      smoothWheel: true
-    })
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-
-    return () => lenis.destroy()
-  }, [])
-
-  return (
-    <>
-      <SD300Hero />
-      <SD300Modes />
+export default function SD300App() {
+  useSmoothScroll()
+  return <>
+    <SD300Hero />
+    <main id="main-content" tabIndex={-1}>
       <SD300Desktop />
-      <SD300Sections />
-      <SD300Commands />
-      <SD300Keybindings />
-      <SD300Platform />
       <SD300Install />
-      <SD300Footer />
-    </>
-  )
+      <SD300Commands />
+      <SD300Modes />
+      <DocumentationLinks product="SD-300" links={[{"href":"/docs/sd300/desktop","title":"Desktop app guide","description":"Window, tray, monitoring, and update controls."},{"href":"/docs/sd300/terminal","title":"Terminal controls","description":"Navigate all nine sections and inspect readings with the keyboard."},{"href":"/docs/sd300/snapshots","title":"Snapshots and sensors","description":"Save a reading and understand missing measurements."}]} />
+    </main>
+    <SD300Footer />
+  </>
 }
-
-export default SD300App

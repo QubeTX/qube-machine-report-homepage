@@ -37,8 +37,8 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 
 - Present each QubeTX tool with clear product positioning, commands, feature summaries, platform support, and installation instructions.
 - Keep install and command content aligned with the corresponding source repositories when source state is relevant.
-- Preserve the existing industrial terminal-inspired visual language: dark background, mono-font copy, neon magenta accent, inline styles, and tabbed terminal install blocks.
-- Marketing typography uses Archivo Black for display headings, CDN-hosted Michelangelus for serif subtitles, descriptions, and quotes, and Paper Mono for body text and code. Load Michelangelus through its canonical CDN stylesheet; preserve its supplied regular and italic faces.
+- Preserve the existing industrial terminal-inspired visual language: dark background, bold display headings, serif introductions, neon magenta accent, inline styles, and visible platform selectors.
+- Marketing typography uses Archivo Black for display headings, CDN-hosted Michelangelus for short serif introductions, Makira for practical copy and controls, and Paper Mono for commands, technical labels, and data. Load Michelangelus through its canonical CDN stylesheet; preserve its supplied regular and italic faces.
 
 ## Workspace File Tree
 
@@ -71,9 +71,15 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   └── tr300_documentation.md
 ├── src
 │   ├── components
+│   │   ├── ActionLink.jsx
+│   │   ├── CapabilityGrid.jsx
+│   │   ├── CommandExamples.jsx
+│   │   ├── DocumentationLinks.jsx
+│   │   ├── ProductHero.jsx
+│   │   ├── ProductInstall.jsx
+│   │   ├── SD300Screenshots.jsx
 │   │   ├── BackToTopButton.jsx
 │   │   ├── Commands.jsx
-│   │   ├── Demos.jsx
 │   │   ├── ExecutablesContent.jsx
 │   │   ├── ExecutablesFooter.jsx
 │   │   ├── ExecutablesHero.jsx
@@ -83,28 +89,23 @@ This is a React 18 + Vite marketing homepage for the QubeTX 300-series CLI tools
 │   │   ├── Hero.jsx
 │   │   ├── Install.jsx
 │   │   ├── ND300Commands.jsx
-│   │   ├── ND300Diagnostics.jsx
-│   │   ├── ND300Features.jsx
 │   │   ├── ND300Footer.jsx
 │   │   ├── ND300Hero.jsx
 │   │   ├── ND300Install.jsx
 │   │   ├── ND300Modes.jsx
 │   │   ├── ND300SampleOutput.jsx
 │   │   ├── ProductNav.jsx
-│   │   ├── Quote.jsx
 │   │   ├── SampleOutput.jsx
 │   │   ├── SD300Commands.jsx
 │   │   ├── SD300Desktop.jsx
 │   │   ├── SD300Footer.jsx
 │   │   ├── SD300Hero.jsx
 │   │   ├── SD300Install.jsx
-│   │   ├── SD300Keybindings.jsx
 │   │   ├── SD300Modes.jsx
-│   │   ├── SD300Platform.jsx
-│   │   ├── SD300Sections.jsx
 │   ├── hooks
 │   │   ├── useGitHubVersion.js
-│   │   └── useInstallPlatform.js
+│   │   ├── useInstallPlatform.js
+│   │   └── useSmoothScroll.js
 │   ├── App.jsx
 │   ├── ExecutablesApp.jsx
 │   ├── ND300App.jsx
@@ -135,10 +136,22 @@ shared, leave mobile/unknown clients on the existing default, and never override
 a visitor's manual selection during the mounted page session. Do not require
 storage, permission prompts or remote lookups for this default.
 
-The three product pages share `ProductInstall.jsx`: installer/downloads on the
-left and usage guidance on the right at desktop widths, stacked on narrow
-screens. Keep essential commands visible and longer setup/upgrade/source
-material in native disclosure sections; do not shrink text to fit a viewport.
+The three product pages share `ProductInstall.jsx`, with separate `firstRun`
+and `maintenance` render props. Desktop rows pair the recommended command with
+first use, then native alternatives with maintenance. Mobile follows that same
+reading order. Keep OS and native installer choices visible. Use concise visible
+caveats and direct links to the per-tool guides for deeper reference; do not add
+disclosures or shrink text to fit a viewport.
+
+Product heroes share `ProductHero.jsx`: product art, a short serif introduction,
+installation and documentation actions together, and one current-release link.
+`useSmoothScroll.js` preserves Lenis scrolling while respecting reduced motion
+and cancelling its animation frame on cleanup. Marketing pages have a skip link,
+a main landmark, and native anchors for section navigation. Shared foundations
+include visible keyboard focus and at least 44px control targets. Below 768px,
+`ProductNav.jsx` uses a custom animated hamburger disclosure with a morphing
+icon, staggered links, outside-click dismissal, Escape/focus handling, and a
+reduced-motion alternative. Desktop links remain directly visible.
 
 ## Documentation and offline downloads
 
@@ -146,7 +159,7 @@ The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired 
 
 `docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
-Documentation content is Markdown under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; code uses canonical CDN Paper Mono. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Makira and code uses Paper Mono, all from the canonical CDN. Because Blume appends theme.css after generated CSS, use remote canonical font-face URLs there rather than late CSS imports. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
 Each tool follows Overview, Installation, Commands, Basic use cases, Advanced use cases, then focused guides. Keep introductions about purpose and reader tasks. Define necessary technical terms, explain the expected result of examples, and place relevant data-use, privacy, file-overwrite, and system-change details before the action. Keep exact commands and release limits accurate when simplifying prose.
 

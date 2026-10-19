@@ -9,16 +9,17 @@ const SizeBadge = ({ children, active, href, heritage, title }) => {
       style={{
         border: `1px ${heritage ? 'dashed' : 'solid'} ${active ? 'var(--accent-signal)' : 'var(--fg-dim)'}`,
         color: active ? 'var(--bg-void)' : isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
-        fontSize: '0.6rem',
+        fontSize: '0.875rem',
+        display: 'inline-flex', alignItems: 'center', minHeight: '44px',
         padding: '2px 6px',
         borderRadius: '2px',
         fontFamily: 'var(--font-mono)',
         background: active ? 'var(--accent-signal)' : 'transparent',
         fontWeight: active ? 'bold' : 'normal',
-        cursor: 'pointer',
+        cursor: href ? 'pointer' : 'default',
         transition: 'all 0.2s ease',
         borderColor: isHovered && !active ? 'var(--fg-bone)' : undefined,
-        opacity: heritage && !isHovered ? 0.6 : 1
+        opacity: 1
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -59,7 +60,7 @@ export default function Footer() {
       <span style={{
         color: 'var(--fg-dim)',
         opacity: 0.4,
-        fontSize: '0.7rem',
+        fontSize: '0.875rem',
         margin: '0 2px',
         userSelect: 'none'
       }}>›</span>

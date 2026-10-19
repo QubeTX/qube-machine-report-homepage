@@ -1,265 +1,41 @@
-import { useState } from 'react'
-
-const GridCell = ({ label, title, description, linkText, linkUrl, noBorder }) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <div
-      style={{
-        padding: 'clamp(2rem, 5vw, 4rem)',
-        borderRight: noBorder ? 'none' : '1px solid #222',
-        display: 'grid',
-        gridTemplateRows: 'subgrid',
-        gridRow: 'span 4',
-        alignItems: 'start',
-        minWidth: 0,
-        transition: 'background 0.3s ease',
-        background: isHovered ? '#0f0f0f' : 'transparent'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <span style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.8rem',
-        color: 'var(--fg-dim)',
-        marginBottom: '2rem',
-        border: '1px solid var(--fg-dim)',
-        display: 'inline-block',
-        justifySelf: 'start',
-        padding: '2px 8px',
-        borderRadius: '4px'
-      }}>
-        {label}
-      </span>
-
-      <h2
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-          transform: 'scaleX(1.1)',
-          transformOrigin: 'left center',
-          marginBottom: '1.5rem',
-          textTransform: 'uppercase',
-          lineHeight: '1.1'
-        }}
-        dangerouslySetInnerHTML={{ __html: title }}
-      />
-      <p style={{
-        fontFamily: 'var(--font-serif)',
-        fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-        lineHeight: '1.3',
-        color: '#aaa'
-      }}>
-        {description}
-      </p>
-
-      <a
-        href={linkUrl}
-        style={{
-          fontFamily: 'var(--font-mono)',
-          letterSpacing: '-0.5px',
-          fontSize: '0.7rem',
-          marginTop: '2rem',
-          alignSelf: 'end',
-          color: 'var(--accent-signal)',
-          cursor: 'pointer',
-          textDecoration: 'none'
-        }}
-      >
-        {linkText}
-      </a>
-    </div>
-  )
-}
-
-const DownloadButton = () => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <a
-      href="https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip"
-      style={{
-        background: 'var(--accent-signal)',
-        border: '2px solid var(--accent-signal)',
-        color: 'var(--bg-void)',
-        fontFamily: 'var(--font-mono)',
-        fontWeight: '700',
-        padding: '0.5rem 1rem',
-        cursor: 'pointer',
-        borderRadius: '6px',
-        textTransform: 'uppercase',
-        transition: 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)',
-        transform: isHovered ? 'translateY(-2px)' : 'none',
-        boxShadow: isHovered ? '0 4px 12px rgba(255, 0, 212, 0.3)' : 'none',
-        fontSize: '0.75rem',
-        textDecoration: 'none',
-        display: 'inline-block'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      ↓ DOWNLOAD ALL (.ZIP)
-    </a>
-  )
-}
+import DocumentationLinks from './DocumentationLinks'
 
 export default function ExecutablesContent() {
-  return (
-    <>
-      {/* Explainer section */}
-      <section id="tools" style={{
-        padding: '6rem 2rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        borderBottom: '1px solid #222'
-      }}>
-        <div style={{
-          maxWidth: '700px',
-          textAlign: 'center'
-        }}>
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            color: 'var(--fg-dim)',
-            border: '1px solid var(--fg-dim)',
-            padding: '2px 8px',
-            borderRadius: '4px',
-            display: 'inline-block',
-            marginBottom: '2rem'
-          }}>
-            ABOUT THIS DOWNLOAD
-          </span>
-
-          <p style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            lineHeight: '1.4',
-            color: 'var(--fg-bone)',
-            fontStyle: 'italic',
-            margin: '0 0 2rem 0'
-          }}>
-            One ZIP with TR-300, ND-300 with SpeedQX, and SD-300 with its desktop app. Native installers, portable archives, and matching documentation, ready to transfer to another computer.
-          </p>
-
-          <p style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            lineHeight: '1.5',
-            color: 'var(--fg-dim)',
-            margin: '0 0 2rem 0'
-          }}>
-            Install from the included files without downloading a toolchain. Internet tests and self-updates still need connectivity. Open the included start page to choose an installer and verify its checksums.
-          </p>
-
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.7rem',
-            color: 'var(--fg-dim)',
-            lineHeight: '1.6'
-          }}>
-            Snapshot: October 11, 2026<br />TR-300 4.4.0 · ND-300 4.0.1 · SD-300 4.1.0<br />Windows x64 · macOS Intel/Apple Silicon · Linux x64 GNU/musl and ARM64 GNU
-          </span>
-
-          <p style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            lineHeight: '1.5',
-            color: 'var(--fg-dim)',
-            margin: '2rem 0 0 0'
-          }}>
-            New to this?{' '}
-            <a
-              href="/docs#choose-a-tool"
-              style={{ color: 'var(--accent-signal)', textDecoration: 'none' }}
-            >
-              Choose your tool’s installation guide →
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* Tool summary grid */}
-      <section style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 30rem), 1fr))',
-        borderBottom: '1px solid #222',
-        overflow: 'hidden'
-      }}>
-        <GridCell
-          label="01 // MACHINE REPORT"
-          title="TR-300<br/>Machine Report"
-          description="See your system's health at a glance — processor, memory, storage, and network in a clean formatted report."
-          linkText="> VIEW TR-300"
-          linkUrl="/"
-        />
-        <GridCell
-          label="02 // NETWORK DIAGNOSTIC"
-          title="ND-300<br/>Network Diagnostic"
-          description="Find and fix network problems. Tests your connection, checks DNS, traces routes, and analyzes your network setup."
-          linkText="> VIEW ND-300"
-          linkUrl="/nd300"
-        />
-        <GridCell
-          label="03 // SYSTEM DIAGNOSTIC"
-          title="SD-300<br/>System Diagnostic"
-          description="Live system monitoring in a terminal or native desktop app, with processes, resource history, hardware details, and explicit measurement availability."
-          linkText="> VIEW SD-300"
-          linkUrl="/sd300"
-          noBorder
-        />
-      </section>
-
-      {/* Secondary download CTA */}
-      <section style={{
-        padding: '6rem 2rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        borderBottom: '1px solid #222'
-      }}>
-        <h2 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-          textTransform: 'uppercase',
-          marginBottom: '1.5rem',
-          transform: 'scaleX(1.1)'
-        }}>
-          Download
-        </h2>
-
-        <p style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-          color: '#aaa',
-          fontStyle: 'italic',
-          marginBottom: '2.5rem'
-        }}>
-          Three current tools, matching manuals, and verified downloads.
+  return <>
+    <section id="tools" style={{ padding: 'clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem)', maxWidth: '1328px', margin: '0 auto' }}>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', textTransform: 'uppercase', marginBottom: '2rem' }}>What’s included</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: '2rem' }}>
+        {[
+          { name: 'TR-300', purpose: 'Read a system report', text: 'Computer specifications and system context, with explicit Markdown and JSON export.', href: '/docs/tr300/installation#offline-installation' },
+          { name: 'ND-300', purpose: 'Investigate a connection', text: 'Network diagnostics and SpeedQX. Local checks work with available state; remote checks need a connection.', href: '/docs/nd300/installation#offline-installation' },
+          { name: 'SD-300', purpose: 'Watch system activity', text: 'Terminal monitoring and the desktop app, with processes, hardware readings, and clear availability labels.', href: '/docs/sd300/installation#offline-installation' },
+        ].map(tool => <article key={tool.name} style={{ borderTop: '1px solid #444', paddingTop: '1.5rem' }}>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', marginBottom: '0.75rem' }}>{tool.name}</h3>
+          <p style={{ fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{tool.purpose}</p>
+          <p style={{ color: '#b8b8b8', lineHeight: 1.65 }}>{tool.text}</p>
+          <a href={tool.href} style={{ minHeight: '44px', display: 'inline-flex', alignItems: 'center', marginTop: '1rem' }}>Install {tool.name} offline →</a>
+        </article>)}
+      </div>
+    </section>
+    <section style={{ borderTop: '1px solid #333', borderBottom: '1px solid #333', padding: 'clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem)' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Use the toolkit</h2>
+        <p style={{ color: '#b8b8b8', lineHeight: 1.65, maxWidth: '65ch', marginBottom: '2rem' }}>Follow the destination computer’s security and installation policies. Check the download against its published checksum before installing.</p>
+        <ol style={{ display: 'grid', gap: '1.5rem', paddingLeft: '1.5rem', lineHeight: 1.65 }}>
+          <li><strong>Extract the ZIP.</strong> Keep the folders and files together when copying them to another computer.</li>
+          <li><strong>Open <code>index.html</code>.</strong> The local start page explains the included releases and how to verify their checksums.</li>
+          <li><strong>Choose your tool and platform.</strong> Follow its offline guide before installing or upgrading. SD-300 native installers include the app and terminal tools; portable downloads remain separate.</li>
+        </ol>
+        <p style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+          <a href="https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip.sha256">ZIP checksum ↗</a>
+          <a href="https://github.com/QubeTX/qube-reports-executables">Bundle source and manifest ↗</a>
         </p>
-
-        <DownloadButton />
-
-        <p style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.7rem',
-          marginTop: '2rem',
-          color: 'var(--fg-dim)'
-        }}>
-          Source: <a
-            href="https://github.com/QubeTX/qube-reports-executables"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'var(--fg-dim)', textDecoration: 'none' }}
-          >
-            github.com/QubeTX/qube-reports-executables
-          </a>
-        </p>
-      </section>
-    </>
-  )
+      </div>
+    </section>
+    <DocumentationLinks product="the toolkit" links={[
+      { href: '/docs#choose-a-tool', title: 'Choose a tool', description: 'Find the guide that matches what you need to check.' },
+      { href: '/docs/troubleshooting', title: 'Installation help', description: 'Resolve missing commands, permission errors, or conflicting installs.' },
+      { href: '/docs/sources', title: 'Source versions', description: 'See which published releases the online documentation describes.' },
+    ]} />
+  </>
 }

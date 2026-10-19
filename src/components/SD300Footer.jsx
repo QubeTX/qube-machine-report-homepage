@@ -10,13 +10,14 @@ const SizeBadge = ({ children, active, href, title }) => {
       style={{
         border: `1px solid ${active ? 'var(--accent-signal)' : 'var(--fg-dim)'}`,
         color: active ? 'var(--bg-void)' : isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
-        fontSize: '0.6rem',
+        fontSize: '0.875rem',
+        display: 'inline-flex', alignItems: 'center', minHeight: '44px',
         padding: '2px 6px',
         borderRadius: '2px',
         fontFamily: 'var(--font-mono)',
         background: active ? 'var(--accent-signal)' : 'transparent',
         fontWeight: active ? 'bold' : 'normal',
-        cursor: 'pointer',
+        cursor: href ? 'pointer' : 'default',
         transition: 'all 0.2s ease',
         borderColor: isHovered && !active ? 'var(--fg-bone)' : undefined
       }}
@@ -48,7 +49,7 @@ const SizeBadge = ({ children, active, href, title }) => {
 }
 
 export default function SD300Footer() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.1')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.1.0')
 
   return (
     <SiteFooter

@@ -9,13 +9,14 @@ const SizeBadge = ({ children, href, title }) => {
       style={{
         border: '1px solid var(--fg-dim)',
         color: isHovered ? 'var(--fg-bone)' : 'var(--fg-dim)',
-        fontSize: '0.6rem',
+        fontSize: '0.875rem',
+        display: 'inline-flex', alignItems: 'center', minHeight: '44px',
         padding: '2px 6px',
         borderRadius: '2px',
         fontFamily: 'var(--font-mono)',
         background: 'transparent',
         fontWeight: 'normal',
-        cursor: 'pointer',
+        cursor: href ? 'pointer' : 'default',
         transition: 'all 0.2s ease',
         borderColor: isHovered ? 'var(--fg-bone)' : undefined
       }}

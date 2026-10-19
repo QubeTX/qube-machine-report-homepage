@@ -29,8 +29,8 @@ export default function SD300Screenshots() {
         {views.map((item, index) => (
           <button key={item.label} type="button" aria-pressed={selected === index}
             aria-controls="sd300-screenshot" onClick={() => setSelected(index)} style={{
-              fontFamily: 'var(--font-mono)', fontSize: '0.8rem',
-              padding: '0.7rem 1rem', borderRadius: '4px', cursor: 'pointer',
+              fontFamily: 'var(--font-body)', fontSize: '0.875rem',
+              minHeight: '44px', padding: '0.7rem 1rem', borderRadius: '4px', cursor: 'pointer',
               border: `1px solid ${selected === index ? 'var(--fg-bone)' : '#555'}`,
               color: selected === index ? 'var(--bg-void)' : 'var(--fg-bone)',
               background: selected === index ? 'var(--fg-bone)' : 'transparent'
@@ -49,7 +49,7 @@ export default function SD300Screenshots() {
             style={{ width: '100%', height: 'auto', display: 'block' }} />
         </a>
         <figcaption style={{
-          fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#aaa',
+          fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: '#aaa',
           lineHeight: 1.7, marginTop: '1rem'
         }}>
           {view.caption}{' '}

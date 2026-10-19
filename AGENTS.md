@@ -127,11 +127,12 @@ installer; never market this as bypassing antivirus or policy.
 |----------|-------|-------|
 | `--bg-void` | `#0a0a0a` | Page background |
 | `--fg-bone` | `#dcdcdc` | Primary text |
-| `--fg-dim` | `#666666` | Secondary/muted text |
+| `--fg-dim` | `#999999` | Secondary/muted text |
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
 | `--font-display` | Archivo Black | Headings |
-| `--font-serif` | Michelangelus (canonical CDN stylesheet) | Subtitles, descriptions, quotes |
-| `--font-mono` | Paper Mono | Body text, code |
+| `--font-serif` | Michelangelus (canonical CDN stylesheet) | Short expressive introductions |
+| `--font-body` | Makira (canonical CDN stylesheet) | Practical copy and interface text |
+| `--font-mono` | Paper Mono | Commands, technical labels, data |
 
 ## Source Repositories
 
@@ -185,10 +186,22 @@ shared, leave mobile/unknown clients on the existing default, and never override
 a visitor's manual selection during the mounted page session. Do not require
 storage, permission prompts or remote lookups for this default.
 
-The three product pages share `ProductInstall.jsx`: installer/downloads on the
-left and usage guidance on the right at desktop widths, stacked on narrow
-screens. Keep essential commands visible and longer setup/upgrade/source
-material in native disclosure sections; do not shrink text to fit a viewport.
+The three product pages share `ProductInstall.jsx`, with separate `firstRun`
+and `maintenance` render props. Desktop rows pair the recommended command with
+first use, then native alternatives with maintenance. Mobile follows that same
+reading order. Keep OS and native installer choices visible. Use concise visible
+caveats and direct links to the per-tool guides for deeper reference; do not add
+disclosures or shrink text to fit a viewport.
+
+Product heroes share `ProductHero.jsx`: product art, a short serif introduction,
+installation and documentation actions together, and one current-release link.
+`useSmoothScroll.js` preserves Lenis scrolling while respecting reduced motion
+and cancelling its animation frame on cleanup. Marketing pages have a skip link,
+a main landmark, and native anchors for section navigation. Shared foundations
+include visible keyboard focus and at least 44px control targets. Below 768px,
+`ProductNav.jsx` uses a custom animated hamburger disclosure with a morphing
+icon, staggered links, outside-click dismissal, Escape/focus handling, and a
+reduced-motion alternative. Desktop links remain directly visible.
 
 ## Documentation and offline downloads
 
@@ -196,7 +209,7 @@ The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired 
 
 `docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
-Documentation content is Markdown under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; code uses canonical CDN Paper Mono. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Makira and code uses Paper Mono, all from the canonical CDN. Because Blume appends theme.css after generated CSS, use remote canonical font-face URLs there rather than late CSS imports. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
 Each tool follows Overview, Installation, Commands, Basic use cases, Advanced use cases, then focused guides. Keep introductions about purpose and reader tasks. Define necessary technical terms, explain the expected result of examples, and place relevant data-use, privacy, file-overwrite, and system-change details before the action. Keep exact commands and release limits accurate when simplifying prose.
 

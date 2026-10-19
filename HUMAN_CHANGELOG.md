@@ -8,6 +8,30 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 18, 2026 — Clearer paths from choosing to using a tool
+
+**Improved**
+
+- Make explanations easier to read while keeping the bold headings, expressive introductions, familiar colors, and artwork.
+- Give mobile navigation a compact menu with smooth, responsive animation, keeping the page header clear without hiding the current tool.
+- Bring installation and documentation actions together, then guide readers from installation to their first command and ongoing maintenance.
+- Explain who each Windows installer is for, keep download choices visible, and show important upgrade guidance without requiring extra clicks.
+- Give the offline toolkit a clearer name and explain what it contains and how to use it on another computer.
+- Make the documentation easier to enter and scan, with clearer tool choices and ordered setup instructions.
+
+**Fixed**
+
+- Bring product summaries in line with their published capabilities so visitors get accurate expectations.
+- Improve contrast, keyboard focus, touch controls, and reduced-motion behavior so the site is easier to navigate.
+
+**Removed**
+
+- Replace repetitive marketing lists with focused summaries and direct links to complete guides, reducing clutter without losing reference information.
+
+**Behind the scenes**
+
+- Share the common page layouts and clean up scrolling when a page closes, keeping future refinements consistent.
+
 ## October 12, 2026 — Simpler footer navigation
 
 **Improved**

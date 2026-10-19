@@ -7,26 +7,27 @@ sidebar:
 
 Installation adds `tr300` and the equivalent `report` command. The recommended installation command also offers a short report when you open a terminal. This startup feature is optional; `report` works without it.
 
-The recommended commands download ready-to-run software. You do not need Rust or a compiler. Online commands and download links install the latest release; the [offline bundle](#offline-installation) contains fixed versions. These instructions were checked against TR-300 4.4.0; see [source versions](/sources).
+No Rust toolchain or compiler is needed. Online downloads track the latest release; the [offline bundle](#offline-installation) is a fixed snapshot. This guide was checked against TR-300 4.4.0; see [source versions](/sources).
 
 ## Windows
 
-Run in a normal PowerShell window:
+1. Open a normal PowerShell window.
+2. Paste and run the installation command:
 
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"
-```
+   ```powershell
+   powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"
+   ```
 
-Open a new terminal afterward and check `tr300 --version`.
+3. Open a new terminal afterward and check `tr300 --version`.
 
 ### Download an installer
 
-Choose one installer. **Global** installs for everyone who uses the computer and requires administrator approval. **Corporate** installs for your account without administrator approval. If the tool is already installed, keep the same format and edition unless you intend to change them.
+Choose the scope first: your account or all users. EXE opens a setup wizard; MSI also supports Windows Installer deployment. Keep the existing format and edition when updating unless you intend to change them.
 
-| Edition | Windows Installer | Setup wizard |
+| Install for | MSI | EXE |
 | --- | --- | --- |
-| Global | [MSI](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc.msi) | [EXE](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-setup.exe) |
-| Corporate | [MSI](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate.msi) | [EXE](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate-setup.exe) |
+| All users — Global (admin) | [MSI](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc.msi) | [EXE](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-setup.exe) |
+| Your account — Corporate | [MSI](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate.msi) | [EXE](https://github.com/QubeTX/qube-machine-report/releases/latest/download/tr300-x86_64-pc-windows-msvc-corporate-setup.exe) |
 
 Double-click the chosen file and follow its prompts. These Windows packages are x64; Windows ARM64 is not included. If Windows or organization policy blocks installation, keep the error message, check the download source and publisher, and follow your administrator's guidance.
 
@@ -36,13 +37,14 @@ Extract [tr300-x86_64-pc-windows-msvc.zip](https://github.com/QubeTX/qube-machin
 
 ## macOS
 
-Run in Terminal:
+1. Open a normal terminal.
+2. Paste and run the installation command:
 
-```sh
-curl -LsSf https://reports.qubetx.com/install.sh | sh
-```
+   ```sh
+   curl -LsSf https://reports.qubetx.com/install.sh | sh
+   ```
 
-Open a new Terminal afterward and check `tr300 --version`.
+3. Open a new Terminal afterward and check `tr300 --version`.
 
 ### Apple Installer
 
@@ -59,13 +61,14 @@ Extract with `tar -xf <filename>.tar.xz`, open the extracted folder, and run `./
 
 ## Linux
 
-Run in a terminal:
+1. Open a normal terminal.
+2. Paste and run the installation command:
 
-```sh
-curl -LsSf https://reports.qubetx.com/install.sh | sh
-```
+   ```sh
+   curl -LsSf https://reports.qubetx.com/install.sh | sh
+   ```
 
-Open a new terminal afterward and check `tr300 --version`.
+3. Open a new terminal afterward and check `tr300 --version`.
 
 ### Portable Linux copy
 
@@ -138,11 +141,11 @@ To update a disconnected computer, use the included installer that matches its e
 
 ## Updates and repairs
 
+`report update` is equivalent to `tr300 update`. Updates need internet. When the existing installation can be verified, the updater keeps its format, edition, account or all-user setting, and location. For example, an MSI installation stays MSI. If installation records conflict or a security policy blocks the update, it keeps the working installation and explains how to continue manually.
+
 ```sh
 tr300 update
 ```
-
-`report update` is equivalent to `tr300 update`. Updates need internet. When the existing installation can be verified, the updater keeps its format, edition, account or all-user setting, and location. For example, an MSI installation stays MSI. If installation records conflict or a security policy blocks the update, it keeps the working installation and explains how to continue manually.
 
 Running a different official installer yourself requests a new installation choice, including a reinstall or an older version. The change proceeds only when the existing installation is clear and the switch is supported. Conflicting installations or a change between your account and all users may need manual resolution. Keep installation records intact and follow the reported guidance.
 

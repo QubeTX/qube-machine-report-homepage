@@ -35,7 +35,7 @@ function FooterLink({ href, children, current = false }) {
         width: 'fit-content', maxWidth: '100%',
         color: highlighted || current ? 'var(--accent-signal)' : 'var(--fg-bone)',
         textDecoration: highlighted ? 'underline' : 'none', textUnderlineOffset: '5px',
-        fontSize: '0.8rem', lineHeight: 1.5,
+        fontSize: '0.875rem', lineHeight: 1.5,
       }}
     >
       {children}
@@ -57,7 +57,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
   const mobile = useSyncExternalStore(subscribeFooterLayout, isMobileFooter)
   const path = window.location.pathname.replace(/\/$/, '') || '/'
   const headingStyle = {
-    fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase',
+    fontSize: '0.875rem', fontWeight: 500, textTransform: 'uppercase',
     letterSpacing: '0.1em', color: '#999', marginBottom: '0.75rem',
   }
 
@@ -72,7 +72,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
         <BrandMark label="SHAUGHV" file="shaughv/logos/SHAUGHV-Official.svg" width="104px" height="104px" />
         <BrandMark label="Shaughnessy family crest — Fortis et stabilis" file="crests/Shaughnessy-Crest-Footer.svg" width="80px" height="100px" />
       </a>
-      <p style={{ marginTop: '1.25rem', fontSize: '0.7rem', lineHeight: 1.8, color: '#999' }}>
+      <p style={{ marginTop: '1.25rem', fontSize: '0.875rem', lineHeight: 1.8, color: '#999' }}>
         &copy; {new Date().getFullYear()} QUBETX
       </p>
       <FooterLink href="https://qubetx.com">QUBETX.COM ↗</FooterLink>
@@ -113,9 +113,9 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
       display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
       gap: '1rem 2rem', paddingTop: '1.5rem', paddingRight: '3.5rem', borderTop: '1px solid #333',
     }}>
-      <p style={{ fontSize: '0.7rem', lineHeight: 1.7, color: '#aaa' }}>{title}</p>
+      <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: '#aaa' }}>{title}</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>{children}</div>
-      <p style={{ fontSize: '0.65rem', lineHeight: 1.7, color: 'var(--accent-signal)', textTransform: 'uppercase' }}>
+      <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: 'var(--accent-signal)', textTransform: 'uppercase' }}>
         Status: {status}
       </p>
     </div>
@@ -125,7 +125,7 @@ export default function SiteFooter({ title, repository, status = 'Operational', 
     <footer aria-label="QUBETX site footer" style={{
       padding: 'clamp(2rem, 5vw, 4.5rem) clamp(1rem, 3vw, 2rem) 1.5rem',
       borderTop: '1px solid #333', marginTop: 'auto',
-      color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)',
+      color: 'var(--fg-bone)', fontFamily: 'var(--font-body)',
     }}>
       <div style={{ maxWidth: 'clamp(1160px, 84vw, 1800px)', margin: '0 auto' }}>
         {mobile ? (

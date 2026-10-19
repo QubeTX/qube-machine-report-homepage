@@ -1,11 +1,12 @@
 :root {
   --bg-void: #0a0a0a;
   --fg-bone: #dcdcdc;
-  --fg-dim: #666666;
+  --fg-dim: #999999;
   --accent-signal: #ff00d4;
   --border-width: 1.5px;
   --font-display: 'Archivo Black', sans-serif;
   --font-serif: 'Michelangelus', serif;
+  --font-body: 'Makira', system-ui, sans-serif;
   --font-mono: 'Paper Mono', ui-monospace, monospace;
   --gap-grid: 1px;
 }
@@ -23,7 +24,9 @@ html {
 body {
   background-color: var(--bg-void);
   color: var(--fg-bone);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -100,4 +103,18 @@ footer a:hover {
   .hide-on-mobile {
     display: none !important;
   }
+}
+
+/* Shared interaction and typography foundations. Component layouts stay inline. */
+button, input, select, textarea { font: inherit; }
+a { color: var(--fg-bone); text-underline-offset: 4px; }
+code, pre, kbd { font-family: var(--font-mono); }
+code { overflow-wrap: anywhere; }
+:where(h1, h2, h3, h4) { text-wrap: balance; }
+:where(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--accent-signal); outline-offset: 5px; }
+:where(section[id], main[id]) { scroll-margin-top: 1rem; }
+.skip-link { position: fixed; top: 1rem; left: 1rem; transform: translateY(-200%); background: var(--fg-bone); color: var(--bg-void); padding: 0.75rem 1rem; z-index: 2000; }
+.skip-link:focus { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

@@ -28,7 +28,7 @@ After [installing TR-300](/tr300/installation), open a terminal and run:
 tr300
 ```
 
-You will see a report in the terminal. This reads system information and does not create a report file. To save a copy in Downloads, run:
+You will see a report in the terminal. This reads system information and does not create a report file. Reports can include computer, user, and network information; review a saved copy before sharing it. To save one in Downloads, run:
 
 ```sh
 tr300 --report

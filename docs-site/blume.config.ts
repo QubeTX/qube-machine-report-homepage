@@ -10,6 +10,15 @@ export default defineConfig({
   content: { root: 'content' },
   theme: { accent: '#ff00d4', mode: 'system', radius: 'md' },
   navigation: {
+    actions: [
+      { label: 'All tools', href: 'https://reports.qubetx.com' },
+      { label: 'Offline downloads', href: 'https://reports.qubetx.com/executables' },
+    ],
+    // Header actions hide on small screens; keep the same destinations in the drawer.
+    featured: [
+      { label: 'All tools', href: 'https://reports.qubetx.com' },
+      { label: 'Offline downloads', href: 'https://reports.qubetx.com/executables' },
+    ],
     sidebar: {
       display: 'group',
       // Explicit items prevent Blume from hoisting standalone pages above groups.

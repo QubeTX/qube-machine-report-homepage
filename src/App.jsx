@@ -1,44 +1,23 @@
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+import useSmoothScroll from './hooks/useSmoothScroll'
 import Hero from './components/Hero'
 import Features from './components/Features'
-import SampleOutput from './components/SampleOutput'
-import Demos from './components/Demos'
-import Commands from './components/Commands'
 import Install from './components/Install'
-import Quote from './components/Quote'
+import Commands from './components/Commands'
 import Footer from './components/Footer'
+import SampleOutput from './components/SampleOutput'
+import DocumentationLinks from './components/DocumentationLinks'
 
-function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-      smoothWheel: true
-    })
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-
-    return () => lenis.destroy()
-  }, [])
-
-  return (
-    <>
-      <Hero />
+export default function App() {
+  useSmoothScroll()
+  return <>
+    <Hero />
+    <main id="main-content" tabIndex={-1}>
       <Features />
-      <SampleOutput />
-      <Demos />
-      <Commands />
-      <Quote />
       <Install />
-      <Footer />
-    </>
-  )
+      <Commands />
+      <SampleOutput />
+      <DocumentationLinks product="TR-300" links={[{"href":"/docs/tr300/examples","title":"Reporting examples","description":"Save a report for support and understand what it contains."},{"href":"/docs/tr300/shell-integration","title":"Terminal startup","description":"Set up or remove the optional quick startup summary."},{"href":"/docs/tr300/advanced","title":"Automation and JSON","description":"Use structured output in scripts and workflows."}]} />
+    </main>
+    <Footer />
+  </>
 }
-
-export default App

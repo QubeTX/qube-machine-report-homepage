@@ -7,26 +7,27 @@ sidebar:
 
 The recommended installer adds the terminal monitor and desktop app together. You can use either independently. You do not need to run `sd300 install` after the installation command below.
 
-The recommended commands download ready-to-run software. You do not need Rust or a compiler. Online commands and download links install the latest release; the [offline bundle](#offline-installation) contains fixed versions. These instructions were checked against SD-300 4.1.0; see [source versions](/sources).
+No Rust toolchain or compiler is needed. Online downloads track the latest release; the [offline bundle](#offline-installation) is a fixed snapshot. This guide was checked against SD-300 4.1.0; see [source versions](/sources).
 
 ## Windows
 
-Run in a normal PowerShell window:
+1. Open a normal PowerShell window.
+2. Paste and run the installation command:
 
-```powershell
-irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 | iex
-```
+   ```powershell
+   irm https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.ps1 | iex
+   ```
 
-Open a new terminal afterward and check `sd300 --version`.
+3. Open a new terminal afterward and check `sd300 --version`.
 
 ### Download an installer
 
-Choose one installer. **Global** installs for everyone who uses the computer and requires administrator approval. **Corporate** installs for your account without administrator approval. If the tool is already installed, keep the same format and edition unless you intend to change them.
+Choose the scope first: your account or all users. EXE opens a setup wizard; MSI also supports Windows Installer deployment. Keep the existing format and edition when updating unless you intend to change them.
 
-| Edition | Windows Installer | Setup wizard |
+| Install for | MSI | EXE |
 | --- | --- | --- |
-| Global | [MSI](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-global.msi) | [EXE](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-global.exe) |
-| Corporate | [MSI](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-corporate.msi) | [EXE](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-corporate.exe) |
+| All users — Global (admin) | [MSI](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-global.msi) | [EXE](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-global.exe) |
+| Your account — Corporate | [MSI](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-corporate.msi) | [EXE](https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-windows-x64-corporate.exe) |
 
 Double-click the chosen file and follow its prompts. These Windows packages are x64; Windows ARM64 is not included. If Windows or organization policy blocks installation, keep the error message, check the download source and publisher, and follow your administrator's guidance.
 
@@ -40,13 +41,14 @@ For a portable desktop app, extract [sd300-gui-windows-x86_64.zip](https://githu
 
 ## macOS
 
-Run in Terminal:
+1. Open a normal terminal.
+2. Paste and run the installation command:
 
-```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh | sh
-```
+   ```sh
+   curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh | sh
+   ```
 
-Open a new Terminal afterward and check `sd300 --version`.
+3. Open a new Terminal afterward and check `sd300 --version`.
 
 ### Apple Installer
 
@@ -65,13 +67,14 @@ Extract with `tar -xf <filename>.tar.xz`, open the extracted folder, and run `./
 
 ## Linux
 
-Run in a terminal:
+1. Open a normal terminal.
+2. Paste and run the installation command:
 
-```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh | sh
-```
+   ```sh
+   curl --proto '=https' --tlsv1.2 -LsSf https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download/sd300-cli-installer.sh | sh
+   ```
 
-Open a new terminal afterward and check `sd300 --version`.
+3. Open a new terminal afterward and check `sd300 --version`.
 
 ### Portable Linux copy
 
@@ -154,11 +157,11 @@ To update a disconnected computer, use the included installer that matches its e
 
 ## Updates and repairs
 
+The terminal tool and desktop app update together. Updates need internet. When the existing installation can be verified, the updater keeps its format, edition, account or all-user setting, and location. For example, an MSI installation stays MSI. If installation records conflict or a security policy blocks the update, it keeps the working installation and explains how to continue manually.
+
 ```sh
 sd300 update
 ```
-
-The terminal tool and desktop app update together. Updates need internet. When the existing installation can be verified, the updater keeps its format, edition, account or all-user setting, and location. For example, an MSI installation stays MSI. If installation records conflict or a security policy blocks the update, it keeps the working installation and explains how to continue manually.
 
 Running a different official installer yourself requests a new installation choice, including a reinstall or an older version. The change proceeds only when the existing installation is clear and the switch is supported. Conflicting installations or a change between your account and all users may need manual resolution. Keep installation records intact and follow the reported guidance.
 

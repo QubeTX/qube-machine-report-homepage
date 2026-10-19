@@ -41,7 +41,7 @@ export default function ND300SampleOutput() {
 
   return (
     <section style={{
-      padding: '6rem 2rem',
+      padding: 'clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem)',
       borderBottom: '1px solid #222'
     }}>
       <div style={{
@@ -53,7 +53,6 @@ export default function ND300SampleOutput() {
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           textTransform: 'uppercase',
           marginBottom: '3rem',
-          transform: 'scaleX(1.1)',
           textAlign: 'center',
           transformOrigin: 'center'
         }}>
@@ -70,7 +69,7 @@ export default function ND300SampleOutput() {
             left: '10px',
             background: 'var(--bg-void)',
             padding: '0 10px',
-            fontSize: '0.7rem',
+            fontSize: '0.875rem',
             color: 'var(--fg-dim)',
             fontFamily: 'var(--font-mono)',
             zIndex: 1
@@ -78,17 +77,17 @@ export default function ND300SampleOutput() {
             SAMPLE OUTPUT // ND-300
           </span>
 
-          <div style={{
+          <div tabIndex={0} role="region" aria-label="Sample terminal output; scroll horizontally to read" style={{
             background: '#000',
             border: '1px solid #333',
             borderRadius: '4px',
-            padding: '2rem',
+            padding: '1.5rem',
             overflowX: 'auto',
             WebkitOverflowScrolling: 'touch'
           }}>
             <pre style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: 'clamp(0.6rem, 1.5vw, 0.8rem)',
+              fontSize: '0.9375rem',
               lineHeight: '1.4',
               color: 'var(--fg-bone)',
               margin: 0,
@@ -103,12 +102,12 @@ export default function ND300SampleOutput() {
         <p style={{
           fontFamily: 'var(--font-mono)',
           letterSpacing: '-0.5px',
-          fontSize: '0.7rem',
+          fontSize: '0.875rem',
           marginTop: '2rem',
-          color: '#555',
+          color: 'var(--fg-dim)',
           textAlign: 'center'
         }}>
-          Unicode box-drawing output • Use --ascii for ASCII fallback • Use --json for machine-readable format
+          Illustrative report. Your checks and results depend on the connection and options you choose.
         </p>
       </div>
     </section>

@@ -1,89 +1,9 @@
-import { useState } from 'react'
-
-const GridCell = ({ label, title, description, noBorder }) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <div
-      style={{
-        padding: 'clamp(2rem, 5vw, 4rem)',
-        borderRight: noBorder ? 'none' : '1px solid #222',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        minHeight: '50vh',
-        transition: 'background 0.3s ease',
-        background: isHovered ? '#0f0f0f' : 'transparent'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div>
-        <span style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.8rem',
-          color: 'var(--fg-dim)',
-          marginBottom: '2rem',
-          border: '1px solid var(--fg-dim)',
-          display: 'inline-block',
-          padding: '2px 8px',
-          borderRadius: '4px'
-        }}>
-          {label}
-        </span>
-      </div>
-
-      <div>
-        <h2
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            transform: 'scaleX(1.1)',
-            marginBottom: '1.5rem',
-            textTransform: 'uppercase',
-            lineHeight: '1.1'
-          }}
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-        <p style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-          lineHeight: '1.3',
-          color: '#aaa'
-        }}>
-          {description}
-        </p>
-      </div>
-
-      <div />
-    </div>
-  )
-}
+import CapabilityGrid from './CapabilityGrid'
 
 export default function ND300Modes() {
-  return (
-    <section style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
-      borderBottom: '1px solid #222',
-      overflow: 'hidden'
-    }}>
-      <GridCell
-        label="01 // USER MODE"
-        title="Quick<br />Check"
-        description="See if your network is healthy in seconds. Color-coded results tell you exactly what is working, what needs attention, and what is broken — no expertise needed."
-      />
-      <GridCell
-        label="02 // TECHNICIAN MODE"
-        title="Deep<br />Diagnostics"
-        description="Everything in User Mode, plus 18 advanced checks — routing paths, active connections, firewall rules, connection quality, traffic counters, and security inspection for full network visibility."
-      />
-      <GridCell
-        label="03 // REPAIR TOOLS"
-        title="Network<br />Recovery"
-        description="Fix common network problems without guesswork. Switch DNS providers with automatic rollback, run a diagnostic-driven repair that fixes only what failed, clear your DNS cache, and cleanly remove when done."
-        noBorder
-      />
-    </section>
-  )
+  return <CapabilityGrid items={[
+    { label: 'User mode', title: 'Check a connection', description: 'Start with eight core checks for your adapters, DNS, gateway, and internet connection. Skip the speed test when you only need connectivity checks.' },
+    { label: 'Technician mode', title: 'Trace the problem', description: 'Add 25 deeper checks for routing, Wi-Fi, firewalls, connection quality, and more. Results help narrow a problem; a warning alone does not prove its cause.' },
+    { label: 'Recovery tools', title: 'Repair with context', description: 'Inspect failed checks and proposed repairs before changing your network settings. DNS changes include rollback; managed networks may need their existing configuration.' },
+  ]} />
 }

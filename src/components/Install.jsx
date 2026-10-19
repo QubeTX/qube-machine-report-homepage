@@ -1,35 +1,23 @@
-import ProductInstall, { InstallDetails, InstallHeading, InstallNote } from './ProductInstall'
+import ProductInstall, { InstallNote } from './ProductInstall'
 import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function Install() {
   const version = useGitHubVersion('QubeTX/qube-machine-report', '4.4.0')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
-  const pathNote = "Behind the scenes the wrapper installs the prebuilt tr300 and report commands into ~/.cargo/bin (or %USERPROFILE%\\.cargo\\bin on Windows), records that managed CLI channel and exact path for future updates, then runs tr300 install to configure the optional tr300 --fast startup summary and retire any old TR-300-owned profile alias."
-  const reportNote = "Normal tr300 and report runs only print to the terminal — they do not create a log file. Save a Markdown copy manually with tr300 -r, tr300 --report, report -s, or report --save."
-  const installNote = 'Run tr300 update later to keep the proven install channel. Deliberately running this command or a different official installer makes that fresh method your new choice; ambiguous or blocked takeovers leave the working install intact and show the latest recovery link.'
 
-  const unixExplanation = "Fetches a small wrapper script from reports.qubetx.com that runs the official cargo-dist installer (downloads the prebuilt tr300 and report commands for macOS arm64/x64 or Linux x64 into ~/.cargo/bin), then runs tr300 install to configure a fast startup summary in your shell profile. No Rust toolchain is downloaded or built — both commands are already compiled."
 
   const platforms = {
     macos: {
       label: 'macOS',
       command: unixCommand,
-      explanation: unixExplanation,
-      updateCommand: 'tr300 update',
-      note: "Runs entirely in user scope — no sudo needed. For Apple Installer or managed deployment, use the signed, notarized universal PKG below; later CLI updates reopen that same PKG channel."
     },
     linux: {
       label: 'Linux',
       command: unixCommand,
-      explanation: unixExplanation,
-      updateCommand: 'tr300 update'
     },
     windows: {
       label: 'Windows',
       command: 'powershell -ExecutionPolicy ByPass -c "irm https://reports.qubetx.com/install.ps1 | iex"',
-      explanation: "Fetches a small wrapper script from reports.qubetx.com that internally runs the official cargo-dist installer (downloads the prebuilt tr300.exe and report.exe commands for x86_64 Windows into %USERPROFILE%\\.cargo\\bin), then runs tr300 install to configure a fast startup summary in your PowerShell profile. No Rust toolchain, no MSVC Build Tools — both commands are already compiled.",
-      updateCommand: 'tr300 update',
-      note: "Runs in user scope — no administrator PowerShell needed. For double-click or managed deployment, use one of the MSI/EXE installers below. If antivirus, Group Policy, or another endpoint rule blocks an update write or installer launch, TR-300 stops without overwriting the working binary and explains the manual installer path."
     }
   }
 
@@ -53,25 +41,18 @@ export default function Install() {
         }
       ]}
       macInstaller={{ asset: 'tr300-universal-apple-darwin.pkg', description: 'Signed and notarized universal PKG for Apple Silicon and Intel. Installs system-wide; later updates keep using the PKG.' }}
-    >
-      {(current) => (
-        <>
-          <InstallHeading>After installation</InstallHeading>
-          <InstallNote>Open a new terminal and run <code>tr300</code> or <code>report</code>. Both commands support every reporting option and install, update, and uninstall action. Optional shell integration shows a quick summary when a new terminal starts.</InstallNote>
-          <InstallHeading>Save a report when you need one</InstallHeading>
-          <InstallNote>{reportNote}</InstallNote>
-          <InstallHeading>Keep it up to date</InstallHeading>
-          <InstallNote>Run <code>{current.updateCommand}</code> or <code>report update</code>. Updates keep your existing installation method.</InstallNote>
-          <InstallDetails title="Setup details and permissions">
-            <InstallNote>{current.explanation}</InstallNote>
-            {current.note && <InstallNote>{current.note}</InstallNote>}
-            <InstallNote>{pathNote}</InstallNote>
-          </InstallDetails>
-          <InstallDetails title="Changing installation methods">
-            <InstallNote>{installNote}</InstallNote>
-          </InstallDetails>
-        </>
-      )}
-    </ProductInstall>
+
+      docs="/docs/tr300/installation"
+      installEffect="Installs tr300 and report, adds them to your command path, and configures an optional summary when your terminal opens."
+      firstRun={() => <>
+        <InstallNote>Open a new terminal and run <code>tr300</code> or <code>report</code>. Both names support the same reporting and maintenance commands.</InstallNote>
+        <InstallNote>Normal runs only print to the terminal. Review saved reports for identifying information before sharing. To save a Markdown report, run <code>tr300 -r</code> or <code>report -s</code>.</InstallNote>
+        <a href="/docs/tr300/examples">Try a reporting example →</a>
+      </>}
+      maintenance={() => <>
+        <InstallNote>Update with <code>tr300 update</code> or <code>report update</code>. Run <code>tr300 uninstall</code> to choose which profile or installation setup to remove.</InstallNote>
+        <InstallNote>If Windows security policy blocks an update, follow the matching manual-installer link in its diagnostic.</InstallNote>
+      </>}
+    />
   )
 }

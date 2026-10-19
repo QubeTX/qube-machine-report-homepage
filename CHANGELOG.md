@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.26.0] - 2026-10-18
+
+### Changed
+
+- Refine all four marketing pages around readable Makira body/UI typography, grouped hero actions, concise capability summaries, earlier installation, selected commands, and direct documentation links; retain Archivo Black, Michelangelus, Paper Mono, product artwork, and the canonical SHAUGHV footer.
+- Replace wrapping mobile navigation with a custom animated hamburger disclosure, morphing icon, staggered links, keyboard/outside-click dismissal, and reduced-motion behavior.
+- Split shared installation guidance into first-run and maintenance regions, with a consistent desktop/mobile reading order, visible platform choices, scope-first native download labels, and visible upgrade caveats instead of disclosures.
+- Rename the offline download hero to Offline toolkit and place snapshot versions, platform coverage, connectivity limits, and extraction guidance beside its download path.
+- Refine Blume typography, replace the narrow home chooser table with task summaries, add header links to the marketing site/offline downloads, and sequence per-tool setup instructions while preserving routes and reference detail.
+
+### Fixed
+
+- Correct ND-300's summary to the published 25 additional diagnostics and use SD-300 4.1.0 as the release fallback.
+- Improve text contrast, control sizing, main/navigation landmarks, native section links, and keyboard focus; respect live reduced-motion changes and cancel the smooth-scroll animation frame on unmount.
+
+### Removed
+
+- Remove obsolete marketing-only reference inventories and duplicated layouts; retain full reference coverage in the existing documentation.
+
 ## [1.25.1] - 2026-10-12
 
 ### Changed

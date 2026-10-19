@@ -1,8 +1,8 @@
-import ProductInstall, { InstallDetails, InstallHeading, InstallNote } from './ProductInstall'
+import ProductInstall, { InstallNote } from './ProductInstall'
 import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function SD300Install() {
-  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.0.1')
+  const version = useGitHubVersion('QubeTX/qube-system-diagnostics', '4.1.0')
   const releaseBase = 'https://github.com/QubeTX/qube-system-diagnostics/releases/latest/download'
   const unixCommand = `curl --proto '=https' --tlsv1.2 -LsSf ${releaseBase}/sd300-cli-installer.sh | sh`
   const platforms = {
@@ -49,26 +49,18 @@ export default function SD300Install() {
         }
       ]}
       macInstaller={{ asset: 'sd300-macos-universal.pkg', description: 'Signed and notarized universal PKG for Apple Silicon and Intel. Includes CLI/TUI and the desktop app in /Applications.' }}
-    >
-      {(current) => (
-        <>
-          <InstallHeading>After installation</InstallHeading>
-          <InstallNote><strong style={{ color: 'var(--fg-bone)' }}>Desktop app:</strong> {current.appLocation} Or run <code>sd300 gui</code>.</InstallNote>
-          <InstallNote><strong style={{ color: 'var(--fg-bone)' }}>Terminal:</strong> {current.terminalNote}</InstallNote>
-          <InstallHeading>Updates and removal</InstallHeading>
-          <InstallNote>Update with <code>sd300 update</code>; remove both with <code>sd300 uninstall</code>. Updates keep your installation method, edition and location. Both frontends run independently.</InstallNote>
-          <InstallDetails title="Upgrading from 3.x or Windows 4.0.0?">
-            <InstallNote>Moving from SD-300 3.x to 4? Run the current official installer in the same format you used before. Managed users can repeat the command on this page. Keep the same Global or Corporate MSI/EXE edition, or use the current PKG for a Mac package installation. The older updater can reject the new desktop app; you do not need to uninstall first.</InstallNote>
-            <InstallNote>SD-300 4.0.1 fixes the Windows automatic update check. On Windows 4.0.0, run your matching official installer once to get the fix, then use <code>sd300 update</code> normally. Your settings are preserved. <a href="https://github.com/QubeTX/qube-system-diagnostics/releases/latest" style={{ color: 'var(--accent-signal)' }}>Release notes and downloads</a>.</InstallNote>
-          </InstallDetails>
-          <InstallDetails title="Setup, removal and advanced options">
-            <InstallNote>{current.explanation}</InstallNote>
-            <InstallNote>Uninstall uses the recorded owner to remove SD-300 and its own settings, shortcuts and command-path entries. Shared Cargo and Rust tools are preserved.</InstallNote>
-            <InstallNote><code>cargo install tr300-tui</code> (SD300) installs the CLI/TUI only. It does not install the desktop app. Choose an official installer for the complete product.</InstallNote>
-            <InstallNote>Deliberately running a different official installer requests a change of method or edition, including a reinstall or downgrade. Setup completes the change only when ownership is clear and the transition is safe; otherwise it preserves the working installation and explains the problem.</InstallNote>
-          </InstallDetails>
-        </>
-      )}
-    </ProductInstall>
+
+      docs="/docs/sd300/installation"
+      installEffect="Installs the terminal tools and desktop app together, including an app shortcut and command-path setup."
+      firstRun={(current) => <>
+        <InstallNote><strong>Desktop app:</strong> {current.appLocation} You can also run <code>sd300 gui</code>.</InstallNote>
+        <InstallNote><strong>Terminal:</strong> {current.terminalNote}</InstallNote>
+        <a href="/docs/sd300/examples">Explore your system’s readings →</a>
+      </>}
+      maintenance={() => <>
+        <InstallNote>Update with <code>sd300 update</code>. Remove the app and terminal tools with <code>sd300 uninstall</code>; shared Cargo and Rust tooling stays installed.</InstallNote>
+        <InstallNote><strong>Upgrading from 3.x or Windows 4.0.0?</strong> Run the current official installer in your existing format and edition once. The older updater may reject the desktop component or miss the update. You do not need to uninstall first.</InstallNote>
+      </>}
+    />
   )
 }

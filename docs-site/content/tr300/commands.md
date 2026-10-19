@@ -18,13 +18,13 @@ Run `tr300` to read a report in the terminal. `report` is an equivalent command 
 | View structured data | `tr300 --json` | Prints JSON for scripts |
 | Check the installed version | `tr300 --version` | Prints the version number |
 
-For example, to save a named report:
+Reports may contain computer, user, and network information. Review saved output before sharing it. To save a named report:
 
 ```sh
 tr300 --title "Office workstation" --report
 ```
 
-The output gives the saved file's location. Review it before sharing: reports may contain computer, user, and network information.
+The output gives the saved file's location.
 
 ## Report options
 
