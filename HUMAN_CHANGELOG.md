@@ -8,6 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 21, 2026 — Both logos throughout the site
+
+**Added**
+
+- Put the SHAUGHV wordmark and Shaughnessy crest together in the documentation footer too, keeping the familiar identity visible in light and dark themes and on smaller screens.
+- Match supported frosted dropdowns to the site's pink theme so future selection controls fit the rest of the site.
+
 ## October 21, 2026 — A cursor in the site's pink
 
 **Added**

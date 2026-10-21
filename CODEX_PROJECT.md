@@ -155,6 +155,8 @@ reduced-motion alternative. Desktop links remain directly visible.
 
 The hosted SHAUGHV cursor uses the existing pink accent: `--accent-signal` in marketing `index.html` and `--blume-accent` in the documentation's `components/SiteCursor.astro` PageFooter slot. Keep one custom element per page and its CDN companion script; retain built-in motion, accessibility, and lifecycle cleanup. Resolve script updates through the live CDN catalog.
 
+Documentation uses `docs-site/components/SiteFooter.astro` for the same canonical wordmark/crest pair as marketing. Keep both logos, their relative proportions, configured footer links, and copyright; their masks follow the documentation's light/dark foreground color.
+
 ## Documentation and offline downloads
 
 The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired product URLs redirect home and must not be marketed or bundled. Retired installer wrapper URLs are non-mutating error tombstones, so old commands cannot accidentally execute SPA HTML.

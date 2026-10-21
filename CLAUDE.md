@@ -134,6 +134,7 @@ installer; never market this as bypassing antivirus or policy.
 
 ## Styling Conventions
 
+- Documentation uses `docs-site/components/SiteFooter.astro` for the same canonical wordmark/crest pair as marketing. Keep both logos, their relative proportions, configured footer links, and copyright; their masks follow the documentation's light/dark foreground color.
 - The hosted SHAUGHV cursor uses the existing pink accent: `--accent-signal` in marketing `index.html` and `--blume-accent` in the documentation's `components/SiteCursor.astro` PageFooter slot. Keep one custom element per page and its CDN companion script; retain built-in motion, accessibility, and lifecycle cleanup. Resolve script updates through the live CDN catalog.
 - **All component styles are inline** (`style={{}}` objects). No CSS modules, no styled-components.
 - **Hover states** use `useState` + `onMouseEnter`/`onMouseLeave` — not CSS `:hover`.

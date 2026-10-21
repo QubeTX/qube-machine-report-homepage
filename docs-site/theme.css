@@ -26,6 +26,61 @@
   --blume-font-display: 'Makira', system-ui, sans-serif;
   --blume-font-mono: 'Paper Mono Variable', ui-monospace, monospace;
   --blume-content-width: 46rem;
+  --dropdown-accent: var(--blume-accent);
+  --dropdown-foreground: var(--blume-foreground);
+  --dropdown-surface: var(--blume-background);
+}
+
+.docs-site-footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: 2rem clamp(1rem, 3vw, 2rem);
+  border-top: 1px solid var(--blume-border);
+  color: var(--blume-foreground);
+}
+.docs-footer-brand {
+  display: grid;
+  grid-template-columns: 104px 80px;
+  align-items: center;
+  gap: 24px;
+  width: fit-content;
+  color: inherit;
+}
+/* Match the marketing footer's framing of the standalone square wordmark. */
+.docs-footer-wordmark {
+  display: block;
+  width: 104px;
+  height: 104px;
+  background: currentColor;
+  mask: url('https://cdn.shaughv.com/brand/shaughv/logos/SHAUGHV-Official.svg') center / contain no-repeat;
+}
+.docs-footer-crest {
+  display: block;
+  width: 80px;
+  height: 100px;
+  background: currentColor;
+  mask: url('https://cdn.shaughv.com/brand/crests/Shaughnessy-Crest-Footer.svg') center / contain no-repeat;
+}
+.docs-site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem 1.5rem;
+}
+.docs-site-footer nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.875rem;
+  color: var(--blume-muted-foreground);
+}
+.docs-site-footer nav a:hover { color: var(--blume-foreground); }
+.docs-site-footer p { grid-column: 1 / -1; font-size: 0.875rem; color: var(--blume-muted-foreground); }
+@media (max-width: 640px) {
+  .docs-site-footer { grid-template-columns: minmax(0, 1fr); }
+  .docs-site-footer nav { justify-content: flex-start; }
 }
 
 /* Use the framework's content column, navigation, and responsive table wrappers. */

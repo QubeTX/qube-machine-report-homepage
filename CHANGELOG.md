@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.27.1] - 2026-10-21
+
+### Added
+
+- Add the canonical SHAUGHV wordmark and footer crest to the Blume site footer, retaining its configured resource links and copyright, with proportional masks that follow both documentation themes and mobile layouts.
+- Map the CDN dropdown color tokens to the marketing and documentation themes so any supported select controls inherit the site's pink accent.
+
 ## [1.27.0] - 2026-10-21
 
 ### Added

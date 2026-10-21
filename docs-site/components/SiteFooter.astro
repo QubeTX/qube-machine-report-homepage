@@ -1,0 +1,23 @@
+---
+import { withBase } from 'blume/components/islands/base-path.ts'
+
+interface Props {
+  footer?: {
+    copyright?: string
+    links?: { label: string; href: string }[]
+  }
+}
+
+const { footer } = Astro.props
+---
+
+<footer class="docs-site-footer" aria-label="QUBETX documentation footer" data-blume-footer>
+  <a class="docs-footer-brand" href="https://shaughv.com" aria-label="SHAUGHV — Emmett Shaughnessy's portfolio">
+    <span class="docs-footer-wordmark" role="img" aria-label="SHAUGHV"></span>
+    <span class="docs-footer-crest" role="img" aria-label="Shaughnessy family crest — Fortis et stabilis"></span>
+  </a>
+  <nav aria-label="Documentation footer resources">
+    {(footer?.links ?? []).map(link => <a href={withBase(link.href)}>{link.label}</a>)}
+  </nav>
+  <p>{footer?.copyright}</p>
+</footer>

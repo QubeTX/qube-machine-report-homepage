@@ -3,6 +3,9 @@
   --fg-bone: #dcdcdc;
   --fg-dim: #999999;
   --accent-signal: #ff00d4;
+  --dropdown-accent: var(--accent-signal);
+  --dropdown-foreground: var(--fg-bone);
+  --dropdown-surface: var(--bg-void);
   --border-width: 1.5px;
   --font-display: 'Archivo Black', sans-serif;
   --font-serif: 'Michelangelus', serif;
