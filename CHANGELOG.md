@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.27.0] - 2026-10-21
+
+### Added
+
+- Add the canonical CDN-hosted SHAUGHV cursor to all marketing and documentation pages, using each surface's existing `#ff00d4` accent token. Retain shared spring motion, adaptive blending, interactive outlines, touch and reduced-motion behavior, and native fallback when the CDN is unavailable.
+- Load the companion dropdown enhancement and use the cursor custom element's cleanup on documentation page transitions.
+
 ## [1.26.0] - 2026-10-18
 
 ### Changed

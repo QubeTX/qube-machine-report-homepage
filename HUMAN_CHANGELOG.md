@@ -8,6 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 21, 2026 — A cursor in the site's pink
+
+**Added**
+
+- Add a pink cursor across the site and documentation that smoothly follows the mouse and outlines links and buttons, carrying the site's theme through everyday interactions.
+- Keep touch controls, keyboard navigation, and reduced-motion preferences supported, with the normal pointer available if the effect cannot load.
+
 ## October 18, 2026 — Clearer paths from choosing to using a tool
 
 **Improved**
