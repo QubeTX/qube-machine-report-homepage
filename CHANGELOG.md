@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.0] - 2026-10-23
+
+### Changed
+
+- Restore the original oversized product-title direction on a deeper black canvas, preserving canonical fonts, marks, cursor, installer contracts, and offline snapshot versions.
+- Restore the pre-redesign body progression: purpose, sample output or screenshots, practical capabilities and common commands, then installation. Use 1120px body frames, 960px command/key references, compact 32–48px headings, and separate desktop/mobile spacing without changing the accepted hero.
+- Upgrade marketing to stable React 19.3.1 and add native React view transitions for product routes, shared titles, OS/screenshot selection, and copy feedback; preserve native link behavior, browser history, scroll restoration, focus, and reduced-motion alternatives.
+- Load marketing pages on demand and deduplicate release API calls across each product's hero, installer, and footer with a bounded cache and fallback behavior.
+- Carry the deep-black palette and stronger title hierarchy into Blume while retaining its light theme, navigation, search, and independent runtime.
+
+### Added
+
+- Add individual copy controls to the visible command examples with confirmation and clipboard-failure guidance.
+- Restore concise TR-300 workflows, grouped ND-300 diagnostic coverage with eight core plus 25 deeper checks, and SD-300 monitoring sections, essential keyboard controls, and platform limits. Check summaries against the documented published source revisions and retain links to the complete references.
+
 ## [1.27.1] - 2026-10-21
 
 ### Added

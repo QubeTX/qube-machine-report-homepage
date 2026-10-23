@@ -29,9 +29,9 @@ The canceled operating-system product page and its marketing copy have been remo
 
 ## Architecture
 
-**Stack:** React 18 + Vite (plain JavaScript, no TypeScript). No state management library, no React Router.
+**Stack:** React 19.3 + Vite (plain JavaScript, no TypeScript). No state management library, no React Router.
 
-**Routing:** Custom pathname-based routing in `src/main.jsx`. Each route maps to a top-level `*App.jsx` component:
+**Routing:** Lazy pathname-based routing in `src/components/MarketingRouter.jsx`, mounted by `src/main.jsx`. Each route maps to a top-level `*App.jsx` component:
 
 | Route | Entry Component |
 |-------|----------------|
@@ -42,11 +42,11 @@ The canceled operating-system product page and its marketing copy have been remo
 | `/docs` and descendants | Static Blume documentation (`docs-site/`) |
 | `/install-guide` | Redirect to `/docs#choose-a-tool` |
 
-To add a new route: import the new App component in `main.jsx`, add a ternary branch to the `Page` const, and add an explicit marketing-route rewrite to `vercel.json`.
+To add a new route: add its dynamic import to the loaders map in `MarketingRouter.jsx` and add an explicit marketing-route rewrite to `vercel.json`. Only known same-origin marketing links use client navigation. Preserve native modified clicks, documentation navigation, history, fragment links, scroll restoration, and heading focus.
 
 **Components:** All in `src/components/`. Prefixed by product (`SD300*`, `ND300*`, `Executables*`). Unprefixed components belong to the TR-300 (root) page. `ProductNav.jsx` is the shared nav — a module-level `products` array of `{ label, path }`, rendered inside each page's `*Hero.jsx`. All page-specific `*Footer.jsx` components use `SiteFooter.jsx` for the shared SHAUGHV wordmark/crest lockup and product/resource navigation. Page wrappers retain their own version badges, repository, status, and attribution. Update shared footer links in `SiteFooter.jsx`. Brand assets load from the canonical CDN and retain their natural proportions; footer typography uses the existing site tokens.
 
-**Hooks:** `src/hooks/useGitHubVersion.js` (generic — fetches latest release tag from any GitHub repo).
+**Hooks:** `src/hooks/useGitHubVersion.js` shares in-flight and completed release requests per repository for five minutes; failed requests retain the provided fallback. `useMediaQuery.js` subscribes to responsive media changes.
 
 **Non-shipped files:** `reference/` holds working snapshots (`main_version.js`, `alternate-version.js`, `tr300_documentation.md`), not live code — don't import from it or mistake it for the running app.
 
@@ -146,7 +146,7 @@ installer; never market this as bypassing antivirus or policy.
 
 | Variable | Value | Usage |
 |----------|-------|-------|
-| `--bg-void` | `#0a0a0a` | Page background |
+| `--bg-void` | `#050505` | Page background |
 | `--fg-bone` | `#dcdcdc` | Primary text |
 | `--fg-dim` | `#999999` | Secondary/muted text |
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
@@ -181,7 +181,7 @@ Verified current location on the Windows machine: `C:\Users\hey\git\<repo>` (i.e
 
 ## Key Libraries
 
-- **framer-motion** — entrance animations (hero sections only)
+- **framer-motion** — initial hero entrances and mobile navigation micro-interactions
 - **lenis** — smooth scrolling with custom easing (initialized in each App component)
 
 ## Agent docs (keep in sync)
@@ -228,7 +228,7 @@ reduced-motion alternative. Desktop links remain directly visible.
 
 The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired product URLs redirect home and must not be marketed or bundled. Retired installer wrapper URLs are non-mutating error tombstones, so old commands cannot accidentally execute SPA HTML.
 
-`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 18 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
+`docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 19.3 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
 Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Makira and code uses Paper Mono, all from the canonical CDN. Because Blume appends theme.css after generated CSS, use remote canonical font-face URLs there rather than late CSS imports. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
@@ -237,3 +237,32 @@ Each tool follows Overview, Installation, Commands, Basic use cases, Advanced us
 Check commands and claims against published source tags and CLI help, and record the exact versions in `/docs/sources`. The October 11, 2026 snapshot covers TR-300 4.4.0, ND-300 4.0.1, and SD-300 4.1.0. Online installers remain versionless. Offline downloads point at `QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip`; the ZIP is a curated, checksummed snapshot containing matching docs and a local start page. Keep the displayed bundle versions pinned to its manifest rather than live product API results. Native installation and hardware acceptance remain distinct from checksum/help/build verification.
 
 Installation documentation belongs inside each tool at `/docs/tr300/installation`, `/docs/nd300/installation`, and `/docs/sd300/installation`. Keep platform setup, offline instructions, updates, and removal with that tool; do not add a standalone Installation navigation group. Legacy shared installation URLs redirect to the documentation tool chooser.
+
+## Statement typography and motion
+
+The marketing surface uses a deep-black canvas, oversized Archivo Black product
+names, serif introductions, and open sections separated by fine rules. Keep the
+practical copy and installation choices visible. `ChoiceButton.jsx` shares the
+active platform/screenshot indicator; `CopyCommand.jsx` provides copy feedback
+and a selectable-text fallback without executing commands. `SampleReport.jsx`
+keeps illustrative terminal output readable and horizontally scrollable.
+
+
+Product bodies follow the pre-redesign progression: introduce the tool, show its
+output or interface, explain practical capabilities and common controls, then
+install. Keep the accepted hero independent of body layout changes. `BodySection.jsx`
+sets a 1120px content width, 32–48px headings, and 64px desktop / 48px mobile
+vertical padding through body-only tokens. Command and keyboard references use
+960px containers. `DetailRows.jsx`, `ReferenceTable.jsx`, and `GuideLink.jsx`
+provide compact factual sections and direct documentation links; do not return
+to oversized side headings or hide practical choices in disclosures. Keep full
+reference material in docs and check restored summaries against published source
+revisions, not historical marketing copy.
+
+React 19.3 `ViewTransition` handles route crossfades, product-title continuity,
+platform content, screenshot changes, and copy feedback. Trigger these through
+React transitions; do not call `document.startViewTransition` manually. Product
+routes are lateral, so do not add directional slides. Initial hero entrances
+use Framer Motion; `pageNavigationContext.js` avoids replaying them over route
+snapshots. Respect reduced motion throughout. Blume retains its own Astro
+navigation and independent package/lockfile.

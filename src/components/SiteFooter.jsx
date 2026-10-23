@@ -34,7 +34,7 @@ function FooterLink({ href, children, current = false }) {
         display: 'flex', alignItems: 'center', minHeight: '44px',
         width: 'fit-content', maxWidth: '100%',
         color: highlighted || current ? 'var(--accent-signal)' : 'var(--fg-bone)',
-        textDecoration: highlighted ? 'underline' : 'none', textUnderlineOffset: '5px',
+        textDecoration: 'none', transform: highlighted ? 'translateX(4px)' : 'none', transition: 'transform 200ms var(--ease-out), color 200ms ease',
         fontSize: '0.875rem', lineHeight: 1.5,
       }}
     >

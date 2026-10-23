@@ -8,6 +8,21 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 23, 2026 — Familiar flow, useful detail
+
+**Improved**
+
+- Bring back the site's oversized product names on a deeper black background, with release information, installation, and documentation together in the header.
+- Restore the familiar page flow so you can understand the tool, see its output, and explore how to use it before reaching installation. More compact sections keep related information together.
+- Connect page changes, platform choices, and screenshots with smooth motion, and give buttons and links more responsive feedback. Reduced-motion preferences remain supported.
+- Load each tool's page when needed and reuse release lookups so the site avoids unnecessary work.
+- Give the documentation stronger headings and a matching dark palette while keeping its light theme and familiar reading controls.
+
+**Added**
+
+- Copy individual example commands directly, with clear feedback when copying succeeds or needs a manual selection.
+- Bring useful workflows, diagnostic summaries, monitoring controls, and platform information back onto the product pages, with direct links when you need the full explanation.
+
 ## October 21, 2026 — Both logos throughout the site
 
 **Added**

@@ -1,3 +1,5 @@
+import SampleReport from './SampleReport'
+
 export default function ND300SampleOutput() {
   // Unicode box-drawing table generator
   const W = 62
@@ -39,77 +41,5 @@ export default function ND300SampleOutput() {
     '  8 diagnostics completed — 7 OK, 1 Warn, 0 Fail',
   ].join('\n')
 
-  return (
-    <section style={{
-      padding: 'clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem)',
-      borderBottom: '1px solid #222'
-    }}>
-      <div style={{
-        maxWidth: '700px',
-        margin: '0 auto'
-      }}>
-        <h2 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3rem)',
-          textTransform: 'uppercase',
-          marginBottom: '3rem',
-          textAlign: 'center',
-          transformOrigin: 'center'
-        }}>
-          Sample Output
-        </h2>
-
-        <div style={{
-          position: 'relative',
-          width: '100%'
-        }}>
-          <span style={{
-            position: 'absolute',
-            top: '-10px',
-            left: '10px',
-            background: 'var(--bg-void)',
-            padding: '0 10px',
-            fontSize: '0.875rem',
-            color: 'var(--fg-dim)',
-            fontFamily: 'var(--font-mono)',
-            zIndex: 1
-          }}>
-            SAMPLE OUTPUT // ND-300
-          </span>
-
-          <div tabIndex={0} role="region" aria-label="Sample terminal output; scroll horizontally to read" style={{
-            background: '#000',
-            border: '1px solid #333',
-            borderRadius: '4px',
-            padding: '1.5rem',
-            overflowX: 'auto',
-            WebkitOverflowScrolling: 'touch'
-          }}>
-            <pre style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.9375rem',
-              lineHeight: '1.4',
-              color: 'var(--fg-bone)',
-              margin: 0,
-              whiteSpace: 'pre',
-              tabSize: 4
-            }}>
-              {sampleOutput}
-            </pre>
-          </div>
-        </div>
-
-        <p style={{
-          fontFamily: 'var(--font-mono)',
-          letterSpacing: '-0.5px',
-          fontSize: '0.875rem',
-          marginTop: '2rem',
-          color: 'var(--fg-dim)',
-          textAlign: 'center'
-        }}>
-          Illustrative report. Your checks and results depend on the connection and options you choose.
-        </p>
-      </div>
-    </section>
-  )
+  return <SampleReport product="ND-300" output={sampleOutput} note="Illustrative report. Your checks and results depend on the connection and options you choose." />
 }

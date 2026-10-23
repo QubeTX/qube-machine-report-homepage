@@ -6,6 +6,7 @@ import Commands from './components/Commands'
 import Footer from './components/Footer'
 import SampleOutput from './components/SampleOutput'
 import DocumentationLinks from './components/DocumentationLinks'
+import TR300Capabilities from './components/TR300Capabilities'
 
 export default function App() {
   useSmoothScroll()
@@ -13,9 +14,10 @@ export default function App() {
     <Hero />
     <main id="main-content" tabIndex={-1}>
       <Features />
-      <Install />
-      <Commands />
       <SampleOutput />
+      <TR300Capabilities />
+      <Commands />
+      <Install />
       <DocumentationLinks product="TR-300" links={[{"href":"/docs/tr300/examples","title":"Reporting examples","description":"Save a report for support and understand what it contains."},{"href":"/docs/tr300/shell-integration","title":"Terminal startup","description":"Set up or remove the optional quick startup summary."},{"href":"/docs/tr300/advanced","title":"Automation and JSON","description":"Use structured output in scripts and workflows."}]} />
     </main>
     <Footer />

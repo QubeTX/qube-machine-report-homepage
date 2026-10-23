@@ -24,12 +24,12 @@ function NavLink({ label, path, active }) {
   const [hovered, setHovered] = useState(false)
   return <a href={path} aria-current={active ? 'page' : undefined}
     onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-    style={{ display: 'inline-flex', alignItems: 'center', minHeight: '44px', padding: '0.5rem 0.25rem',
+    onFocus={() => setHovered(true)} onBlur={() => setHovered(false)}
+    style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', minHeight: '44px', padding: '0.5rem 0.25rem',
       fontFamily: 'var(--font-body)', fontSize: '0.9375rem', fontWeight: 600,
       color: active ? 'var(--accent-signal)' : 'var(--fg-bone)', textDecoration: 'none',
-      borderBottom: `2px solid ${active ? 'var(--accent-signal)' : hovered ? 'var(--fg-bone)' : 'transparent'}`,
-      transition: 'border-color 180ms ease',
-    }}>{label}</a>
+      transition: 'color 180ms ease',
+    }}>{label}<span aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '0.25rem', right: '0.25rem', height: '2px', background: active ? 'var(--accent-signal)' : 'var(--fg-bone)', transform: active || hovered ? 'scaleX(1)' : 'scaleX(0)', transformOrigin: hovered ? 'left' : 'right', transition: 'transform 280ms var(--ease-out)' }} /></a>
 }
 
 function MobileNavLink({ label, path, active, open, reduced, separated, firstRef, onNavigate }) {

@@ -1,9 +1,10 @@
 import CommandExamples from './CommandExamples'
 
 export default function SD300Commands() {
-  return <CommandExamples product="SD-300" docs="/docs/sd300/commands"
+  return <CommandExamples docs="/docs/sd300/commands"
     note="The app and terminal dashboard share their monitoring core and can run independently. Hardware, permissions, and drivers determine which readings are available."
     rows={[
+      { command: 'sd300', description: 'Choose a terminal monitoring mode when you open it.' },
       { command: 'sd300 gui', description: 'Open the desktop app or bring its window forward.' },
       { command: 'sd300 --user', description: 'Open the terminal monitor with plain-language status. Press q to quit.' },
       { command: 'sd300 --tech', description: 'Open detailed readings in the terminal.' },

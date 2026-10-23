@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { startTransition, useState, ViewTransition } from 'react'
+import ChoiceButton from './ChoiceButton'
 
 const views = [
   {
@@ -22,31 +23,25 @@ export default function SD300Screenshots() {
   const view = views[selected]
 
   return (
-    <div style={{ margin: '0 0 3rem', minWidth: 0 }}>
+    <div style={{ margin: '0 0 1.5rem', minWidth: 0 }}>
       <div role="group" aria-label="Choose an SD-300 screenshot" style={{
-        display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem'
+        display: 'flex', flexWrap: 'wrap', gap: '0.25rem', marginBottom: '1.5rem', padding: '0.25rem', border: '1px solid #444', width: 'fit-content'
       }}>
         {views.map((item, index) => (
-          <button key={item.label} type="button" aria-pressed={selected === index}
-            aria-controls="sd300-screenshot" onClick={() => setSelected(index)} style={{
-              fontFamily: 'var(--font-body)', fontSize: '0.875rem',
-              minHeight: '44px', padding: '0.7rem 1rem', borderRadius: '4px', cursor: 'pointer',
-              border: `1px solid ${selected === index ? 'var(--fg-bone)' : '#555'}`,
-              color: selected === index ? 'var(--bg-void)' : 'var(--fg-bone)',
-              background: selected === index ? 'var(--fg-bone)' : 'transparent'
-            }}>
+          <ChoiceButton key={item.label} active={selected === index} indicator="sd300-view"
+            controls="sd300-screenshot" onClick={() => startTransition(() => setSelected(index))}>
             {item.label}
-          </button>
+          </ChoiceButton>
         ))}
       </div>
-      <figure id="sd300-screenshot" style={{ margin: 0 }}>
+      <ViewTransition default="content-change"><figure id="sd300-screenshot" style={{ margin: 0 }}>
         <a href={view.image} target="_blank" rel="noreferrer"
           aria-label={`Open the ${view.label.toLowerCase()} screenshot at full size`} style={{
-            display: 'block', border: '1px solid #444', borderRadius: '6px',
+            display: 'block', border: '1px solid #444', borderRadius: '2px',
             overflow: 'hidden', background: '#101010'
           }}>
           <img key={view.image} src={view.image} alt={view.alt} width={view.width} height={view.height} loading="lazy" decoding="async"
-            style={{ width: '100%', height: 'auto', display: 'block' }} />
+            style={{ width: '100%', height: 'auto', aspectRatio: '1182 / 792', objectFit: 'contain', display: 'block' }} />
         </a>
         <figcaption style={{
           fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: '#aaa',
@@ -58,7 +53,7 @@ export default function SD300Screenshots() {
             View full size ↗
           </a>
         </figcaption>
-      </figure>
+      </figure></ViewTransition>
     </div>
   )
 }
