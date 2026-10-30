@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 30, 2026 — Familiar page titles
+
+**Improved**
+
+- Bring back the familiar heavy lettering for the large page titles so each tool keeps its recognizable appearance. The recently updated text throughout the rest of the site stays in place.
+
 ## October 30, 2026 — A shared Geist font family
 
 **Improved**

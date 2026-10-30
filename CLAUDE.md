@@ -150,7 +150,8 @@ installer; never market this as bypassing antivirus or policy.
 | `--fg-bone` | `#dcdcdc` | Primary text |
 | `--fg-dim` | `#999999` | Secondary/muted text |
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
-| `--font-display` | Geist Serif (canonical CDN stylesheet, regular/upright only) | Headings |
+| `--font-hero` | Archivo Black (Google Fonts, regular face) | Oversized page titles only |
+| `--font-display` | Geist Serif (canonical CDN stylesheet, regular/upright only) | Section headings |
 | `--font-serif` | Geist Serif (canonical CDN stylesheet, regular/upright only) | Short expressive introductions |
 | `--font-body` | Geist Mono (canonical CDN stylesheet) | Practical copy and interface text |
 | `--font-mono` | Geist Mono (canonical CDN stylesheet) | Commands, technical labels, data |
@@ -240,7 +241,7 @@ Installation documentation belongs inside each tool at `/docs/tr300/installation
 
 ## Statement typography and motion
 
-The marketing surface uses a deep-black canvas, oversized Geist Serif product
+The marketing surface uses a deep-black canvas, oversized Archivo Black product
 names, serif introductions, and open sections separated by fine rules. Keep the
 practical copy and installation choices visible. `ChoiceButton.jsx` shares the
 active platform/screenshot indicator; `CopyCommand.jsx` provides copy feedback

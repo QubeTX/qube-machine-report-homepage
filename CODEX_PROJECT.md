@@ -37,8 +37,8 @@ This is a React 19.3 + Vite marketing homepage for the QubeTX 300-series CLI too
 
 - Present each QubeTX tool with clear product positioning, commands, feature summaries, platform support, and installation instructions.
 - Keep install and command content aligned with the corresponding source repositories when source state is relevant.
-- Preserve the existing industrial terminal-inspired visual language: dark background, oversized serif headings and introductions, neon magenta accent, inline styles, and visible platform selectors.
-- Marketing typography uses CDN-hosted Geist Serif for display headings and introductions, and Geist Mono for practical copy, controls, commands, technical labels, and data. Use the manifest-provided stylesheets. Geist Serif supplies only weight 400 and normal style: do not synthesize bold or italic. Documentation uses Geist Sans (CSS family `Geist`) for prose and headings, with Geist Mono for code.
+- Preserve the existing industrial terminal-inspired visual language: dark background, oversized heavy page titles, serif section headings and introductions, neon magenta accent, inline styles, and visible platform selectors.
+- Marketing typography uses Archivo Black from Google Fonts for oversized page titles only (`--font-hero`), CDN-hosted Geist Serif for section headings and introductions, and Geist Mono for practical copy, controls, commands, technical labels, and data. Use the manifest-provided stylesheets for CDN fonts. Geist Serif supplies only weight 400 and normal style: do not synthesize bold or italic. Documentation uses Geist Sans (CSS family `Geist`) for prose and headings, with Geist Mono for code.
 
 ## Workspace File Tree
 
@@ -189,7 +189,7 @@ Installation documentation belongs inside each tool at `/docs/tr300/installation
 
 ## Statement typography and motion
 
-The marketing surface uses a deep-black canvas, oversized Geist Serif product
+The marketing surface uses a deep-black canvas, oversized Archivo Black product
 names, serif introductions, and open sections separated by fine rules. Keep the
 practical copy and installation choices visible. `ChoiceButton.jsx` shares the
 active platform/screenshot indicator; `CopyCommand.jsx` provides copy feedback

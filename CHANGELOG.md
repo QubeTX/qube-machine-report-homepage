@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.2] - 2026-10-30
+
+### Changed
+
+- Restore Archivo Black and its previous line height and tracking for the oversized titles on all four marketing pages. Isolate the title font in `--font-hero`; retain Geist Serif/Mono elsewhere in marketing and Geist Sans/Mono in documentation.
+- Keep typography guidance aligned across the three agent documents.
+
 ## [1.28.1] - 2026-10-30
 
 ### Changed

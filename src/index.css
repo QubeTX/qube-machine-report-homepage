@@ -7,6 +7,7 @@
   --dropdown-foreground: var(--fg-bone);
   --dropdown-surface: var(--bg-void);
   --border-width: 1.5px;
+  --font-hero: 'Archivo Black', sans-serif;
   --font-display: 'Geist Serif', Georgia, serif;
   --font-serif: 'Geist Serif', Georgia, serif;
   --font-body: 'Geist Mono', ui-monospace, monospace;
