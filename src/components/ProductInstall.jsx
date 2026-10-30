@@ -40,7 +40,7 @@ export default function ProductInstall({ product, version, summary, platforms, r
           <InstallHeading>First run</InstallHeading>
           {firstRun(current, selectedPlatform)}
         </div>
-        <div style={{ minWidth: 0, borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
+        <div style={{ minWidth: 0, marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
           <InstallHeading>Other ways to install</InstallHeading>
           {selectedPlatform === 'windows' && windowsInstallers && <>
             <InstallNote>EXE opens a setup wizard. MSI also supports Windows Installer deployment.</InstallNote>
@@ -60,7 +60,7 @@ export default function ProductInstall({ product, version, summary, platforms, r
           {selectedPlatform === 'linux' && <InstallNote>Need a portable archive or an offline installation? The installation guide explains supported systems and setup.</InstallNote>}
           <GuideLink href={docs} style={{ marginTop: '1rem' }}>Installation guide</GuideLink>
         </div>
-        <div style={{ minWidth: 0, borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
+        <div style={{ minWidth: 0, marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
           <InstallHeading>Updates and removal</InstallHeading>
           {maintenance(current, selectedPlatform)}
           <InstallNote>Updates preserve the verified installation method, edition, and location. Deliberately launching another official installer requests a change; unclear ownership or a blocked transition keeps the working installation intact.</InstallNote>

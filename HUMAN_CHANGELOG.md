@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 30, 2026 — More room between installation choices
+
+**Improved**
+
+- Add breathing room above the alternative installation and update sections so the choices feel less crowded.
+
 ## October 30, 2026 — Room for the whole introduction
 
 **Improved**

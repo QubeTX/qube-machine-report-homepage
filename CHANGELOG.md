@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.4] - 2026-10-30
+
+### Changed
+
+- Add 1rem of space above the native-installation and maintenance dividers in the shared product installation section, keeping both desktop columns aligned and giving stacked mobile sections more breathing room.
+
 ## [1.28.3] - 2026-10-30
 
 ### Changed
