@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 30, 2026 — Room for the whole introduction
+
+**Improved**
+
+- Balance the large title, artwork, introduction, and buttons to fit a desktop screen, with breathing room at the bottom. Smaller screens can still scroll when the content needs more space.
+
 ## October 30, 2026 — Familiar page titles
 
 **Improved**

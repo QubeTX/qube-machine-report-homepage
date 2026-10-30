@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.3] - 2026-10-30
+
+### Changed
+
+- Fit the shared marketing hero to the viewport with a full-width grid, a small-viewport-height minimum and fallback, height-aware title/art sizing and spacing, and explicit bottom padding. Retain readable text and allow natural growth on constrained screens.
+- Synchronize the shared hero layout guidance across the three agent documents.
+
 ## [1.28.2] - 2026-10-30
 
 ### Changed

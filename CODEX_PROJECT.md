@@ -161,6 +161,9 @@ disclosures or shrink text to fit a viewport.
 
 Product heroes share `ProductHero.jsx`: product art, a short serif introduction,
 installation and documentation actions together, and one current-release link.
+The shared hero fills the viewport width and uses a viewport-height grid with
+height-aware title/art sizing and gaps, retaining bottom padding on desktop.
+Allow natural growth when small screens or enlarged text need more room.
 `useSmoothScroll.js` preserves Lenis scrolling while respecting reduced motion
 and cancelling its animation frame on cleanup. Marketing pages have a skip link,
 a main landmark, and native anchors for section navigation. Shared foundations
