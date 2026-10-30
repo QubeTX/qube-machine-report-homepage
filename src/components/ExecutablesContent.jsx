@@ -11,7 +11,7 @@ export default function ExecutablesContent() {
           { name: 'ND-300', purpose: 'Investigate a connection', text: 'Network diagnostics and SpeedQX. Local checks work with available state; remote checks need a connection.', href: '/docs/nd300/installation#offline-installation' },
           { name: 'SD-300', purpose: 'Watch system activity', text: 'Terminal monitoring and the desktop app, with processes, hardware readings, and clear availability labels.', href: '/docs/sd300/installation#offline-installation' },
         ].map(tool => <article key={tool.name} style={{ borderTop: '1px solid #444', paddingTop: '1.5rem' }}>
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', letterSpacing: '-0.035em', marginBottom: '0.75rem' }}>{tool.name}</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '2rem', letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>{tool.name}</h3>
           <p style={{ fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{tool.purpose}</p>
           <p style={{ color: '#b8b8b8', lineHeight: 1.65 }}>{tool.text}</p>
           <GuideLink href={tool.href} style={{ marginTop: '1rem' }}>Install {tool.name} offline</GuideLink>

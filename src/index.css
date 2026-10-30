@@ -7,10 +7,10 @@
   --dropdown-foreground: var(--fg-bone);
   --dropdown-surface: var(--bg-void);
   --border-width: 1.5px;
-  --font-display: 'Archivo Black', sans-serif;
-  --font-serif: 'Michelangelus', serif;
-  --font-body: 'Makira', system-ui, sans-serif;
-  --font-mono: 'Paper Mono', ui-monospace, monospace;
+  --font-display: 'Geist Serif', Georgia, serif;
+  --font-serif: 'Geist Serif', Georgia, serif;
+  --font-body: 'Geist Mono', ui-monospace, monospace;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
   --gap-grid: 1px;
   --line: #2b2b2b;
   --page-gutter: clamp(1.25rem, 4vw, 4rem);

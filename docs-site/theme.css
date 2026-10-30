@@ -1,30 +1,8 @@
-/* Blume appends theme.css after its generated rules, so use canonical font
-   files here: CSS @imports would be invalid at that position. */
-@font-face {
-  font-family: 'Makira'; font-style: normal; font-weight: 400; font-display: swap;
-  src: url('https://cdn.shaughv.com/fonts/makira/woff2/Makira-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Makira'; font-style: normal; font-weight: 500; font-display: swap;
-  src: url('https://cdn.shaughv.com/fonts/makira/woff2/Makira-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Makira'; font-style: normal; font-weight: 600; font-display: swap;
-  src: url('https://cdn.shaughv.com/fonts/makira/woff2/Makira-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Makira'; font-style: normal; font-weight: 700; font-display: swap;
-  src: url('https://cdn.shaughv.com/fonts/makira/woff2/Makira-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Paper Mono Variable'; font-style: normal; font-weight: 100 800; font-display: swap;
-  src: url('https://cdn.shaughv.com/fonts/paper-mono/variable/PaperMono-Variable.woff2') format('woff2');
-}
-
+/* Canonical CDN stylesheets load through the SiteFonts PageHeader slot. */
 :root {
-  --blume-font-body: 'Makira', system-ui, sans-serif;
-  --blume-font-display: 'Makira', system-ui, sans-serif;
-  --blume-font-mono: 'Paper Mono Variable', ui-monospace, monospace;
+  --blume-font-body: 'Geist', system-ui, sans-serif;
+  --blume-font-display: 'Geist', system-ui, sans-serif;
+  --blume-font-mono: 'Geist Mono', ui-monospace, monospace;
   --blume-content-width: 46rem;
   --dropdown-accent: var(--blume-accent);
   --dropdown-foreground: var(--blume-foreground);

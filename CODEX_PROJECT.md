@@ -9,7 +9,7 @@ This is a React 19.3 + Vite marketing homepage for the QubeTX 300-series CLI too
 ## Current Status
 
 - The canceled operating-system page and marketing copy have been removed; its old URL permanently redirects home through `vercel.json`. Do not restore the retired page or links.
-- Shared monospace typography uses Paper Mono from the canonical CDN.
+- Shared monospace typography uses Geist Mono from the canonical CDN; documentation prose and headings use Geist Sans (CSS family `Geist`).
 
 - Product badges use the latest GitHub release when available. Documentation and offline downloads record their exact release snapshot separately.
 - **TR-300 retains its explicit-save and installation contracts.** The root page now lists
@@ -37,8 +37,8 @@ This is a React 19.3 + Vite marketing homepage for the QubeTX 300-series CLI too
 
 - Present each QubeTX tool with clear product positioning, commands, feature summaries, platform support, and installation instructions.
 - Keep install and command content aligned with the corresponding source repositories when source state is relevant.
-- Preserve the existing industrial terminal-inspired visual language: dark background, bold display headings, serif introductions, neon magenta accent, inline styles, and visible platform selectors.
-- Marketing typography uses Archivo Black for display headings, CDN-hosted Michelangelus for short serif introductions, Makira for practical copy and controls, and Paper Mono for commands, technical labels, and data. Load Michelangelus through its canonical CDN stylesheet; preserve its supplied regular and italic faces.
+- Preserve the existing industrial terminal-inspired visual language: dark background, oversized serif headings and introductions, neon magenta accent, inline styles, and visible platform selectors.
+- Marketing typography uses CDN-hosted Geist Serif for display headings and introductions, and Geist Mono for practical copy, controls, commands, technical labels, and data. Use the manifest-provided stylesheets. Geist Serif supplies only weight 400 and normal style: do not synthesize bold or italic. Documentation uses Geist Sans (CSS family `Geist`) for prose and headings, with Geist Mono for code.
 
 ## Workspace File Tree
 
@@ -179,7 +179,7 @@ The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired 
 
 `docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 19.3 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
-Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Makira and code uses Paper Mono, all from the canonical CDN. Because Blume appends theme.css after generated CSS, use remote canonical font-face URLs there rather than late CSS imports. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Geist Sans (CSS family `Geist`) and code uses Geist Mono, all from the canonical CDN. Load the manifest-provided stylesheets through `components/SiteFonts.astro` in the PageHeader slot; because Blume appends theme.css after generated CSS, do not put font imports there or recreate hosted font-face declarations. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
 Each tool follows Overview, Installation, Commands, Basic use cases, Advanced use cases, then focused guides. Keep introductions about purpose and reader tasks. Define necessary technical terms, explain the expected result of examples, and place relevant data-use, privacy, file-overwrite, and system-change details before the action. Keep exact commands and release limits accurate when simplifying prose.
 
@@ -189,7 +189,7 @@ Installation documentation belongs inside each tool at `/docs/tr300/installation
 
 ## Statement typography and motion
 
-The marketing surface uses a deep-black canvas, oversized Archivo Black product
+The marketing surface uses a deep-black canvas, oversized Geist Serif product
 names, serif introductions, and open sections separated by fine rules. Keep the
 practical copy and installation choices visible. `ChoiceButton.jsx` shares the
 active platform/screenshot indicator; `CopyCommand.jsx` provides copy feedback

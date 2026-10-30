@@ -8,6 +8,17 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 30, 2026 — A shared Geist font family
+
+**Improved**
+
+- Give product pages expressive headings and evenly spaced text, with spacing adjusted to suit the new lettering.
+- Use clear lettering for documentation and a matching style for commands so longer guides stay easy to read.
+
+**Behind the scenes**
+
+- Load fonts directly from the shared library and update the maintenance guidance so future changes keep the site consistent.
+
 ## October 23, 2026 — Familiar flow, useful detail
 
 **Improved**

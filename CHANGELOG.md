@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.1] - 2026-10-30
+
+### Changed
+
+- Replace marketing typography with CDN-hosted Geist Serif for headings and introductions, and Geist Mono for body copy, controls, commands, and data. Use the supplied regular/upright serif face and adjust product-title spacing for its proportions.
+- Use Geist Sans (CSS family `Geist`) and Geist Mono throughout Blume documentation. Load canonical family stylesheets through the PageHeader slot instead of duplicating font-face declarations in the appended theme.
+- Synchronize typography guidance across the three agent documents.
+
 ## [1.28.0] - 2026-10-23
 
 ### Changed

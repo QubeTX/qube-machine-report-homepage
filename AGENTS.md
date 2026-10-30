@@ -131,10 +131,10 @@ installer; never market this as bypassing antivirus or policy.
 | `--fg-bone` | `#dcdcdc` | Primary text |
 | `--fg-dim` | `#999999` | Secondary/muted text |
 | `--accent-signal` | `#ff00d4` | Neon magenta accent |
-| `--font-display` | Archivo Black | Headings |
-| `--font-serif` | Michelangelus (canonical CDN stylesheet) | Short expressive introductions |
-| `--font-body` | Makira (canonical CDN stylesheet) | Practical copy and interface text |
-| `--font-mono` | Paper Mono | Commands, technical labels, data |
+| `--font-display` | Geist Serif (canonical CDN stylesheet, regular/upright only) | Headings |
+| `--font-serif` | Geist Serif (canonical CDN stylesheet, regular/upright only) | Short expressive introductions |
+| `--font-body` | Geist Mono (canonical CDN stylesheet) | Practical copy and interface text |
+| `--font-mono` | Geist Mono (canonical CDN stylesheet) | Commands, technical labels, data |
 
 ## Source Repositories
 
@@ -211,7 +211,7 @@ The active products are TR-300, ND-300 (including SpeedQX), and SD-300. Retired 
 
 `docs-site/` is an independent Blume 2.2.3 package (Astro/React 19), isolated from the React 19.3 marketing app. Install both lockfiles with `npm ci` and `npm ci --prefix docs-site`; Node 22.19+ is required. `npm run build` builds Vite, builds Blume, then copies static documentation into `dist/docs`. Vercel rewrites only known marketing routes; never restore a catch-all that swallows documentation, search data, or assets. `/install-guide` permanently redirects to `/docs#choose-a-tool`.
 
-Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Makira and code uses Paper Mono, all from the canonical CDN. Because Blume appends theme.css after generated CSS, use remote canonical font-face URLs there rather than late CSS imports. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
+Documentation content is Markdown/MDX under `docs-site/content/`, with typed Blume config and folder metadata. `docs-site/theme.css` is the deliberate exception to marketing inline-style conventions; body and headings use Geist Sans (CSS family `Geist`) and code uses Geist Mono, all from the canonical CDN. Load the manifest-provided stylesheets through `components/SiteFonts.astro` in the PageHeader slot; because Blume appends theme.css after generated CSS, do not put font imports there or recreate hosted font-face declarations. Use `npm run validate --prefix docs-site` and rendered desktop/mobile navigation and search checks when editing docs. Follow the framework's base-path handling: internal content links start at the documentation root, and `deployment.base` adds `/docs`.
 
 Each tool follows Overview, Installation, Commands, Basic use cases, Advanced use cases, then focused guides. Keep introductions about purpose and reader tasks. Define necessary technical terms, explain the expected result of examples, and place relevant data-use, privacy, file-overwrite, and system-change details before the action. Keep exact commands and release limits accurate when simplifying prose.
 
@@ -221,7 +221,7 @@ Installation documentation belongs inside each tool at `/docs/tr300/installation
 
 ## Statement typography and motion
 
-The marketing surface uses a deep-black canvas, oversized Archivo Black product
+The marketing surface uses a deep-black canvas, oversized Geist Serif product
 names, serif introductions, and open sections separated by fine rules. Keep the
 practical copy and installation choices visible. `ChoiceButton.jsx` shares the
 active platform/screenshot indicator; `CopyCommand.jsx` provides copy feedback

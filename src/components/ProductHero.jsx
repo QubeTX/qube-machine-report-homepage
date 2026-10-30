@@ -31,14 +31,14 @@ export default function ProductHero({ product, category, description, artwork, v
             : <div style={{ display: 'flex', padding: '0 12px' }}>{[0, 1, 2].map(i => <span key={i} style={{ width: 'clamp(40px, 4vw, 60px)', height: 'clamp(80px, 8vw, 120px)', border: '6px solid var(--fg-bone)', borderRadius: '60px', margin: '0 -10px', mixBlendMode: 'exclusion' }} />)}</div>}
         </motion.div>
         <ViewTransition name="product-title" share="product-title">
-          <h1 tabIndex={-1} style={{ fontFamily: 'var(--font-display)', fontSize: download ? 'clamp(3.5rem, 12vw, 12rem)' : 'clamp(4rem, 22.2vw, 24rem)', lineHeight: 0.84, letterSpacing: '-0.065em', textTransform: 'uppercase', textAlign: 'center', width: '100%', outline: 'none' }}>
+          <h1 tabIndex={-1} style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: download ? 'clamp(3.5rem, 12vw, 12rem)' : 'clamp(4rem, 22.2vw, 24rem)', lineHeight: 0.95, letterSpacing: '-0.025em', textTransform: 'uppercase', textAlign: 'center', width: '100%', outline: 'none' }}>
             <motion.span initial={quietEntrance ? false : { opacity: 0, y: 36, scaleX: 0.97 }} animate={{ opacity: 1, y: 0, scaleX: download ? 1 : 1.06 }} transition={{ duration: 0.85, ease, delay: 0.08 }} style={{ display: 'block' }}>{product}</motion.span>
           </h1>
         </ViewTransition>
       </div>
       <motion.div initial={quietEntrance ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease, delay: 0.22 }}
         style={{ display: 'grid', gridTemplateColumns: mobile ? 'minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 1fr)', alignItems: 'start', gap: '2rem clamp(2rem, 6vw, 7rem)', padding: '1rem 0 clamp(2.5rem, 5vw, 5rem)' }}>
-        <div><p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.2vw, 2.8rem)', lineHeight: 1.18, maxWidth: '28ch' }}>{description}</p>
+        <div><p style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(1.7rem, 3.2vw, 2.8rem)', lineHeight: 1.18, maxWidth: '28ch' }}>{description}</p>
           {children && <div style={{ marginTop: '1.5rem', maxWidth: '60ch' }}>{children}</div>}
         </div>
         <div style={{ justifySelf: mobile ? 'start' : 'end', maxWidth: '100%' }}>
