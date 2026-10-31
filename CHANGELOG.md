@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.28.5] - 2026-10-30
+
+### Changed
+
+- Bottom-align the shared desktop hero action block with the introduction, including release and offline-snapshot details. Preserve mobile stacking and viewport padding, and remove trailing space below the offline hero's final paragraph so the visible columns align.
+
 ## [1.28.4] - 2026-10-30
 
 ### Changed

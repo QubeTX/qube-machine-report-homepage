@@ -48,7 +48,7 @@ export default function ProductHero({ product, category, description, artwork, v
         </ViewTransition>
       </div>
       <motion.div initial={quietEntrance ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease, delay: 0.22 }}
-        style={{ display: 'grid', gridTemplateColumns: mobile ? 'minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 1fr)', alignItems: 'start', gap: '2rem clamp(2rem, 6vw, 7rem)', paddingTop: '1rem' }}>
+        style={{ display: 'grid', gridTemplateColumns: mobile ? 'minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 1fr)', alignItems: mobile ? 'start' : 'end', gap: '2rem clamp(2rem, 6vw, 7rem)', paddingTop: '1rem' }}>
         <div><p style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: introductionSize, lineHeight: 1.18, maxWidth: '28ch' }}>{description}</p>
           {children && <div style={{ marginTop: '1.5rem', maxWidth: '60ch' }}>{children}</div>}
         </div>

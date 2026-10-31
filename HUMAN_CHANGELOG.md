@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## October 30, 2026 — Align the introduction and next steps
+
+**Improved**
+
+- Align the buttons and their supporting details with the bottom of the introduction on desktop, giving the page a more balanced finish. Keep the familiar reading order on smaller screens.
+
 ## October 30, 2026 — More room between installation choices
 
 **Improved**
