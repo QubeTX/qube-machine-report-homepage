@@ -8,7 +8,7 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
-## November 10, 2026 — Current network-tool download labels
+## November 11, 2026 — Current network-tool download labels
 
 **Improved**
 
