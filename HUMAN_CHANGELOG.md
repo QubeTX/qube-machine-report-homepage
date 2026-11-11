@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 10, 2026 — Current network-tool download labels
+
+**Improved**
+
+- Refresh the backup release labels on the network-tool page so they stay current when the live release lookup is unavailable.
+
 ## October 30, 2026 — Align the introduction and next steps
 
 **Improved**
