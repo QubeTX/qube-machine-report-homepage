@@ -2,7 +2,7 @@ import ProductInstall, { InstallNote } from './ProductInstall'
 import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function ND300Install() {
-  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '4.0.3')
+  const version = useGitHubVersion('QubeTX/qube-network-diagnostics', '4.0.2')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install-nd300.sh | sh"
 
 

@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- Refresh the ND-300 hero, installation and footer fallback versions to 4.0.3 for the security maintenance release. Keep versionless downloads and the separately pinned offline bundle unchanged.
+- Refresh the ND-300 hero, installation and footer fallback versions to 4.0.2 for the security maintenance release. Keep versionless downloads and the separately pinned offline bundle unchanged.
 
 ## [1.28.5] - 2026-10-30
 
