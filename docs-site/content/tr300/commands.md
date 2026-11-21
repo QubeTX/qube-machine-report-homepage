@@ -51,7 +51,8 @@ These actions change the installation or terminal startup settings. Run one acti
 
 | Command | What it changes |
 | --- | --- |
-| `tr300 install` | Sets up an optional short report when you open a terminal |
+| `tr300 --startup` | Preview the local or SSH startup view in your terminal |
+| `tr300 install` | Enable or repair the startup report for your account |
 | `tr300 update` | Downloads an update using the existing installation method when it can be verified |
 | `tr300 uninstall` | Offers startup cleanup or complete removal |
 
