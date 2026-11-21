@@ -5,7 +5,7 @@ sidebar:
   label: "Installation"
 ---
 
-Installation adds `tr300` and the equivalent `report` command. The recommended installer automatically enables a startup report for your account. Windows Global and the macOS PKG enable it for all accounts. Windows Corporate lets each user opt in with `tr300 install`.
+Installation adds `tr300` and the equivalent `report` command. The recommended installer automatically enables a startup report for your account. Windows Global and the macOS PKG include setup for other accounts. PowerShell startup follows the execution policy on that machine. Windows Corporate lets each user opt in with `tr300 install`.
 
 No Rust toolchain or compiler is needed. Online downloads track the latest release; the [offline bundle](#offline-installation) is a fixed snapshot. The startup instructions apply to TR-300 4.5.0; see [source versions](/sources).
 
@@ -149,7 +149,7 @@ tr300 update
 
 Running a different official installer yourself requests a new installation choice, including a reinstall or an older version. The change proceeds only when the existing installation is clear and the switch is supported. Conflicting installations or a change between your account and all users may need manual resolution. Keep installation records intact and follow the reported guidance.
 
-`tr300 install` sets up the optional short report shown when you open a terminal. The installed `report` command works without this setup. See [Shell startup](/tr300/shell-integration).
+The recommended installers enable the startup report automatically. Use `tr300 install` to re-enable it for your account or opt in with Windows Corporate. The installed `report` command works without this setup. See [Shell startup](/tr300/shell-integration).
 
 ## Uninstall
 
@@ -160,5 +160,7 @@ tr300 uninstall
 ```
 
 Read the prompts: TR-300 offers profile cleanup or Complete removal. `report uninstall` is equivalent.
+
+For a macOS system package, follow the version-specific instructions to remove its shell registrations, commands and receipt. [macOS package removal](https://github.com/QubeTX/qube-machine-report#macos-universal-pkg)
 
 For a portable copy, close it and delete its extracted folder. If another copy is also installed, check which one the terminal finds before running an uninstall command; see [Troubleshooting](/troubleshooting#wrong-version-or-duplicate-installation).

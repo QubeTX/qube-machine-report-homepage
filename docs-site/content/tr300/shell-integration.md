@@ -15,7 +15,9 @@ Run `tr300 --startup` to preview that view. Run `report` for the full table.
 
 ## Automatic setup
 
-The one-line installers configure startup for your account. Windows Global and the macOS PKG configure machine-wide startup for existing and future accounts. Windows Corporate, Cargo installations and portable copies use explicit opt-in. Windows supports Command Prompt, Windows PowerShell and PowerShell 7. macOS and Linux support Bash, Zsh, Fish and installed PowerShell.
+The one-line installers configure startup for your account. Windows Global and the macOS PKG include startup integration for existing and future accounts. Windows Corporate, Cargo installations and portable copies use explicit opt-in. Windows supports Command Prompt, Windows PowerShell and PowerShell 7. macOS and Linux support Bash, Zsh, Fish and installed PowerShell.
+
+Windows Global enables Command Prompt for every account. PowerShell startup follows the policy for each PowerShell host. On Windows clients with no policy configured, setup can select `RemoteSigned` for the signed-in account so its local profile loads. Explicit policies take precedence. For an SSH-only Windows account using PowerShell before its profile is configured, run `tr300 install` once if local profiles are permitted.
 
 Run `tr300 install` as your normal user to enable or repair startup. Open a fresh terminal afterward. A PowerShell host with a restrictive execution policy, or a shell launched with profiles disabled, can skip the report.
 
@@ -33,8 +35,8 @@ For a portable copy, keep the `report` and `tr300` files together.
 tr300 uninstall
 ```
 
-Choose **profile cleanup** to disable the startup report for your account while keeping the tool. Updates and repairs preserve this choice. Choose **Complete** only if you also want to remove the installed product.
+Choose **Remove auto-run only** to disable the startup report for your account while keeping the tool. Updates and repairs preserve this choice. Choose **Complete** only if you also want to remove the installed product.
 
 If organization policy blocks a startup profile, you can still run `tr300` or `report` manually where the executable itself is allowed.
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).

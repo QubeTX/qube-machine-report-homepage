@@ -41,13 +41,13 @@ Upstream cargo-dist asset names (used inside the wrappers):
 
 | Product | GitHub repo | Asset names | Installed commands |
 |---------|------------|------------|--------------------|
-| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300` |
+| TR-300 | `QubeTX/qube-machine-report` | `tr300-installer.{sh,ps1}` (canonical), `tr-300-installer.{sh,ps1}` (legacy alias) | `tr300`, `report` |
 | ND-300 | `QubeTX/qube-network-diagnostics` | `nd-300-installer.{sh,ps1}` (hyphenated) | `nd300`, `speedqx` |
 | SD-300 | `QubeTX/qube-system-diagnostics` | `sd300-cli-installer.{sh,ps1}`; legacy routers remain for old updaters | `sd300` (crates.io package is still `tr300-tui`) |
 
-Each wrapper verifies the installed binary exists after the cargo-dist call and exits nonzero with a clear message if not — failures don't silently pass through. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`. SD-300's complete proven-owner removal command is `sd300 uninstall` on every platform and install channel.
+The TR-300 release installer verifies the installed commands and configures startup. Its website wrapper propagates download and installation failures. Update commands stay the same: `tr300 update`, `sd300 update`, `nd300 update` / `speedqx update`. SD-300's complete proven-owner removal command is `sd300 uninstall` on every platform and install channel.
 
-**Install ownership:** TR-300's wrapper still chains its profile-configuration subcommand. SD-300's managed installer writes a receipt, `sd300 update` preserves that owner (including MSI, EXE, or PKG), and `sd300 install` deliberately moves a recognized installation to the preferred managed CLI channel. Raw `cargo install tr300-tui` remains an unmanaged advanced option.
+**Install ownership:** The TR-300 release installer configures shell startup and respects each account’s opt-out. The website wrapper delegates to that installer. SD-300's managed installer writes a receipt, `sd300 update` preserves that owner (including MSI, EXE, or PKG), and `sd300 install` deliberately moves a recognized installation to the preferred managed CLI channel. Raw `cargo install tr300-tui` remains an unmanaged advanced option.
 
 **TR-300 native installer options:** The versionless shell/PowerShell wrapper is
 the recommended install on macOS, Linux, and Windows. macOS also has one direct,

@@ -22,7 +22,7 @@ Available details vary by computer. A missing temperature or encryption value do
 
 ## Run your first report
 
-After [installing TR-300](/tr300/installation), open a terminal and run:
+After [installing TR-300](/tr300/installation), open a terminal. Most installations show a summary sized to the window. Interactive SSH logins show the remote machine and its connection details first. For the full report, run the following command.
 
 ```sh
 tr300
@@ -43,4 +43,4 @@ TR-300 prints a report each time you run it. For a continuously updating view, u
 - [Advanced use cases](/tr300/advanced): use reports in scripts and interpret missing details.
 - [Shell startup](/tr300/shell-integration): show a short report when you open a terminal.
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
