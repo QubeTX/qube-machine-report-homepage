@@ -48,7 +48,7 @@ To add a new route: add its dynamic import to the loaders map in `MarketingRoute
 
 **Hooks:** `src/hooks/useGitHubVersion.js` shares in-flight and completed release requests per repository for five minutes; failed requests retain the provided fallback. `useMediaQuery.js` subscribes to responsive media changes.
 
-TR-300 v4.4.0 installs `tr300` and `report` together. Both names accept all reporting options and install/update/uninstall actions. `tr300 install` configures optional shell startup output and retires the legacy TR-300-owned profile alias; the packaged `report` command does not depend on a profile.
+TR-300 v4.5.0 installs `tr300` and `report` together. Both names accept all reporting options and install/update/uninstall actions. `tr300 install` enables or repairs shell startup output and retires the legacy TR-300-owned profile alias; the packaged `report` command does not depend on a profile.
 
 ## Install Documentation Contract
 
@@ -99,7 +99,7 @@ cross-channel fallback.
 **SD-300 uninstall contract:** Keep `sd300 uninstall` in both the Commands table and every platform's install panel. It delegates to the proven managed, Cargo, MSI, EXE, or PKG owner and removes SD-300 payloads, receipts/registrations, markers, and product-owned PATH entries while preserving shared Cargo/Rust tooling.
 
 **TR-300 v4.2.2 accuracy/trust contract:** normal `tr300` / `report` runs and
-the installed `tr300 --fast` startup summary only print to the terminal. A
+the adaptive startup report only print to the terminal. A
 Markdown file is created only by `tr300 -r`, `tr300 --report`, `report -s`, or
 `report --save`. The current Apple Silicon and Intel archives are Developer ID
 signed and Apple notarized before GitHub hosts them. If endpoint policy blocks

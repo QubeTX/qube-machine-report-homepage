@@ -13,6 +13,7 @@ Run `tr300` to read a report in the terminal. `report` is an equivalent command 
 | --- | --- | --- |
 | Read a full report | `tr300` | Prints available system information; saves no file |
 | Run a quicker check | `tr300 --fast` | Skips slower information gathering; saves no file |
+| Preview terminal startup | `tr300 --startup` | Shows the view for the current terminal or SSH login |
 | Save a report | `tr300 --report` | Saves a full Markdown report in Downloads |
 | Name a report | `tr300 --title "Office workstation"` | Changes the report heading |
 | View structured data | `tr300 --json` | Prints JSON for scripts |
@@ -51,7 +52,7 @@ These actions change the installation or terminal startup settings. Run one acti
 
 | Command | What it changes |
 | --- | --- |
-| `tr300 install` | Sets up an optional short report when you open a terminal |
+| `tr300 install` | Enable or repair the startup report for your account |
 | `tr300 update` | Downloads an update using the existing installation method when it can be verified |
 | `tr300 uninstall` | Offers startup cleanup or complete removal |
 
@@ -59,4 +60,4 @@ See [Installation](/tr300/installation#updates-and-repairs) before changing an i
 
 Older forms `--install`, `--update`, and `--uninstall` remain supported. Do not combine them with another action. There is no `tr300 config` command.
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).

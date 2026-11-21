@@ -19,6 +19,8 @@ tr300 --json > machine-report.json
 
 Open `machine-report.json` to inspect the result. The documented release uses JSON format version 1, recorded in `schema_version`. A script should check this field before relying on the report's structure.
 
+Interactive SSH logins show the startup summary. Remote commands such as `ssh host tr300 --json` keep their output suitable for scripts.
+
 Keep missing values as unavailable. Treating a missing temperature or memory reading as zero would change its meaning. Retain the collection mode too: `--fast` skips information that a full report may include.
 
 To view the JSON without creating a file, run:
@@ -49,4 +51,4 @@ Keep `report` and `tr300` in the same extracted folder. The `report` executable 
 
 If `report` behaves differently from `tr300`, a shell alias or another installation may be taking precedence. See [Troubleshooting](/troubleshooting#wrong-version-or-duplicate-installation) before changing either copy.
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).

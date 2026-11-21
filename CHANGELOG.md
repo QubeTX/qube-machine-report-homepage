@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.0] - 2026-11-20
+
+- Update TR-300 install commands, version badges and the terminal startup guide for 4.5.0. The release installer now configures the account and preserves its startup preference.
+
 ## [1.28.6] - 2026-11-11
 
 ### Changed

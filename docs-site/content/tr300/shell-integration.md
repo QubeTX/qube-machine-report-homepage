@@ -5,21 +5,21 @@ sidebar:
   label: "Shell startup"
 ---
 
-TR-300 can show a short system report when you open a terminal. This is optional. The installed `tr300` and `report` commands work without it.
+TR-300 4.5 shows a fast report when you open an interactive terminal or log in over SSH. Ordinary commands, scripts and file transfers stay quiet.
 
-## Set up the startup report
+## What you see
 
-Run setup as your normal user. On macOS and Linux, do not add `sudo`; TR-300 refuses that setup because it needs your own terminal settings.
+A local session leads with hardware and utilization. SSH leads with the hostname, the server address you reached and the battery state, when available. In a tall terminal both can show more hardware, network and session details. Short windows drop detail to leave four rows for the prompt and shell messages. If the terminal cannot report its dimensions, TR-300 prints a short hostname line.
 
-On Windows, setup may change your account's PowerShell execution policy from Restricted to RemoteSigned so the startup file can run. It preserves an explicit AllSigned policy and follows organization policy. Removing the startup report does not undo an execution-policy change.
+Run `tr300 --startup` to preview that view. Run `report` for the full table.
 
-```sh
-tr300 install
-```
+## Automatic setup
 
-Follow the prompts, then open a new terminal. You should see a short report. It uses `tr300 --fast` and does not save a report file.
+The one-line installers configure startup for your account. Windows Global and the macOS PKG include startup integration for existing and future accounts. Windows Corporate, Cargo installations and portable copies use explicit opt-in. Windows supports Command Prompt, Windows PowerShell and PowerShell 7. macOS and Linux support Bash, Zsh, Fish and installed PowerShell.
 
-TR-300 adds its own block to your shell profile, the file that runs when your terminal starts. It avoids repeated output in nested shells and skips the report if the executable is missing.
+Windows Global enables Command Prompt for every account. PowerShell startup follows the policy for each PowerShell host. On Windows clients with no policy configured, setup can select `RemoteSigned` for the signed-in account so its local profile loads. Explicit policies take precedence. For an SSH-only Windows account using PowerShell before its profile is configured, run `tr300 install` once if local profiles are permitted.
+
+Run `tr300 install` as your normal user to enable or repair startup. Open a fresh terminal afterward. A PowerShell host with a restrictive execution policy, or a shell launched with profiles disabled, can skip the report.
 
 ## Keep using the report command
 
@@ -35,8 +35,8 @@ For a portable copy, keep the `report` and `tr300` files together.
 tr300 uninstall
 ```
 
-Choose **profile cleanup** to remove the startup report while keeping the tool. Choose **Complete** only if you also want to remove the installed product.
+Choose **Remove auto-run only** to disable the startup report for your account while keeping the tool. Updates and repairs preserve this choice. Choose **Complete** only if you also want to remove the installed product.
 
 If organization policy blocks a startup profile, you can still run `tr300` or `report` manually where the executable itself is allowed.
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).

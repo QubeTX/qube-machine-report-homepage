@@ -15,7 +15,7 @@ tr300
 
 The terminal shows your system information and available hardware readings. No report file is saved.
 
-For a shorter check that skips slower information gathering, run:
+To show the same summary you see when a terminal opens, run `tr300 --startup`. For a quicker collection with the regular report layout, run the following command.
 
 ```sh
 tr300 --fast
@@ -57,4 +57,4 @@ This uses simple text characters for borders and removes colored output. The rep
 
 For structured output that another program can read, see [Advanced use cases](/tr300/advanced).
 
-Checked against [TR-300 v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0).
+Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
