@@ -5,11 +5,11 @@ sidebar:
   label: Source versions
 ---
 
-These guides were checked on October 12, 2026 against published release documentation, source code, and command help. They describe the active TR-300, ND-300/SpeedQX, and SD-300 tools.
+The TR-300 guides were checked against the 4.5.0 release source and command help on November 21, 2026. The ND-300/SpeedQX and SD-300 guides were checked on October 12, 2026.
 
 | Tool | Documented release | Source commit |
 | --- | --- | --- |
-| TR-300 | [v4.4.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.4.0) | [`f49d50a25684`](https://github.com/QubeTX/qube-machine-report/tree/f49d50a256842ac6c677d1c743c553b3dd92717f) |
+| TR-300 | [v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0) | [`4409fbc4c71d`](https://github.com/QubeTX/qube-machine-report/tree/4409fbc4c71d16c877ca5f0cc3348bbf22c9594e) |
 | ND-300 | [v4.0.1](https://github.com/QubeTX/qube-network-diagnostics/releases/tag/v4.0.1) | [`d76af2b2e282`](https://github.com/QubeTX/qube-network-diagnostics/tree/d76af2b2e282440e2e28c31c8b05d5d8833f458f) |
 | SD-300 | [v4.1.0](https://github.com/QubeTX/qube-system-diagnostics/releases/tag/v4.1.0) | [`1d66a461b3e4`](https://github.com/QubeTX/qube-system-diagnostics/tree/1d66a461b3e499e067b6c15658b04a8cde89671d) |
 
