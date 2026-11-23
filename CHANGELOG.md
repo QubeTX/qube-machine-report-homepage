@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.2] - 2026-11-23
+
+### Changed
+
+- Replace the marketing router’s plain loading message with a static, route-specific hero skeleton. It shares the finished hero’s layout and artwork, keeps documentation accessible, and announces the destination to screen readers.
+
 ## [1.29.1] - 2026-11-22
 
 ### Changed

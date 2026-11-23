@@ -124,6 +124,7 @@ body {
 }
 
 /* Shared interaction and typography foundations. Component layouts stay inline. */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 button, input, select, textarea { font: inherit; }
 a { color: var(--fg-bone); text-underline-offset: 4px; }
 code, pre, kbd { font-family: var(--font-mono); }

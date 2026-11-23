@@ -1,5 +1,6 @@
-import { Component, lazy, startTransition, Suspense, useEffect, useLayoutEffect, useRef, useState, ViewTransition } from 'react'
+import { Component, lazy, startTransition, Suspense, useDeferredValue, useEffect, useLayoutEffect, useRef, useState, ViewTransition } from 'react'
 import PageNavigationContext from '../hooks/pageNavigationContext'
+import HeroSkeleton from './HeroSkeleton'
 
 const loaders = {
   '/': () => import('../App.jsx'),
@@ -36,6 +37,9 @@ class RouteError extends Component {
 
 export default function MarketingRouter() {
   const [route, setRoute] = useState(() => ({ path: pathFor(location.pathname), hash: location.hash, initial: true }))
+  // Commit the skeleton as the initial content so a fast import can reveal the hero
+  // without waiting for React's Suspense fallback throttle.
+  const visibleRoute = useDeferredValue(route, null)
   const currentEntry = useRef(null)
   useEffect(() => {
     const previousRestoration = history.scrollRestoration
@@ -72,11 +76,12 @@ export default function MarketingRouter() {
       history.scrollRestoration = previousRestoration
     }
   }, [])
+  const skeleton = <HeroSkeleton path={route.path} />
   return <RouteError>
-    <Suspense fallback={<ViewTransition enter="content-change"><main aria-busy="true" style={{ minHeight: '80vh', padding: 'var(--section-space) var(--page-gutter)' }}><p role="status">Loading QubeTX…</p><a href="/docs">Open documentation →</a></main></ViewTransition>}>
-      <ViewTransition key={route.path} name="marketing-page" default="none" share="page-change" enter="content-change">
-        <div><RouteContent route={route} /></div>
-      </ViewTransition>
+    <Suspense fallback={skeleton}>
+      {visibleRoute ? <ViewTransition key={visibleRoute.path} name="marketing-page" default="none" share="page-change" enter="content-change">
+        <div><RouteContent route={visibleRoute} /></div>
+      </ViewTransition> : skeleton}
     </Suspense>
   </RouteError>
 }

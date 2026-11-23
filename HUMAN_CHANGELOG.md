@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 23, 2026 — A steadier start
+
+**Improved**
+
+- Each tool page now shows an outline of its title and layout while it opens, so you can see where you’re headed even on a slow connection.
+
 ## November 22, 2026 — Terminal startup guide
 
 **Improved**
