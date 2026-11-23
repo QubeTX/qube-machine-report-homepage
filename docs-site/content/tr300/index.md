@@ -43,4 +43,4 @@ TR-300 prints a report each time you run it. For a continuously updating view, u
 - [Advanced use cases](/tr300/advanced): use reports in scripts and interpret missing details.
 - [Shell startup](/tr300/shell-integration): show a short report when you open a terminal.
 
-Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
+Checked against [TR-300 v4.5.1](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.1).

@@ -51,4 +51,4 @@ Keep `report` and `tr300` in the same extracted folder. The `report` executable 
 
 If `report` behaves differently from `tr300`, a shell alias or another installation may be taking precedence. See [Troubleshooting](/troubleshooting#wrong-version-or-duplicate-installation) before changing either copy.
 
-Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
+Checked against [TR-300 v4.5.1](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.1).

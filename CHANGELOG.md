@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.1] - 2026-11-22
+
+### Changed
+
+- Update the TR-300 release labels and documentation references to 4.5.1. The shell guide explains when the startup report draws section dividers and how it fits shorter windows.
+
 ## [1.29.0] - 2026-11-20
 
 - Update TR-300 install commands, version badges and the terminal startup guide for 4.5.0. The release installer now configures the account and preserves its startup preference.
