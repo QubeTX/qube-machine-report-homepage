@@ -1,6 +1,6 @@
 import { startTransition, useEffect, useRef, useState, ViewTransition } from 'react'
 
-export default function CopyCommand({ command, compact = false }) {
+export default function CopyCommand({ command, compact = false, primary = !compact }) {
   const [status, setStatus] = useState('idle')
   const [highlighted, setHighlighted] = useState(false)
   const timer = useRef()
@@ -20,9 +20,9 @@ export default function CopyCommand({ command, compact = false }) {
     onFocus={() => setHighlighted(true)} onBlur={() => setHighlighted(false)}
     style={{ display: 'inline-flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
       minHeight: '44px', minWidth: compact ? '90px' : '158px', padding: '0.6rem 0.9rem', borderRadius: '2px',
-      border: `1px solid ${compact ? highlighted ? 'var(--fg-bone)' : '#3b3b3b' : 'var(--accent-signal)'}`,
-      background: compact ? highlighted ? '#202020' : 'transparent' : 'var(--accent-signal)',
-      color: compact ? 'var(--fg-bone)' : 'var(--bg-void)', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+      border: `1px solid ${primary ? 'var(--accent-signal)' : highlighted ? 'var(--fg-bone)' : '#3b3b3b'}`,
+      background: primary ? 'var(--accent-signal)' : highlighted ? '#202020' : 'transparent',
+      color: primary ? 'var(--bg-void)' : 'var(--fg-bone)', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
       transition: 'background 180ms ease, border-color 180ms ease, transform 180ms ease', transform: highlighted ? 'translateY(-2px)' : 'none' }}>
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
       {status === 'copied' ? <path d="m4 10 4 4 8-9" /> : <><rect x="7" y="6" width="10" height="11" rx="1" /><path d="M12 3H3v10" /></>}

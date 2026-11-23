@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function ActionLink({ href, children, primary = false, label }) {
+export default function ActionLink({ href, children, primary = false, compact = false, label }) {
   const [highlighted, setHighlighted] = useState(false)
   const [pressed, setPressed] = useState(false)
   return <a href={href} aria-label={label}
@@ -8,8 +8,8 @@ export default function ActionLink({ href, children, primary = false, label }) {
     onFocus={() => setHighlighted(true)} onBlur={() => { setHighlighted(false); setPressed(false) }}
     onPointerDown={() => setPressed(true)} onPointerUp={() => setPressed(false)} onPointerCancel={() => setPressed(false)}
     style={{
-      position: 'relative', isolation: 'isolate', overflow: 'hidden', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: '52px',
-      padding: '0.85rem 1.2rem', borderRadius: '2px', fontFamily: 'var(--font-body)',
+      position: 'relative', isolation: 'isolate', overflow: 'hidden', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: compact ? '44px' : '52px',
+      padding: compact ? '0.375rem 0.625rem' : '0.85rem 1.2rem', borderRadius: '2px', fontFamily: 'var(--font-body)',
       fontSize: '1rem', fontWeight: 600, lineHeight: 1.4, textAlign: 'center',
       border: `1px solid ${primary ? 'var(--accent-signal)' : highlighted ? 'var(--fg-bone)' : '#555'}`,
       color: primary || highlighted ? 'var(--bg-void)' : 'var(--fg-bone)',

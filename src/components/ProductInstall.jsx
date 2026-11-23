@@ -1,72 +1,97 @@
 import { startTransition, ViewTransition } from 'react'
 import useInstallPlatform from '../hooks/useInstallPlatform'
+import useMediaQuery from '../hooks/useMediaQuery'
 import ActionLink from './ActionLink'
 import ChoiceButton from './ChoiceButton'
 import CopyCommand from './CopyCommand'
-import BodySection from './BodySection'
 import GuideLink from './GuideLink'
 
-const textStyle = { fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.65, color: '#b8b8b8' }
+const headingStyle = { color: 'var(--fg-bone)', fontSize: '1.125rem', lineHeight: 1.35, fontWeight: 600 }
+const panelStyle = { minWidth: 0, borderTop: '1px solid var(--line)', paddingTop: 'var(--install-gap)' }
 
-export const InstallNote = ({ children }) => <p style={{ margin: '0.5rem 0 1rem', maxWidth: '65ch' }}>{children}</p>
-export const InstallHeading = ({ children }) => <h3 style={{ color: 'var(--fg-bone)', fontSize: '1.25rem', fontWeight: 600, lineHeight: 1.4, marginBottom: '0.75rem' }}>{children}</h3>
-
-function InstallCommand({ command, platform }) {
-  return <div style={{ padding: '1.25rem', background: '#0c0c0c', border: '1px solid #444', borderRadius: '2px', marginTop: '1rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ color: 'var(--fg-dim)', fontFamily: 'var(--font-mono)', fontSize: '0.875rem' }}>{platform === 'windows' ? 'PowerShell' : 'Terminal'}</span>
-      <CopyCommand command={command} />
-    </div>
-    <code style={{ display: 'block', color: 'var(--fg-bone)', fontFamily: 'var(--font-mono)', fontSize: '0.9375rem', lineHeight: 1.7, overflowWrap: 'anywhere', userSelect: 'all' }}>{command}</code>
+function WindowsDownloads({ installers, releaseBase, shortLandscape }) {
+  // The floating back-to-top control occupies the lower-right corner on short phones.
+  return <div style={{ display: 'grid', gap: '0.25rem', paddingRight: shortLandscape ? '3.5rem' : undefined }}>
+    {installers.map(({ edition, exe, msi }) => <div key={edition} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', alignItems: 'center', gap: '0.5rem' }}>
+      <p><strong style={{ color: 'var(--fg-bone)' }}>{edition}</strong><br />
+        <span style={{ color: 'var(--fg-dim)', fontSize: '0.875rem' }}>{edition === 'Global' ? 'All users, admin' : 'User, no admin'}</span>
+      </p>
+      <div style={{ display: 'flex', gap: '0.375rem' }}>
+        <ActionLink compact href={`${releaseBase}/${exe}`} label={`Download ${edition} EXE`}>EXE</ActionLink>
+        <ActionLink compact href={`${releaseBase}/${msi}`} label={`Download ${edition} MSI`}>MSI</ActionLink>
+      </div>
+    </div>)}
   </div>
 }
 
-export default function ProductInstall({ product, version, summary, platforms, releaseBase, windowsInstallers, macInstaller, firstRun, maintenance, installEffect, docs }) {
+export default function ProductInstall({ product, version, platforms, releaseBase, windowsInstallers, macInstaller, firstRun, firstCommands, firstRunGuide, installEffect, shortEffect, maintenanceNote, docs }) {
   const [selectedPlatform, setSelectedPlatform] = useInstallPlatform()
+  const columns = useMediaQuery('(min-width: 640px), (min-width: 500px) and (orientation: landscape)')
+  const shortLandscape = useMediaQuery('(min-width: 500px) and (orientation: landscape) and (max-height: 360px)')
+  const detailed = useMediaQuery('(min-width: 1150px) and (min-height: 660px), (min-width: 1000px) and (min-height: 720px), (min-width: 760px) and (min-height: 940px)')
   const current = platforms[selectedPlatform]
-  return <BodySection id="install" title={<>Install <span style={{ whiteSpace: 'nowrap' }}>{product}</span></>} introduction={summary}>
-      <div role="group" aria-label="Choose your operating system" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem', marginBottom: '2rem', padding: '0.25rem', border: '1px solid #444', width: 'fit-content' }}>
-        {Object.entries(platforms).map(([key, platform]) => <ChoiceButton key={key} active={selectedPlatform === key} indicator="install-platform" controls="install-content" onClick={() => startTransition(() => setSelectedPlatform(key))}>{platform.label}</ChoiceButton>)}
+  const shell = selectedPlatform === 'windows' ? 'PowerShell' : 'Terminal'
+  const commandName = product.toLowerCase().replace('-', '')
+  const [prefix, url, suffix] = current.command.split(/(https:\/\/[^\s"]+)/)
+  const areas = shortLandscape ? '"command command" "first native" "manage native"'
+    : columns ? '"command first" "native manage"' : '"command" "first" "native" "manage"'
+  const trackWidths = shortLandscape ? 'minmax(0, 0.86fr) minmax(0, 1.14fr)'
+    : columns ? 'minmax(0, 1.15fr) minmax(0, 1fr)' : 'minmax(0, 1fr)'
+
+  return <section id="install" aria-labelledby="install-heading" style={{
+    '--install-gap': detailed ? 'clamp(0.875rem, 2.5vh, 1.75rem)' : 'clamp(0.125rem, calc(4vh - 1.35rem), 1rem)',
+    padding: shortLandscape ? '0.125rem 0.5rem' : detailed ? 'clamp(1.5rem, 5vh, 4rem) var(--page-gutter)' : '0.5rem clamp(0.75rem, 4vw, 1.25rem)',
+    scrollMarginTop: 0, borderBottom: '1px solid var(--line)',
+  }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: shortLandscape ? '0.25rem' : '0.5rem 1.5rem', marginBottom: 'var(--install-gap)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.125rem 0.375rem' }}>
+          <h2 id="install-heading" style={{ font: '400 var(--body-heading-size)/1.1 var(--font-display)', letterSpacing: '-0.02em', textTransform: detailed ? 'uppercase' : undefined }}>Install {product}</h2>
+          <span style={{ fontSize: '0.875rem', color: 'var(--fg-dim)' }}>v{version}</span>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.25rem 0.625rem', width: columns ? 'auto' : '100%' }}>
+          <div role="group" aria-label="Choose your operating system" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.125rem', padding: '0.125rem', border: '1px solid #444' }}>
+            {Object.entries(platforms).map(([key, platform]) => <ChoiceButton key={key} compact={!detailed} active={selectedPlatform === key} indicator="install-platform" controls="install-content" onClick={() => startTransition(() => setSelectedPlatform(key))}>{platform.label}</ChoiceButton>)}
+          </div>
+          <GuideLink href={docs} label="Installation guide">{detailed ? 'Installation guide' : 'Guide'}</GuideLink>
+        </div>
       </div>
-      <ViewTransition default="content-change"><div id="install-content" style={{ ...textStyle, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '2rem 3rem', alignItems: 'start' }}>
-        <div style={{ minWidth: 0 }}>
-          <InstallHeading>Recommended for {current.label}</InstallHeading>
-          <p>{selectedPlatform === 'windows' ? 'Paste into a normal PowerShell window.' : 'Paste into your terminal.'} A fresh installation uses your account and needs no administrator access.</p>
-          <InstallNote>{installEffect}</InstallNote>
-          <InstallCommand key={selectedPlatform} command={current.command} platform={selectedPlatform} />
-          <p style={{ fontSize: '0.875rem', color: 'var(--fg-dim)', marginTop: '0.75rem' }}>Prebuilt download · No Rust toolchain required · Release {version}</p>
+      <ViewTransition default="content-change"><div id="install-content" style={{ display: 'grid', gridTemplateAreas: areas, gridTemplateColumns: trackWidths, rowGap: 'var(--install-gap)', columnGap: shortLandscape ? '0.75rem' : 'clamp(1.75rem, 4vw, 4rem)', color: 'var(--body-muted)', lineHeight: 1.45 }}>
+        <div style={{ ...panelStyle, gridArea: 'command', display: shortLandscape ? 'grid' : 'block', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.75fr)', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: shortLandscape ? '1fr' : 'minmax(0, 1fr) auto', justifyItems: shortLandscape ? 'start' : undefined, alignItems: 'center', gap: shortLandscape ? '0.125rem' : '0.5rem' }}>
+            <div>
+              <h3 style={headingStyle}>{shell}{detailed && <span style={{ fontSize: '0.875rem', fontWeight: 400, color: 'var(--fg-dim)' }}> · Recommended</span>}</h3>
+              {!detailed && <p style={{ color: 'var(--fg-dim)', fontSize: '0.875rem' }}>{shortEffect}</p>}
+            </div>
+            <CopyCommand key={selectedPlatform} compact primary command={current.command} />
+          </div>
+          {detailed && <p style={{ marginTop: '0.25rem' }}>{installEffect}</p>}
+          <code style={{ display: 'block', marginTop: shortLandscape ? 0 : '0.375rem', padding: '0.5rem 0.75rem', border: '1px solid #444', borderRadius: '2px', background: '#0c0c0c', fontSize: '0.9375rem', color: 'var(--fg-bone)', overflowWrap: 'anywhere', userSelect: 'all' }}>{prefix}<span style={{ wordBreak: detailed ? 'normal' : 'break-all' }}>{url}</span>{suffix}</code>
         </div>
-        <div style={{ minWidth: 0 }}>
-          <InstallHeading>First run</InstallHeading>
-          {firstRun(current, selectedPlatform)}
+        <div style={{ ...panelStyle, gridArea: 'first', display: 'grid', gridTemplateColumns: detailed ? '1fr' : 'auto minmax(0, 1fr)', alignContent: 'start', alignItems: 'center', columnGap: '0.75rem' }}>
+          <h3 style={headingStyle}><GuideLink href={firstRunGuide}>First run</GuideLink></h3>
+          <p>{detailed ? firstRun : firstCommands}</p>
         </div>
-        <div style={{ minWidth: 0, marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
-          <InstallHeading>Other ways to install</InstallHeading>
-          {selectedPlatform === 'windows' && windowsInstallers && <>
-            <InstallNote>EXE opens a setup wizard. MSI also supports Windows Installer deployment.</InstallNote>
-            {[...windowsInstallers].sort((a, b) => a.edition.localeCompare(b.edition)).map(({ edition, msi, exe }) => <div key={edition} style={{ padding: '1rem 0', borderBottom: '1px solid #292929' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg-bone)' }}>{edition === 'Global' ? 'For all users' : 'For your account'} <span style={{ color: 'var(--fg-dim)', fontWeight: 400 }}>— {edition}</span></h4>
-              <p style={{ fontSize: '0.9375rem', margin: '0.4rem 0 0.75rem' }}>{edition === 'Global' ? 'Installs in Program Files. Requires administrator approval.' : 'Installs for you. No administrator access needed.'}</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <ActionLink href={`${releaseBase}/${exe}`} label={`Download ${edition} EXE`}>EXE ↓</ActionLink>
-                <ActionLink href={`${releaseBase}/${msi}`} label={`Download ${edition} MSI`}>MSI ↓</ActionLink>
-              </div>
-            </div>)}
-          </>}
-          {selectedPlatform === 'macos' && macInstaller && <>
-            <InstallNote>{macInstaller.description}</InstallNote>
-            <ActionLink href={`${releaseBase}/${macInstaller.asset}`} label="Download universal PKG">Universal PKG ↓</ActionLink>
-          </>}
-          {selectedPlatform === 'linux' && <InstallNote>Need a portable archive or an offline installation? The installation guide explains supported systems and setup.</InstallNote>}
-          <GuideLink href={docs} style={{ marginTop: '1rem' }}>Installation guide</GuideLink>
+        <div style={{ ...panelStyle, gridArea: 'native' }}>
+          <h3 style={{ ...headingStyle, marginBottom: '0.375rem' }}>{selectedPlatform === 'windows' ? 'Windows installers' : 'Other ways to install'}</h3>
+          {selectedPlatform === 'windows' && <WindowsDownloads installers={windowsInstallers} releaseBase={releaseBase} shortLandscape={shortLandscape} />}
+          {selectedPlatform === 'macos' && <div style={{ display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr)', alignItems: 'center', gap: '0.75rem' }}>
+            <ActionLink compact href={`${releaseBase}/${macInstaller.asset}`} label="Download universal PKG">{detailed ? 'Universal PKG' : 'PKG'} ↓</ActionLink>
+            <p>{detailed ? macInstaller.description : 'Signed and notarized for Intel and Apple Silicon.'}</p>
+          </div>}
+          {selectedPlatform === 'linux' && <GuideLink href={`${docs}#offline-installation`}>Offline installation</GuideLink>}
         </div>
-        <div style={{ minWidth: 0, marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
-          <InstallHeading>Updates and removal</InstallHeading>
-          {maintenance(current, selectedPlatform)}
-          <InstallNote>Updates preserve the verified installation method, edition, and location. Deliberately launching another official installer requests a change; unclear ownership or a blocked transition keeps the working installation intact.</InstallNote>
-          <GuideLink href={`${docs}#updates-and-repairs`}>Update and repair guidance</GuideLink>
+        <div style={{ ...panelStyle, gridArea: 'manage' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: detailed ? '1fr' : 'auto minmax(0, 1fr)', alignItems: 'center', columnGap: shortLandscape ? '0.125rem' : '0.75rem' }}>
+            <h3 style={headingStyle}><GuideLink href={`${docs}#updates-and-repairs`}>{detailed ? 'Updates and removal' : 'Manage'}</GuideLink></h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0 1.25rem', color: 'var(--fg-bone)' }}>
+              <code>{commandName} update</code><code>{commandName} uninstall</code>
+            </div>
+          </div>
+          <p style={{ marginTop: '0.25rem' }}>{detailed ? 'Updates keep the verified format, edition, scope and path. Run a different official installer to switch. If ownership is unclear or policy blocks the change, your working install stays in place.' : 'Updates keep the format.'}</p>
+          {detailed && maintenanceNote && <p style={{ marginTop: '0.5rem' }}>{maintenanceNote}</p>}
         </div>
       </div></ViewTransition>
-      <p style={{ ...textStyle, fontSize: '0.875rem', marginTop: '2rem', color: 'var(--fg-dim)' }}>PolyForm Noncommercial License · Follow your organization’s installation policy.</p>
-  </BodySection>
+    </div>
+  </section>
 }

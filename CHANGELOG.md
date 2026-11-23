@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.3] - 2026-11-23
+
+### Changed
+
+- Reflow all three product installation panels to fit a single viewport on desktop and phone. Keep commands, platform tabs, native downloads and maintenance actions visible, with direct links to the detailed guides.
+
 ## [1.29.2] - 2026-11-23
 
 ### Changed

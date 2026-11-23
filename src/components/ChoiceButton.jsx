@@ -1,11 +1,11 @@
 import { useState, ViewTransition } from 'react'
 
-export default function ChoiceButton({ active, onClick, children, indicator, controls }) {
+export default function ChoiceButton({ active, onClick, children, indicator, controls, compact = false }) {
   const [highlighted, setHighlighted] = useState(false)
   return <button type="button" aria-pressed={active} aria-controls={controls} onClick={onClick}
     onMouseEnter={() => setHighlighted(true)} onMouseLeave={() => setHighlighted(false)}
     onFocus={() => setHighlighted(true)} onBlur={() => setHighlighted(false)}
-    style={{ position: 'relative', isolation: 'isolate', minHeight: '48px', padding: '0.75rem 1.15rem',
+    style={{ position: 'relative', isolation: 'isolate', minHeight: compact ? '44px' : '48px', padding: compact ? '0.35rem 0.45rem' : '0.75rem 1.15rem',
       fontSize: '0.9375rem', fontWeight: 600, border: 0, borderRadius: '2px', cursor: 'pointer',
       background: highlighted && !active ? '#1b1b1b' : 'transparent', color: active ? 'var(--bg-void)' : 'var(--fg-bone)',
       transition: 'background 180ms ease, color 180ms ease' }}>

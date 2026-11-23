@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 23, 2026 — Installation at a glance
+
+**Improved**
+
+- The install command, download choices and first steps now fit on one screen, so you can choose an installer without scrolling back and forth.
+
 ## November 23, 2026 — A steadier start
 
 **Improved**

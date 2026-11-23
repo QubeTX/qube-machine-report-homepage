@@ -189,12 +189,11 @@ shared, leave mobile/unknown clients on the existing default, and never override
 a visitor's manual selection during the mounted page session. Do not require
 storage, permission prompts or remote lookups for this default.
 
-The three product pages share `ProductInstall.jsx`, with separate `firstRun`
-and `maintenance` render props. Desktop rows pair the recommended command with
-first use, then native alternatives with maintenance. Mobile follows that same
-reading order. Keep OS and native installer choices visible. Use concise visible
-caveats and direct links to the per-tool guides for deeper reference; do not add
-disclosures or shrink text to fit a viewport.
+The three product pages share `ProductInstall.jsx`. Design each OS panel to fit
+in one viewport at default text size. Use the available width and height to
+arrange the command, first run, native installers and maintenance. Keep every
+installer choice visible, preserve 44px control targets and link to the per-tool
+guides for details. Allow natural page scrolling when enlarged text needs room.
 
 Product heroes share `ProductHero.jsx`: product art, a short serif introduction,
 installation and documentation actions together, and one current-release link.
