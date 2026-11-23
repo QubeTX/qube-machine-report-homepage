@@ -9,7 +9,7 @@ TR-300 4.5 shows a fast report when you open an interactive terminal or log in o
 
 ## What you see
 
-A local session leads with hardware and utilization. SSH leads with the hostname, the server address you reached and the battery state, when available. In a tall terminal both can show more hardware, network and session details. Short windows drop detail to leave four rows for the prompt and shell messages. If the terminal cannot report its dimensions, TR-300 prints a short hostname line.
+A local session leads with hardware and utilization. SSH leads with the hostname, the server address you reached and the battery state, when available. When space allows, thin horizontal lines separate groups of related information. Short or narrow windows skip the lines. The report leaves four rows for the prompt and shell messages and shows more detail in taller windows. If the terminal cannot report its dimensions, TR-300 prints a short hostname line.
 
 Run `tr300 --startup` to preview that view. Run `report` for the full table.
 
@@ -39,4 +39,4 @@ Choose **Remove auto-run only** to disable the startup report for your account w
 
 If organization policy blocks a startup profile, you can still run `tr300` or `report` manually where the executable itself is allowed.
 
-Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
+Checked against [TR-300 v4.5.1](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.1).

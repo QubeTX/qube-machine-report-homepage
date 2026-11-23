@@ -2,7 +2,7 @@ import ProductInstall, { InstallNote } from './ProductInstall'
 import useGitHubVersion from '../hooks/useGitHubVersion'
 
 export default function Install() {
-  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.5.0')
+  const version = useGitHubVersion('QubeTX/qube-machine-report', '4.5.1')
   const unixCommand = "curl -LsSf https://reports.qubetx.com/install.sh | sh"
 
 

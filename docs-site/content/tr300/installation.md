@@ -7,7 +7,7 @@ sidebar:
 
 Installation adds `tr300` and the equivalent `report` command. The recommended installer automatically enables a startup report for your account. Windows Global and the macOS PKG include setup for other accounts. PowerShell startup follows the execution policy on that machine. Windows Corporate lets each user opt in with `tr300 install`.
 
-No Rust toolchain or compiler is needed. Online downloads track the latest release; the [offline bundle](#offline-installation) is a fixed snapshot. The startup instructions apply to TR-300 4.5.0; see [source versions](/sources).
+No Rust toolchain or compiler is needed. Online downloads track the latest release; the [offline bundle](#offline-installation) is a fixed snapshot. The startup instructions apply to TR-300 4.5.1; see [source versions](/sources).
 
 ## Windows
 

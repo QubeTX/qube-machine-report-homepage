@@ -60,4 +60,4 @@ See [Installation](/tr300/installation#updates-and-repairs) before changing an i
 
 Older forms `--install`, `--update`, and `--uninstall` remain supported. Do not combine them with another action. There is no `tr300 config` command.
 
-Checked against [TR-300 v4.5.0](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.0).
+Checked against [TR-300 v4.5.1](https://github.com/QubeTX/qube-machine-report/releases/tag/v4.5.1).

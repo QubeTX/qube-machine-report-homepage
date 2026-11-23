@@ -8,6 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 22, 2026 — Terminal startup guide
+
+**Improved**
+
+- The shell guide explains the lines between groups of information and why they disappear in smaller windows.
+- The download page shows the current release even when it cannot reach GitHub.
+
 ## November 11, 2026 — Current network-tool download labels
 
 **Improved**
