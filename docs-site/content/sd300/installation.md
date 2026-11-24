@@ -115,6 +115,8 @@ The offline ZIP contains SD-300 4.1.0. Open its `SD-300/` folder and choose your
 2. Extract the entire ZIP on the destination computer. Open `index.html` to choose the installer or portable download. This page works without internet.
 3. Verify the extracted files using the commands below. Open a terminal in the folder containing your chosen installer or archive, then run the commands in its README.
 
+On Windows, the desktop install commands open the bundled Microsoft Visual C++ x64 runtime installer if the runtime is missing. Installing this system prerequisite can require administrator approval. IT can provision it from the ZIP before per-user Corporate installs. Windows N also needs the matching Media Feature Pack from your Windows servicing media.
+
 ### Check the downloaded ZIP
 
 Run the command for your operating system from the folder containing the download. Compare its SHA-256 value with the one in `qubetx-offline-bundle.zip.sha256`.

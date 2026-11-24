@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.5] - 2026-11-24
+
+### Changed
+
+- Replace the Offline Toolkit mark with a hand-drawn three-tool SVG. Update the toolkit page and SD-300 installation guide for bundle 4.0.1 and its offline Windows desktop runtime.
+
 ## [1.29.4] - 2026-11-24
 
 ### Changed

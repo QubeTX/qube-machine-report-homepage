@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 24, 2026 — Windows desktop installation
+
+**Improved**
+
+- A screwdriver, pocket blade, and wrench identify the offline toolkit. Its download now includes the extra software that some Windows computers need to open the desktop app.
+
 ## November 24, 2026 — Offline toolkit
 
 **Improved**

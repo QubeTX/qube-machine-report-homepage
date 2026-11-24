@@ -9,7 +9,7 @@ export default function ExecutablesContent() {
         {[
           { name: 'TR-300', purpose: 'Read a system report', text: 'Computer specifications and system context, with explicit Markdown and JSON export.', href: '/docs/tr300/installation#offline-installation' },
           { name: 'ND-300', purpose: 'Investigate a connection', text: 'Network diagnostics and SpeedQX. Local checks work with available state; remote checks need a connection.', href: '/docs/nd300/installation#offline-installation' },
-          { name: 'SD-300', purpose: 'Watch system activity', text: 'Terminal monitoring and the desktop app, with processes, hardware readings, and clear availability labels.', href: '/docs/sd300/installation#offline-installation' },
+          { name: 'SD-300', purpose: 'Watch system activity', text: 'Terminal monitoring and the desktop app. The ZIP includes the Microsoft runtime used by the Windows desktop app.', href: '/docs/sd300/installation#offline-installation' },
         ].map(tool => <article key={tool.name} style={{ borderTop: '1px solid #444', paddingTop: '1.5rem' }}>
           <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '2rem', letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>{tool.name}</h3>
           <p style={{ fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{tool.purpose}</p>
