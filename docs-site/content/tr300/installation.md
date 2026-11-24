@@ -97,7 +97,7 @@ The offline ZIP contains TR-300 4.5.1. Open its `TR-300/` folder and choose your
 
 1. On a connected computer, download the [offline ZIP](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip) and its [SHA-256 checksum](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip.sha256). A checksum is a value calculated from a file; matching it helps detect a changed or incomplete download. Compare it using the commands below before transferring the ZIP.
 2. Extract the entire ZIP on the destination computer. Open `index.html` to choose the installer or portable download. This page works without internet.
-3. Verify the extracted files using the commands below. Open a terminal in the folder containing your chosen installer or archive, then run the commands in its README.
+3. Verify the extracted files using the commands below. Open PowerShell on Windows or a terminal on macOS or Linux in the folder containing your chosen installer or archive. Paste the single command from its README and press Enter.
 
 ### Check the downloaded ZIP
 

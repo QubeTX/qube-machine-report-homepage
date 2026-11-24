@@ -18,7 +18,7 @@ The TR-300 guides were checked against the 4.5.1 release source and command help
 
 Online installation commands and download links follow the latest published release. They may install a newer version than the one described here. Check `--version` and `--help` if the behavior differs.
 
-Offline toolkit 4.0.1 (November 24, 2026) contains TR-300 4.5.1, ND-300 4.0.2, and SD-300 4.1.0. Its `bundle-manifest.json` records those versions, the source commits, file sizes, and SHA-256 checksums used to verify the files. Its included manuals come from the same releases.
+Offline toolkit 4.0.2 (November 24, 2026) contains TR-300 4.5.1, ND-300 4.0.2, and SD-300 4.1.0. Its `bundle-manifest.json` records those versions, the source commits, file sizes, and SHA-256 checksums used to verify the files. Its included manuals come from the same releases.
 
 ## What was checked
 

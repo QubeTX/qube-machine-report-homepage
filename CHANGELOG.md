@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.6] - 2026-11-24
+
+### Changed
+
+- Update the Offline Toolkit page and installation guides for bundle 4.0.2 and its single-line install commands.
+
 ## [1.29.5] - 2026-11-24
 
 ### Changed

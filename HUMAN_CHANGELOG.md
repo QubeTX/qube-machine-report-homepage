@@ -8,6 +8,12 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 24, 2026 — Offline install commands
+
+**Improved**
+
+- The toolkit guides show where to paste one line to install the tool you chose.
+
 ## November 24, 2026 — Windows desktop installation
 
 **Improved**

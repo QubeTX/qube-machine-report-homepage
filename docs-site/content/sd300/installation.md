@@ -113,7 +113,7 @@ The offline ZIP contains SD-300 4.1.0. Open its `SD-300/` folder and choose your
 
 1. On a connected computer, download the [offline ZIP](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip) and its [SHA-256 checksum](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip.sha256). A checksum is a value calculated from a file; matching it helps detect a changed or incomplete download. Compare it using the commands below before transferring the ZIP.
 2. Extract the entire ZIP on the destination computer. Open `index.html` to choose the installer or portable download. This page works without internet.
-3. Verify the extracted files using the commands below. Open a terminal in the folder containing your chosen installer or archive, then run the commands in its README.
+3. Verify the extracted files using the commands below. Open PowerShell on Windows or a terminal on macOS or Linux in the folder containing your chosen installer or archive. Paste the single command from its README and press Enter.
 
 On Windows, the desktop install commands open the bundled Microsoft Visual C++ x64 runtime installer if the runtime is missing. Installing this system prerequisite can require administrator approval. IT can provision it from the ZIP before per-user Corporate installs. Windows N also needs the matching Media Feature Pack from your Windows servicing media.
 
