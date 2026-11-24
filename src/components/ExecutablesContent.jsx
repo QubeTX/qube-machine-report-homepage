@@ -22,7 +22,7 @@ export default function ExecutablesContent() {
         <ol style={{ display: 'grid', gap: '1.5rem', paddingLeft: '1.5rem', lineHeight: 1.65 }}>
           <li><strong>Extract the ZIP.</strong> Keep the folders and files together when copying them to another computer.</li>
           <li><strong>Open <code>index.html</code>.</strong> The local start page explains the included releases and how to verify their checksums.</li>
-          <li><strong>Choose your tool and platform.</strong> Follow its offline guide before installing or upgrading. SD-300 native installers include the app and terminal tools; portable downloads remain separate.</li>
+          <li><strong>Choose your tool and platform.</strong> Open the folder for your tool, operating system, and processor. Windows offers Standard and Corporate MSI or EXE installers. Each installer folder has a README with the terminal commands to run there.</li>
         </ol>
         <p style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
           <GuideLink href="https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip.sha256">ZIP checksum</GuideLink>

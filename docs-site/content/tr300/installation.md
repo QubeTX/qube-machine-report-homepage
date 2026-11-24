@@ -93,11 +93,11 @@ If the folder name differs, use the name listed by `tar -tf` followed by the arc
 
 ## Offline installation
 
-The bundle includes TR-300 4.4.0 in `TR300-qube-machine-report/`, with installers, portable downloads, matching manuals, release notes, and licenses. These are fixed versions; the bundle does not update itself.
+The offline ZIP contains TR-300 4.5.1. Open its `TR-300/` folder and choose your operating system and processor. Windows x64 has both Standard (Global) and Corporate editions in MSI and EXE format. The matching manual and license are in `TR-300/Manuals/`.
 
 1. On a connected computer, download the [offline ZIP](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip) and its [SHA-256 checksum](https://github.com/QubeTX/qube-reports-executables/releases/latest/download/qubetx-offline-bundle.zip.sha256). A checksum is a value calculated from a file; matching it helps detect a changed or incomplete download. Compare it using the commands below before transferring the ZIP.
 2. Extract the entire ZIP on the destination computer. Open `index.html` to choose the installer or portable download. This page works without internet.
-3. Verify the extracted files using the commands below, then select **TR-300** and follow this page's instructions for [Windows](#windows), [macOS](#macos), or [Linux](#linux) using those local files.
+3. Verify the extracted files using the commands below. Open a terminal in the folder containing your chosen installer or archive, then run the commands in its README.
 
 ### Check the downloaded ZIP
 

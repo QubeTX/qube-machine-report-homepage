@@ -8,6 +8,13 @@ For the technical version with versions, file paths, and release details, see CH
 
 ---
 
+## November 24, 2026 — Offline toolkit
+
+**Improved**
+
+- Give the toolkit its own folding-tool logo so it is easy to recognize.
+- Find the latest tools by product and platform in the offline download. Each installer includes terminal instructions, with per-user and all-user choices on Windows.
+
 ## November 23, 2026 — Installation at a glance
 
 **Improved**

@@ -7,8 +7,8 @@ export function ToolkitNotes({ textStyle }) {
 
 export function ToolkitSnapshot({ textStyle }) {
   return <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem', lineHeight: 1.8, color: 'var(--fg-dim)', marginTop: '1.5rem', maxWidth: '65ch' }}>
-    <span style={textStyle}>Snapshot: October 11, 2026</span><br />
-    <span style={textStyle}>TR-300 4.4.0 · ND-300 4.0.1 · SD-300 4.1.0</span><br />
+    <span style={textStyle}>Snapshot: November 24, 2026</span><br />
+    <span style={textStyle}>TR-300 4.5.1 · ND-300 4.0.2 · SD-300 4.1.0</span><br />
     <span style={textStyle}>Windows x64 · macOS Intel / Apple Silicon</span><br />
     <span style={textStyle}>Linux x64 GNU / musl and ARM64 GNU</span>
   </p>

@@ -29,7 +29,7 @@ export default function ProductHero({ product, category, introduction, version, 
         <motion.div aria-hidden="true" initial={quietEntrance ? false : { opacity: 0, rotate: -8, scale: 0.85 }} animate={{ opacity: 1, rotate: 0, scale: 1 }}
           whileHover={reduced ? undefined : { rotate: 8, scale: 1.05 }} transition={{ duration: 0.7, ease }}
           style={{ display: 'grid', placeItems: 'center' }}>
-          <HeroArtwork product={product} mobile={mobile} toolkit={download} />
+          <HeroArtwork product={product} mobile={mobile} />
         </motion.div>
         <ViewTransition name="product-title" share="product-title">
           <h1 tabIndex={-1} style={layout.title}>

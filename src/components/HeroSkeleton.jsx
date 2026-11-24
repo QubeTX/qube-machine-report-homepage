@@ -28,7 +28,7 @@ export default function HeroSkeleton({ path }) {
         <a href="/docs" style={{ ...heroBrand, minWidth: '44px', justifyItems: 'center', textDecoration: 'underline' }}>Docs</a>
       </div>
       <div aria-hidden="true" style={layout.center}>
-        <HeroArtwork product={product} mobile={mobile} toolkit={toolkit} color="var(--line)" />
+        <HeroArtwork product={product} mobile={mobile} color="var(--line)" />
         <div style={{ ...layout.title, color: 'var(--line)', textWrap: 'balance', transform: toolkit ? undefined : 'scaleX(1.06)' }}>{product}</div>
       </div>
       <div aria-hidden="true" style={layout.details}>

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.29.4] - 2026-11-24
+
+### Changed
+
+- Add an original monochrome, folding-gauge SVG for the Offline Toolkit hero and its loading state.
+- Update the offline toolkit and installation guides for bundle 4.0.0, with TR-300 4.5.1, ND-300 4.0.2 and SD-300 4.1.0. Document the product-first layout, Corporate MSI/EXE options and offline command guides.
+
 ## [1.29.3] - 2026-11-23
 
 ### Changed
